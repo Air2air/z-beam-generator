@@ -643,14 +643,6 @@ def validate_naming_parity(repo_root: Path) -> list[str]:
 def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
     errors: list[str] = []
     domains = ("applications", "materials", "contaminants", "compounds", "settings")
-    policy = _load_generation_policy(repo_root)
-    aliases = _load_component_aliases(repo_root)
-    schema = load_yaml(repo_root / "data/schemas/section_display_schema.yaml")
-    sections = schema.get("sections") if isinstance(schema, dict) else None
-    required_entries_by_domain = ((policy.get("backfill") or {}).get("required_fields_by_domain") or {})
-    if not isinstance(required_entries_by_domain, dict):
-        required_entries_by_domain = {}
-    placeholder_pattern = re.compile(r"\{([a-zA-Z_][a-zA-Z0-9_]*)\}")
 
     for domain in domains:
         prompt_contract_path = repo_root / "domains" / domain / "prompt.yaml"
@@ -746,120 +738,11 @@ def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
         if not isinstance(cleanup_eval, dict):
             errors.append(f"{catalog_path}: missing required mapping cleanup_evaluation")
 
-        one_line_prompts = prompt_contract.get("one_line_content_prompts")
-        if not isinstance(one_line_prompts, dict):
-            errors.append(f"{prompt_contract_path}: missing required mapping one_line_content_prompts")
-        else:
-            required_variables = one_line_prompts.get("required_variables")
-            if not isinstance(required_variables, list) or not required_variables:
-                errors.append(
-                    f"{prompt_contract_path}: one_line_content_prompts.required_variables must be a non-empty list"
-                )
-                required_variables = []
-
-            required_variable_set = {
-                value.strip()
-                for value in required_variables
-                if isinstance(value, str) and value.strip()
-            }
-
-            by_component = one_line_prompts.get("by_component")
-            if not isinstance(by_component, dict):
-                errors.append(
-                    f"{prompt_contract_path}: one_line_content_prompts.by_component must be a mapping"
-                )
-            else:
-                def _component_to_prompt_key(component_type: str) -> str:
-                    if component_type in {"pageTitle", "pageDescription"}:
-                        return "page"
-                    if component_type.endswith("Title") and len(component_type) > len("Title"):
-                        return component_type[: -len("Title")]
-                    if component_type.endswith("Description") and len(component_type) > len("Description"):
-                        return component_type[: -len("Description")]
-                    return component_type
-
-                required_keys: set[str] = set()
-                required_domain_entries = required_entries_by_domain.get(domain) or []
-                if isinstance(required_domain_entries, list) and isinstance(sections, dict):
-                    for entry in required_domain_entries:
-                        if not isinstance(entry, dict):
-                            continue
-                        component_type = entry.get("componentType")
-                        if not isinstance(component_type, str) or not component_type.strip():
-                            continue
-                        canonical_component = _normalize_component_type(component_type.strip(), aliases)
-                        prompt_key = _component_to_prompt_key(canonical_component)
-                        if canonical_component not in sections and prompt_key not in sections:
-                            errors.append(
-                                f"{repo_root / 'data/schemas/section_display_schema.yaml'}: component '{canonical_component}' referenced by policy for domain '{domain}' is missing"
-                            )
-                            continue
-                        required_keys.add(prompt_key)
-
-                missing_components = sorted(required_keys - set(by_component.keys()))
-                for component in missing_components:
-                    errors.append(
-                        f"{prompt_contract_path}: missing one_line_content_prompts.by_component.{component}"
-                    )
-
-                for component, entry in by_component.items():
-                    if not isinstance(entry, dict):
-                        errors.append(
-                            f"{prompt_contract_path}: one_line_content_prompts.by_component.{component} must be a mapping"
-                        )
-                        continue
-
-                    for role in ("sectionTitle", "sectionDescription"):
-                        role_entry = entry.get(role)
-                        if not isinstance(role_entry, dict):
-                            errors.append(
-                                f"{prompt_contract_path}: one_line_content_prompts.by_component.{component}.{role} must be a mapping"
-                            )
-                            continue
-
-                        prompt_text = role_entry.get("prompt")
-                        variables = role_entry.get("variables")
-                        if not isinstance(prompt_text, str) or not prompt_text.strip():
-                            errors.append(
-                                f"{prompt_contract_path}: one_line_content_prompts.by_component.{component}.{role}.prompt must be a non-empty string"
-                            )
-                            continue
-                        if "\n" in prompt_text:
-                            errors.append(
-                                f"{prompt_contract_path}: one_line_content_prompts.by_component.{component}.{role}.prompt must be single-line"
-                            )
-                        if not isinstance(variables, list) or not variables:
-                            errors.append(
-                                f"{prompt_contract_path}: one_line_content_prompts.by_component.{component}.{role}.variables must be a non-empty list"
-                            )
-                            continue
-
-                        variable_set = {
-                            value.strip()
-                            for value in variables
-                            if isinstance(value, str) and value.strip()
-                        }
-                        if len(variable_set) != len(variables):
-                            errors.append(
-                                f"{prompt_contract_path}: one_line_content_prompts.by_component.{component}.{role}.variables must contain only non-empty unique strings"
-                            )
-
-                        placeholders = set(placeholder_pattern.findall(prompt_text))
-                        missing_required_vars = sorted(required_variable_set - variable_set)
-                        if missing_required_vars:
-                            errors.append(
-                                f"{prompt_contract_path}: one_line_content_prompts.by_component.{component}.{role}.variables missing required values: {', '.join(missing_required_vars)}"
-                            )
-                        missing_required_placeholders = sorted(required_variable_set - placeholders)
-                        if missing_required_placeholders:
-                            errors.append(
-                                f"{prompt_contract_path}: one_line_content_prompts.by_component.{component}.{role}.prompt missing placeholders: {', '.join('{' + v + '}' for v in missing_required_placeholders)}"
-                            )
-                        undeclared_placeholders = sorted(placeholders - variable_set)
-                        if undeclared_placeholders:
-                            errors.append(
-                                f"{prompt_contract_path}: one_line_content_prompts.by_component.{component}.{role}.prompt uses undeclared placeholders: {', '.join(undeclared_placeholders)}"
-                            )
+        if "one_line_content_prompts" in prompt_contract:
+            errors.append(
+                f"{prompt_contract_path}: one_line_content_prompts is not allowed in domain prompt contracts; "
+                "use data/schemas/component_single_line_prompts.yaml as the canonical single-line source"
+            )
 
         article_pages = catalog_payload.get("article_pages")
         if not isinstance(article_pages, dict):

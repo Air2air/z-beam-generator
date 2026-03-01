@@ -90,6 +90,8 @@ Each layer has ONE responsibility:
 
 The descriptor layer is now centralized through `PromptRegistryService` and domain YAML registries (`prompts/registry/content_prompts_{domain}.yaml`, typically extending `prompts/registry/content_prompts_shared.yaml`). It must remain normalized across domains and must never overlap with other descriptor responsibilities.
 
+Single-line section/title prompt templates are centralized in `data/schemas/component_single_line_prompts.yaml` and must not be duplicated in `domains/*/prompt.yaml`.
+
 **Required descriptor entries per domain (catalog `catalog.byPath`, keys like `prompts/{domain}/`)**:
 - `identifiers.txt`
 - `chemicalProperties.txt`

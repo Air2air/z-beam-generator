@@ -3,37 +3,3 @@ domain: applications
 prompt_contract:
   content_prompts_file: prompts/registry/content_prompts_applications.yaml
   require_extends_shared: true
-
-one_line_content_prompts:
-  required_variables:
-    - subject
-    - context
-  by_component:
-    page:
-      sectionTitle:
-        prompt: "Write a concise applications page title for {subject} in {context}. Reference unique effects of this particular combination."
-        variables: [subject, context]
-      sectionDescription:
-        prompt: "Describe what {subject} is, why it matters, and what users should expect in {context}. Reference unique effects of this particular combination."
-        variables: [subject, context]
-    relatedMaterials:
-      sectionTitle:
-        prompt: "Write a concise heading for materials related to {subject} in {context}. Reference unique effects of this particular combination."
-        variables: [subject, context]
-      sectionDescription:
-        prompt: "Describe materials commonly related to {subject} and comparison context in {context}."
-        variables: [subject, context]
-    contaminatedBy:
-      sectionTitle:
-        prompt: "Write a concise heading for contaminants associated with {subject} in {context}. Reference unique effects of this particular combination."
-        variables: [subject, context]
-      sectionDescription:
-        prompt: "Describe contaminants most commonly associated with {subject} in {context}. Reference unique effects of this particular combination."
-        variables: [subject, context]
-    faq:
-      sectionTitle:
-        prompt: "Write a concise FAQ heading for {subject} in {context}. Reference unique effects of this particular combination."
-        variables: [subject, context]
-      sectionDescription:
-        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details. Reference unique effects of this particular combination."
-        variables: [subject, context]

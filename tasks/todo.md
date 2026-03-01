@@ -5,6 +5,22 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 94: Canonicalize Single-Line Prompt Source and Tighten Descriptor Boundaries
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Eliminate prompt-chain overlap by making `data/schemas/component_single_line_prompts.yaml` the only single-line prompt source and tightening descriptor-vs-field boundaries in shared descriptor prompts.
+
+### Steps
+- [x] Remove `one_line_content_prompts` blocks from all `domains/*/prompt.yaml` contracts
+- [x] Update section-contract validator to reject domain-level single-line prompt definitions and enforce canonical schema source
+- [x] Tighten shared descriptor wording to avoid overlap with field prompt responsibilities
+- [x] Run focused prompt contract + bootstrap validations
+- [x] Record lesson in `tasks/lessons.md` and mark batch complete
+
+---
+
 ## Batch 93: Consolidate Prompt Chain Files Into One Folder
 Date: 2026-02-28
 Status: COMPLETE
