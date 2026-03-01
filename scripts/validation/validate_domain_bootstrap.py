@@ -39,7 +39,7 @@ def validate_domain(repo_root: Path, domain: str) -> list[str]:
 
     domain_config_path = repo_root / "domains" / domain / "config.yaml"
     domain_prompt_path = repo_root / "domains" / domain / "prompt.yaml"
-    domain_content_prompts_path = repo_root / "prompts" / domain / "content_prompts.yaml"
+    domain_content_prompts_path = repo_root / "prompts" / "registry" / f"content_prompts_{domain}.yaml"
     domain_backfill_config_path = repo_root / "generation" / "backfill" / "config" / f"{domain}.yaml"
     domain_export_config_path = repo_root / "export" / "config" / f"{domain}.yaml"
 
@@ -82,7 +82,7 @@ def validate_domain(repo_root: Path, domain: str) -> list[str]:
             errors.append(f"{domain}: domains/{domain}/prompt.yaml missing required mapping 'prompt_contract'")
         else:
             configured_registry = prompt_contract.get("content_prompts_file")
-            expected_registry = f"prompts/{domain}/content_prompts.yaml"
+            expected_registry = f"prompts/registry/content_prompts_{domain}.yaml"
             if configured_registry != expected_registry:
                 errors.append(
                     f"{domain}: prompt_contract.content_prompts_file must be '{expected_registry}' "

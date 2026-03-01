@@ -49,10 +49,10 @@ class PromptBuilder:
         """Load technical profiles from YAML file (cached)."""
         if PromptBuilder._technical_profiles_cache is None:
             import yaml
-            profiles_path = os.path.join('prompts', 'profiles', 'technical.yaml')
+            profiles_path = os.path.join('prompts', 'registry', 'technical_profiles.yaml')
             if not os.path.exists(profiles_path):
                 raise FileNotFoundError(
-                    f"Technical profiles not found at {profiles_path}. "
+                    f"Technical profiles file not found or invalid at prompts/registry/technical_profiles.yaml. "
                     "Fail-fast architecture requires this file."
                 )
             with open(profiles_path, 'r', encoding='utf-8') as f:
@@ -65,10 +65,10 @@ class PromptBuilder:
         """Load rhythm profiles from YAML file (cached)."""
         if PromptBuilder._rhythm_profiles_cache is None:
             import yaml
-            profiles_path = os.path.join('prompts', 'profiles', 'rhythm.yaml')
+            profiles_path = os.path.join('prompts', 'registry', 'rhythm_profiles.yaml')
             if not os.path.exists(profiles_path):
                 raise FileNotFoundError(
-                    f"Rhythm profiles not found at {profiles_path}. "
+                    f"Rhythm profiles file not found or invalid at prompts/registry/rhythm_profiles.yaml. "
                     "Fail-fast architecture requires this file."
                 )
             with open(profiles_path, 'r', encoding='utf-8') as f:
@@ -153,7 +153,7 @@ class PromptBuilder:
         # FAIL-FAST: No fallbacks permitted per .github/copilot-instructions.md
         if not profiles or 'profiles' not in profiles:
             raise FileNotFoundError(
-                f"Technical profiles file not found or invalid at prompts/profiles/technical.yaml. "
+                f"Technical profiles file not found or invalid at prompts/registry/technical_profiles.yaml. "
                 f"This file is REQUIRED for all text generation. NO FALLBACKS permitted."
             )
         
@@ -184,7 +184,7 @@ class PromptBuilder:
             raise ValueError(
                 f"No '{level}' technical guidance found for component '{component_type}'. "
                 f"Profile exists but missing technical_approach.{level} entry. "
-                f"Fix prompts/profiles/technical.yaml. "
+                f"Fix prompts/registry/technical_profiles.yaml. "
                 f"NO FALLBACKS permitted."
             )
         
@@ -210,7 +210,7 @@ class PromptBuilder:
         # FAIL-FAST: No fallbacks permitted per .github/copilot-instructions.md
         if not profiles or 'profiles' not in profiles:
             raise FileNotFoundError(
-                f"Rhythm profiles file not found or invalid at prompts/profiles/rhythm.yaml. "
+                f"Rhythm profiles file not found or invalid at prompts/registry/rhythm_profiles.yaml. "
                 f"This file is REQUIRED for all text generation. NO FALLBACKS permitted."
             )
         
@@ -234,7 +234,7 @@ class PromptBuilder:
         if not guidance:
             raise ValueError(
                 f"No '{pattern}' rhythm pattern for component '{component_type}'. "
-                "Fix prompts/profiles/rhythm.yaml. NO FALLBACKS permitted."
+                "Fix prompts/registry/rhythm_profiles.yaml. NO FALLBACKS permitted."
             )
         
         logger.debug(f"Using {pattern} rhythm pattern for {component_type} ({length} words)")

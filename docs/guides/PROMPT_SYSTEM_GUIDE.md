@@ -88,7 +88,7 @@ Each layer has ONE responsibility:
 
 ### 4. Descriptor Chain Contract (Normalization)
 
-The descriptor layer is now centralized through `PromptRegistryService` and domain YAML registries (`prompts/{domain}/content_prompts.yaml`, typically extending `prompts/shared/content_prompts.yaml`). It must remain normalized across domains and must never overlap with other descriptor responsibilities.
+The descriptor layer is now centralized through `PromptRegistryService` and domain YAML registries (`prompts/registry/content_prompts_{domain}.yaml`, typically extending `prompts/registry/content_prompts_shared.yaml`). It must remain normalized across domains and must never overlap with other descriptor responsibilities.
 
 **Required descriptor entries per domain (catalog `catalog.byPath`, keys like `prompts/{domain}/`)**:
 - `identifiers.txt`
@@ -115,7 +115,7 @@ The descriptor layer is now centralized through `PromptRegistryService` and doma
 
 **Current Resolution Path (simplified)**:
 1. `PromptRegistryService.get_schema_prompt(domain, component_type, include_descriptor=True)`
-2. Descriptor prompt from domain/shared `content_prompts.yaml`
+2. Descriptor prompt from domain/shared `prompts/registry/content_prompts_*.yaml`
 3. Field prompt from schema `prompt_ref` (preferred) or `prompt`/`prompt_file` fallback
 4. Combined prompt returned to adapter/builder without inline code overrides
 

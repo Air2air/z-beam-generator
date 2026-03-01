@@ -1,6 +1,6 @@
 {
   "summary": {
-    "reference_count": 24,
+    "reference_count": 26,
     "violation_count": 0,
     "kinds": {
       "prompt_catalog": 1,
@@ -8,7 +8,7 @@
       "seo_prompts": 5,
       "shared_prompt_registry": 5,
       "system_prompts": 1,
-      "voice_profiles": 4
+      "voice_profiles": 6
     }
   },
   "references": {
@@ -88,33 +88,43 @@
         "value": "prompts/seo/compound_page.txt"
       }
     ],
+    "voice_profiles": [
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 55,
+        "value": "prompts/registry/technical_profiles.yaml"
+      },
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 71,
+        "value": "prompts/registry/rhythm_profiles.yaml"
+      },
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 156,
+        "value": "prompts/registry/technical_profiles.yaml"
+      },
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 187,
+        "value": "prompts/registry/technical_profiles.yaml"
+      },
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 213,
+        "value": "prompts/registry/rhythm_profiles.yaml"
+      },
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 237,
+        "value": "prompts/registry/rhythm_profiles.yaml"
+      }
+    ],
     "prompt_catalog": [
       {
         "file": "shared/text/utils/prompt_builder.py",
         "line": 107,
         "value": "prompts/registry/prompt_catalog.yaml"
-      }
-    ],
-    "voice_profiles": [
-      {
-        "file": "shared/text/utils/prompt_builder.py",
-        "line": 156,
-        "value": "prompts/profiles/technical.yaml"
-      },
-      {
-        "file": "shared/text/utils/prompt_builder.py",
-        "line": 187,
-        "value": "prompts/profiles/technical.yaml"
-      },
-      {
-        "file": "shared/text/utils/prompt_builder.py",
-        "line": 213,
-        "value": "prompts/profiles/rhythm.yaml"
-      },
-      {
-        "file": "shared/text/utils/prompt_builder.py",
-        "line": 237,
-        "value": "prompts/profiles/rhythm.yaml"
       }
     ],
     "shared_prompt_registry": [
@@ -140,7 +150,7 @@
       },
       {
         "file": "scripts/validation/validate_prompt_section_contract.py",
-        "line": 514,
+        "line": 516,
         "value": "prompts/registry/shared_prompt_registry.yaml"
       }
     ]

@@ -6,7 +6,7 @@ Source item: defense-laser-cleaning-applications
 
 - component_type: pageTitle
 - prompt_ref: pageTitle
-- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/applications/content_prompts.yaml -> prompts/registry/shared_prompt_registry.yaml
+- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/registry/content_prompts_applications.yaml -> prompts/registry/shared_prompt_registry.yaml
 - voice_profile: shared/voice/profiles/unknown.yaml
 - humanness_template_variant: full
 - base_prompt_length: 4900
@@ -219,7 +219,7 @@ Generate pageTitle for defense-laser-cleaning-applications:
 
 - component_type: pageDescription
 - prompt_ref: pageDescription
-- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/applications/content_prompts.yaml -> prompts/registry/shared_prompt_registry.yaml
+- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/registry/content_prompts_applications.yaml -> prompts/registry/shared_prompt_registry.yaml
 - voice_profile: shared/voice/profiles/unknown.yaml
 - humanness_template_variant: compact
 - base_prompt_length: 5101
@@ -320,7 +320,7 @@ Generate pageDescription for defense-laser-cleaning-applications:
 
 - component_type: relatedMaterialsTitle
 - prompt_ref: relatedMaterialsTitle
-- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/applications/content_prompts.yaml -> prompts/registry/shared_prompt_registry.yaml
+- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/registry/content_prompts_applications.yaml -> prompts/registry/shared_prompt_registry.yaml
 - voice_profile: shared/voice/profiles/unknown.yaml
 - humanness_template_variant: compact
 - base_prompt_length: 4944
@@ -419,7 +419,7 @@ Generate relatedMaterialsTitle for defense-laser-cleaning-applications:
 
 - component_type: relatedMaterials
 - prompt_ref: relatedMaterials
-- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/applications/content_prompts.yaml -> prompts/registry/shared_prompt_registry.yaml
+- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/registry/content_prompts_applications.yaml -> prompts/registry/shared_prompt_registry.yaml
 - voice_profile: shared/voice/profiles/unknown.yaml
 - humanness_template_variant: compact
 - base_prompt_length: 5529
@@ -531,7 +531,7 @@ Generate relatedMaterials for defense-laser-cleaning-applications:
 
 - component_type: contaminatedByTitle
 - prompt_ref: contaminatedByTitle
-- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/applications/content_prompts.yaml -> prompts/registry/shared_prompt_registry.yaml
+- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/registry/content_prompts_applications.yaml -> prompts/registry/shared_prompt_registry.yaml
 - voice_profile: shared/voice/profiles/unknown.yaml
 - humanness_template_variant: compact
 - base_prompt_length: 4940
@@ -630,7 +630,7 @@ Generate contaminatedByTitle for defense-laser-cleaning-applications:
 
 - component_type: contaminatedBy
 - prompt_ref: contaminatedBy
-- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/applications/content_prompts.yaml -> prompts/registry/shared_prompt_registry.yaml
+- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/registry/content_prompts_applications.yaml -> prompts/registry/shared_prompt_registry.yaml
 - voice_profile: shared/voice/profiles/unknown.yaml
 - humanness_template_variant: compact
 - base_prompt_length: 5528
@@ -742,7 +742,7 @@ Generate contaminatedBy for defense-laser-cleaning-applications:
 
 - component_type: faq
 - prompt_ref: faq
-- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/applications/content_prompts.yaml -> prompts/registry/shared_prompt_registry.yaml
+- schema_prompt_source: PromptRegistryService -> domains/applications/prompt.yaml -> prompts/registry/content_prompts_applications.yaml -> prompts/registry/shared_prompt_registry.yaml
 - voice_profile: shared/voice/profiles/unknown.yaml
 - humanness_template_variant: compact
 - base_prompt_length: 5108

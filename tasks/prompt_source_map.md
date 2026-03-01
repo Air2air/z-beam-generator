@@ -1,6 +1,6 @@
 # Prompt Source Map
 
-- Total references: 24
+- Total references: 26
 - Violations: 0
 
 ## By Kind
@@ -9,7 +9,7 @@
 - seo_prompts: 5
 - shared_prompt_registry: 5
 - system_prompts: 1
-- voice_profiles: 4
+- voice_profiles: 6
 
 ## Violations
 - None

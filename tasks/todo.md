@@ -5,6 +5,22 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 93: Consolidate Prompt Chain Files Into One Folder
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Place prompt-chain YAML sources in one canonical folder under `prompts/registry/` and rewire loaders/contracts so runtime behavior remains unchanged.
+
+### Steps
+- [x] Move shared/domain prompt-chain YAML files to `prompts/registry/`
+- [x] Update prompt contract/extends and loader paths to new canonical folder
+- [x] Keep compatibility by removing stale path references in validators/audits
+- [x] Run focused compile + validation checks for prompt resolution
+- [x] Record lesson in `tasks/lessons.md` and mark batch complete
+
+---
+
 ## Batch 92: Dynamic Domain Commandability for Generation CLI
 Date: 2026-02-28
 Status: COMPLETE

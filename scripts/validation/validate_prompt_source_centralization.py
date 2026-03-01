@@ -26,12 +26,12 @@ DOMAIN_REGEX = "(" + "|".join(CORE_DOMAINS) + ")"
 
 PATTERNS: dict[str, re.Pattern[str]] = {
     "domain_prompt_contract": re.compile(rf"domains/{DOMAIN_REGEX}/prompt\.yaml"),
-    "domain_content_registry": re.compile(rf"prompts/{DOMAIN_REGEX}/content_prompts\.yaml"),
+    "domain_content_registry": re.compile(rf"prompts/registry/content_prompts_{DOMAIN_REGEX}\.yaml"),
     "shared_prompt_registry": re.compile(r"prompts/registry/shared_prompt_registry\.yaml"),
     "legacy_domain_txt": re.compile(rf"prompts/{DOMAIN_REGEX}/[^\"'\s]+\.txt"),
     "prompt_catalog": re.compile(r"prompts/registry/prompt_catalog\.yaml"),
     "quality_patterns": re.compile(r"prompts/quality/learned_patterns\.yaml"),
-    "voice_profiles": re.compile(r"prompts/profiles/[^\"'\s]+\.ya?ml"),
+    "voice_profiles": re.compile(r"prompts/registry/(technical_profiles|rhythm_profiles)\.ya?ml"),
     "system_prompts": re.compile(r"prompts/system/[^\"'\s]+\.txt"),
     "seo_prompts": re.compile(r"prompts/seo/[^\"'\s]+\.txt"),
 }

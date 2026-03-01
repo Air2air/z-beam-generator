@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-02-28: Prompt-folder cleanup can break runtime if file moves are done without simultaneously rewiring domain prompt contracts, `extends` chains, and prompt profile loaders. Rule: when consolidating prompt files, execute as one atomic migration (move files + update contract paths + update loaders/validators + run centralization and registry tests in the same batch).
+
 - 2026-02-28: New domain onboarding can fail at the CLI even when domain catalog/config is present if domain names are hardcoded in command argument choices and availability messages. Rule: discover commandable domains dynamically from `domains/*/config.yaml` (and backfill/export config paths where relevant) instead of maintaining static domain lists in code.
 
 - 2026-02-28: Centralization cleanup can fail validation if utility/verifier scripts are updated to new canonical prompt paths without updating the source-centralization allowlist. Rule: when changing canonical prompt path usage in any script, update validator allowlists in the same batch and rerun centralization validation.
