@@ -21,7 +21,6 @@ from pathlib import Path
 from typing import List
 from shared.utils.material_resolver import material_resolver
 from shared.utils.quality_analyzer import quality_analyzer
-from shared.services.keyword_seed_service import KeywordSeedService
 
 # Configuration required by ConfigManager
 API_PROVIDERS = {
@@ -564,6 +563,8 @@ def _export_single_item(domain: str, item_id: str, dry_run: bool) -> None:
 
 def seed_from_keyword_command(args):
     """Create new item from keyword and optionally generate full text + export frontmatter."""
+    from shared.services.keyword_seed_service import KeywordSeedService
+
     if not args.domain:
         print("❌ Error: --domain is required with --seed-from-keyword")
         sys.exit(1)

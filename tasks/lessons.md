@@ -1,5 +1,17 @@
 # Lessons Learned
 
+- 2026-02-28: Full-suite regressions can come from contract drift between tests and current pipeline conventions (camelCase field names, required config keys, bundled text generation, and integrity bypass gating). Rule: when triaging failures, align tests with canonical runtime contracts first, then verify with targeted subsets before a full-suite rerun.
+
+- 2026-02-28: CLI module imports can trigger circular initialization when config loaders import constants from a partially initialized module. Rule: keep command-only service imports lazy (inside the command function) when those services transitively import config managers that reference CLI constants.
+
+- 2026-02-28: Production GA checks can false-fail when validators only look for server-rendered gtag loader markup and ignore Next streamed flight props. Rule: accept canonical GA ID evidence from streamed `gaId` payloads while keeping GA format, consent defaults, and CSP endpoint checks strict.
+
+- 2026-02-28: Ads tracking can appear healthy while production CSP silently blocks conversion network calls and post-deploy checks only warn. Rule: require Ads domains (`googleadservices.com`, `doubleclick.net`) in connect-src and treat missing Ads endpoint coverage as a hard post-deploy failure.
+
+- 2026-02-28: Post-deploy SEO/CWV checks can miss analytics regressions when they only assert preconnect tags. Rule: add a dedicated analytics validation category that checks GA loader presence, consent default guards, and CSP endpoint coverage for both GA and Ads domains.
+
+- 2026-02-28: Analytics implementation can look complete while hidden hardcoded measurement fallbacks and skipped script tests undermine consistency. Rule: read GA/AW IDs only from centralized env config with no hardcoded IDs, and validate integration through deterministic wrapper-wiring tests instead of brittle third-party script DOM assertions.
+
 - 2026-02-28: Enforcing source-populated-only policy on one field/path leaves silent gaps in other domains and section nodes. Rule: make the policy global in docs and tests, validate canonical source files for required-content `_section` values, and block deprecated enhancer-style root keys in source records.
 
 - 2026-02-28: Length-policy unification is incomplete until regenerated output shows measurable spread gains and active prompt paths contain no numeric sentence/character directives. Rule: standardize active guidance to word-count targets, rerun targeted generation from the correct repo cwd, and confirm improvement with explicit CV audit (defense long-prose CV improved from 2.68% to 7.84%).

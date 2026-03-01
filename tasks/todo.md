@@ -5,6 +5,100 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 85: Backend Failure Triage and Compatibility Fixes
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Resolve the highest-impact backend test failures by fixing runtime contract mismatches first, then validating with targeted and full-suite test runs.
+
+### Steps
+- [x] Triage coordinator/test API mismatch failures
+- [x] Implement minimal compatibility fixes in coordinator/runtime code
+- [x] Re-run coordinator and exporter targeted tests
+- [x] Triage remaining voice/deployment smoke failures
+- [x] Re-run full backend pytest suite and summarize
+
+---
+
+## Batch 84: Full Backend Test Suite Execution
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Run the complete backend test suite in `z-beam-generator` and report pass/fail status with failing test details if any.
+
+### Steps
+- [x] Configure Python environment for backend test execution
+- [x] Run full backend pytest suite
+- [x] Summarize test results and failures (if present)
+
+---
+
+## Batch 83: Post-Deploy GA Detection for Next Streamed HTML
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Prevent false GA failures in post-deploy checks when Next.js injects analytics loader client-side and GA IDs are surfaced in streamed flight payload.
+
+### Steps
+- [x] Add GA detection fallback for streamed `gaId` evidence in analytics validators
+- [x] Keep GA ID format and consent/CSP checks strict
+- [x] Add focused analytics test coverage for streamed `gaId` extraction
+- [x] Re-run analytics validator to confirm live pass
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 82: AW Production Hardening (CSP + Strict Post-Deploy Gates)
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Make Google Ads tracking production-ready by requiring Ads collection endpoints in CSP and enforcing strict AW endpoint coverage failures in post-deploy validators.
+
+### Steps
+- [x] Enforce Ads endpoint allowlist in app and middleware CSP builders
+- [x] Upgrade post-deploy AW endpoint checks from warning to required failure
+- [x] Include analytics category in strict SEO gate evaluation
+- [x] Update focused tests for CSP/analytics strictness
+- [x] Run focused validation checks and record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 81: GA/AW Post-Deploy Completeness + Comprehensiveness Checks
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Strengthen post-deployment validation so Google Analytics and Google Ads checks confirm both tag presence and analytics endpoint coverage.
+
+### Steps
+- [x] Audit current post-deploy GA/AW checks for gaps
+- [x] Add explicit GA/AW completeness checks in post-deploy validation scripts
+- [x] Add comprehensive network endpoint checks for GA/AW requests
+- [x] Update targeted tests for new GA/AW validations
+- [x] Run focused validation test suite and record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 80: Frontend GA/AW Standardization Pass (z-beam)
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Remove GA/AW hardcoded measurement fallbacks and replace skipped analytics script assertions with stable wiring-focused tests.
+
+### Steps
+- [x] Remove hardcoded GA fallback values from frontend env/layout wiring
+- [x] Keep analytics wrapper rendering conditional on required GA measurement ID
+- [x] Replace skipped analytics script assertions with deterministic wrapper-prop assertions
+- [x] Run focused layout test verification
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
 ## Batch 79: Enforce Source-Complete Data Policy (No Generation-Time Enhancers)
 Date: 2026-02-28
 Status: COMPLETE
