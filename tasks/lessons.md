@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-03-01: Cleanup audits can produce noisy false positives when stale-file scans are not strictly scoped away from dependency trees. Rule: use explicit exclusion filters (`.git`, `node_modules`, `.next`) and only delete low-risk artifacts that are confirmed unreferenced (e.g., empty files and `*.bak` backups).
+
 - 2026-02-28: Empty per-domain prompt registry files can create architectural noise when all domains already resolve to shared prompt content. Rule: keep `domains/*/prompt.yaml` pointed to one shared registry path unless a domain has real override content, and treat per-domain prompt registry files as optional artifacts rather than required scaffolding.
 
 - 2026-02-28: Legacy prompt registry files can remain in-tree after ownership migration and blur source-of-truth boundaries even when runtime no longer references them. Rule: remove deprecated `prompts/shared/*` prompt registry artifacts and enforce a validator guard that fails if those files are reintroduced.

@@ -5,6 +5,22 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 99: Frontend Cleanup Audit and Low-Risk Prune (z-beam)
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Execute approved low-risk cleanup in `z-beam` and audit for additional dead code, empty folders, and stale artifacts with actionable follow-up recommendations.
+
+### Steps
+- [x] Remove confirmed unused empty files (`app/utils/domainLinkageMapper.ts`, `types/domain-linkages.ts`)
+- [x] Run focused reference checks to confirm no import/runtime regressions from removed files
+- [x] Audit empty directories and obvious stale scaffolding candidates (excluding dependency/build outputs)
+- [x] Summarize safe immediate deletions vs review-required candidates
+- [x] Record lesson in `tasks/lessons.md` and mark batch complete
+
+---
+
 ## Batch 98: Simplify Prompt Contract Layer to Shared Registry
 Date: 2026-02-28
 Status: COMPLETE
