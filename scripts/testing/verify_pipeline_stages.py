@@ -206,20 +206,20 @@ def main():
     winston_patterns = cursor.fetchone()[0]
     print(f"   ✅ Winston patterns: {winston_patterns} stored")
     
-    prompt_catalog_path = Path('prompts/registry/prompt_catalog.yaml')
+    shared_registry_path = Path('prompts/registry/shared_prompt_registry.yaml')
     humanness_ok = False
-    if prompt_catalog_path.exists():
-        with open(prompt_catalog_path, 'r', encoding='utf-8') as handle:
-            catalog_data = yaml.safe_load(handle) or {}
-        humanness = catalog_data.get('catalog', {}).get('core', {}).get('humanness', {})
+    if shared_registry_path.exists():
+        with open(shared_registry_path, 'r', encoding='utf-8') as handle:
+            registry_data = yaml.safe_load(handle) or {}
+        humanness = registry_data.get('shared_core_prompts', {}).get('humanness', {})
         full_template = humanness.get('full')
         compact_template = humanness.get('compact')
         humanness_ok = isinstance(full_template, str) and full_template.strip() and isinstance(compact_template, str) and compact_template.strip()
 
     if humanness_ok:
-        print("   ✅ Humanness templates: prompts/registry/prompt_catalog.yaml (catalog.core.humanness.full/compact)")
+        print("   ✅ Humanness templates: prompts/registry/shared_prompt_registry.yaml (shared_core_prompts.humanness.full/compact)")
     else:
-        print("   ⚠️  Humanness templates: NOT FOUND in prompt catalog")
+        print("   ⚠️  Humanness templates: NOT FOUND in shared prompt registry")
     
     # Check subjective patterns YAML
     subjective_patterns = Path('prompts/quality/learned_patterns.yaml')

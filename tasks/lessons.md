@@ -1,5 +1,17 @@
 # Lessons Learned
 
+- 2026-02-28: New domain onboarding can fail at the CLI even when domain catalog/config is present if domain names are hardcoded in command argument choices and availability messages. Rule: discover commandable domains dynamically from `domains/*/config.yaml` (and backfill/export config paths where relevant) instead of maintaining static domain lists in code.
+
+- 2026-02-28: Centralization cleanup can fail validation if utility/verifier scripts are updated to new canonical prompt paths without updating the source-centralization allowlist. Rule: when changing canonical prompt path usage in any script, update validator allowlists in the same batch and rerun centralization validation.
+
+- 2026-02-28: Shared prompt centralization is incomplete if only section and FAQ prompts are consolidated while shared core/humanness/quality prompts remain in a separate catalog. Rule: route all shared prompt getter paths (core text, humanness templates, quality evaluator prompt) to one consolidated shared registry.
+
+- 2026-02-28: Prompt-chain transparency requests can stall when extraction scripts instantiate runtime classes without the same dependency wiring as CLI entrypoints. Rule: for diagnostics/tools, mirror CLI dependency construction (for example `create_api_client(...)` + canonical generator initialization) before running prompt assembly.
+
+- 2026-02-28: Shared prompt behavior drifts when section and FAQ prompt definitions are split across separate files and validators read different sources. Rule: keep shared section + FAQ prompt text/metadata in one canonical registry file and route all runtime/validation readers through that single path.
+
+- 2026-02-28: Text generation parity can silently drift when one CLI branch bypasses the shared router and calls domain coordinators directly. Rule: route both text and data field batch generation through `FieldRouter.generate_field` and lock behavior with regression tests that fail if coordinator bypass returns.
+
 - 2026-02-28: Full-suite regressions can come from contract drift between tests and current pipeline conventions (camelCase field names, required config keys, bundled text generation, and integrity bypass gating). Rule: when triaging failures, align tests with canonical runtime contracts first, then verify with targeted subsets before a full-suite rerun.
 
 - 2026-02-28: CLI module imports can trigger circular initialization when config loaders import constants from a partially initialized module. Rule: keep command-only service imports lazy (inside the command function) when those services transitively import config managers that reference CLI constants.

@@ -221,7 +221,7 @@ class KeywordSeedService:
 
         suffix = DOMAIN_TITLE_SUFFIX.get(self.domain)
         if not suffix:
-            raise ValueError(f"No title suffix configured for domain: {self.domain}")
+            suffix = self._to_title(self.domain.replace('-', ' '))
         return f"{topic_title} {suffix}"
 
     def _build_summary_text(self, page_title: str) -> str:

@@ -75,7 +75,7 @@ def validate_prompt_schema_wiring(repo_root: Path) -> list[str]:
     if not isinstance(prompt_ref, str) or not prompt_ref.strip():
         return [f"{schema_path}: sections.machineSettings.prompt_ref must be a non-empty string"]
 
-    shared_inline_path = repo_root / "prompts/shared/section_inline_prompts.yaml"
+    shared_inline_path = repo_root / "prompts/registry/shared_prompt_registry.yaml"
     shared_inline = load_yaml(shared_inline_path)
 
     for key in REQUIRED_SHARED_PROMPT_KEYS:

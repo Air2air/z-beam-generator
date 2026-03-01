@@ -50,48 +50,63 @@ def load_yaml(path: Path) -> dict[str, Any]:
     return data
 
 
-def _load_faq_single_line_registry(repo_root: Path) -> dict[str, dict[str, Any]]:
-    faq_registry_path = repo_root / "prompts/shared/faq_prompt.yaml"
-    payload = load_yaml(faq_registry_path)
-    faq_prompt = payload.get("faq_prompt")
-    if not isinstance(faq_prompt, dict):
+def _shared_prompt_registry_path(repo_root: Path) -> Path:
+    return repo_root / "prompts/registry/shared_prompt_registry.yaml"
+
+
+def _load_shared_prompt_registry(repo_root: Path) -> dict[str, Any]:
+    registry_path = _shared_prompt_registry_path(repo_root)
+    payload = load_yaml(registry_path)
+
+    section_prompts = payload.get("section_prompts")
+    section_prompt_metadata = payload.get("section_prompt_metadata")
+    if not isinstance(section_prompts, dict):
         raise ValueError(
-            f"{faq_registry_path}: missing required mapping 'faq_prompt'"
+            f"{registry_path}: missing required mapping 'section_prompts'"
+        )
+    if not isinstance(section_prompt_metadata, dict):
+        raise ValueError(
+            f"{registry_path}: missing required mapping 'section_prompt_metadata'"
         )
 
-    single_line = faq_prompt.get("single_line")
+    return payload
+
+
+def _load_faq_single_line_registry(repo_root: Path) -> dict[str, dict[str, Any]]:
+    registry_path = _shared_prompt_registry_path(repo_root)
+    shared_registry = _load_shared_prompt_registry(repo_root)
+
+    single_line = shared_registry.get("single_line")
     if not isinstance(single_line, dict):
         raise ValueError(
-            f"{faq_registry_path}: faq_prompt.single_line must be a mapping"
+            f"{registry_path}: single_line must be a mapping"
         )
 
     by_domain = single_line.get("by_domain")
     if not isinstance(by_domain, dict):
         raise ValueError(
-            f"{faq_registry_path}: faq_prompt.single_line.by_domain must be a mapping"
+            f"{registry_path}: single_line.by_domain must be a mapping"
         )
 
     result: dict[str, dict[str, Any]] = {}
     for domain, entry in by_domain.items():
         if isinstance(domain, str) and isinstance(entry, dict):
-            result[domain] = dict(entry)
+            faq_entry = entry.get("faq")
+            if isinstance(faq_entry, dict):
+                result[domain] = dict(faq_entry)
     return result
 
 
 def _load_faq_shared_registry(repo_root: Path) -> tuple[str | None, dict[str, Any] | None]:
-    faq_registry_path = repo_root / "prompts/shared/faq_prompt.yaml"
-    payload = load_yaml(faq_registry_path)
-    faq_prompt = payload.get("faq_prompt")
-    if not isinstance(faq_prompt, dict):
-        raise ValueError(
-            f"{faq_registry_path}: missing required mapping 'faq_prompt'"
-        )
+    shared_registry = _load_shared_prompt_registry(repo_root)
+    section_prompts = shared_registry.get("section_prompts")
+    section_prompt_metadata = shared_registry.get("section_prompt_metadata")
 
-    shared_prompt = faq_prompt.get("shared_section_prompt")
+    shared_prompt = section_prompts.get("faq") if isinstance(section_prompts, dict) else None
     if not isinstance(shared_prompt, str) or not shared_prompt.strip():
         shared_prompt = None
 
-    shared_metadata = faq_prompt.get("shared_section_metadata")
+    shared_metadata = section_prompt_metadata.get("faq") if isinstance(section_prompt_metadata, dict) else None
     if not isinstance(shared_metadata, dict):
         shared_metadata = None
 
@@ -118,8 +133,8 @@ def validate_prompt_files(repo_root: Path) -> list[str]:
                 f"{prompt_file}: missing required top-level mapping 'section_prompt_metadata'"
             )
 
-    shared_inline_path = repo_root / "prompts/shared/section_inline_prompts.yaml"
-    shared_inline = load_yaml(shared_inline_path)
+    shared_inline_path = _shared_prompt_registry_path(repo_root)
+    shared_inline = _load_shared_prompt_registry(repo_root)
     section_prompts = shared_inline.get("section_prompts")
     section_prompt_metadata = shared_inline.get("section_prompt_metadata")
     faq_shared_prompt, faq_shared_metadata = _load_faq_shared_registry(repo_root)
@@ -493,10 +508,10 @@ def validate_backfill_prompt_wiring(repo_root: Path) -> list[str]:
     if not isinstance(sections, dict):
         return [f"{schema_path}: sections must be a mapping"]
 
-    shared_inline = load_yaml(repo_root / "prompts/shared/section_inline_prompts.yaml")
+    shared_inline = _load_shared_prompt_registry(repo_root)
     shared_prompts = shared_inline.get("section_prompts")
     if not isinstance(shared_prompts, dict):
-        return ["prompts/shared/section_inline_prompts.yaml: section_prompts must be a mapping"]
+        return ["prompts/registry/shared_prompt_registry.yaml: section_prompts must be a mapping"]
 
     faq_shared_prompt, _ = _load_faq_shared_registry(repo_root)
     if isinstance(faq_shared_prompt, str) and faq_shared_prompt.strip():

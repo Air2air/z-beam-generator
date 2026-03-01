@@ -5,6 +5,115 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 92: Dynamic Domain Commandability for Generation CLI
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Allow generation commands to pick up newly added domains from catalog/config without additional hardcoded CLI updates.
+
+### Steps
+- [x] Replace hardcoded CLI domain lists in `run.py` with dynamic domain discovery from `domains/*/config.yaml`
+- [x] Replace hardcoded backfill-domain availability text with dynamic discovery from `generation/backfill/config/*.yaml`
+- [x] Update export-all domain iteration to discover configured export domains dynamically
+- [x] Allow `KeywordSeedService` page-title suffix fallback for new domains not in static suffix map
+- [x] Run syntax and helper smoke checks for updated commandability paths
+
+---
+
+## Batch 91: Regenerate Defense Prompt Chain Artifacts
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Regenerate `tasks/prompt_chain_defense_applications.{json,md}` end-to-end using canonical prompt assembly utilities so artifact content and metadata fully reflect current shared prompt registry wiring.
+
+### Steps
+- [x] Build one-off extractor from canonical `Generator`/`PromptBuilder`/`PromptRegistryService` pipeline utilities
+- [x] Regenerate both prompt-chain artifacts for `defense-laser-cleaning-applications`
+- [x] Validate JSON parse and verify canonical shared registry source path strings
+- [x] Mark batch complete and record lesson delta if needed
+
+---
+
+## Batch 90: Remove Redundant Shared Prompt Duplicates
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Finish shared prompt centralization cleanup by removing duplicate shared core/humanness/quality prompt bodies from `prompts/registry/prompt_catalog.yaml` and keeping canonical shared prompt source in `prompts/registry/shared_prompt_registry.yaml`.
+
+### Steps
+- [x] Verify no runtime consumers require removed catalog shared core/humanness/quality keys
+- [x] Remove duplicate shared core/humanness/quality prompt bodies from `prompt_catalog.yaml`
+- [x] Update pipeline verification script to check consolidated shared prompt registry
+- [x] Re-run focused centralization and contract validations
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 89: Consolidate Remaining Shared Prompt Bodies
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Complete single-location shared prompt access by moving remaining shared core/humanness/quality prompt bodies to `prompts/registry/shared_prompt_registry.yaml` and routing shared getters there.
+
+### Steps
+- [x] Add shared core/humanness/quality prompt bodies to consolidated shared prompt registry
+- [x] Route shared prompt getter methods in `PromptRegistryService` to consolidated shared registry keys
+- [x] Run focused validation checks for centralized shared prompt wiring
+- [x] Record lesson in `tasks/lessons.md` and summarize follow-up delta
+
+---
+
+## Batch 88: Single-Location Shared Prompt Centralization
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Make shared prompt access easy and deterministic by moving shared section/FAQ prompt retrieval behind one canonical location: `prompts/registry/shared_prompt_registry.yaml`.
+
+### Steps
+- [x] Add canonical shared section/FAQ prompt blocks to consolidated shared prompt registry
+- [x] Route `PromptRegistryService` shared prompt + FAQ reads to consolidated source
+- [x] Update prompt contract validators/scripts to assert centralized shared prompt wiring
+- [x] Run focused validation checks for prompt source/section contract integrity (centralization-specific checks pass)
+- [x] Record lesson in `tasks/lessons.md` and summarize artifact changes
+
+---
+
+## Batch 87: Rendered Prompt Chain Extraction (Applications Defense Entry)
+Date: 2026-03-01
+Status: COMPLETE
+
+### Goal
+Produce exact rendered prompt blocks for all configured applications multi-field text components for `defense-laser-cleaning-applications`.
+
+### Steps
+- [x] Build one-off extractor using canonical prompt assembly utilities
+- [x] Render schema prompt + final assembled prompt for each configured component type
+- [x] Persist artifacts to `tasks/prompt_chain_defense_applications.{json,md}`
+- [x] Summarize output artifact locations for user review
+
+---
+
+## Batch 86: End-to-End Text Field Pipeline Parity Audit
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Ensure all text field generation flows use one reusable end-to-end pipeline with no domain/field outliers or bypass paths.
+
+### Steps
+- [x] Inventory every text field generation entrypoint and runtime path
+- [x] Detect any field/domain-specific bypasses outside the canonical reusable pipeline
+- [x] Refactor outliers into canonical shared flow with minimal code changes
+- [x] Add/strengthen automated parity guard tests for future regressions
+- [x] Run targeted and full parity verification and summarize findings
+
+---
+
 ## Batch 85: Backend Failure Triage and Compatibility Fixes
 Date: 2026-02-28
 Status: COMPLETE

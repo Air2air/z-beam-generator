@@ -77,6 +77,35 @@ from export.config.loader import load_domain_config
 from export.performance import ParallelExporter, get_yaml_cache
 
 
+def _discover_domain_catalog() -> List[str]:
+    """Discover available domains from domains/*/config.yaml."""
+    domains_root = Path("domains")
+    if not domains_root.exists():
+        return []
+
+    discovered: list[str] = []
+    for config_path in sorted(domains_root.glob("*/config.yaml")):
+        domain_name = config_path.parent.name.strip()
+        if domain_name:
+            discovered.append(domain_name)
+
+    return discovered
+
+
+def _discover_backfill_domains() -> List[str]:
+    """Discover domains with backfill generator configs."""
+    backfill_root = Path("generation/backfill/config")
+    if not backfill_root.exists():
+        return []
+    return sorted(path.stem for path in backfill_root.glob("*.yaml") if path.stem)
+
+
+def _format_available_domains(domains: List[str]) -> str:
+    if not domains:
+        return "none"
+    return ", ".join(domains)
+
+
 def _enable_terminal_streaming() -> None:
     """Configure stdout/stderr for immediate line-by-line terminal updates."""
     try:
@@ -88,15 +117,34 @@ def _enable_terminal_streaming() -> None:
         pass
 
 
+def _run_domain_bootstrap_validator(domain: str | None = None) -> None:
+    """Run domain bootstrap validator and fail fast on wiring issues."""
+    cmd = ['python3', 'scripts/validation/validate_domain_bootstrap.py']
+    if isinstance(domain, str) and domain.strip():
+        cmd.extend(['--domain', domain.strip()])
+
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.stdout:
+        print(result.stdout.rstrip())
+    if result.stderr:
+        print(result.stderr.rstrip())
+    if result.returncode != 0:
+        print("\n❌ Command aborted: domain bootstrap validation failed")
+        print("   Fix the domain onboarding wiring errors above and retry.")
+        sys.exit(1)
+
+
 def postprocess_command(args):
     """Execute postprocessing command"""
+
+    available_domains = _discover_domain_catalog()
 
     print("📺 Streaming progress updates to terminal (live)")
     
     # Validate required arguments
     if not args.domain:
         print("❌ Error: --domain is required for postprocessing")
-        print("   Available: materials, contaminants, settings, compounds, applications")
+        print(f"   Available: {_format_available_domains(available_domains)}")
         sys.exit(1)
     
     if not args.field:
@@ -143,11 +191,13 @@ def postprocess_command(args):
 
 def export_command(args):
     """Execute export command using Universal Exporter"""
+
+    available_domains = _discover_domain_catalog()
     
     # Validate domain
     if not args.domain:
         print("❌ Error: --domain is required for export")
-        print("   Available: materials, contaminants, compounds, settings, applications")
+        print(f"   Available: {_format_available_domains(available_domains)}")
         sys.exit(1)
     
     try:
@@ -215,8 +265,12 @@ def export_command(args):
 
 def export_all_command(args):
     """Export all domains to production (with parallel processing)"""
-    
-    domains = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
+
+    export_config_root = Path('export/config')
+    if export_config_root.exists():
+        domains = sorted(path.stem for path in export_config_root.glob('*.yaml') if path.stem)
+    else:
+        domains = _discover_domain_catalog()
     use_parallel = getattr(args, 'parallel', True)  # Default to parallel
     
     print("="*80)
@@ -330,6 +384,8 @@ def export_all_command(args):
 def backfill_command(args):
     """Execute backfill command to populate source YAML permanently"""
 
+    available_domains = _discover_backfill_domains()
+
     print("📺 Streaming progress updates to terminal (live)")
     
     # Import registry and load generator
@@ -341,7 +397,7 @@ def backfill_command(args):
     config_file = Path(f'generation/backfill/config/{args.domain}.yaml')
     if not config_file.exists():
         print(f"❌ Error: No backfill config for domain: {args.domain}")
-        print(f"   Available domains: materials, contaminants, compounds, settings, applications")
+        print(f"   Available domains: {_format_available_domains(available_domains)}")
         sys.exit(1)
     
     with open(config_file, 'r') as f:
@@ -712,8 +768,6 @@ def batch_generate_command(args):
     skipped_count = 0
     failed_count = 0
 
-    coordinator = _create_domain_coordinator(args.domain, api_client) if field_type == 'text' else None
-
     for index, item_id in enumerate(target_items, start=1):
         print(f"\n[{index}/{len(target_items)}] {item_id}")
         try:
@@ -721,9 +775,12 @@ def batch_generate_command(args):
                 item_failed = False
                 for text_field in text_fields_to_generate:
                     try:
-                        result = coordinator.generate_content(
-                            item_id=item_id,
-                            component_type=text_field,
+                        result = FieldRouter.generate_field(
+                            domain=args.domain,
+                            field=text_field,
+                            item_name=item_id,
+                            api_client=api_client,
+                            dry_run=args.dry_run,
                             force_regenerate=args.force_regenerate
                         )
                     except Exception as exc:
@@ -776,6 +833,8 @@ def batch_generate_command(args):
 def main():
     """Main CLI entry point"""
     _enable_terminal_streaming()
+
+    available_domains = _discover_domain_catalog()
 
     parser = argparse.ArgumentParser(
         description='Z-Beam Generator - Content generation and management',
@@ -848,7 +907,7 @@ Examples:
     
     # Postprocessing arguments
     parser.add_argument('--domain', type=str,
-                        choices=['materials', 'contaminants', 'settings', 'compounds', 'applications'],
+                        choices=available_domains or None,
                         help='Domain to postprocess')
     parser.add_argument('--field', type=str,
                         help='Field type to postprocess (e.g., pageDescription, micro, faq)')
@@ -916,6 +975,12 @@ Examples:
     elif args.integrity_check:
         integrity_check_command(args)
         return
+
+    # Automatic bootstrap validation for domain-aware command paths.
+    if args.export_all:
+        _run_domain_bootstrap_validator()
+    elif args.domain:
+        _run_domain_bootstrap_validator(args.domain)
     
     # Execute command (backfill is default if --domain/--item provided without other flags)
     if args.postprocess:

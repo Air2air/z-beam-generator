@@ -16,9 +16,9 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
 
 CORE_DOMAINS = ("applications", "materials", "contaminants", "compounds", "settings")
 
@@ -27,7 +27,7 @@ DOMAIN_REGEX = "(" + "|".join(CORE_DOMAINS) + ")"
 PATTERNS: dict[str, re.Pattern[str]] = {
     "domain_prompt_contract": re.compile(rf"domains/{DOMAIN_REGEX}/prompt\.yaml"),
     "domain_content_registry": re.compile(rf"prompts/{DOMAIN_REGEX}/content_prompts\.yaml"),
-    "shared_section_inline": re.compile(r"prompts/shared/section_inline_prompts\.yaml"),
+    "shared_prompt_registry": re.compile(r"prompts/registry/shared_prompt_registry\.yaml"),
     "legacy_domain_txt": re.compile(rf"prompts/{DOMAIN_REGEX}/[^\"'\s]+\.txt"),
     "prompt_catalog": re.compile(r"prompts/registry/prompt_catalog\.yaml"),
     "quality_patterns": re.compile(r"prompts/quality/learned_patterns\.yaml"),
@@ -45,10 +45,12 @@ ALLOWED_FILES_BY_KIND: dict[str, set[str]] = {
         "shared/text/utils/prompt_registry_service.py",
         "scripts/validation/validate_prompt_section_contract.py",
     },
-    "shared_section_inline": {
+    "shared_prompt_registry": {
         "shared/text/utils/prompt_registry_service.py",
         "scripts/validation/validate_prompt_section_contract.py",
         "scripts/validation/validate_machine_settings_contract.py",
+        "scripts/analysis/evaluate_prompt_adherence.py",
+        "scripts/testing/verify_pipeline_stages.py",
     },
 }
 

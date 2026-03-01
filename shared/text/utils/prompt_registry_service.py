@@ -13,6 +13,7 @@ class PromptRegistryService:
 
     _schema_cache: Optional[Dict[str, Any]] = None
     _domain_registry_cache: Dict[str, Dict[str, Any]] = {}
+    _shared_prompt_registry_cache: Optional[Dict[str, Any]] = None
     _shared_inline_prompts_cache: Optional[Dict[str, str]] = None
     _shared_inline_metadata_cache: Optional[Dict[str, Dict[str, Any]]] = None
     _prompt_catalog_cache: Optional[Dict[str, Any]] = None
@@ -101,17 +102,60 @@ class PromptRegistryService:
         return cls._prompt_catalog_cache
 
     @classmethod
-    def get_faq_prompt_registry(cls) -> Dict[str, Any]:
-        """Load canonical FAQ prompt definitions (single source of truth)."""
-        if cls._faq_prompt_cache is None:
-            faq_path = cls._project_root() / "prompts" / "shared" / "faq_prompt.yaml"
-            payload = cls._load_yaml_file(faq_path)
-            faq_prompt = payload.get("faq_prompt")
-            if not isinstance(faq_prompt, dict):
+    def _get_shared_prompt_registry(cls) -> Dict[str, Any]:
+        """Load canonical shared prompt registry (section + FAQ prompt source of truth)."""
+        if cls._shared_prompt_registry_cache is None:
+            registry_path = cls._project_root() / "prompts" / "registry" / "shared_prompt_registry.yaml"
+            registry = cls._load_yaml_file(registry_path)
+
+            section_prompts = registry.get("section_prompts")
+            section_prompt_metadata = registry.get("section_prompt_metadata")
+            if not isinstance(section_prompts, dict):
                 raise ValueError(
-                    f"Invalid FAQ prompt registry in {faq_path}: expected mapping at faq_prompt"
+                    f"Invalid shared prompt registry in {registry_path}: expected mapping at section_prompts"
                 )
-            cls._faq_prompt_cache = faq_prompt
+            if not isinstance(section_prompt_metadata, dict):
+                raise ValueError(
+                    f"Invalid shared prompt registry in {registry_path}: expected mapping at section_prompt_metadata"
+                )
+
+            cls._shared_prompt_registry_cache = registry
+
+        return cls._shared_prompt_registry_cache
+
+    @classmethod
+    def get_faq_prompt_registry(cls) -> Dict[str, Any]:
+        """Load canonical FAQ prompt definitions from shared prompt registry."""
+        if cls._faq_prompt_cache is None:
+            registry = cls._get_shared_prompt_registry()
+            section_prompts = registry.get("section_prompts")
+            section_prompt_metadata = registry.get("section_prompt_metadata")
+            single_line = registry.get("single_line")
+
+            if not isinstance(section_prompts, dict):
+                raise ValueError("Shared prompt registry missing section_prompts mapping")
+            if not isinstance(section_prompt_metadata, dict):
+                raise ValueError("Shared prompt registry missing section_prompt_metadata mapping")
+
+            faq_prompt = section_prompts.get("faq")
+            faq_metadata = section_prompt_metadata.get("faq")
+            if not isinstance(faq_prompt, str) or not faq_prompt.strip():
+                raise ValueError("Shared prompt registry missing required section_prompts.faq")
+            if not isinstance(faq_metadata, dict):
+                raise ValueError("Shared prompt registry missing required section_prompt_metadata.faq")
+
+            if not isinstance(single_line, dict):
+                raise ValueError("Shared prompt registry missing required single_line mapping")
+
+            by_domain = single_line.get("by_domain")
+            if not isinstance(by_domain, dict):
+                raise ValueError("Shared prompt registry missing required single_line.by_domain mapping")
+
+            cls._faq_prompt_cache = {
+                "shared_section_prompt": faq_prompt.strip(),
+                "shared_section_metadata": dict(faq_metadata),
+                "single_line": {"by_domain": dict(by_domain)},
+            }
         return cls._faq_prompt_cache
 
     @classmethod
@@ -132,9 +176,13 @@ class PromptRegistryService:
                     f"Invalid single-line prompt registry in {prompts_path}: expected mapping at component_single_line_prompts.by_domain"
                 )
 
-            faq_registry = cls.get_faq_prompt_registry()
-            faq_single_line = faq_registry.get("single_line") if isinstance(faq_registry, dict) else None
-            faq_by_domain = faq_single_line.get("by_domain") if isinstance(faq_single_line, dict) else None
+            shared_registry = cls._get_shared_prompt_registry()
+            shared_single_line = shared_registry.get("single_line")
+            if not isinstance(shared_single_line, dict):
+                raise ValueError("Shared prompt registry missing required single_line mapping")
+            faq_by_domain = shared_single_line.get("by_domain")
+            if not isinstance(faq_by_domain, dict):
+                raise ValueError("Shared prompt registry missing required single_line.by_domain mapping")
 
             merged_by_domain: Dict[str, Dict[str, Any]] = {}
             for domain_key, domain_prompts in by_domain.items():
@@ -149,7 +197,9 @@ class PromptRegistryService:
                 if isinstance(faq_by_domain, dict):
                     faq_entry = faq_by_domain.get(domain_key)
                     if isinstance(faq_entry, dict):
-                        merged_prompts["faq"] = dict(faq_entry)
+                        faq_prompt_entry = faq_entry.get("faq")
+                        if isinstance(faq_prompt_entry, dict):
+                            merged_prompts["faq"] = dict(faq_prompt_entry)
 
                 merged_by_domain[domain_key] = merged_prompts
 
@@ -199,17 +249,36 @@ class PromptRegistryService:
         return value
 
     @classmethod
+    def _get_shared_registry_value(cls, keys: tuple[str, ...]) -> str:
+        """Read required string value from consolidated shared prompt registry by nested path."""
+        value: Any = cls._get_shared_prompt_registry()
+        traversed: list[str] = []
+
+        for key in keys:
+            traversed.append(key)
+            if not isinstance(value, dict) or key not in value:
+                dotted = ".".join(traversed)
+                raise KeyError(f"Missing required shared prompt registry key: {dotted}")
+            value = value[key]
+
+        if not isinstance(value, str) or not value.strip():
+            dotted = ".".join(keys)
+            raise ValueError(f"Shared prompt registry value must be non-empty string: {dotted}")
+
+        return value
+
+    @classmethod
     def get_shared_text_prompt_core(cls) -> str:
-        return cls._get_catalog_value(("catalog", "shared", "textPromptCore"))
+        return cls._get_shared_registry_value(("shared_core_prompts", "textPromptCore"))
 
     @classmethod
     def get_humanness_template(cls, compact: bool = False) -> str:
         variant = "compact" if compact else "full"
-        return cls._get_catalog_value(("catalog", "core", "humanness", variant))
+        return cls._get_shared_registry_value(("shared_core_prompts", "humanness", variant))
 
     @classmethod
     def get_quality_evaluation_prompt(cls) -> str:
-        return cls._get_catalog_value(("catalog", "quality", "evaluation"))
+        return cls._get_shared_registry_value(("shared_core_prompts", "quality", "evaluation"))
 
     @classmethod
     def get_section(cls, component_type: str) -> Optional[Dict[str, Any]]:
@@ -293,12 +362,8 @@ class PromptRegistryService:
         if cls._shared_inline_prompts_cache is not None:
             return cls._shared_inline_prompts_cache
 
-        shared_path = cls._project_root() / "prompts" / "shared" / "section_inline_prompts.yaml"
-        if not shared_path.exists():
-            cls._shared_inline_prompts_cache = {}
-            return cls._shared_inline_prompts_cache
-
-        shared = cls._load_yaml_file(shared_path)
+        shared_path = cls._project_root() / "prompts" / "registry" / "shared_prompt_registry.yaml"
+        shared = cls._get_shared_prompt_registry()
         prompts = shared.get("section_prompts", {})
         prompt_metadata = shared.get("section_prompt_metadata", {})
         if not isinstance(prompts, dict):
@@ -309,15 +374,6 @@ class PromptRegistryService:
             raise ValueError(
                 f"Invalid section_prompt metadata in {shared_path}: expected mapping at section_prompt_metadata"
             )
-
-        faq_registry = cls.get_faq_prompt_registry()
-        shared_faq_prompt = faq_registry.get("shared_section_prompt") if isinstance(faq_registry, dict) else None
-        if isinstance(shared_faq_prompt, str) and shared_faq_prompt.strip():
-            prompts["faq"] = shared_faq_prompt.strip()
-
-        shared_faq_metadata = faq_registry.get("shared_section_metadata") if isinstance(faq_registry, dict) else None
-        if isinstance(shared_faq_metadata, dict):
-            prompt_metadata["faq"] = dict(shared_faq_metadata)
 
         cls._validate_prompt_metadata_contract(
             {

@@ -1,12 +1,12 @@
 {
   "summary": {
-    "reference_count": 25,
+    "reference_count": 24,
     "violation_count": 0,
     "kinds": {
-      "prompt_catalog": 3,
+      "prompt_catalog": 1,
       "quality_patterns": 8,
       "seo_prompts": 5,
-      "shared_section_inline": 4,
+      "shared_prompt_registry": 5,
       "system_prompts": 1,
       "voice_profiles": 4
     }
@@ -15,17 +15,17 @@
     "quality_patterns": [
       {
         "file": "learning/humanness_optimizer.py",
-        "line": 72,
+        "line": 73,
         "value": "prompts/quality/learned_patterns.yaml"
       },
       {
         "file": "learning/humanness_optimizer.py",
-        "line": 92,
+        "line": 93,
         "value": "prompts/quality/learned_patterns.yaml"
       },
       {
         "file": "learning/humanness_optimizer.py",
-        "line": 105,
+        "line": 106,
         "value": "prompts/quality/learned_patterns.yaml"
       },
       {
@@ -57,7 +57,7 @@
     "system_prompts": [
       {
         "file": "learning/humanness_optimizer.py",
-        "line": 570,
+        "line": 552,
         "value": "prompts/system/humanness_layer.txt"
       }
     ],
@@ -90,16 +90,6 @@
     ],
     "prompt_catalog": [
       {
-        "file": "scripts/testing/verify_pipeline_stages.py",
-        "line": 209,
-        "value": "prompts/registry/prompt_catalog.yaml"
-      },
-      {
-        "file": "scripts/testing/verify_pipeline_stages.py",
-        "line": 220,
-        "value": "prompts/registry/prompt_catalog.yaml"
-      },
-      {
         "file": "shared/text/utils/prompt_builder.py",
         "line": 107,
         "value": "prompts/registry/prompt_catalog.yaml"
@@ -127,26 +117,31 @@
         "value": "prompts/profiles/rhythm.yaml"
       }
     ],
-    "shared_section_inline": [
+    "shared_prompt_registry": [
+      {
+        "file": "scripts/testing/verify_pipeline_stages.py",
+        "line": 209,
+        "value": "prompts/registry/shared_prompt_registry.yaml"
+      },
+      {
+        "file": "scripts/testing/verify_pipeline_stages.py",
+        "line": 220,
+        "value": "prompts/registry/shared_prompt_registry.yaml"
+      },
       {
         "file": "scripts/validation/validate_machine_settings_contract.py",
         "line": 78,
-        "value": "prompts/shared/section_inline_prompts.yaml"
+        "value": "prompts/registry/shared_prompt_registry.yaml"
       },
       {
         "file": "scripts/validation/validate_prompt_section_contract.py",
-        "line": 73,
-        "value": "prompts/shared/section_inline_prompts.yaml"
+        "line": 54,
+        "value": "prompts/registry/shared_prompt_registry.yaml"
       },
       {
         "file": "scripts/validation/validate_prompt_section_contract.py",
-        "line": 425,
-        "value": "prompts/shared/section_inline_prompts.yaml"
-      },
-      {
-        "file": "scripts/validation/validate_prompt_section_contract.py",
-        "line": 428,
-        "value": "prompts/shared/section_inline_prompts.yaml"
+        "line": 514,
+        "value": "prompts/registry/shared_prompt_registry.yaml"
       }
     ]
   },

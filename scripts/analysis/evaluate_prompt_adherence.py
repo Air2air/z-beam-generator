@@ -34,7 +34,7 @@ SUPPORTED_DOMAINS = [
 
 SUPPORTED_FIELDS = ["pageDescription", "micro", "faq"]
 
-SECTION_INLINE_PROMPTS_PATH = PROJECT_ROOT / "prompts" / "shared" / "section_inline_prompts.yaml"
+SECTION_INLINE_PROMPTS_PATH = PROJECT_ROOT / "prompts" / "registry" / "shared_prompt_registry.yaml"
 
 
 class PromptEvaluationError(RuntimeError):
