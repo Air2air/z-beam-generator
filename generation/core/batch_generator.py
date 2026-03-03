@@ -1,32 +1,22 @@
 """
-Batch Component Generator - Meet Winston Minimums Efficiently
+Batch Component Generator - Discrete Request Batch Flow
 
-Generates multiple materials' components in batches to meet Winston's 300-character
-minimum requirement while reducing API costs and maintaining quality.
+Runs batch operations as a sequence of individual, discrete requests.
 
 ARCHITECTURE:
-- Batch generation for short components (material descriptions)
-- Single API call generates multiple materials
-- Concatenated validation meets Winston 300-char minimum
-- Individual extraction with structured format
-- Shared Winston feedback across batch
+- Batch orchestration for multiple materials
+- Individual generation request per material/field
+- Individual Winston validation per material/field
+- No combined multi-item prompt request path
 
 WORKFLOW:
-1. Calculate optimal batch size (target 300+ chars)
-2. Generate all components in single API call
-3. Validate concatenated result with Winston
-4. Extract individual components using markers
-5. Apply Winston feedback to all materials in batch
-6. Save individual components to Materials.yaml
-
-COST SAVINGS:
-- Individual: $0.10 Winston × 132 materials = $13.20
-- Batch (4 per): $0.10 Winston × 33 batches = $3.30
-- Savings: $9.90 (75% reduction)
+1. Calculate batch slices for orchestration
+2. Generate each material with its own request
+3. Validate each generated component independently
+4. Save passing components to Materials.yaml
 """
 
 import logging
-import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -39,10 +29,10 @@ logger = logging.getLogger(__name__)
 
 class BatchGenerator:
     """
-    Generate multiple materials' components in batches to meet Winston minimums.
+    Generate multiple materials' components with discrete per-item requests.
     
-    Optimized for short components like material descriptions that don't individually
-    meet Winston's 300-character requirement.
+    Mandatory policy: Batch flow orchestration MUST execute as a sequence of
+    independent requests; never a single combined multi-item prompt request.
     """
     
     # Component batch configuration
@@ -161,16 +151,13 @@ class BatchGenerator:
         skip_integrity_check: bool = False
     ) -> Dict[str, Any]:
         """
-        Generate material descriptions for multiple materials in one batch.
+        Generate material descriptions for multiple materials via discrete requests.
         
         Strategy:
-        1. Calculate batch size to exceed 300 chars
-        2. Build batch prompt with material markers
-        3. Generate all material descriptions in single API call
-        4. Validate concatenated result with Winston (meets 300-char minimum)
-        5. Extract individual material descriptions using markers
-        6. Apply same Winston feedback to all materials in batch
-        7. Save to Materials.yaml individually
+        1. Calculate batch size for orchestration only
+        2. Generate each material description with an individual request
+        3. Validate each generated description independently with Winston
+        4. Save passing descriptions to Materials.yaml
         
         Args:
             materials: List of material names (e.g., ["Aluminum", "Steel", "Copper"])
@@ -185,8 +172,8 @@ class BatchGenerator:
                     'Steel': {'content': '...', 'winston_score': 0.12, 'success': True},
                     'Copper': {'content': '...', 'winston_score': 0.12, 'success': True}
                 },
-                'winston_score': float,  # Shared across batch
-                'concatenated_length': int,
+                'winston_score': float,  # Aggregate average across validated items
+                'concatenated_length': int,  # Backward-compatible key; aggregate generated length
                 'cost_savings': float
             }
         """
@@ -276,47 +263,56 @@ class BatchGenerator:
                     }
                     self.logger.error(f"   ❌ Generation failed: {e}")
             
-            # Concatenate all generated content for Winston validation
-            if 'separator' not in config:
-                raise KeyError("Batch config missing required key: 'separator'")
-            separator = config['separator']
-
-            concatenated_text = separator.join([
-                result['content'] for result in individual_results.values() 
+            aggregate_length = sum(
+                len(result['content'])
+                for result in individual_results.values()
                 if 'content' in result and result['content']
-            ])
+            )
             
             self.logger.info(f"\n📏 Batch statistics:")
             self.logger.info(f"   • Generated: {len(individual_results)}/{len(materials)} materials")
-            self.logger.info(f"   • Concatenated length: {len(concatenated_text)} chars")
-            self.logger.info(f"   • Winston minimum: {config['winston_min_chars']} chars")
+            self.logger.info(f"   • Aggregate length: {aggregate_length} chars")
+            self.logger.info(f"   • Validation mode: individual per material")
             
+            ai_scores: List[float] = []
+
             # Conditionally validate with Winston based on skip_integrity_check flag
             if not skip_integrity_check:
-                # Validate concatenated text with Winston
-                winston_result = self._validate_batch_with_winston(
-                    concatenated_text,
-                    component_type,
-                    materials
-                )
-                
-                # Determine if batch passes Winston threshold
-                if 'ai_score' not in winston_result:
-                    raise KeyError("Winston validation result missing required key: 'ai_score'")
-                ai_score = winston_result['ai_score']
-                if ai_score is None:
-                    raise RuntimeError("Winston validation returned no AI score - cannot proceed")
-                passes_threshold = ValidationConstants.passes_winston(ai_score)
-                
-                # Apply Winston result to all materials in batch
                 for material in materials:
-                    if material in individual_results:
-                        individual_results[material].update({
-                            'winston_score': ai_score,
-                            'human_score': ValidationConstants.ai_to_human_score(ai_score),
-                            'passes_winston': passes_threshold,
-                            'batch_validated': True
+                    if material not in individual_results:
+                        continue
+
+                    material_result = individual_results[material]
+                    if 'content' not in material_result or not material_result['content']:
+                        material_result.update({
+                            'winston_score': None,
+                            'human_score': None,
+                            'passes_winston': False,
+                            'batch_validated': False,
+                            'validation_error': 'No content to validate'
                         })
+                        continue
+
+                    winston_result = self._validate_component_with_winston(
+                        candidate_text=material_result['content'],
+                        component_type=component_type,
+                        material_name=material,
+                    )
+
+                    if 'ai_score' not in winston_result:
+                        raise KeyError("Winston validation result missing required key: 'ai_score'")
+
+                    ai_score = winston_result['ai_score']
+                    if ai_score is None:
+                        raise RuntimeError(f"Winston validation returned no AI score for {material}")
+
+                    ai_scores.append(ai_score)
+                    material_result.update({
+                        'winston_score': ai_score,
+                        'human_score': ValidationConstants.ai_to_human_score(ai_score),
+                        'passes_winston': ValidationConstants.passes_winston(ai_score),
+                        'batch_validated': True
+                    })
             else:
                 # Skip Winston but mark as validated
                 self.logger.warning("⚠️  Winston validation skipped (--skip-integrity-check)")
@@ -366,7 +362,7 @@ class BatchGenerator:
                     self.logger.info(f"Winston AI Score: {ai_score:.3f} (threshold: {ValidationConstants.WINSTON_AI_THRESHOLD})")
                     self.logger.info(f"Human Score: {ValidationConstants.ai_to_human_score(ai_score):.1f}%")
             
-            self.logger.info(f"Concatenated length: {len(concatenated_text)} chars")
+            self.logger.info(f"Aggregate length: {aggregate_length} chars")
             self.logger.info(f"Cost savings: ${cost_savings:.2f}")
             
             # Save batch report to markdown file
@@ -390,19 +386,17 @@ class BatchGenerator:
                     'error': result['error'] if 'error' in result else None
                 })
             
-            # Determine winston_score for summary
+            # Determine winston_score for summary (average AI score across validated items)
             winston_score_value = None
             if not skip_integrity_check:
-                if 'winston_result' in locals() and winston_result:
-                    if 'ai_score' not in winston_result:
-                        raise KeyError("Winston validation result missing required key: 'ai_score'")
-                    winston_score_value = winston_result['ai_score']
+                if ai_scores:
+                    winston_score_value = sum(ai_scores) / len(ai_scores)
             
             # Prepare summary for report
             summary = {
                 'success_count': saved_count,
                 'winston_score': winston_score_value,
-                'concatenated_length': len(concatenated_text),
+                'concatenated_length': aggregate_length,
                 'cost_savings': cost_savings
             }
             
@@ -419,7 +413,7 @@ class BatchGenerator:
                 'batch_size': batch_size,
                 'results': individual_results,
                 'winston_score': winston_score_value,
-                'concatenated_length': len(concatenated_text),
+                'concatenated_length': aggregate_length,
                 'cost_savings': cost_savings,
                 'saved_count': saved_count
             }
@@ -435,74 +429,19 @@ class BatchGenerator:
     
     def _build_batch_prompt(self, materials: List[str], component_type: str) -> str:
         """
-        Build prompt for batch generation with material markers.
+        Legacy combined batch prompt path.
         
         Args:
             materials: List of material names
             component_type: Type of component
             
         Returns:
-            Batch prompt with structured format for extraction
+            Never returns. Raises policy enforcement error.
         """
-        # Load base prompt template from materials config.yaml
-        import yaml
-        config_file = Path("domains/materials/config.yaml")
-        
-        if not config_file.exists():
-            raise FileNotFoundError(
-                f"Materials config not found: {config_file}"
-            )
-        
-        config_data = load_yaml(config_file)
-        
-        if not isinstance(config_data, dict):
-            raise TypeError("domains/materials/config.yaml must parse to a dictionary")
-        if 'prompts' not in config_data:
-            raise KeyError("domains/materials/config.yaml missing required key: 'prompts'")
-        prompts = config_data['prompts']
-        if not isinstance(prompts, dict):
-            raise TypeError("domains/materials/config.yaml key 'prompts' must be a dictionary")
-        if component_type not in prompts:
-            raise KeyError(f"Prompt 'prompts.{component_type}' not found in materials/config.yaml")
-        base_prompt = prompts[component_type]
-        
-        # Substitute placeholders in base prompt
-        base_prompt = base_prompt.replace('{material}', '[MATERIAL_NAME]')
-        base_prompt = base_prompt.replace('{author}', 'a professional technical writer')
-        
-        # Build batch instructions
-        batch_instructions = f"""
-BATCH GENERATION TASK:
-Generate {component_type}s for {len(materials)} materials in a single response.
-
-MATERIALS:
-{chr(10).join([f"{i+1}. {mat}" for i, mat in enumerate(materials)])}
-
-FORMAT (CRITICAL):
-Use this exact format with clear material markers:
-
-[MATERIAL: {materials[0]}]
-[Your {component_type} content here]
-[/MATERIAL: {materials[0]}]
-
-[MATERIAL: {materials[1] if len(materials) > 1 else 'Material2'}]
-[Your {component_type} content here]
-[/MATERIAL: {materials[1] if len(materials) > 1 else 'Material2'}]
-
-... (continue for all materials)
-
-REQUIREMENTS:
-- Follow all style and quality guidelines from base prompt
-- Maintain consistency across all {component_type}s in batch
-- Use material-specific details (properties, applications, benefits)
-- Each {component_type} should stand alone (no cross-references)
-- Preserve exact marker format for extraction
-
-BASE PROMPT:
-{base_prompt}
-"""
-        
-        return batch_instructions
+        raise RuntimeError(
+            "Policy violation: combined multi-item prompt generation is disabled. "
+            "Batch flows must use discrete per-item/per-field requests."
+        )
     
     def _generate_batch_content(
         self,
@@ -521,44 +460,12 @@ BASE PROMPT:
             component_type: Type of component
             
         Returns:
-            Raw API response with all components
+            Never returns. Raises policy enforcement error.
         """
-        # Use generator's API client with GenerationRequest
-        from shared.api.client import GenerationRequest
-
-        # Fail-fast: Require proper configuration (GROK_INSTRUCTIONS.md Core Principle #3)
-        if 'temperature' not in params:
-            raise RuntimeError(
-                "Missing temperature in batch generation params. "
-                "Required: params['temperature']"
-            )
-        
-        if 'api_penalties' not in params:
-            raise RuntimeError(
-                "Missing API penalties in batch generation config. "
-                "Required: params['api_penalties']"
-            )
-        api_penalties = params['api_penalties']
-        if not api_penalties or 'frequency_penalty' not in api_penalties or 'presence_penalty' not in api_penalties:
-            raise RuntimeError(
-                "Missing API penalties in batch generation config. "
-                "Required: frequency_penalty, presence_penalty in params['api_penalties']"
-            )
-        
-        request = GenerationRequest(
-            prompt=prompt,
-            max_tokens=self.batch_tokens_per_material * len(materials),
-            temperature=params['temperature'],
-            frequency_penalty=api_penalties['frequency_penalty'],
-            presence_penalty=api_penalties['presence_penalty']
+        raise RuntimeError(
+            "Policy violation: combined multi-item generation requests are disabled. "
+            "Use per-item/per-field generation requests."
         )
-        
-        api_response = self.generator.api_client.generate(request)
-        
-        if not api_response.success:
-            raise RuntimeError(f"API generation failed: {api_response.error}")
-        
-        return api_response.content
     
     def _extract_batch_components(
         self,
@@ -575,64 +482,41 @@ BASE PROMPT:
             component_type: Type of component
             
         Returns:
-            {
-                'Aluminum': {'content': '...', 'success': True},
-                'Steel': {'content': '...', 'success': True}
-            }
+            Never returns. Raises policy enforcement error.
         """
-        results = {}
-        
-        for material in materials:
-            # Extract content between markers
-            pattern = rf'\[MATERIAL:\s*{re.escape(material)}\s*\](.*?)\[/MATERIAL:\s*{re.escape(material)}\s*\]'
-            match = re.search(pattern, response, re.DOTALL | re.IGNORECASE)
-            
-            if match:
-                content = match.group(1).strip()
-                results[material] = {
-                    'content': content,
-                    'success': True,
-                    'extraction_method': 'marker'
-                }
-                self.logger.info(f"✅ Extracted {component_type} for {material}: {len(content)} chars")
-            else:
-                self.logger.warning(f"⚠️  Failed to extract {component_type} for {material}")
-                results[material] = {
-                    'content': '',
-                    'success': False,
-                    'error': 'Extraction failed - marker not found'
-                }
-        
-        return results
+        raise RuntimeError(
+            "Policy violation: marker-based extraction is disabled because combined multi-item "
+            "generation responses are not allowed."
+        )
     
-    def _validate_batch_with_winston(
+    def _validate_component_with_winston(
         self,
-        concatenated_text: str,
+        candidate_text: str,
         component_type: str,
-        materials: List[str]
+        material_name: str,
     ) -> Dict[str, Any]:
         """
-        Validate concatenated batch text with Grok humanness evaluator.
+        Validate a single generated component with Grok humanness evaluator.
         
         Args:
-            concatenated_text: All components concatenated
+            candidate_text: Generated component text for a single material
             component_type: Type of component
-            materials: List of material names
+            material_name: Name of material being validated
             
         Returns:
             Dict with ai_score/human_score compatible fields
         """
         self.logger.info("\n🔍 Grok humanness validation:")
-        self.logger.info(f"   • Concatenated length: {len(concatenated_text)} chars")
-        self.logger.info(f"   • Materials in batch: {len(materials)}")
+        self.logger.info(f"   • Material: {material_name}")
+        self.logger.info(f"   • Candidate length: {len(candidate_text)} chars")
 
         from learning.grok_humanness_runtime import GrokHumannessRuntimeEvaluator
 
         evaluator = GrokHumannessRuntimeEvaluator()
         payload = evaluator.evaluate(
-            candidate_text=concatenated_text,
+            candidate_text=candidate_text,
             domain='materials',
-            item_id='batch-validation',
+            item_id=material_name,
             component_type=component_type,
             author_id=0,
             generation_id=None,
@@ -720,7 +604,7 @@ BASE PROMPT:
             print(f"   • Human Score: {human_score:.1f}%")
             print(f"   • Status: {ValidationConstants.get_status_label(passes)}")
             if batch_validated:
-                print("   • Validation: Batch Winston validation")
+                print("   • Validation: Individual Winston validation")
         else:
             print("   • Validation: SKIPPED (--skip-integrity-check)")
             print(f"   • Status: ⚠️  UNVALIDATED")

@@ -26,7 +26,9 @@ DOMAIN_REGEX = "(" + "|".join(CORE_DOMAINS) + ")"
 
 PATTERNS: dict[str, re.Pattern[str]] = {
     "domain_prompt_contract": re.compile(rf"domains/{DOMAIN_REGEX}/prompt\.yaml"),
-    "domain_content_registry": re.compile(rf"prompts/registry/content_prompts_{DOMAIN_REGEX}\.yaml"),
+    "domain_content_registry": re.compile(
+        rf"domains/{DOMAIN_REGEX}/prompts/(descriptor_prompts|text_prompt|non_text_prompt)\.yaml"
+    ),
     "shared_prompt_registry": re.compile(r"prompts/registry/shared_prompt_registry\.yaml"),
     "legacy_domain_txt": re.compile(rf"prompts/{DOMAIN_REGEX}/[^\"'\s]+\.txt"),
     "prompt_catalog": re.compile(r"prompts/registry/prompt_catalog\.yaml"),
@@ -40,6 +42,7 @@ ALLOWED_FILES_BY_KIND: dict[str, set[str]] = {
     "domain_prompt_contract": {
         "shared/text/utils/prompt_registry_service.py",
         "scripts/validation/validate_prompt_section_contract.py",
+        "scripts/validation/validate_domain_bootstrap.py",
     },
     "domain_content_registry": {
         "shared/text/utils/prompt_registry_service.py",

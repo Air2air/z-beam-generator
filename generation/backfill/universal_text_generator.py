@@ -7,8 +7,11 @@ Complies with Core Principle 0: Universal Text Processing Pipeline.
 from generation.backfill.base import BaseBackfillGenerator
 from generation.backfill.registry import BackfillRegistry
 from generation.core.evaluated_generator import QualityEvaluatedGenerator
+from shared.text.utils.text_leaf_normalization import coerce_text_leaf_value, normalize_text_output
 from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
-from typing import Optional
+from typing import Optional, Any
+from pathlib import Path
+import yaml
 import logging
 
 logger = logging.getLogger(__name__)
@@ -83,6 +86,25 @@ class UniversalTextGenerator(BaseBackfillGenerator):
             subjective_evaluator=subjective_evaluator,
             domain=domain
         )
+
+        self.section_display_schema = self._load_section_display_schema()
+
+    def _load_section_display_schema(self) -> dict:
+        schema_path = Path('data/schemas/section_display_schema.yaml')
+        if not schema_path.exists():
+            raise FileNotFoundError(f"Missing required schema file: {schema_path}")
+
+        with open(schema_path, 'r', encoding='utf-8') as handle:
+            payload = yaml.safe_load(handle) or {}
+
+        if not isinstance(payload, dict):
+            raise TypeError("section_display_schema.yaml must parse to a dictionary")
+
+        sections = payload.get('sections')
+        if not isinstance(sections, dict):
+            raise KeyError("section_display_schema.yaml missing required key: sections")
+
+        return payload
     
     def populate(self, item_data: dict) -> dict:
         """
@@ -125,7 +147,7 @@ class UniversalTextGenerator(BaseBackfillGenerator):
                 
                 if result.success and result.content:
                     # Update item data with generated content (handle nested paths)
-                    self._set_nested_field(item_data, field, result.content)
+                    self._set_nested_field(item_data, field, result.content, component_type=component_type)
                     prefix = f"    " if self.mode == 'multi' else "  "
                     logger.info(f"{prefix}   📝 Set {field} = '{result.content[:50]}...'")
                     
@@ -155,16 +177,16 @@ class UniversalTextGenerator(BaseBackfillGenerator):
         return item_data
 
 
-    def _set_nested_field(self, data: dict, path: str, value: str):
+    def _set_nested_field(self, data: dict, path: str, value: str, component_type: str | None = None):
         """Set a field value in nested dict using dot-notation path."""
-        # Schema-based components may return structured payloads
-        # ({title, description, _metadata}). When target field is a scalar
-        # section text leaf, persist only the matching scalar value.
-        if isinstance(value, dict):
-            if path.endswith('.sectionDescription') and isinstance(value.get('description'), str):
-                value = value['description']
-            elif path.endswith('.sectionTitle') and isinstance(value.get('title'), str):
-                value = value['title']
+        leaf = path.split('.')[-1]
+        original_value = value
+
+        if leaf in {'sectionDescription', 'sectionTitle', 'pageDescription', 'pageTitle', 'page_title'}:
+            try:
+                value = coerce_text_leaf_value(value, leaf, field_label=path)
+            except ValueError as exc:
+                raise ValueError(f"Expected text leaf for '{path}', got object without extractable text") from exc
 
         parts = path.split('.')
         current = data
@@ -177,6 +199,56 @@ class UniversalTextGenerator(BaseBackfillGenerator):
         
         # Set the final field
         current[parts[-1]] = value
+
+        if path.endswith('.sectionDescription'):
+            title_path = '.'.join(parts[:-1] + ['sectionTitle'])
+            existing_title = self._get_nested_field(data, title_path)
+            if not isinstance(existing_title, str) or not existing_title.strip():
+                title_value = self._extract_title_value(original_value, component_type)
+                if isinstance(title_value, str) and title_value.strip():
+                    self._set_nested_field(data, title_path, title_value.strip(), component_type=component_type)
+
+    def _normalize_text_output(self, content: Any) -> Any:
+        """Normalize plain text output by removing common wrapper artifacts."""
+        return normalize_text_output(content)
+
+    def _extract_title_value(self, value, component_type: str | None) -> str | None:
+        if isinstance(value, dict):
+            candidate = value.get('title') or value.get('sectionTitle')
+            if isinstance(candidate, str) and candidate.strip():
+                return candidate.strip()
+
+        if isinstance(component_type, str) and component_type.strip():
+            sections = self.section_display_schema.get('sections') if isinstance(self.section_display_schema, dict) else None
+            if not isinstance(sections, dict):
+                return None
+
+            normalized_component_type = component_type.strip()
+            lookup_candidates = [normalized_component_type]
+            if '.' in normalized_component_type:
+                lookup_candidates.append(normalized_component_type.split('.')[-1])
+
+            spec = None
+            for candidate_key in lookup_candidates:
+                section_spec = sections.get(candidate_key)
+                if isinstance(section_spec, dict):
+                    spec = section_spec
+                    break
+
+            if isinstance(spec, dict):
+                section_title = spec.get('sectionTitle') or spec.get('title')
+                if isinstance(section_title, str) and section_title.strip():
+                    return section_title.strip()
+
+        return None
+
+    def _get_nested_field(self, data: dict, path: str):
+        current = data
+        for part in path.split('.'):
+            if not isinstance(current, dict) or part not in current:
+                return None
+            current = current[part]
+        return current
 
 
     def _should_skip(self, item_data: dict) -> bool:

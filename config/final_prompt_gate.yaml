@@ -1,0 +1,59 @@
+audit:
+  provider: grok
+  domain: applications
+  item: defense-laser-cleaning-applications
+  fail_on_invalid: false
+  fail_on_incoherent: false
+  output:
+    json: tasks/final_prompt_audit_report.json
+    md: tasks/final_prompt_audit_report.md
+
+components:
+  - name: pageDescription
+    enabled: true
+    checks:
+      min_prompt_words: 450
+      max_prompt_words: 820
+      max_average_sentence_words: 24
+      max_sentence_words: 180
+      required_contains:
+        - "TOPIC:"
+        - "FACTUAL INFORMATION:"
+        - "DOMAIN GUIDANCE:"
+        - "VOICE INSTRUCTIONS:"
+      forbidden_contains:
+        - "[INSERT"
+        - "TODO"
+
+  - name: faq
+    enabled: true
+    faq_count: 5
+    checks:
+      min_prompt_words: 690
+      max_prompt_words: 860
+      max_average_sentence_words: 24
+      max_sentence_words: 180
+      required_contains:
+        - "TOPIC:"
+        - "FACTUAL INFORMATION:"
+        - "DOMAIN GUIDANCE:"
+        - "VOICE INSTRUCTIONS:"
+      forbidden_contains:
+        - "[INSERT"
+        - "TODO"
+
+  - name: pageTitle
+    enabled: true
+    checks:
+      min_prompt_words: 300
+      max_prompt_words: 1320
+      max_average_sentence_words: 24
+      max_sentence_words: 180
+      required_contains:
+        - "TOPIC:"
+        - "FACTUAL INFORMATION:"
+        - "DOMAIN GUIDANCE:"
+        - "VOICE INSTRUCTIONS:"
+      forbidden_contains:
+        - "[INSERT"
+        - "TODO"

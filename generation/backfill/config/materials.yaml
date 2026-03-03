@@ -10,14 +10,36 @@ generators:
     source_file: data/materials/Materials.yaml
     items_key: materials
     fields:
+      - field: pageTitle
+        component_type: pageTitle
       - field: pageDescription
         component_type: pageDescription
       - field: faq
         component_type: faq
-      - field: relationships.contaminatedBy
+      - field: relationships.interactions.contaminatedBy._section.sectionDescription
         component_type: contaminatedBy
-      - field: relationships.relatedMaterials  
+      - field: relationships.discovery.relatedMaterials._section.sectionDescription
         component_type: relatedMaterials
+      - field: relationships.operational.industryApplications._section.sectionDescription
+        component_type: industryApplications
+      - field: relationships.operational.commonChallenges._section.sectionDescription
+        component_type: commonChallenges
+      - field: relationships.operational.removalMethods._section.sectionDescription
+        component_type: removalMethods
+      - field: relationships.operational.preventionStrategies._section.sectionDescription
+        component_type: preventionStrategies
+      - field: relationships.visual.appearanceVariations._section.sectionDescription
+        component_type: appearanceVariations
+      - field: relationships.environmental.environmentalImpact._section.sectionDescription
+        component_type: environmentalImpact
+      - field: properties.materialCharacteristics._section.sectionDescription
+        component_type: materialCharacteristics
+      - field: properties.laserMaterialInteraction._section.sectionDescription
+        component_type: laserMaterialInteraction
+      - field: properties.physicalProperties._section.sectionDescription
+        component_type: physicalProperties
+      - field: components._section.sectionDescription
+        component_type: components.micro
       - field: properties.materialCharacteristics
         component_type: materialCharacteristics
       - field: properties.laserMaterialInteraction

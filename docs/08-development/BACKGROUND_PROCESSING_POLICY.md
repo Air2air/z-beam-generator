@@ -252,7 +252,7 @@ echo "PID: $!"
 
 ### Generating Content for All Items
 ```bash
-nohup python3 batch_generate.py --domain contaminants --all > output/batch_generate.txt 2>&1 &
+nohup python3 run.py --batch-generate --domain contaminants --field pageDescription --all > output/batch_generate.txt 2>&1 &
 echo "PID: $!"
 ```
 

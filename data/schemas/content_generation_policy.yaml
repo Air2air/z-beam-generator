@@ -21,14 +21,36 @@ content_generation_policy:
         - field: faq
           componentType: faq
       materials:
+        - field: pageTitle
+          componentType: pageTitle
         - field: pageDescription
           componentType: pageDescription
         - field: faq
           componentType: faq
-        - field: relationships.contaminatedBy
+        - field: relationships.interactions.contaminatedBy._section.sectionDescription
           componentType: contaminatedBy
-        - field: relationships.relatedMaterials
+        - field: relationships.discovery.relatedMaterials._section.sectionDescription
           componentType: relatedMaterials
+        - field: relationships.operational.industryApplications._section.sectionDescription
+          componentType: industryApplications
+        - field: relationships.operational.commonChallenges._section.sectionDescription
+          componentType: commonChallenges
+        - field: relationships.operational.removalMethods._section.sectionDescription
+          componentType: removalMethods
+        - field: relationships.operational.preventionStrategies._section.sectionDescription
+          componentType: preventionStrategies
+        - field: relationships.visual.appearanceVariations._section.sectionDescription
+          componentType: appearanceVariations
+        - field: relationships.environmental.environmentalImpact._section.sectionDescription
+          componentType: environmentalImpact
+        - field: properties.materialCharacteristics._section.sectionDescription
+          componentType: materialCharacteristics
+        - field: properties.laserMaterialInteraction._section.sectionDescription
+          componentType: laserMaterialInteraction
+        - field: properties.physicalProperties._section.sectionDescription
+          componentType: physicalProperties
+        - field: components._section.sectionDescription
+          componentType: components.micro
         - field: properties.materialCharacteristics
           componentType: materialCharacteristics
         - field: properties.laserMaterialInteraction
@@ -36,44 +58,92 @@ content_generation_policy:
         - field: components.micro
           componentType: micro
       contaminants:
+        - field: pageTitle
+          componentType: pageTitle
         - field: pageDescription
           componentType: pageDescription
         - field: faq
           componentType: faq
-        - field: appearance
+        - field: relationships.visual.appearanceOnCategories._section.sectionDescription
           componentType: appearanceVariations
-        - field: compounds
+        - field: relationships.interactions.producedByMaterials._section.sectionDescription
+          componentType: producedByMaterials
+        - field: relationships.interactions.relatedContaminants._section.sectionDescription
+          componentType: relatedContaminants
+        - field: relationships.interactions.producesCompounds._section.sectionDescription
           componentType: relatedCompounds
-      compounds:
-        - field: pageDescription
-          componentType: pageDescription
-        - field: faq
-          componentType: faq
-        - field: health_effects
-          componentType: healthEffects
-        - field: detection_methods
+        - field: relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription
           componentType: detectionMethods
-        - field: emergency_response
-          componentType: emergencyResponse
-        - field: exposure_guidelines
+        - field: relationships.operational.removalMethods._section.sectionDescription
+          componentType: removalMethods
+        - field: relationships.operational.preventionStrategies._section.sectionDescription
+          componentType: preventionStrategies
+        - field: relationships.safety.healthEffects._section.sectionDescription
+          componentType: healthEffects
+        - field: relationships.safety.exposureLimits._section.sectionDescription
           componentType: exposureLimits
-      settings:
+        - field: relationships.safety.ppeRequirements._section.sectionDescription
+          componentType: ppeRequirements
+        - field: relationships.safety.emergencyResponse._section.sectionDescription
+          componentType: emergencyResponse
+        - field: relationships.detectionMonitoring.continuousMonitoring._section.sectionDescription
+          componentType: continuousMonitoring
+      compounds:
+        - field: pageTitle
+          componentType: pageTitle
         - field: pageDescription
           componentType: pageDescription
         - field: faq
           componentType: faq
-        - field: challenges
+        - field: healthEffects
+          componentType: healthEffects
+        - field: relationships.safety.healthEffects._section.sectionDescription
+          componentType: healthEffects
+        - field: detectionMethods
+          componentType: detectionMethods
+        - field: relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription
+          componentType: detectionMethods
+        - field: emergencyResponse
+          componentType: emergencyResponse
+        - field: relationships.safety.emergencyResponse._section.sectionDescription
+          componentType: emergencyResponse
+        - field: ppeRequirements
+          componentType: ppeRequirements
+        - field: relationships.safety.ppeRequirements._section.sectionDescription
+          componentType: ppeRequirements
+        - field: exposureGuidelines
+          componentType: exposureLimits
+        - field: relationships.safety.exposureLimits._section.sectionDescription
+          componentType: exposureLimits
+        - field: regulatoryStandards
+          componentType: regulatoryStandards
+        - field: relationships.safety.regulatoryStandards._section.sectionDescription
+          componentType: regulatoryStandards
+        - field: relationships.safety.regulatoryClassification._section.sectionDescription
+          componentType: regulatoryClassification
+        - field: relationships.safety.storageRequirements._section.sectionDescription
+          componentType: storageRequirements
+        - field: relationships.interactions.producedFromContaminants._section.sectionDescription
+          componentType: producedFromContaminants
+        - field: relationships.interactions.relatedCompounds._section.sectionDescription
+          componentType: relatedCompounds
+        - field: relationships.interactions.reactivity._section.sectionDescription
+          componentType: reactivity
+      settings:
+        - field: pageTitle
+          componentType: pageTitle
+        - field: pageDescription
+          componentType: pageDescription
+        - field: machineSettings
+          componentType: machineSettings
+        - field: relationships.operational.industryApplications._section.sectionDescription
+          componentType: industryApplications
+        - field: relationships.operational.preventionStrategies._section.sectionDescription
+          componentType: preventionStrategies
+        - field: relationships.operational.commonChallenges._section.sectionDescription
           componentType: commonChallenges
 
   aliases:
     # Allowed legacy aliases for component_type in backfill config.
     # Validators normalize these to canonical componentType values.
-    componentType:
-      health_effects: healthEffects
-      detection_methods: detectionMethods
-      emergency_response: emergencyResponse
-      exposure_guidelines: exposureLimits
-      appearance: appearanceVariations
-      compounds: relatedCompounds
-      settings_description: pageDescription
-      challenges: commonChallenges
+    componentType: {}

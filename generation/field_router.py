@@ -222,7 +222,12 @@ class FieldRouter:
         """
         normalized_field = cls.normalize_field_name(domain, field)
         field_type = cls.get_field_type(domain, field)
-        generator = cls.create_generator(domain, normalized_field, api_client, **kwargs)
+        generator_kwargs = dict(kwargs)
+        if field_type == 'text':
+            generator_kwargs.pop('force_regenerate', None)
+            generator_kwargs.pop('skip_learning_evaluation', None)
+
+        generator = cls.create_generator(domain, normalized_field, api_client, **generator_kwargs)
         
         if field_type == 'text':
             # Text generation

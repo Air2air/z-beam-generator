@@ -124,6 +124,7 @@ class HumannessOptimizer:
             'settings_description', 
             'component_summaries', 
             'faq',
+            'pageTitle',
             'relatedMaterials',
             'contaminatedBy',
             'relatedMaterialsTitle',

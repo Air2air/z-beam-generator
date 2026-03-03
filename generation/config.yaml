@@ -197,6 +197,12 @@ voice_parameters:
   colloquialism_frequency: 0.3           # Base: low casual language (0.0-1.0)
   technical_intensity: 1                 # Base: minimal technical detail (1-3 scale) - reduced jargon
 
+# Prompt compaction settings (fail-fast when missing)
+prompt_compaction:
+  compact_voice_components:
+    - pageTitle
+    - pageDescription
+
 # Centralized domain behavior (no domain-specific branching in code)
 domain_generation:
   materials:
@@ -204,8 +210,7 @@ domain_generation:
       - "page_title"
       - "meta_description"
     length_control:
-      skip_components:
-        - "pageDescription"
+      skip_components: []
     normalize_components:
       - "pageDescription"
     field_mappings:
@@ -218,8 +223,7 @@ domain_generation:
       - "page_title"
       - "meta_description"
     length_control:
-      skip_components:
-        - "pageDescription"
+      skip_components: []
     normalize_components:
       - "pageDescription"
     field_mappings:
@@ -231,8 +235,7 @@ domain_generation:
       - "page_title"
       - "meta_description"
     length_control:
-      skip_components:
-        - "pageDescription"
+      skip_components: []
     normalize_components:
       - "pageDescription"
     field_mappings:
@@ -244,8 +247,7 @@ domain_generation:
       - "page_title"
       - "meta_description"
     length_control:
-      skip_components:
-        - "pageDescription"
+      skip_components: []
     normalize_components:
       - "pageDescription"
     field_mappings:
@@ -257,15 +259,11 @@ domain_generation:
       - "page_title"
       - "meta_description"
     length_control:
-      skip_components:
-        - "pageDescription"
-        - "relatedMaterials"
-        - "contaminatedBy"
-        - "faq"
+      skip_components: []
     normalize_components:
       - "pageDescription"
     field_mappings:
-      pageTitle: "page_title"
+      pageTitle: "pageTitle"
     author_resolution:
       strategy: "direct"
 
@@ -295,9 +293,11 @@ field_router:
       text:
         - "pageDescription"
         - "pageTitle"
-        - "micro"
+        - "faq"
         - "compounds"
+        - "relatedCompounds"
         - "appearance"
+        - "appearanceVariations"
         - "producedByMaterials"
         - "relatedContaminants"
         - "detectionMethods"
@@ -314,29 +314,23 @@ field_router:
       text:
         - "pageDescription"
         - "pageTitle"
-        - "component_summary"
-        - "recommendations"
-        - "challenges"
+        - "machineSettings"
+        - "preventionStrategies"
         - "industryApplications"
         - "commonChallenges"
-        - "operationalConsiderations"
       data: []
     compounds:
       text:
         - "pageDescription"
         - "pageTitle"
-        - "health_effects"
-        - "exposure_guidelines"
-        - "detection_methods"
-        - "first_aid"
-        - "ppe_requirements"
-        - "regulatory_standards"
-        - "producedFromContaminants"
-        - "relatedCompounds"
         - "healthEffects"
         - "exposureLimits"
-        - "ppeRequirements"
+        - "detectionMethods"
         - "emergencyResponse"
+        - "ppeRequirements"
+        - "regulatoryStandards"
+        - "producedFromContaminants"
+        - "relatedCompounds"
         - "storageRequirements"
         - "regulatoryClassification"
         - "reactivity"
@@ -345,6 +339,10 @@ field_router:
       text:
         - "pageTitle"
         - "pageDescription"
+        - "relatedMaterialsTitle"
+        - "relatedMaterials"
+        - "contaminatedByTitle"
+        - "contaminatedBy"
         - "faq"
       data: []
   field_aliases:
@@ -356,14 +354,26 @@ field_router:
       page_description: "pageDescription"
       description: "pageDescription"
       page_title: "pageTitle"
+      compounds: "relatedCompounds"
+      appearance: "appearanceVariations"
     settings:
       page_description: "pageDescription"
       description: "pageDescription"
       page_title: "pageTitle"
+      component_summary: "machineSettings"
+      challenges: "commonChallenges"
+      recommendations: "preventionStrategies"
+      operationalConsiderations: "preventionStrategies"
     compounds:
       page_description: "pageDescription"
       description: "pageDescription"
       page_title: "pageTitle"
+      health_effects: "healthEffects"
+      exposure_guidelines: "exposureLimits"
+      detection_methods: "detectionMethods"
+      first_aid: "emergencyResponse"
+      ppe_requirements: "ppeRequirements"
+      regulatory_standards: "regulatoryStandards"
     applications:
       page_description: "pageDescription"
       description: "pageDescription"
@@ -436,11 +446,20 @@ length_variation_range: 5                # Default 5/10 (50% variation) for back
 # Length Control Settings (NEW - Jan 9, 2026)
 # Smart truncation system for precise word count compliance
 length_control:
-  enable_smart_truncation: true          # Apply smart truncation to meet word targets (100% accuracy)
+  enable_smart_truncation: false         # Disable smart truncation to preserve full generated output
   default_target_words: 50               # Fallback target if no prompt guidance found
   tolerance: 0.1                         # Allow 10% overage before aggressive truncation
   preserve_sentences: true               # Prefer sentence boundaries when truncating
   log_truncation: true                   # Display truncation statistics in terminal
+
+# Length Gate Settings (NEW - Mar 3, 2026)
+# Default retry gate to enforce prompt length before other validations
+length_gate:
+  enabled: true
+  max_attempts: 3
+  fail_on_max_attempts: true
+  min_factor: 0.7
+  max_factor: 1.3
 
 # Temperature Variation Range (NEW - Dec 12, 2025)
 # Adds randomness to base temperature for each generation

@@ -35,10 +35,10 @@ The Compounds domain contains comprehensive hazardous chemical data for 20 compo
 
 ### Content Fields (To Be Generated)
 - **description**: Compound description (null until generated)
-- **health_effects**: Health effects description (null until generated)
-- **exposure_guidelines**: Exposure guidelines (null until generated)
-- **detection_methods**: Detection methods (null until generated)
-- **first_aid**: First aid procedures (null until generated)
+- **healthEffects**: Health effects description (null until generated)
+- **exposureLimits**: Exposure guidance and limits (null until generated)
+- **detectionMethods**: Detection methods (null until generated)
+- **emergencyResponse**: Emergency and first-response procedures (null until generated)
 
 ---
 
@@ -57,7 +57,7 @@ Personal protective equipment guidance for safe handling.
 
 **Example** (Formaldehyde):
 ```yaml
-ppe_requirements:
+ppeRequirements:
   respiratory: "Full-face NIOSH-approved respirator with formaldehyde cartridges for <0.75 ppm. SCBA >0.75 ppm."
   skin: "Nitrile or butyl rubber gloves (>8hr breakthrough). Chemical-resistant suit for high exposure."
   eye: "Chemical safety goggles or full-face respirator. Face shield for splash."

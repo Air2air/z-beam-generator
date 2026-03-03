@@ -66,6 +66,10 @@ jobs:
     - name: Validate prompt source centralization
       run: |
         python3 scripts/validation/validate_prompt_source_centralization.py
+
+    - name: Validate field contract parity
+      run: |
+        python3 scripts/validation/validate_field_contract_parity.py --all-domains
     
     - name: Run comprehensive validation
       id: validation

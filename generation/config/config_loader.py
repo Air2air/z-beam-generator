@@ -17,6 +17,10 @@ import os
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+from generation.config.text_field_config_service import (
+    load_text_field_config,
+    resolve_text_field_name,
+)
 from shared.utils.yaml_utils import load_yaml
 
 logger = logging.getLogger(__name__)
@@ -49,28 +53,14 @@ class ProcessingConfig:
     def _load_text_field_config(self) -> Dict[str, Any]:
         """Load centralized text field configuration."""
         if self._text_field_config is None:
-            config_path = Path(__file__).parent.parent / "text_field_config.yaml"
-            if not config_path.exists():
-                raise FileNotFoundError(
-                    f"Text field config not found: {config_path}. "
-                    "Expected location: generation/text_field_config.yaml"
-                )
-
-            config = load_yaml(config_path)
-            if not isinstance(config, dict):
-                raise ValueError("Text field config must contain a YAML dictionary")
-
-            self._text_field_config = config
+            self._text_field_config = load_text_field_config()
 
         return self._text_field_config
 
     def _resolve_text_field_name(self, component_type: str) -> str:
         """Resolve component aliases to canonical field name."""
         text_cfg = self._load_text_field_config()
-        aliases = text_cfg.get('aliases', {})
-        if aliases and not isinstance(aliases, dict):
-            raise ValueError("Invalid aliases block in generation/text_field_config.yaml")
-        return aliases.get(component_type, component_type)
+        return resolve_text_field_name(component_type, text_cfg)
 
     def _get_text_field_length_spec(self, component_type: str) -> Dict[str, Any]:
         """Get centralized base length spec for a text field name."""
@@ -419,6 +409,36 @@ class ProcessingConfig:
         if not isinstance(value, (int, float)):
             raise ValueError("api.retry_temperature_increase must be numeric")
         return float(value)
+
+    # =========================================================================
+    # LENGTH GATE SETTINGS
+    # =========================================================================
+
+    def get_length_gate_config(self) -> Dict[str, Any]:
+        """Get length gate configuration (retry-before-validation)."""
+        gate = self._require_value('length_gate', dict)
+        enabled = self._require_value('length_gate.enabled', bool)
+        max_attempts = self._require_value('length_gate.max_attempts', int)
+        fail_on_max_attempts = self._require_value('length_gate.fail_on_max_attempts', bool)
+        min_factor = self._require_value('length_gate.min_factor')
+        max_factor = self._require_value('length_gate.max_factor')
+
+        if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
+            raise ValueError("length_gate.min_factor and length_gate.max_factor must be numeric")
+        if min_factor <= 0 or max_factor <= 0 or min_factor > max_factor:
+            raise ValueError(
+                f"Invalid length_gate range: min_factor={min_factor}, max_factor={max_factor}"
+            )
+        if max_attempts < 1:
+            raise ValueError("length_gate.max_attempts must be >= 1")
+
+        return {
+            'enabled': enabled,
+            'max_attempts': max_attempts,
+            'fail_on_max_attempts': fail_on_max_attempts,
+            'min_factor': float(min_factor),
+            'max_factor': float(max_factor)
+        }
     
     # =========================================================================
     # COMPONENT EXTRACTION STRATEGIES

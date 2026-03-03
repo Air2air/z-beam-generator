@@ -9,7 +9,12 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Optional
 
-import yaml
+from generation.config.text_field_config_service import (
+    load_text_field_config,
+    resolve_base_length,
+    resolve_extraction_strategy,
+    resolve_text_field_name,
+)
 from shared.text.utils.prompt_registry_service import PromptRegistryService
 
 
@@ -57,23 +62,7 @@ class ComponentRegistry:
     def _load_text_field_config(cls) -> Dict:
         """Load centralized text field config from generation/text_field_config.yaml."""
         if cls._text_field_config is None:
-            project_root = Path(__file__).parent.parent.parent.parent
-            config_path = project_root / 'generation' / 'text_field_config.yaml'
-
-            if not config_path.exists():
-                config_path = Path('generation') / 'text_field_config.yaml'
-
-            if not config_path.exists():
-                raise FileNotFoundError(
-                    f"Text field config not found: {config_path}. "
-                    "Cannot resolve text field lengths without centralized config."
-                )
-
-            with open(config_path, 'r', encoding='utf-8') as file_handle:
-                cls._text_field_config = yaml.safe_load(file_handle)
-
-            if not isinstance(cls._text_field_config, dict):
-                raise ValueError("generation/text_field_config.yaml must contain a YAML dictionary")
+            cls._text_field_config = load_text_field_config()
 
         return cls._text_field_config
     
@@ -85,36 +74,24 @@ class ComponentRegistry:
         """
         config = cls._load_text_field_config()
 
-        defaults = config.get('defaults')
-        if not isinstance(defaults, dict):
-            raise ValueError("Missing required 'defaults' block in generation/text_field_config.yaml")
-
         fields_cfg = config.get('fields')
         if not isinstance(fields_cfg, dict):
             raise ValueError("Missing required fields block in generation/text_field_config.yaml")
 
-        if component_type not in fields_cfg:
+        field_name = resolve_text_field_name(component_type, config)
+        if field_name not in fields_cfg:
             raise ValueError(
-                f"Missing field '{component_type}' under fields in generation/text_field_config.yaml"
+                f"Missing field '{field_name}' under fields in generation/text_field_config.yaml"
             )
 
-        field_cfg = fields_cfg.get(component_type) or {}
+        field_cfg = fields_cfg.get(field_name) or {}
         if not isinstance(field_cfg, dict):
             raise ValueError(
-                f"Invalid field config for '{component_type}' in generation/text_field_config.yaml"
+                f"Invalid field config for '{field_name}' in generation/text_field_config.yaml"
             )
 
-        default = field_cfg.get('base_length', defaults.get('base_length'))
-        extraction_strategy = field_cfg.get('extraction_strategy', defaults.get('extraction_strategy'))
-
-        if not isinstance(default, int) or default <= 0:
-            raise ValueError(
-                f"Invalid base_length for '{component_type}': {default}"
-            )
-        if not isinstance(extraction_strategy, str) or not extraction_strategy:
-            raise ValueError(
-                f"Invalid extraction_strategy for '{component_type}': {extraction_strategy}"
-            )
+        default = resolve_base_length(field_name, fallback_length=100, text_field_config=config)
+        extraction_strategy = resolve_extraction_strategy(field_name, text_field_config=config)
 
         return {
             'default': default,

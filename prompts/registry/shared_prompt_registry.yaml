@@ -1,15 +1,127 @@
 schemaVersion: 1.0.0
 
 shared_core_prompts:
+  textPromptCoreOrder:
+    - objective
+    - voice_compliance
+    - anti_formulaic
+    - field_variation
+    - scope_and_format
+    - length_compliance
+  textPromptCoreSections:
+    objective: Keep output concise, concrete, and practitioner-useful.
+    voice_compliance: Apply injected voice instructions exactly as provided.
+    anti_formulaic: Avoid filler, vague claims, and repetitive transitions.
+    field_variation: Vary openings and sentence cadence across fields for the same item.
+    scope_and_format: Keep scope aligned to the requested field; output plain prose unless a format is required.
+    length_compliance: Treat any explicit length-range instruction as mandatory; count words and rewrite until within range.
   textPromptCore: |-
-   GLOBAL TEXT GENERATION CORE (REUSABLE)
-   - Keep output concise, concrete, and directly useful for practitioners.
-   - Use the injected voice instructions exactly as provided for author authenticity.
-   - Avoid generic filler, vague claims, and repetitive transition clichés.
-   - Prefer clear sentence flow with varied rhythm and natural phrasing.
-   - Keep scope aligned to the requested field intent only.
-   - Output plain prose unless an explicit output format section requires labels.
+    GLOBAL TEXT GENERATION CORE (REUSABLE)
+    - Keep output concise, concrete, and practitioner-useful.
+    - Apply injected voice instructions exactly as provided.
+    - Avoid filler, vague claims, and repetitive transitions.
+    - Vary openings and sentence cadence across fields for the same item.
+    - Keep scope aligned to the requested field; output plain prose unless a format is required.
+    - Treat any explicit length-range instruction as mandatory; count words and rewrite until within range.
+  opening_style_bank:
+    - contrast statement
+    - operational constraint
+    - cause and effect
+    - failure mode
+    - case snapshot
+    - definition then implication
+    - counterintuitive result
   humanness:
+   fullOrder:
+    - header
+    - structural_targets
+    - banned_patterns
+    - opening_diversity
+    - learned_signals
+    - rejection_guardrails
+    - ai_tendency_block
+    - footer
+   fullSections:
+    header: |-
+      === HUMANNESS OPTIMIZATION LAYER ===
+      (Dynamically generated from learned patterns)
+    structural_targets: |-
+      🎲 **STRUCTURAL VARIATION REQUIRED** 🎲
+      • **LENGTH**: {selected_length} words
+      • **STRUCTURE**: {selected_structure}
+      • **RHYTHM**: {selected_rhythm}
+      • **APPROACH**: {selected_property_strategy}
+      • **WARNING STYLE**: {selected_warning}
+    banned_patterns: |-
+      ❌ **AVOID THESE AI PATTERNS**:
+      • Starting with "[Material]'s..." or "[Material] is..." (100% AI detection)
+      • Academic transitions: "Furthermore", "Moreover", "Additionally"
+      • Passive voice: "can be seen", "is observed", "presents challenges"
+      • Perfect parallel structures or uniform sentence lengths
+      • **REPEATING THE SAME OPENING** across multiple fields (low variation detected)
+      
+      🚫 **OVERUSED PATTERNS - DO NOT USE**:
+      {overused_opening_patterns}
+    opening_diversity: |-
+      **CRITICAL REQUIREMENT**: Each field in this generation session MUST use a DIFFERENT opening structure.
+      If you just wrote "When laser cleaning [material]...", you CANNOT start the next field with the same pattern.
+      VARY YOUR STRUCTURE across all fields generated in this batch.
+
+      **NOTE**: Voice and tone come from VOICE INSTRUCTIONS above.
+      This section provides structural variation ONLY.
+    learned_signals: |-
+      **LEARNED PATTERNS** ({passing_sample_count} verified samples):
+      {winston_success_patterns}
+
+      **AVOID THESE PHRASES** ({total_evaluations} evaluations):
+      {theatrical_phrases_list}
+
+      **CONVERSATIONAL MARKERS**:
+      {conversational_markers}
+
+      **STRUCTURAL DIVERSITY** ({structural_sample_count} verified patterns):
+      {successful_structural_patterns}
+    rejection_guardrails: |-
+      🎯 **STRUCTURAL VARIATION ENFORCEMENT**:
+      If generating multiple fields in one session:
+      • Field 1: Use opening structure A
+      • Field 2: Use DIFFERENT opening structure B  
+      • Field 3: Use DIFFERENT opening structure C
+      NEVER repeat the same opening pattern across fields in the same generation session.
+
+      **THEATRICAL PHRASES - NEVER USE** (MANDATORY EXCLUSION):
+      {theatrical_phrases_list}
+
+      ❌ **YOU WILL BE REJECTED IF YOU USE ANY OF THESE PHRASES** ❌
+      These patterns trigger AI detection and automatic rejection.
+      Rewrite any sentence that contains these phrases.
+    ai_tendency_block: |-
+      **AI PATTERNS TO ACTIVELY AVOID** (from {total_evaluations} subjective evaluations):
+      {subjective_ai_tendencies}
+    footer: |-
+      === END HUMANNESS LAYER ===
+   compactOrder:
+    - header
+    - targets
+    - requirements
+    - footer
+   compactSections:
+    header: |-
+      === HUMANNESS COMPACT LAYER ===
+      (Structural variation only; voice comes from persona instructions)
+    targets: |-
+      Apply these targets for this generation:
+      - LENGTH GUIDELINE: {selected_length}
+      - STRUCTURAL APPROACH: {selected_structure}
+      - SENTENCE RHYTHM: {selected_rhythm}
+    requirements: |-
+      Requirements:
+      - Vary sentence openings naturally.
+      - Avoid formulaic transitions and repeated templates.
+      - Keep phrasing practical and specific to the item context.
+      - Do not output headings, labels, or wrapper text.
+    footer: |-
+      === END HUMANNESS COMPACT LAYER ===
    full: |-
     === HUMANNESS OPTIMIZATION LAYER ===
     (Dynamically generated from learned patterns)
@@ -85,6 +197,140 @@ shared_core_prompts:
 
     === END HUMANNESS COMPACT LAYER ===
   quality:
+   evaluationOrder:
+    - role_and_mindset
+    - task_and_content
+    - criteria_core
+    - instant_rejection
+    - subtle_ai_tells
+    - technical_jargon_overload
+    - human_authenticity_markers
+    - scoring_dimensions
+    - grading_policy
+    - threshold
+    - response_format
+   evaluationSections:
+    role_and_mindset: |-
+      You are an UNCOMPROMISING content evaluator with expert-level detection of AI-generated text. Your mission: identify ANY nuance that reveals non-human writing patterns.
+
+      **CRITICAL MINDSET**: Assume synthetic generation until proven otherwise. Look for subtle tells, pattern repetitions, unnatural flow, or formulaic structures that human experts would never write.
+    task_and_content: |-
+      Evaluate this {component_type} for {material_name}: Could a human technical expert with 10+ years experience have written this?
+
+      CONTENT:
+      {content}
+
+      ---
+    criteria_core: |-
+      **HYPER-CRITICAL ASSESSMENT CRITERIA**:
+
+      **EVIDENCE STANDARD (STRICT + CALIBRATED)**:
+      - Weight strong, repeated, and interacting signals above isolated weak cues
+      - Do NOT fail solely on one generic transition word or one polished sentence
+      - Escalate quickly when multiple AI indicators co-occur in the same passage
+
+      **REQUIRED - Authentic Materials Scientist Documentation**:
+      - Expert documenting real-world observations (NO promotional language)
+      - Varied sentence structure reflecting natural thought (NO formulaic patterns)
+      - Technical precision with natural imperfections (NO robotic perfection)
+      - Confident assertions without hedging (NO "can provide", "offers benefits")
+      - Direct statements of fact (NO introductory clauses like "When it comes to...")
+    instant_rejection: |-
+      **INSTANT REJECTION - Critical Signals**:
+      {theatrical_phrases}
+
+      **REJECTION THRESHOLD RULE**:
+      - Immediate reject for any theatrical phrase match above
+      - Immediate reject for strong multi-signal clustering (3+ strong tells in one short passage)
+      - Single weak tell alone is insufficient; require corroborating evidence
+
+      **AI DETECTION - Scrutinize for These Patterns**:
+      {ai_tendencies}
+    subtle_ai_tells: |-
+      **SUBTLE AI TELLS TO CATCH**:
+      - **Perfect parallel structures**: Three items listed in identical format
+      - **Balanced sentence lengths**: Suspiciously even distribution
+      - **Transitional overuse**: "Additionally", "Furthermore", "Moreover" patterns
+      - **Abstract noun stacking**: "Optimization of precision enhancement capabilities"
+      - **Hedge words**: "various", "numerous", "range of", "variety of"
+      - **Generic intensifiers**: "highly", "extremely", "significantly" without specifics
+      - **Listitis**: Bullet points or comma lists instead of flowing prose
+      - **Opening pattern repetition**: Multiple sentences starting the same way
+      - **Corporate passive voice**: "is achieved", "can be obtained", "is facilitated"
+      - **Unnatural precision**: Suspiciously exact technical claims without context
+      - **Symmetry obsession**: Perfectly balanced paragraph structures
+      - **Evidence rule**: Count as strong only when pattern recurs or combines with other tells
+    technical_jargon_overload: |-
+      **TECHNICAL JARGON OVERLOAD** (INSTANT REJECTION):
+      - **Excessive precise measurements**: Multiple decimal places (0.95, 0.06, 933.47) in one sentence
+      - **Wavelength citations**: "at 1064 nm", "532 nm laser" without context
+      - **Scientific paper language**: "presents a primary challenge", "requires precise control"
+      - **Physics textbook tone**: Reading like academic literature, not practical guidance
+      - **Property bombardment**: Listing multiple technical specs without practical application
+      - **Temperature in Kelvin**: Using K instead of °C/°F (too academic)
+      - **Abstract technical phrases**: "energy density control", "absorption coefficient optimization"
+      - **Missing practical context**: Technical facts without "what to DO about it"
+    human_authenticity_markers: |-
+      **HUMAN AUTHENTICITY MARKERS** (rare - demand strong evidence):
+      - Genuine stylistic quirks and natural imperfections
+      - Unpredictable sentence rhythm (NOT formulaic variation)
+      - Expert confidence with casual precision (NOT formal hedging)
+      - Natural flow between ideas (NOT mechanical transitions)
+      - Real human thinking patterns (NOT algorithmic organization)
+      - **Practical guidance dominates**: More "do this" than "this is"
+      - **Conversational technical**: Expert explaining, not academic documenting
+
+      ---
+    scoring_dimensions: |-
+      **EVALUATE SIX DIMENSIONS (0-10 scale - BE HARSH):**
+
+      1. **Voice Authenticity**: Could a real human expert have this exact voice?
+        - 9-10: Convincingly human quirks | 7-8: Subtle authenticity | 5-6: Generic competence | 3-4: Template-like | 0-2: Algorithmic
+
+      2. **Tonal Consistency**: Natural expert voice OR artificial consistency?
+        - 9-10: Genuine human variation | 7-8: Believable steadiness | 5-6: Too perfect | 3-4: Mechanical | 0-2: Robotic
+
+      3. **Technical Accessibility**: Practical guidance vs academic documentation?
+        - 9-10: Expert explaining naturally | 7-8: Mostly practical | 5-6: Some jargon overload | 3-4: Textbook-like | 0-2: Physics paper
+
+      4. **Natural Imperfection**: Human quirks vs algorithmic perfection?
+        - 9-10: Genuine human variability | 7-8: Some natural flow | 5-6: Suspiciously polished | 3-4: Too symmetric | 0-2: Machine perfect
+
+      5. **Conversational Flow**: Natural thinking vs template structure?
+        - 9-10: Unpredictable human flow | 7-8: Mostly natural | 5-6: Some formulaic patterns | 3-4: Template-driven | 0-2: Algorithmic structure
+
+      6. **Overall Realism**: Would you bet $1000 this was written by a human?
+        - 9-10: Absolutely human | 7-8: Probably human | 5-6: Uncertain | 3-4: Likely AI | 0-2: Obviously synthetic
+    grading_policy: |-
+      **GRADING PHILOSOPHY**:
+      - Score 9-10 ONLY if you'd stake your reputation it's human
+      - Score 7-8 ONLY if you see genuine human nuance
+      - Score 5-6 for competent but suspicious content
+      - Score 0-4 if ANY strong AI patterns detected
+      - Isolated weak cues cap confidence but should not force auto-fail by themselves
+      - Repeated weak cues across dimensions should be treated as one strong pattern cluster
+    threshold: |-
+      **PASS THRESHOLD: {realism_threshold}/10 Overall Realism** - Anything below is REJECTED
+
+      ---
+    response_format: |-
+      **RESPONSE FORMAT (EXACT):**
+
+      **Overall Realism (0-10)**: X
+      **Voice Authenticity (0-10)**: X
+      **Tonal Consistency (0-10)**: X
+      **Technical Accessibility (0-10)**: X
+      **Natural Imperfection (0-10)**: X
+      **Conversational Flow (0-10)**: X
+
+      **Reasoning** (briefly cover all dimensions):
+
+      **Technical Jargon Issues**: [list specific examples or "none"]
+      **AI Patterns Found**: [list or "none"]
+      **Theatrical Phrases Found**: [quotes or "none"]
+      **Formulaic Structures**: [describe or "none"]
+
+      **Pass/Fail**: [PASS if ≥{realism_threshold}, FAIL if <{realism_threshold}]
    evaluation: |-
     You are an UNCOMPROMISING content evaluator with expert-level detection of AI-generated text. Your mission: identify ANY nuance that reveals non-human writing patterns.
 
@@ -198,6 +444,8 @@ shared_section_prompt: &shared_section_prompt |-
   Write a context-specific section description focused on THIS ITEM'S challenges as they relate to the section topic.
   Discuss the effects of the section topic (practical impacts, failure modes, or operational consequences).
   Include special considerations that are specific to THIS ITEM in the context of this section topic.
+  Use a different opening structure than the pageDescription and other section descriptions for this item.
+  Mix sentence lengths and avoid mirrored paragraph patterns.
   Keep it concise and concrete at approximately 70-110 words.
   Return plain text only. Do not use labels like "Title:" or "Description:".
 
@@ -244,6 +492,7 @@ section_prompts:
     Describe the before-and-after surface transformation for THIS MATERIAL.
   pageDescription: |
     Describe THIS MATERIAL at page level in concise operationally useful prose.
+    Use a different opening structure than the section descriptions for this item.
     Target approximately 80-110 words.
   machineSettings: *shared_section_prompt
   "operational.laserMaterialInteraction": *shared_section_prompt

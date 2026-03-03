@@ -540,14 +540,36 @@ class PromptValidator:
                     suggestion="Resolve conflicting instructions - AI cannot follow both"
                 ))
         
-        # Check for multiple word count targets
-        word_counts = re.findall(r'(\d+)\s*(?:to|-)?\s*(\d+)?\s*words?', clarity_scan_lower)
-        if len(word_counts) > 1:
+        # Check for conflicting word count targets.
+        # Allow one range + repeated cap phrasing (e.g., "80-120 words" and "Do not exceed 120").
+        range_matches = re.findall(r'(\d+)\s*(?:to|-)\s*(\d+)\s*words?', clarity_scan_lower)
+        range_pairs: set[tuple[int, int]] = set()
+        for low_raw, high_raw in range_matches:
+            low = int(low_raw)
+            high = int(high_raw)
+            if low > high:
+                low, high = high, low
+            range_pairs.add((low, high))
+
+        all_word_numbers = {int(value) for value in re.findall(r'(\d+)\s*words?', clarity_scan_lower)}
+
+        has_conflict = False
+        if len(all_word_numbers) > 1:
+            if len(range_pairs) == 1:
+                only_range = next(iter(range_pairs))
+                allowed_numbers = {only_range[0], only_range[1]}
+                if not all_word_numbers.issubset(allowed_numbers):
+                    has_conflict = True
+            else:
+                has_conflict = True
+
+        if has_conflict:
+            sorted_targets = ', '.join(str(value) for value in sorted(all_word_numbers))
             result.add_issue(ValidationIssue(
                 severity=ValidationSeverity.WARNING,
                 category=ValidationCategory.LOGIC,
-                message=f"Multiple word count targets found ({len(word_counts)})",
-                suggestion="Use ONE word count target to avoid AI confusion"
+                message=f"Conflicting word count targets found ({sorted_targets})",
+                suggestion="Use one coherent target scheme (single range or exact cap)"
             ))
         
         # Check for too many CRITICAL markers

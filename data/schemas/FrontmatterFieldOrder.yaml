@@ -159,7 +159,6 @@ materials:
   
   required_fields:
     - category
-    - formula
 
 # =============================================================================
 # CONTAMINANTS DOMAIN
@@ -221,7 +220,7 @@ compounds:
   required_fields:
     - id
     - name
-    - chemical_formula
+    - chemicalFormula
     - category
     - contentType
     - card
@@ -255,9 +254,6 @@ settings:
   
   required_fields:
     - category
-    - wavelength
-    - type
-    - domain
 
 # =============================================================================
 # APPLICATIONS DOMAIN

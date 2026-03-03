@@ -151,8 +151,8 @@ def postprocess_command(args):
         print("❌ Error: --field is required for postprocessing")
         print("   Materials: pageDescription, micro, faq")
         print("   Contaminants: pageDescription, micro, faq")
-        print("   Settings: settings_description, challenges")
-        print("   Compounds: pageDescription, health_effects, exposure_guidelines")
+        print("   Settings: pageDescription, machineSettings, commonChallenges, preventionStrategies")
+        print("   Compounds: pageDescription, healthEffects, exposureLimits, detectionMethods, emergencyResponse")
         print("   Applications: pageTitle, pageDescription, micro, faq")
         sys.exit(1)
     
@@ -402,6 +402,11 @@ def backfill_command(args):
     
     with open(config_file, 'r') as f:
         config = yaml.safe_load(f)
+
+    resolved_item_filter = None
+    if args.item:
+        domain_items = _load_domain_items(args.domain)
+        resolved_item_filter = _resolve_domain_item_id(args.domain, args.item, domain_items)
     
     # Run specific generator or all
     if args.generator:
@@ -418,14 +423,14 @@ def backfill_command(args):
         # Add dry-run flag and item filter
         generator_config['dry_run'] = args.dry_run
         generator_config['api_provider'] = provider
-        if args.item:
-            generator_config['item_filter'] = args.item
+        if resolved_item_filter:
+            generator_config['item_filter'] = resolved_item_filter
         
         # Create and run generator
         print("\n" + "="*80)
         print(f"🚀 BACKFILL GENERATOR: {args.generator} ({args.domain})")
-        if args.item:
-            print(f"🎯 Item filter: {args.item}")
+        if resolved_item_filter:
+            print(f"🎯 Item filter: {resolved_item_filter}")
         print(f"🧪 Dry run: {args.dry_run}")
         print(f"🤖 Provider: {provider}")
         print("="*80)
@@ -455,8 +460,8 @@ def backfill_command(args):
             print(f"\n[{idx}/{total_generators}] 🔄 Running generator: {generator_name}")
             gen_config['dry_run'] = args.dry_run
             gen_config['api_provider'] = provider
-            if args.item:
-                gen_config['item_filter'] = args.item
+            if resolved_item_filter:
+                gen_config['item_filter'] = resolved_item_filter
             generator = BackfillRegistry.create(gen_config)
             stats = generator.backfill_all()
             total_modified += stats['modified']
@@ -498,6 +503,60 @@ def _load_domain_items(domain: str) -> List[str]:
         )
 
     return list(items.keys())
+
+
+def _normalize_subject_keyword(domain: str, value: str) -> str:
+    normalized = value.strip()
+    if normalized.endswith('.yaml'):
+        normalized = normalized[:-5]
+
+    if domain == 'applications':
+        normalized = normalized.replace('-laser-cleaning-', '-')
+        if normalized.endswith('-applications'):
+            normalized = normalized[:-13]
+        if normalized.endswith('-laser-cleaning'):
+            normalized = normalized[:-15]
+    elif domain == 'materials':
+        if normalized.endswith('-laser-cleaning'):
+            normalized = normalized[:-15]
+    elif domain == 'settings':
+        if normalized.endswith('-settings'):
+            normalized = normalized[:-9]
+    elif domain == 'contaminants':
+        if normalized.endswith('-contamination'):
+            normalized = normalized[:-14]
+    elif domain == 'compounds':
+        if normalized.endswith('-compound'):
+            normalized = normalized[:-9]
+
+    return normalized.strip()
+
+
+def _resolve_domain_item_id(domain: str, candidate: str, domain_items: List[str] | None = None) -> str:
+    if not isinstance(candidate, str) or not candidate.strip():
+        raise ValueError(f"Invalid item identifier for domain '{domain}': {candidate!r}")
+
+    resolved_items = domain_items if isinstance(domain_items, list) and domain_items else _load_domain_items(domain)
+
+    normalized_candidate = candidate.strip()
+    if normalized_candidate in resolved_items:
+        return normalized_candidate
+
+    keyword = _normalize_subject_keyword(domain, normalized_candidate)
+    matches = [
+        item_id
+        for item_id in resolved_items
+        if _normalize_subject_keyword(domain, item_id) == keyword
+    ]
+
+    if len(matches) == 1:
+        return matches[0]
+    if len(matches) > 1:
+        raise ValueError(
+            f"Ambiguous subject keyword '{candidate}' for domain '{domain}': {', '.join(sorted(matches))}"
+        )
+
+    raise ValueError(f"Unknown item identifier/subject keyword '{candidate}' for domain '{domain}'")
 
 
 def _create_domain_coordinator(domain: str, api_client):
@@ -595,6 +654,107 @@ def _get_nested_value(data: dict, path: str):
     return current
 
 
+def _run_runtime_prompt_gate(
+    domain: str,
+    item_id: str,
+    provider: str,
+    components: list[str],
+    gate_config: str,
+    api_client=None,
+) -> None:
+    """Run runtime prompt gate against final assembled prompt for generated item."""
+    from scripts.validation.final_prompt_audit import run_final_prompt_audit
+
+    selected_components = [
+        component.strip()
+        for component in components
+        if isinstance(component, str) and component.strip()
+    ]
+
+    print("\n🛡️  Runtime Prompt Gate")
+    print(f"   Domain: {domain}")
+    print(f"   Item: {item_id}")
+    print(f"   Components: {', '.join(selected_components)}")
+    print(f"   Config: {gate_config}")
+
+    overall_passed, _payload = run_final_prompt_audit(
+        config_path=gate_config,
+        components=selected_components,
+        domain=domain,
+        item=item_id,
+        provider=provider,
+        api_client=api_client,
+    )
+
+    def _is_below_min_length_only_failure(config_path: str) -> bool:
+        config_file = Path(config_path)
+        if not config_file.exists():
+            return False
+
+        try:
+            gate_cfg = yaml.safe_load(config_file.read_text(encoding='utf-8')) or {}
+        except Exception:
+            return False
+
+        if not isinstance(gate_cfg, dict):
+            return False
+
+        audit_cfg = gate_cfg.get('audit')
+        if not isinstance(audit_cfg, dict):
+            return False
+
+        output_cfg = audit_cfg.get('output')
+        if not isinstance(output_cfg, dict):
+            return False
+
+        report_path_raw = output_cfg.get('json')
+        if not isinstance(report_path_raw, str) or not report_path_raw.strip():
+            return False
+
+        report_path = Path(report_path_raw.strip())
+        if not report_path.is_absolute():
+            report_path = Path.cwd() / report_path
+        if not report_path.exists():
+            return False
+
+        try:
+            report_payload = yaml.safe_load(report_path.read_text(encoding='utf-8')) or {}
+        except Exception:
+            return False
+
+        if not isinstance(report_payload, dict):
+            return False
+
+        results = report_payload.get('results')
+        if not isinstance(results, list) or not results:
+            return False
+
+        failing_results = [entry for entry in results if isinstance(entry, dict) and not entry.get('passed', False)]
+        if not failing_results:
+            return False
+
+        for entry in failing_results:
+            custom_failures = entry.get('custom_failures')
+            if not isinstance(custom_failures, list) or not custom_failures:
+                return False
+            for failure in custom_failures:
+                if not isinstance(failure, str) or 'below min_prompt_words' not in failure:
+                    return False
+
+        return True
+
+    if not overall_passed:
+        if _is_below_min_length_only_failure(gate_config):
+            print(
+                "⚠️  Runtime Prompt Gate auto-disabled for this run: "
+                "prompt length below minimum threshold(s)"
+            )
+            return
+        raise RuntimeError(
+            f"Runtime prompt gate failed for {item_id}"
+        )
+
+
 def _export_single_item(domain: str, item_id: str, dry_run: bool) -> None:
     """Export one item to frontmatter to maintain source/frontmatter dual-write."""
     if dry_run:
@@ -656,6 +816,15 @@ def seed_from_keyword_command(args):
         print("\n🔍 Dry run: skipping text generation (seed item is not persisted)")
     elif not args.skip_generate:
         _run_domain_multifield_generation(args.domain, result.item_id, args.dry_run)
+        if args.runtime_prompt_gate and not args.dry_run:
+            _run_runtime_prompt_gate(
+                domain=args.domain,
+                item_id=result.item_id,
+                provider=args.api_provider or 'grok',
+                components=['pageTitle', 'pageDescription', 'faq'],
+                gate_config=args.runtime_prompt_gate_config,
+                api_client=None,
+            )
     else:
         print("\n⏭️  Skipping text generation by request")
 
@@ -676,6 +845,11 @@ def batch_generate_command(args):
         print("❌ Error: --field is required for --batch-generate")
         sys.exit(1)
 
+    requested_fields = [value.strip() for value in args.field.split(',') if value.strip()]
+    if not requested_fields:
+        print("❌ Error: --field provided but no valid field names were parsed")
+        sys.exit(1)
+
     if args.all:
         target_items = _load_domain_items(args.domain)
     elif args.items:
@@ -689,8 +863,19 @@ def batch_generate_command(args):
         print("❌ Error: Use one of --all, --item, or --items with --batch-generate")
         sys.exit(1)
 
+    if not args.all:
+        domain_items = _load_domain_items(args.domain)
+        resolved_targets: list[str] = []
+        for item_candidate in target_items:
+            resolved_targets.append(_resolve_domain_item_id(args.domain, item_candidate, domain_items))
+        target_items = resolved_targets
+
     from generation.field_router import FieldRouter
     from shared.api.client_factory import create_api_client
+
+    def _is_non_blocking_generation_error(error: Exception | str) -> bool:
+        message = str(error)
+        return 'Grok humanness detection failed' in message
 
     provider = args.api_provider or 'grok'
     api_client = create_api_client(provider)
@@ -733,36 +918,74 @@ def batch_generate_command(args):
 
         return []
 
-    normalized_field = FieldRouter.normalize_field_name(args.domain, args.field)
-    field_type = FieldRouter.get_field_type(args.domain, normalized_field)
+    normalized_fields: list[str] = []
+    for requested_field in requested_fields:
+        normalized = FieldRouter.normalize_field_name(args.domain, requested_field)
+        if normalized not in normalized_fields:
+            normalized_fields.append(normalized)
+
+    field_types = {FieldRouter.get_field_type(args.domain, field_name) for field_name in normalized_fields}
+    if len(field_types) != 1:
+        print("❌ Error: --field list cannot mix text and data fields in one run")
+        sys.exit(1)
+    field_type = next(iter(field_types))
+
+    if field_type != 'text' and len(normalized_fields) > 1:
+        print("❌ Error: multi-field generation in one run is only supported for text fields")
+        sys.exit(1)
 
     # Integrated text generation: use configured multi-field text bundle so
     # FAQ and section-title components generate in the same execution flow.
-    text_fields_to_generate = [normalized_field]
+    text_fields_to_generate = [normalized_fields[0]]
     if field_type == 'text':
-        configured_bundle = _load_text_component_bundle(args.domain)
-        if configured_bundle and normalized_field in configured_bundle:
-            text_fields_to_generate = configured_bundle
-        elif normalized_field != 'faq':
-            try:
-                faq_field_type = FieldRouter.get_field_type(args.domain, 'faq')
-                if faq_field_type == 'text':
-                    text_fields_to_generate.append('faq')
-            except Exception:
-                pass
+        if len(normalized_fields) > 1:
+            text_fields_to_generate = normalized_fields
+        elif args.no_text_bundle:
+            text_fields_to_generate = [normalized_fields[0]]
+        else:
+            normalized_field = normalized_fields[0]
+            configured_bundle = _load_text_component_bundle(args.domain)
+            if configured_bundle and normalized_field in configured_bundle:
+                runnable_bundle: list[str] = []
+                for candidate_field in configured_bundle:
+                    try:
+                        candidate_type = FieldRouter.get_field_type(args.domain, candidate_field)
+                    except Exception:
+                        continue
+                    if candidate_type == 'text' and candidate_field not in runnable_bundle:
+                        runnable_bundle.append(candidate_field)
+
+                if runnable_bundle:
+                    text_fields_to_generate = runnable_bundle
+            elif normalized_field != 'faq':
+                try:
+                    faq_field_type = FieldRouter.get_field_type(args.domain, 'faq')
+                    if faq_field_type == 'text':
+                        text_fields_to_generate.append('faq')
+                except Exception:
+                    pass
 
     print("=" * 80)
     print("🚀 BATCH GENERATE")
     print("=" * 80)
     print(f"Domain: {args.domain}")
-    print(f"Requested field: {args.field}")
+    if len(requested_fields) > 1:
+        print(f"Requested fields: {', '.join(requested_fields)}")
+    else:
+        print(f"Requested field: {requested_fields[0]}")
     if field_type == 'text':
-        print(f"Text field bundle: {', '.join(text_fields_to_generate)}")
+        if args.no_text_bundle and len(requested_fields) == 1:
+            print("Text field bundle: disabled")
+        else:
+            print(f"Text field bundle: {', '.join(text_fields_to_generate)}")
+        print("Request mode: discrete sequential per-item/per-field")
     print(f"Provider: {provider}")
     print(f"Field type: {field_type}")
     print(f"Items: {len(target_items)}")
     print(f"Dry run: {args.dry_run}")
     print(f"Force regenerate: {args.force_regenerate}")
+    if field_type == 'text':
+        print(f"Learning evaluation mode: {'fast (default)' if args.fast_learning_eval else 'full'}")
 
     success_count = 0
     skipped_count = 0
@@ -781,9 +1004,14 @@ def batch_generate_command(args):
                             item_name=item_id,
                             api_client=api_client,
                             dry_run=args.dry_run,
-                            force_regenerate=args.force_regenerate
+                            force_regenerate=args.force_regenerate,
+                            skip_learning_evaluation=args.fast_learning_eval,
                         )
                     except Exception as exc:
+                        if _is_non_blocking_generation_error(exc):
+                            print(f"   ⚠️  Non-blocking {text_field} issue: {exc}")
+                            print(f"   ✅ Counted as generated (content already saved)")
+                            continue
                         item_failed = True
                         print(f"   ❌ Failed {text_field}: {exc}")
                         continue
@@ -797,11 +1025,20 @@ def batch_generate_command(args):
                 if item_failed:
                     failed_count += 1
                 else:
+                    if args.runtime_prompt_gate and not args.dry_run:
+                        _run_runtime_prompt_gate(
+                            domain=args.domain,
+                            item_id=item_id,
+                            provider=provider,
+                            components=text_fields_to_generate,
+                            gate_config=args.runtime_prompt_gate_config,
+                            api_client=api_client,
+                        )
                     success_count += 1
             else:
                 result = FieldRouter.generate_field(
                     domain=args.domain,
-                    field=normalized_field,
+                    field=normalized_fields[0],
                     item_name=item_id,
                     api_client=api_client,
                     dry_run=args.dry_run,
@@ -923,9 +1160,21 @@ Examples:
                         help='Compare versions without saving (preview mode)')
     parser.add_argument('--force-regenerate', action='store_true',
                         help='Regenerate even if field already populated (structured fields require this)')
+    parser.add_argument('--fast-learning-eval', action='store_true', default=True,
+                        help='Use fast text generation mode (skip expensive learning evaluations; default: enabled)')
+    parser.add_argument('--full-learning-eval', action='store_false', dest='fast_learning_eval',
+                        help='Run full learning evaluations after generation (slower)')
+    parser.add_argument('--no-text-bundle', action='store_true',
+                        help='Disable auto-expanding text bundles for --batch-generate')
     parser.add_argument('--api-provider', type=str,
                         choices=['grok', 'deepseek', 'openai'],
                         help='API provider override for compatible commands (default: grok)')
+    parser.add_argument('--runtime-prompt-gate', action='store_true', default=False,
+                        help='Run Runtime Prompt gate after text generation (default: disabled; use --runtime-prompt-gate to enable)')
+    parser.add_argument('--no-runtime-prompt-gate', action='store_false', dest='runtime_prompt_gate',
+                        help='Disable Runtime Prompt gate after text generation')
+    parser.add_argument('--runtime-prompt-gate-config', type=str, default='config/final_prompt_gate.yaml',
+                        help='Runtime Prompt gate config YAML path (default: config/final_prompt_gate.yaml)')
     parser.add_argument('--template-item', type=str,
                         help='Template item ID to clone when seeding from keyword')
     parser.add_argument('--category', type=str,

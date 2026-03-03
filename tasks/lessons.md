@@ -1,5 +1,147 @@
 # Lessons Learned
 
+- 2026-03-03: Runtime prompt gate subprocess execution and duplicated text-field config loaders added avoidable latency and policy drift risk. → Rule: run final prompt audit in-process with shared client context and resolve text-field config through one shared accessor used by both prompt builder and component specs.
+
+- 2026-03-03: A single length instruction can still trigger duplicate word-target warnings when validator regex counts both range and hard-limit `... words` phrases. → Rule: emit one numeric `... words` target and keep hard-limit phrasing numeric without repeating `words`.
+
+- 2026-03-03: Runtime prompt gate currently re-runs prompt assembly and initializes a separate API client path, which adds measurable latency per item. → Rule: prioritize in-process runtime gate execution with shared generator/client reuse to cut duplicate startup and prompt-build overhead.
+
+- 2026-03-03: Per-field length governance should be resolved once in shared prompt build path, not inferred separately from component defaults and prompt text. → Rule: resolve base length from centralized text-field config (exact key → alias → nested suffix), then inject one authoritative WORD LENGTH instruction.
+
+- 2026-03-03: Centralized base-length values must match field intent; stale short defaults can force repeated length-gate failures after config-driven enforcement is enabled. → Rule: calibrate `generation/text_field_config.yaml` base lengths for long-form fields (for example `pageDescription`) before enabling strict config-driven limits.
+
+- 2026-03-03: Layering descriptor + fully-specified field prompts + optimizer prompt can duplicate guidance and bloat prompts without improving intent. → Rule: apply conservative runtime dedup (skip redundant descriptor for already-specific field prompts and remove optimizer lines already present in base prompt).
+
+- 2026-03-03: Embedding WORD LENGTH/HARD LIMIT text in domain field prompts conflicts with centralized dynamic length policy and creates competing target warnings. → Rule: keep field prompts free of hardcoded length directives and let centralized dynamic length instructions drive word-count enforcement.
+
+- 2026-03-03: Runtime-gate validation can be invalidated by bundled companion fields failing unrelated gates (for example FAQ length) during `--batch-generate`. → Rule: use `--no-text-bundle` when validating one field’s quality-gate behavior.
+
+- 2026-03-03: Unquoted YAML scalars containing `: ` in config text values can break all generation paths with parser errors. → Rule: quote instruction strings with embedded colons in canonical YAML config files.
+
+- 2026-03-03: Hyper-strict evaluator prompts can over-penalize isolated weak signals and increase false positives. → Rule: keep hard-fail triggers for critical patterns, but require corroborating evidence or recurrence for weak AI tells.
+
+- 2026-03-03: Large quality-evaluation prompts are fragile when role, criteria, scoring, and output format live in one block. → Rule: split evaluator prompts into ordered concern-specific sections in the shared registry and compose them centrally with fail-fast section validation.
+
+- 2026-03-03: Large humanness templates become brittle when structure, bans, and enforcement are edited in one block. → Rule: store humanness guidance as ordered concern-specific sections (targets, bans, diversity, guardrails) and compose centrally with fail-fast validation.
+
+- 2026-03-03: Monolithic shared prompt text mixes responsibilities and makes targeted tuning risky. → Rule: split shared prompt guidance into ordered concern-specific blocks (objective, voice, anti-formulaic, variation, scope, length) and compose centrally at runtime.
+
+- 2026-03-03: Random variation can still look repetitive when pattern selection is purely independent per field. → Rule: use domain-scoped shuffled pattern cycles with no adjacent repeats, and drive pattern bands from centralized config.
+
+- 2026-03-03: Using identical broad WORD LENGTH ranges across related long-form fields compresses real output variation and yields near-equal field lengths. → Rule: assign field-specific length bands (for example long/medium/short tiers) in domain text prompts when cross-field variation is a requirement.
+
+- 2026-03-03: Non-canonical task/script entrypoints can drift from canonical runtime defaults and silently reintroduce latency regressions. → Rule: pass explicit runtime-gate mode flags (`--no-runtime-prompt-gate` for speed paths, `--runtime-prompt-gate` for audit paths) in every automated run command.
+
+- 2026-03-02: Applications text-bundle generation writing `pageTitle` into legacy `page_title` can override canonical `pageTitle` during export and preserve markdown-heading artifacts in frontmatter. → Rule: keep `pageTitle` writes canonical in domain field mappings, normalize title leaves at save time, and avoid parallel regenerate/export runs for the same item.
+
+- 2026-03-02: Length variation could repeat across field changes when a seed is reused in the same generator instance. → Rule: ensure each generation call uses a fresh variation seed so length randomization differs per field.
+- 2026-03-02: Applications pageDescription was being over-truncated because length_control skip_components omitted it for that domain. → Rule: keep domain_generation.length_control.skip_components aligned across domains for short-form fields like pageDescription.
+
+- 2026-03-03: Duplicated text-leaf normalization logic across save/sync/backfill/export paths causes drift and inconsistent bug fixes. → Rule: centralize text-leaf coercion and wrapper cleanup in one shared helper, then keep any path-specific post-processing (for example domain adapter punctuation cleanup) explicit at call sites.
+
+- 2026-03-03: Backfill configs can lag expanded content-generation policy and leave text fields ungenerated. → Rule: when updating text-field policy, immediately sync `generation/backfill/config/*.yaml` and re-run a per-domain coverage check before declaring completion.
+
+- 2026-03-03: Prompt word-length ranges were parsed as the minimum, causing over-truncation when enforcement was enabled. → Rule: when parsing `WORD LENGTH: X-Y` ranges, enforce the upper bound for truncation and track both min/max for compliance.
+
+- 2026-03-03: Truncation toggles must align with prompt-driven word-count expectations to avoid silent length drift. → Rule: when disabling truncation, strengthen prompt wording and add explicit length-compliance checks in the workflow before declaring success.
+
+- 2026-03-03: Structural variation guidance is ineffective if it is only global text and not field-specific. → Rule: select per-item opening styles from a shared bank and inject them directly into each field prompt to prevent repeated openings.
+
+- 2026-03-03: Removing policy gates in one governance doc can leave conflicting enforcement language in companion docs and agent instructions. → Rule: when changing repository governance policy, update all linked policy surfaces (`.github/PROTECTED_FILES.md`, enforcement docs, and assistant instruction docs) in the same batch and verify with targeted grep.
+
+- 2026-03-02: Frontmatter section metadata can carry structured objects for `sectionDescription`, which crashes UI code that blindly calls string methods (`trim`). → Rule: normalize section title/description inputs in shared render components to safely accept both plain strings and structured payloads, extracting nested `description` text when present.
+
+- 2026-03-02: "Fast" generation mode can still feel slow if only subjective evaluation is skipped while Grok humanness detection remains enabled. Rule: when `skip_learning_evaluation` is true, bypass all expensive post-save learning evaluators (including Grok humanness detection) to preserve expected fast-path latency.
+
+- 2026-03-02: Contract tests lose enforcement value when they are runnable but not included in the canonical gate. Rule: any new cross-domain contract test must be added to `scripts/validation/validate_canonical_pipeline.py` in the same change.
+
+- 2026-03-02: Full-page text generation field lists can drift silently when backfill config edits are not explicitly tested. Rule: enforce per-domain full-page `multi_field_text.fields` lists with an automated contract test that fails on any list/order drift.
+
+- 2026-03-02: Section-title autofill can silently fail when generator code assumes a non-existent schema wrapper or wrong field nesting (e.g., `display.sectionTitle`) instead of canonical `sections.<component>.sectionTitle`. Rule: read schema from canonical root keys and validate title extraction with a direct nested-field smoke check after changes.
+
+- 2026-03-02: Runtime length-control fallback can break generation if a wrapper class references config attributes that exist only on nested generator instances. Rule: when adding fallback config lookups in wrapper generators, resolve through the actual owner object (for example `self.generator.processing_config`) and verify with a real generation smoke run.
+
+- 2026-03-03: Field parity validators can produce false failures when compatibility keys are excluded from required checks but still counted as extras. Rule: apply compatibility allowlists symmetrically to both missing and extra prompt-field parity calculations.
+
+- 2026-03-02: Section metadata parity can silently drift when router/backfill contracts add `_section.sectionDescription` paths without mirrored `_section.sectionTitle` prompt keys and validator coverage. Rule: enforce paired `_section.sectionTitle` keys in all `domains/*/prompts/text_prompt.yaml`, wire the check into `validate_text_contract_artifact.py`, and keep backfill/schema contracts synchronized in the same patch.
+
+- 2026-03-02: Router kwargs forwarding can break text generation when runtime-only flags are passed into generator constructors. Rule: strip runtime generate-only kwargs (for example `skip_learning_evaluation`) before `FieldRouter.create_generator(...)` and pass them only to `generator.generate(...)`.
+
+- 2026-03-02: Description-length tuning requests can miss equivalent naming variants (`pageDescription`, `page_description`, and section-description variants), leaving inconsistent runtime behavior. Rule: apply length-target changes in centralized `generation/text_field_config.yaml` across canonical keys plus active alias/variant keys in the same patch.
+
+- 2026-03-02: Batch runs can be falsely reported as failed after content is already generated and saved when Grok humanness logging payload validation fails. Rule: treat post-save Grok humanness detection/logging exceptions as non-blocking for generation success accounting, while still surfacing warnings.
+
+- 2026-03-03: Default runtime prompt gating added significant per-item latency in normal generation runs, even when no quality issue existed. → Rule: keep Runtime Prompt gate opt-in for default generation speed and run it explicitly for audits/release checks.
+
+- 2026-03-02: Runtime Prompt Gate can block successful generation runs when failures are only minimum prompt-word threshold misses. Rule: if audit failures are exclusively `below min_prompt_words`, auto-bypass gate failure for that run and keep hard-fail behavior for all other gate errors.
+
+- 2026-03-02: Prompt templates can include `{subject}` across domains while formatter payload only carries `topic`, which triggers runtime KeyError during live generation. Rule: always include global `subject` template mapping in prompt assembly when `topic` is present, then verify with a live single-item generation command.
+
+- 2026-03-02: Catalog/frontmatter parity drifts when catalog entries migrate to subject keywords but validators still compare raw filenames. Rule: normalize both catalog entries and frontmatter slugs to a shared subject-keyword form before parity comparison, including embedded `-laser-cleaning-` variants.
+
+- 2026-03-02: Contract parity can drift silently when router/backfill-derived prompt expectations are recomputed ad hoc by separate validators. Rule: generate one deterministic contract artifact from `generation/config.yaml` + `generation/backfill/config/*.yaml`, validate artifact drift in CI, and enforce domain prompt-key coverage against that shared contract.
+
+- 2026-03-02: Legacy key wording cleanup is safest when scoped to active reference/help docs while leaving historical proposal/archive docs intact. Rule: update canonical examples in active docs first, then run `scripts/validation/validate_canonical_pipeline.py` to confirm no collateral drift.
+
+- 2026-03-02: Policy alias maps can be reduced to empty once all active backfill `component_type` values are canonical and validators pass without normalization. Rule: before removing `content_generation_policy.aliases.componentType` entries, verify live backfill configs contain only canonical component types and rerun `scripts/validation/validate_canonical_pipeline.py`.
+
+- 2026-03-02: Router key canonicalization is safest when done as a three-part migration (router canonical keys + alias remap + prompt contract realignment) in one batch. Rule: when replacing legacy router keys, update `field_router.field_aliases`, aligned prompt key files, and rerun `scripts/validation/validate_canonical_pipeline.py` before closing the change.
+
+- 2026-03-02: Alias prompt keys should only remain when actively required by router/backfill contracts or compatibility paths. Rule: remove alias keys only after confirming they are absent from `field_router.field_types.*.text` and `generation/backfill/config/*.yaml`, then immediately rerun `scripts/validation/validate_canonical_pipeline.py`.
+
+- 2026-03-02: Canonical simplification can reintroduce prompt-contract drift when alias/prompt-key updates land without immediately rerunning the strict prompt-section gate. Rule: after any alias or text-prompt key change, run `scripts/validation/validate_canonical_pipeline.py` and resolve all prompt-section deltas before continuing fallback cleanup.
+
+- 2026-03-02: Compounds exports can preserve legacy sparse relationship structure for older records even after full-domain export, which blocks frontend canonical-path cleanup. Rule: perform source-level relationship section canonicalization (plus shared data sync) before removing compounds fallback accessors in frontend layouts/helpers.
+
+- 2026-03-02: Frontend layouts can silently stop rendering sections when backend/frontmatter keys move from legacy snake_case to canonical camelCase/category paths. Rule: keep layout relationship accessors aligned to canonical frontmatter keys first and retain legacy fallbacks only as secondary compatibility paths.
+
+- 2026-03-02: Applications catalog filename parity can drift in both directions after export naming/coverage changes, causing prompt-contract gates to fail even when generation succeeds. Rule: after domain export, sync `domains/<domain>/catalog.yaml` `article_pages.file_names` from canonical frontmatter outputs and rerun prompt/section validation.
+
+- 2026-03-02: Treating every schema-listed text key as a section-object prompt key over-applies paired `sectionTitle`/`sectionDescription` children to metadata fields like `pageTitle`/`pageDescription`. Rule: enforce paired children only for section-object content keys, and keep metadata text keys on `prompt` child entries.
+
+- 2026-03-02: Heuristic child-field assignment (`Title` suffix only) is insufficient for prompt contracts spanning router keys and nested backfill paths. Rule: derive required prompt keys and expected child field type from schema prompt_ref + backfill field-path suffixes, and enforce nested child objects in both runtime and validators.
+
+- 2026-03-02: Domain text prompt files can appear complete while missing nested backfill field paths (for example `..._section.sectionTitle` / `..._section.sectionDescription`) and title-class text fields. Rule: enforce domain `text_prompt.yaml` coverage from both `field_router.field_types.*.text` and `generation/backfill/config/*.yaml` multi-field text paths.
+
+- 2026-03-02: Consolidating field prompts into generic domain text/non-text templates removed critical per-field intent and made prompt ownership ambiguous. Rule: keep per-field text prompts canonical in `domains/*/prompts/text_prompt.yaml` and enforce coverage from `generation/config.yaml` router text fields in shared validators.
+
+- 2026-03-02: Section contract recursion that applies `_section` metadata can accidentally write child section metadata onto the parent/root object if parent references are misused. Rule: enforce `_section` updates against the current section node only (never parent scope), then verify with all-domain section-object audits after export.
+
+- 2026-03-02: Section metadata parity can look complete in source schemas while domain export configs silently skip `section_metadata`, leaving whole section families (like compounds FAQ) without nested `_section`. Rule: keep `section_metadata` task active for every domain that emits section containers and verify with all-domain section-object audits after export.
+
+- 2026-03-02: Shared base layouts can accidentally render domain-specific components when defaults are enabled globally. Rule: keep domain-specific components (like `Micro`) mounted only in domain layouts and keep base layouts content-agnostic.
+
+- 2026-03-01: Reaching parity may require temporary alias keys for mixed legacy naming, but leaving aliases undocumented creates future confusion. Rule: when aliases are needed for compatibility, mark them explicitly as deprecated aliases in the schema and keep CI parity enforcement active.
+
+- 2026-03-01: Parity validation remains optional unless enforced in PR/push workflows, allowing regressions to re-enter silently. Rule: wire `validate_field_contract_parity.py --all-domains` into CI data-validation gates and verify the exact command locally before closing rollout.
+
+- 2026-03-01: Once prompt-field parity is fixed, hidden contract drift often remains in section schema key naming and outdated required-field lists. Rule: run a second parity pass that validates section key aliases and required-field realism against representative frontmatter files before declaring cross-domain parity complete.
+
+- 2026-03-01: Cross-domain field drift is hard to see until contracts are compared as sets per domain. Rule: enforce per-domain parity with an automated validator and apply router-driven sync tooling (applications first) before broad domain rollout.
+
+- 2026-03-01: Material sections can render as missing even when section metadata exists if structured property objects are absent in source YAML. Rule: when section content is missing, validate source `properties` completeness in canonical + shared data files, then re-export the item instead of patching frontend/frontmatter directly.
+
+- 2026-03-01: Multi-step path/URL validation becomes inconsistent when run ad hoc as separate commands. Rule: define one canonical aggregate npm script (`validate:paths:all`) that chains sitemap link checks, build-time URL checks, and SEO infrastructure validation for pre-deploy use.
+- 2026-03-01: Build-time test commands that target specific files can fail in deploy environments where test files are excluded (e.g., `.vercelignore`), causing false-negative build failures. Rule: for non-release-critical test gates in deploy build steps, add `--passWithNoTests` to tolerate excluded test trees while preserving local test execution when files exist.
+
+- 2026-03-01: Allowing multiple acceptable CI build script patterns weakens pipeline governance and permits drift back to non-canonical paths. Rule: enforce exact canonical command assertions for deploy build entrypoints (e.g., `vercel-build` must equal `npm run build`).
+
+- 2026-03-01: Deploy build commands can bypass required build artifacts when they call `next build` directly instead of the project `build` script. Rule: point deploy-specific build entrypoints (e.g., `vercel-build`) to `npm run build` to preserve one canonical build pipeline.
+
+- 2026-03-01: Build lifecycle hooks can diverge between local `build` and postbuild-only sitemap generation, creating deploy/build parity confusion. Rule: place required artifact generation (like `generate:sitemaps`) directly in the `build` script when it must occur on every build invocation.
+
+- 2026-03-01: Organization service-catalog entries regressed from `Offer` to `AggregateOffer` via object spread ordering, breaking schema-contract tests. Rule: when composing JSON-LD objects with spreads, set the canonical `@type` explicitly after spread fields and verify with targeted standards tests before full predeploy.
+
+- 2026-03-01: Archive directory deletions can leave widespread stale references in docs/config comments even when runtime code is unaffected. Rule: after archive removal, run a reference sweep (`scripts/archive`, `docs/archive`, and archive-named commands) and schedule a docs/config hygiene pass in the same cleanup window.
+
+- 2026-03-01: Legacy utility CLIs can quietly drift (stale file references, mismatched args, missing handlers) while canonical pipelines evolve. Rule: deprecate legacy entrypoints with explicit fail-fast migration instructions and keep docs/examples pinned to canonical `run.py --batch-generate` commands.
+
+- 2026-03-01: Batch pipeline docs and helper methods can silently drift back toward combined multi-item requests even when live generation loops are per-item. Rule: enforce a hard policy guard that disables combined batch prompt helpers and require discrete per-item/per-field request sequencing in code and docs.
+
+- 2026-03-01: Manual final-prompt audits are easy to skip during repeated generation runs, which weakens prompt quality governance. Rule: run a default-on Runtime Prompt gate directly in generation command flows and require explicit opt-out (`--no-runtime-prompt-gate`) instead of relying on manual post-checks.
+
+- 2026-03-01: Prompt edits can appear correct at fragment level while the assembled runtime prompt still violates clarity or separation constraints. Rule: validate the exact final assembled prompt (pre-API) with centralized YAML thresholds and fail the audit on assembled prompt violations, not source-fragment assumptions.
+
 - 2026-03-01: Cleanup audits can produce noisy false positives when stale-file scans are not strictly scoped away from dependency trees. Rule: use explicit exclusion filters (`.git`, `node_modules`, `.next`) and only delete low-risk artifacts that are confirmed unreferenced (e.g., empty files and `*.bak` backups).
 
 - 2026-02-28: Empty per-domain prompt registry files can create architectural noise when all domains already resolve to shared prompt content. Rule: keep `domains/*/prompt.yaml` pointed to one shared registry path unless a domain has real override content, and treat per-domain prompt registry files as optional artifacts rather than required scaffolding.

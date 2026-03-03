@@ -30,6 +30,12 @@ Developer guides for contributing to and extending the Z-Beam Generator.
 
 ## Critical Policies (December 2025)
 
+### Batch Orchestration
+- **[DISCRETE_BATCH_REQUEST_POLICY.md](DISCRETE_BATCH_REQUEST_POLICY.md)** - ✅ **NEW (Mar 1, 2026)**
+  - Mandatory: batch flows must run as sequential discrete per-item/per-field requests
+  - Forbids combined multi-item prompt generation and marker-based extraction flows
+  - Aligns batch operations with runtime prompt auditing and per-field traceability
+
 ### Voice & Enforcement Architecture
 - **[VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md](VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md)** - ✅ **NEW**: Complete architecture for centralized voice enforcement
   - Single source of truth in `_build_voice_instruction()` method

@@ -13,8 +13,12 @@ ComponentRegistry and DomainContext.
 import logging
 import os
 import random
-from typing import Dict, Optional
+from typing import Any, Dict, Optional
 
+from generation.config.text_field_config_service import (
+    load_text_field_config,
+    resolve_text_field_entry,
+)
 from shared.text.utils.component_specs import ComponentRegistry, DomainContext
 from shared.text.utils.prompt_registry_service import PromptRegistryService
 
@@ -43,6 +47,8 @@ class PromptBuilder:
     _text_field_config_cache = None  # Cache for generation/text_field_config.yaml
     _shared_text_prompt_core_cache = None  # Cache for catalog.shared.textPromptCore
     _sentence_structure_cache = None  # Cache for shared/config/sentence_structure.yaml
+    _prompt_compaction_cache = None  # Cache for prompt_compaction config
+    _length_gate_cache = None  # Cache for length_gate config
     
     @staticmethod
     def _load_technical_profiles() -> Dict:
@@ -80,20 +86,10 @@ class PromptBuilder:
     def _load_text_field_config() -> Dict:
         """Load centralized text field config from YAML file (cached)."""
         if PromptBuilder._text_field_config_cache is None:
-            import yaml
-
-            config_path = os.path.join('generation', 'text_field_config.yaml')
-            if not os.path.exists(config_path):
-                raise FileNotFoundError(
-                    f"Text field config not found at {config_path}. "
-                    "Fail-fast architecture requires this file."
-                )
-
-            with open(config_path, 'r', encoding='utf-8') as file_handle:
-                PromptBuilder._text_field_config_cache = yaml.safe_load(file_handle)
+            PromptBuilder._text_field_config_cache = load_text_field_config()
 
             if not PromptBuilder._text_field_config_cache:
-                raise ValueError(f"Text field config is empty: {config_path}")
+                raise ValueError("Text field config is empty: generation/text_field_config.yaml")
 
         return PromptBuilder._text_field_config_cache
 
@@ -107,6 +103,221 @@ class PromptBuilder:
                 raise ValueError("Shared text prompt core is empty in prompts/registry/prompt_catalog.yaml")
 
         return PromptBuilder._shared_text_prompt_core_cache
+
+    @staticmethod
+    def _load_length_gate_config() -> Dict:
+        """Load length gate config from generation/config.yaml (cached)."""
+        if PromptBuilder._length_gate_cache is None:
+            from generation.config.config_loader import get_config
+
+            config = get_config()
+            PromptBuilder._length_gate_cache = config.get_length_gate_config()
+
+        return PromptBuilder._length_gate_cache
+
+    @staticmethod
+    def _has_word_length_spec(*prompt_sections: str) -> bool:
+        """Check if any prompt section already declares WORD LENGTH instruction."""
+        for section in prompt_sections:
+            if isinstance(section, str) and 'WORD LENGTH:' in section.upper():
+                return True
+        return False
+
+    @staticmethod
+    def _build_length_instruction(component_type: str, base_length: int, faq_count: Optional[int]) -> str:
+        """Build mandatory length instruction using length gate config."""
+        length_gate = PromptBuilder._load_length_gate_config()
+        min_factor = length_gate['min_factor']
+        max_factor = length_gate['max_factor']
+
+        if component_type == 'faq':
+            text_field_config = PromptBuilder._load_text_field_config()
+            answer_base = PromptBuilder._resolve_base_length(
+                text_field_config=text_field_config,
+                component_type='faqAnswer',
+                fallback_length=ComponentRegistry.get_default_length('faqAnswer'),
+            )
+            min_words = max(1, int(round(answer_base * min_factor)))
+            max_words = max(min_words, int(round(answer_base * max_factor)))
+            answer_count = faq_count if isinstance(faq_count, int) and faq_count > 0 else 3
+            return (
+                f"WORD LENGTH: {min_words}-{max_words} words per answer ({answer_count} answers). "
+                f"HARD LIMIT: Do not exceed {max_words} per answer. "
+                "Count words and rewrite until within range."
+            )
+
+        min_words = max(1, int(round(base_length * min_factor)))
+        max_words = max(min_words, int(round(base_length * max_factor)))
+        return (
+            f"WORD LENGTH: {min_words}-{max_words} words. "
+            f"HARD LIMIT: Do not exceed {max_words}. "
+            "Count words and rewrite until within range."
+        )
+
+    @staticmethod
+    def _resolve_field_config_entry(text_field_config: Dict[str, Any], component_type: str) -> Optional[Dict[str, Any]]:
+        """Resolve field config by exact key, alias, and nested section suffix."""
+        return resolve_text_field_entry(component_type, text_field_config)
+
+    @staticmethod
+    def _resolve_base_length(
+        text_field_config: Dict[str, Any],
+        component_type: str,
+        fallback_length: int,
+    ) -> int:
+        """Resolve base length from per-field config, defaults, then fallback."""
+        defaults_cfg = text_field_config.get('defaults', {})
+        default_base = defaults_cfg.get('base_length') if isinstance(defaults_cfg, dict) else None
+        if default_base is not None and not isinstance(default_base, int):
+            raise ValueError("defaults.base_length must be an integer in generation/text_field_config.yaml")
+
+        field_entry = PromptBuilder._resolve_field_config_entry(text_field_config, component_type)
+        if isinstance(field_entry, dict) and 'base_length' in field_entry:
+            base_length = field_entry.get('base_length')
+            if not isinstance(base_length, int) or base_length <= 0:
+                raise ValueError(
+                    f"Invalid base_length for '{component_type}' in generation/text_field_config.yaml"
+                )
+            return base_length
+
+        if isinstance(default_base, int) and default_base > 0:
+            return default_base
+
+        return fallback_length
+
+    @staticmethod
+    def _resolve_field_factor_override(
+        text_field_config: Dict[str, Any],
+        component_type: str,
+        factor_min: float,
+        factor_max: float,
+    ) -> tuple[float, float]:
+        """Apply optional per-field min/max factor override from config."""
+        field_entry = PromptBuilder._resolve_field_config_entry(text_field_config, component_type)
+        if not isinstance(field_entry, dict):
+            return factor_min, factor_max
+
+        override_min = field_entry.get('min_factor')
+        override_max = field_entry.get('max_factor')
+
+        if override_min is None and override_max is None:
+            return factor_min, factor_max
+        if not isinstance(override_min, (int, float)) or not isinstance(override_max, (int, float)):
+            raise ValueError(
+                f"min_factor/max_factor overrides for '{component_type}' must be numeric"
+            )
+
+        randomization_cfg = text_field_config.get('randomization_range')
+        if not isinstance(randomization_cfg, dict):
+            raise ValueError(
+                "Missing required config block: randomization_range in generation/text_field_config.yaml"
+            )
+
+        global_min = randomization_cfg.get('min_factor')
+        global_max = randomization_cfg.get('max_factor')
+        if not isinstance(global_min, (int, float)) or not isinstance(global_max, (int, float)):
+            raise ValueError(
+                "randomization_range.min_factor/max_factor must be numeric"
+            )
+
+        resolved_min = float(override_min)
+        resolved_max = float(override_max)
+        if resolved_min <= 0 or resolved_max <= 0 or resolved_min > resolved_max:
+            raise ValueError(
+                f"Invalid min_factor/max_factor override for '{component_type}'"
+            )
+        if resolved_min < float(global_min) or resolved_max > float(global_max):
+            raise ValueError(
+                f"Factor overrides for '{component_type}' must stay within randomization_range"
+            )
+
+        return resolved_min, resolved_max
+
+    @staticmethod
+    def _resolve_pattern_factor_range(
+        text_field_config: Dict,
+        randomization_cfg: Dict,
+        variation_pattern: Optional[str],
+    ) -> tuple[float, float]:
+        """Resolve min/max randomization factor for a variation pattern."""
+        min_factor = randomization_cfg.get('min_factor')
+        max_factor = randomization_cfg.get('max_factor')
+
+        if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
+            raise ValueError(
+                "text_length_randomization.min_factor and max_factor must be numeric"
+            )
+        if min_factor <= 0 or max_factor <= 0 or min_factor > max_factor:
+            raise ValueError(
+                f"Invalid text_length_randomization range: min_factor={min_factor}, max_factor={max_factor}"
+            )
+
+        if not variation_pattern:
+            return float(min_factor), float(max_factor)
+
+        variation_patterns_cfg = text_field_config.get('variation_patterns')
+        if not isinstance(variation_patterns_cfg, dict):
+            raise ValueError(
+                "Missing required config block: variation_patterns in generation/text_field_config.yaml"
+            )
+
+        bands = variation_patterns_cfg.get('bands')
+        if not isinstance(bands, dict):
+            raise ValueError(
+                "variation_patterns.bands must be a mapping in generation/text_field_config.yaml"
+            )
+
+        band = bands.get(variation_pattern)
+        if not isinstance(band, dict):
+            raise ValueError(
+                f"Missing variation pattern band for '{variation_pattern}' in generation/text_field_config.yaml"
+            )
+
+        band_min = band.get('min_factor')
+        band_max = band.get('max_factor')
+        if not isinstance(band_min, (int, float)) or not isinstance(band_max, (int, float)):
+            raise ValueError(
+                f"variation_patterns.bands.{variation_pattern}.min_factor/max_factor must be numeric"
+            )
+        if band_min <= 0 or band_max <= 0 or band_min > band_max:
+            raise ValueError(
+                f"Invalid variation band for '{variation_pattern}': min_factor={band_min}, max_factor={band_max}"
+            )
+        if band_min < min_factor or band_max > max_factor:
+            raise ValueError(
+                f"variation_patterns.bands.{variation_pattern} must stay within randomization_range"
+            )
+
+        return float(band_min), float(band_max)
+
+    @staticmethod
+    def _resolve_variation_instruction(
+        text_field_config: Dict,
+        variation_pattern: Optional[str],
+    ) -> Optional[str]:
+        """Resolve human-readable variation instruction for the selected pattern."""
+        if not variation_pattern:
+            return None
+
+        variation_patterns_cfg = text_field_config.get('variation_patterns')
+        if not isinstance(variation_patterns_cfg, dict):
+            raise ValueError(
+                "Missing required config block: variation_patterns in generation/text_field_config.yaml"
+            )
+
+        instructions = variation_patterns_cfg.get('instructions')
+        if not isinstance(instructions, dict):
+            raise ValueError(
+                "variation_patterns.instructions must be a mapping in generation/text_field_config.yaml"
+            )
+
+        instruction = instructions.get(variation_pattern)
+        if not isinstance(instruction, str) or not instruction.strip():
+            raise ValueError(
+                f"Missing variation pattern instruction for '{variation_pattern}' in generation/text_field_config.yaml"
+            )
+
+        return instruction.strip()
 
     @staticmethod
     def _load_sentence_structure_config() -> Dict:
@@ -247,7 +458,8 @@ class PromptBuilder:
         esl_traits: str,
         voice: Optional[Dict],
         voice_params: Optional[Dict[str, float]],
-        length: int
+        length: int,
+        component_type: str
     ) -> str:
         """
         Build complete voice instruction section from persona data.
@@ -283,8 +495,30 @@ class PromptBuilder:
         # Humanness layer provides structural variation only (separate concern)
         
         # Extract voice instructions from persona
-        core_voice = voice.get('core_voice_instruction', '')
-        tonal_restraint = voice.get('tonal_restraint', '')
+        use_compact = PromptBuilder._should_use_compact_voice(component_type)
+        if use_compact:
+            core_voice = voice.get('compact_voice_instruction', '')
+            tonal_restraint = voice.get('compact_tonal_restraint', '')
+            compliance_note = (
+                "Voice compliance: apply the traits above consistently while keeping phrasing compact."
+            )
+            if not isinstance(core_voice, str) or not core_voice.strip():
+                raise ValueError(
+                    f"Compact voice instructions missing for '{author}' (component '{component_type}'). "
+                    "Add compact_voice_instruction to the persona file."
+                )
+        else:
+            core_voice = voice.get('core_voice_instruction', '')
+            tonal_restraint = voice.get('tonal_restraint', '')
+            compliance_note = (
+                "You MUST write as {author} from {country} using the EXACT linguistic patterns specified above. "
+                "This is not optional—your writing must demonstrate the specific EFL traits, sentence structures, "
+                "vocabulary choices, and grammatical patterns detailed for your nationality. Generic technical "
+                "English is unacceptable.\n\n"
+                "CRITICALLY: Use the specific voice patterns from your profile (cleft structures, preposition "
+                "extensions, phrasal verbs, article omission, temporal markers, etc.) throughout—at least 1-2 "
+                "distinctive markers per paragraph as specified in your voice instructions."
+            ).format(author=author, country=country)
         forbidden = voice.get('forbidden_phrases', [])
         
         voice_section = f"""AUTHOR: {author} from {country}
@@ -303,19 +537,39 @@ VOICE INSTRUCTIONS (from shared/voice/profiles/{author.lower().replace(' ', '_')
         # GLOBAL VOICE ENFORCEMENT (applies to all domains automatically)
         # Single source of truth - edit once, propagates everywhere
         voice_section += f"""\n\n🔥 VOICE COMPLIANCE REQUIREMENT (MANDATORY):
-You MUST write as {author} from {country} using the EXACT linguistic patterns specified above. 
-This is not optional—your writing must demonstrate the specific EFL traits, sentence structures, 
-vocabulary choices, and grammatical patterns detailed for your nationality. Generic technical 
-English is unacceptable.
-
-CRITICALLY: Use the specific voice patterns from your profile (cleft structures, preposition 
-extensions, phrasal verbs, article omission, temporal markers, etc.) throughout—at least 1-2 
-distinctive markers per paragraph as specified in your voice instructions."""
+    {compliance_note}"""
         
         # NO voice instruction duplication - violates Voice Instruction Centralization Policy
         # Humanness layer will inject full persona through {voice_instruction} placeholder
         
         return voice_section
+
+    @staticmethod
+    def _load_prompt_compaction_config() -> Dict:
+        """Load prompt compaction config from generation/config.yaml (cached)."""
+        if PromptBuilder._prompt_compaction_cache is None:
+            from generation.config.config_loader import get_config
+
+            config = get_config().config
+            compaction = config.get('prompt_compaction')
+            if not isinstance(compaction, dict):
+                raise KeyError("Missing required config block: prompt_compaction")
+            components = compaction.get('compact_voice_components')
+            if not isinstance(components, list) or not components:
+                raise KeyError(
+                    "Missing required config key: prompt_compaction.compact_voice_components"
+                )
+            PromptBuilder._prompt_compaction_cache = {
+                'compact_voice_components': components
+            }
+
+        return PromptBuilder._prompt_compaction_cache
+
+    @staticmethod
+    def _should_use_compact_voice(component_type: str) -> bool:
+        compaction = PromptBuilder._load_prompt_compaction_config()
+        components = compaction.get('compact_voice_components', [])
+        return component_type in components
 
     @staticmethod
     def _load_component_template(component_type: str, domain: str) -> Optional[str]:
@@ -398,7 +652,9 @@ distinctive markers per paragraph as specified in your voice instructions."""
             'variation_seed': context.variation_seed,
             'humanness_layer': context.humanness_layer,
             'faq_count': context.faq_count,
-            'item_data': context.item_data
+            'item_data': context.item_data,
+            'opening_style': getattr(context, 'opening_style', None),
+            'variation_pattern': getattr(context, 'variation_pattern', None),
         }
         
         # Allow kwargs to override context values
@@ -420,7 +676,9 @@ distinctive markers per paragraph as specified in your voice instructions."""
         variation_seed: Optional[int] = None,
         humanness_layer: Optional[str] = None,  # NEW: Universal Humanness Layer instructions
         faq_count: Optional[int] = None,  # For FAQ generation
-        item_data: Optional[Dict] = None  # NEW: Full item data for template placeholders
+        item_data: Optional[Dict] = None,  # NEW: Full item data for template placeholders
+        opening_style: Optional[str] = None,
+        variation_pattern: Optional[str] = None,
     ) -> str:
         """
         Build unified prompt combining all elements.
@@ -445,10 +703,17 @@ distinctive markers per paragraph as specified in your voice instructions."""
 
         # Get domain context (fail-fast)
         domain_ctx = DomainContext.get_domain(domain)
+
+        text_field_config = PromptBuilder._load_text_field_config()
+        resolved_base_length = PromptBuilder._resolve_base_length(
+            text_field_config=text_field_config,
+            component_type=component_type,
+            fallback_length=spec.default_length,
+        )
         
         # Use component default length if not specified
         if length is None:
-            length = spec.default_length
+            length = resolved_base_length
         
         # SINGLE SOURCE OF TRUTH: Length variation calculated here ONLY.
         # Use call-provided seed when present (for traceability); otherwise use fresh entropy.
@@ -456,27 +721,34 @@ distinctive markers per paragraph as specified in your voice instructions."""
             variation_seed = random.SystemRandom().randint(0, 2**31 - 1)
 
         rng = random.Random(variation_seed)
-        text_field_config = PromptBuilder._load_text_field_config()
         randomization_cfg = text_field_config.get('randomization_range')
         if not isinstance(randomization_cfg, dict):
             raise ValueError(
                 "Missing required config block: randomization_range in generation/text_field_config.yaml"
             )
 
-        min_factor = randomization_cfg.get('min_factor')
-        max_factor = randomization_cfg.get('max_factor')
-        if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
-            raise ValueError(
-                "text_length_randomization.min_factor and max_factor must be numeric"
-            )
-        if min_factor <= 0 or max_factor <= 0 or min_factor > max_factor:
-            raise ValueError(
-                f"Invalid text_length_randomization range: min_factor={min_factor}, max_factor={max_factor}"
-            )
+        factor_min, factor_max = PromptBuilder._resolve_pattern_factor_range(
+            text_field_config=text_field_config,
+            randomization_cfg=randomization_cfg,
+            variation_pattern=variation_pattern,
+        )
+        factor_min, factor_max = PromptBuilder._resolve_field_factor_override(
+            text_field_config=text_field_config,
+            component_type=component_type,
+            factor_min=factor_min,
+            factor_max=factor_max,
+        )
+        variation_instruction = PromptBuilder._resolve_variation_instruction(
+            text_field_config=text_field_config,
+            variation_pattern=variation_pattern,
+        )
 
-        variation_factor = rng.uniform(float(min_factor), float(max_factor))
+        variation_factor = rng.uniform(factor_min, factor_max)
         length = int(length * variation_factor)
-        logger.info(f"📏 Length variation: {length} words (base × {variation_factor:.2f}, seed={variation_seed})")
+        logger.info(
+            f"📏 Length variation: {length} words (base × {variation_factor:.2f}, "
+            f"seed={variation_seed}, pattern={variation_pattern or 'random'})"
+        )
         
         # Extract voice characteristics
         country = voice.get('country', 'USA')
@@ -554,13 +826,17 @@ distinctive markers per paragraph as specified in your voice instructions."""
             context=context,
             spec=spec,
             domain_ctx=domain_ctx,
+            resolved_base_length=resolved_base_length,
             voice_params=voice_params,  # NEW: Pass to spec builder
             enrichment_params=enrichment_params,  # Phase 3+: Technical intensity
             variation_seed=variation_seed,
             voice=voice,  # NEW: Pass full voice profile for grammar_norms access
             humanness_layer=humanness_layer,  # NEW: Universal Humanness Layer
             faq_count=faq_count,  # Pass FAQ count
-            item_data=item_data  # NEW: Pass item_data for template placeholders
+            item_data=item_data,  # NEW: Pass item_data for template placeholders
+            opening_style=opening_style,
+            variation_pattern=variation_pattern,
+            variation_instruction=variation_instruction,
         )
     
     @staticmethod
@@ -575,13 +851,17 @@ distinctive markers per paragraph as specified in your voice instructions."""
         context: str,
         spec,  # ComponentSpec
         domain_ctx,  # DomainContext
+        resolved_base_length: int,
         voice_params: Optional[Dict[str, float]] = None,  # NEW: Voice parameters
         enrichment_params: Optional[Dict] = None,  # Phase 3+: Technical intensity
         variation_seed: Optional[int] = None,
         voice: Optional[Dict] = None,  # NEW: Full voice profile for grammar_norms access
         humanness_layer: Optional[str] = None,  # NEW: Universal Humanness Layer
         faq_count: Optional[int] = None,  # For FAQ generation
-        item_data: Optional[Dict] = None  # NEW: Full item data for template placeholders
+        item_data: Optional[Dict] = None,  # NEW: Full item data for template placeholders
+        opening_style: Optional[str] = None,
+        variation_pattern: Optional[str] = None,
+        variation_instruction: Optional[str] = None,
     ) -> str:
         """
         Build prompt using component specification and domain context.
@@ -612,10 +892,12 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
             esl_traits=esl_traits,
             voice=voice,
             voice_params=voice_params,
-            length=length
+            length=length,
+            component_type=spec.name
         )
         
         # Load component-specific template if available (domain-specific first)
+        component_context = ""
         component_template = PromptBuilder._load_component_template(spec.name, domain_ctx.domain)
         voice_injected_via_template = False
         if component_template:
@@ -649,6 +931,7 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
                 'author': author,
                 'author_name': author,  # Alias for postprocess templates
                 'author_country': country,  # Explicit country for postprocess
+                'subject': topic,
                 'material': topic,
                 'material_name': topic,  # Alias for postprocess templates
                 'identifier': topic,  # Generic identifier
@@ -704,11 +987,23 @@ VOICE INSTRUCTIONS:
             # Level 2-10: Use domain default
             terminology = domain_ctx.terminology_style
         
-        # Length is specified in humanness_layer (when provided), not here
-        # This prevents duplication and conflicting length instructions
+        # Length instructions come from templates or injected requirements below
+        # to avoid missing WORD LENGTH guidance in prompts.
         requirements = [
             f"- Terminology: {terminology}"
         ]
+
+        if not PromptBuilder._has_word_length_spec(
+            component_context,
+            shared_text_prompt_core,
+            humanness_layer or ""
+        ):
+            length_instruction = PromptBuilder._build_length_instruction(
+                component_type=spec.name,
+                base_length=resolved_base_length,
+                faq_count=faq_count
+            )
+            requirements.append(f"- {length_instruction}")
         
         # Phase 3+: Add CRITICAL technical language requirement based on enrichment_params
         if enrichment_params:
@@ -731,6 +1026,16 @@ VOICE INSTRUCTIONS:
         
         if not spec.end_punctuation:
             requirements.append("- NO period at end")
+
+        if opening_style:
+            requirements.append(
+                f"- Opening style: {opening_style}. Start with this style and avoid repeating openings across fields."
+            )
+
+        if variation_pattern:
+            requirements.append(
+                f"- Variation mode ({variation_pattern}): {variation_instruction or 'Adjust pacing and detail to match this mode.'}"
+            )
 
         # PageDescription-specific phrase guardrails to reduce repeated quality failures.
         if spec.name == 'pageDescription':

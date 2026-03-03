@@ -26,9 +26,19 @@ import logging
 from pathlib import Path
 from typing import Any
 
+from shared.text.utils.text_leaf_normalization import coerce_text_leaf_value
 from shared.utils.yaml_utils import load_yaml, save_yaml
 
 logger = logging.getLogger(__name__)
+
+
+def _normalize_text_leaf_value(field_path: str, value: Any) -> Any:
+    """Coerce known text leaf targets to normalized strings; fail fast on invalid payloads."""
+    leaf = field_path.split('.')[-1]
+    if leaf not in {'sectionDescription', 'sectionTitle', 'pageDescription', 'page_description', 'description', 'pageTitle', 'page_title'}:
+        return value
+
+    return coerce_text_leaf_value(value, leaf, field_label=field_path)
 
 
 def _set_nested_value(payload: dict, dotted_path: str, value: Any) -> None:
@@ -168,6 +178,8 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
         persisted_field = (
             'pageDescription'
             if field_name in ('pageDescription', 'description', 'page_description')
+            else 'pageTitle'
+            if field_name in ('pageTitle', 'page_title', 'title')
             else field_name
         )
 
@@ -184,7 +196,9 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
 
         verification_path = persisted_field
         if persisted_field in canonical_nested_fields:
-            _set_nested_value(frontmatter_data, canonical_nested_fields[persisted_field], field_value)
+            target_path = canonical_nested_fields[persisted_field]
+            normalized_value = _normalize_text_leaf_value(target_path, field_value)
+            _set_nested_value(frontmatter_data, target_path, normalized_value)
             verification_path = canonical_nested_fields[persisted_field]
 
             if 'relatedMaterials' in frontmatter_data and isinstance(frontmatter_data['relatedMaterials'], dict):
@@ -194,7 +208,7 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
                 del frontmatter_data['contaminatedBy']
                 logger.info("   🧹 Removed legacy root contaminatedBy field")
         else:
-            frontmatter_data[persisted_field] = field_value
+            frontmatter_data[persisted_field] = _normalize_text_leaf_value(persisted_field, field_value)
 
         if persisted_field == 'pageDescription':
             logger.info(f"   ✨ Saved description component to pageDescription field")

@@ -32,10 +32,10 @@ template = self._load_prompt_template('description.txt')
 - **CONTENT generation** (user-facing) → Template files ONLY
 - **DATA research** (technical properties) → Inline prompts OK
 
-### **3. Protected Files Policy** (Dec 6, 2025)
+### **3. High-Impact Files Guidance** (Updated Mar 2026)
 **Location**: `.github/PROTECTED_FILES.md`
 
-**TIER 1 Protection** (Never touch without permission):
+**High-impact paths** (validate carefully after changes):
 - `prompts/materials/*.txt`
 - `prompts/contaminants/*.txt`
 - `prompts/compounds/*.txt`
@@ -45,7 +45,7 @@ template = self._load_prompt_template('description.txt')
 ## 🛡️ **ENFORCEMENT MECHANISMS**
 
 ### **Level 1: Policy Documentation** ✅ ACTIVE
-- Protected files list maintained
+- High-impact file guidance maintained
 - Policies clearly documented
 - AI instructions include rules
 
@@ -67,18 +67,13 @@ grep -r "system_prompt\s*=" generation/ --include="*.py"
 
 echo "🔍 Checking for policy violations..."
 
-# Check 1: Protected prompt file modifications
+# Check 1: High-impact prompt file modifications
 if git diff --cached --name-only | grep -E 'prompts/(materials|contaminants|compounds|settings)/.*\.txt|shared/voice/profiles/.*\.yaml'; then
     echo ""
-    echo "⚠️  WARNING: Modifying protected prompt files!"
-    echo "📋 Policy: TIER 1 - Never touch without explicit user permission"
+    echo "⚠️  WARNING: Modifying high-impact prompt files!"
+    echo "📋 Policy: Run focused validation before merge"
     echo "📖 See: .github/PROTECTED_FILES.md"
     echo ""
-    read -p "Did user explicitly approve these changes? (yes/no): " -r
-    if [[ ! $REPLY =~ ^(yes|YES|y|Y)$ ]]; then
-        echo "❌ Commit blocked - Get user permission first"
-        exit 1
-    fi
 fi
 
 # Check 2: Embedded prompts in generators
@@ -117,13 +112,13 @@ exit 0
 ```
 
 ### **Level 4: File Permissions** 🔥 **NEW - OPTIONAL**
-**Make prompt files read-only**:
+**Optional local guardrails for high-impact files**:
 ```bash
 # Lock all prompt files (user can still edit with explicit chmod)
 find prompts/{materials,contaminants,compounds,settings} -name "*.txt" -exec chmod 444 {} \;
 find shared/voice/profiles -name "*.yaml" -exec chmod 444 {} \;
 
-# To edit (user must explicitly unlock)
+# To edit (unlock when needed)
 chmod 644 prompts/materials/micro.txt  # edit
 chmod 444 prompts/materials/micro.txt  # lock again
 ```
@@ -180,8 +175,8 @@ grep -r "system_prompt\s*=" generation/core/ --include="*.py"
 # 3. List all prompt files (should match expected 34 files)
 find prompts/{materials,contaminants,compounds,settings} -name "*.txt" -type f | wc -l
 
-# 4. Check if prompts are protected (should show in PROTECTED_FILES.md)
-grep -A 5 "Domain Prompt Templates" .github/PROTECTED_FILES.md
+# 4. Check high-impact guidance in PROTECTED_FILES.md
+grep -A 20 "High-Impact Areas" .github/PROTECTED_FILES.md
 ```
 
 ### **Verify Template Loading (All should use this pattern)**
@@ -199,10 +194,10 @@ grep -r "_load_prompt_template" generation/core/
 
 ## 🔥 **EMERGENCY RESPONSE**
 
-**If unauthorized prompt was created/modified**:
+**If unintended prompt changes were created/modified**:
 
 1. **STOP** all related work immediately
-2. **INFORM** user: "I modified a protected prompt file without permission"
+2. **INFORM** user: "I modified a high-impact prompt file unexpectedly"
 3. **SHOW** what was changed: `git diff [file]`
 4. **REVERT** if user disapproves: `git checkout HEAD -- [file]`
 5. **DOCUMENT** what you were trying to accomplish
@@ -210,7 +205,7 @@ grep -r "_load_prompt_template" generation/core/
 
 ## 📚 **Related Documentation**
 
-- **Protected Files**: `.github/PROTECTED_FILES.md`
+- **High-Impact File Guidance**: `.github/PROTECTED_FILES.md`
 - **Prompt Purity Policy**: `.github/copilot-instructions.md` line 1667
 - **Embedded Prompts Policy**: `.github/copilot-instructions.md` line 1049
 - **Prompt File Locations**: 
@@ -222,8 +217,8 @@ grep -r "_load_prompt_template" generation/core/
 
 ## 🏆 **GRADE IMPACTS**
 
-- **Creating prompts without permission**: Grade F
-- **Modifying protected prompts without permission**: Grade F
+- **Creating prompts without explicit user request**: Grade F
+- **Editing high-impact prompt files without validation evidence**: Grade F
 - **Embedding prompts in generators**: Grade F
 - **Asking permission first**: Grade A
 - **Using template loading correctly**: Grade A

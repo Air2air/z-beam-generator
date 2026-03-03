@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from shared.utils.yaml_utils import load_yaml
+from shared.text.utils.text_leaf_normalization import coerce_text_leaf_value, normalize_text_output
 from shared.text.utils.prompt_registry_service import PromptRegistryService
 
 from generation.core.adapters.base import DataSourceAdapter
@@ -497,6 +498,7 @@ class DomainAdapter(DataSourceAdapter):
         
         # Determine target field (may differ from component_type)
         target_field = self._get_target_field(component_type)
+        content_to_save = self._normalize_text_leaf_for_target(target_field, content_to_save)
         
         # Write content to target field
         if '.' in target_field:
@@ -550,6 +552,16 @@ class DomainAdapter(DataSourceAdapter):
             raise RuntimeError(
                 f"Frontmatter sync failed for {identifier}.{component_type}: {sync_error}"
             ) from sync_error
+
+    def _normalize_text_leaf_for_target(self, target_field: str, content: Any) -> Any:
+        """Normalize scalar text-leaf targets so source YAML persists strings, not object payloads."""
+        leaf = target_field.split('.')[-1]
+        if leaf not in {'sectionDescription', 'sectionTitle', 'pageDescription', 'page_description', 'pageTitle', 'page_title'}:
+            return content
+        normalized = coerce_text_leaf_value(content, leaf, field_label=target_field)
+        if leaf in {'pageDescription', 'page_description'}:
+            return normalized.replace('..', '.')
+        return normalized
     
     def _get_target_field(self, component_type: str) -> str:
         """
@@ -654,49 +666,10 @@ class DomainAdapter(DataSourceAdapter):
         - Markdown headings (e.g., "### Laser Cleaning Aluminum")
         - Template labels (e.g., "### Title:", "### Description:")
         """
-        if not isinstance(content, str):
-            return content
-
-        text = content.strip()
-        if not text:
-            return text
-
-        # Try JSON payload extraction first
-        if text.startswith('{') and text.endswith('}'):
-            try:
-                payload = json.loads(text)
-                extracted = (
-                    payload.get('sectionContent')
-                    or payload.get('sectionDescription')
-                    or payload.get('description')
-                )
-                if isinstance(extracted, str) and extracted.strip():
-                    text = extracted.strip()
-            except json.JSONDecodeError as exc:
-                raise ValueError("Invalid JSON payload in pageDescription output") from exc
-
-        # Remove explicit template labels
-        text = re.sub(r"(?im)^\s*#{1,6}\s*title\s*:\s*", "", text)
-        text = re.sub(r"(?im)^\s*#{1,6}\s*description\s*:\s*", "", text)
-
-        # If description marker appears inline, keep only the description segment
-        inline_desc = re.split(r"(?i)#{1,6}\s*description\s*:\s*", text, maxsplit=1)
-        if len(inline_desc) == 2:
-            text = inline_desc[1].strip()
-
-        # Remove leading markdown heading line only
-        text = re.sub(r"\A\s*#{1,6}\s+[^\n]+\n+", "", text)
-
-        # Remove any remaining markdown heading tokens inline
-        text = re.sub(r"(?i)#{1,6}\s*title\s*:\s*", "", text)
-        text = re.sub(r"(?i)#{1,6}\s*description\s*:\s*", "", text)
-
-        # Normalize spacing and punctuation artifacts
-        text = re.sub(r"\n{2,}", " ", text)
-        text = re.sub(r"\s{2,}", " ", text).strip()
-        text = text.replace('..', '.')
-
-        return text
+        normalized = normalize_text_output(content)
+        if isinstance(normalized, str):
+            return normalized.replace('..', '.')
+        return normalized
     
     def _convert_faq_to_collapsible(self, faq_data: list, item_data: Optional[Dict] = None) -> Dict[str, Any]:
         """

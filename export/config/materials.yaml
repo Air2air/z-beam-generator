@@ -30,6 +30,7 @@ generators:
   - type: field_cleanup
     description: Remove duplicate and legacy fields per reorganization requirements
     deprecated_fields:
+      - _section  # root-level orphan section metadata; nested section containers remain canonical
       # DELETE - Should be structured array in relationships, not text
       - relationships.relatedMaterials
       # DELETE - Duplicate of components.micro (when it appears at root level)
@@ -65,6 +66,7 @@ generators:
       # DELETE - Legacy unstructured sections (Jan 15, 2026)
       - contaminatedBy     # Flat format not consumed (structured version in relationships used)
       - relatedMaterials   # Flat format not consumed (structured version in relationships used)
+      - relationships.contaminatedBy  # Legacy scalar under relationships; canonical path is relationships.interactions.contaminatedBy
   # Export-time metadata ONLY (dateModified timestamp, pageTitle for frontend)
   - type: export_metadata
     description: Add ONLY export-time fields (dateModified, pageTitle if missing)

@@ -9,8 +9,38 @@ defaults:
   extraction_strategy: raw
 
 randomization_range:
-  min_factor: 0.05
-  max_factor: 1.6
+  min_factor: 0.5
+  max_factor: 2.5
+
+variation_patterns:
+  bank:
+    - concise
+    - compact
+    - balanced
+    - expansive
+    - deep_dive
+  instructions:
+    concise: "Keep this field tight and direct: prioritize essentials, minimize setup, and close quickly."
+    compact: "Keep this field efficient but complete: short supporting detail with no filler."
+    balanced: "Keep this field even and readable: moderate detail, steady pacing, natural transitions."
+    expansive: "Allow this field more development: richer context, examples, and nuanced explanation."
+    deep_dive: "Treat this field as in-depth: layered context, tradeoffs, and specific implications."
+  bands:
+    concise:
+      min_factor: 0.5
+      max_factor: 0.85
+    compact:
+      min_factor: 0.8
+      max_factor: 1.1
+    balanced:
+      min_factor: 1.0
+      max_factor: 1.35
+    expansive:
+      min_factor: 1.3
+      max_factor: 1.9
+    deep_dive:
+      min_factor: 1.7
+      max_factor: 2.5
 
 # Field-name keyed configuration shared across ALL domains.
 # Same field name => same base length/range/extraction everywhere.
@@ -48,12 +78,17 @@ fields:
   industryApplications:      { base_length: 90 }
   laserMaterialInteraction:  { base_length: 95 }
   materialCharacteristics:   { base_length: 95 }
+  machineSettings:           { base_length: 90 }
   micro:
     base_length: 50
   operationalConsiderations: { base_length: 85 }
   pageDescription:
-    base_length: 88
-  page_description:          { base_length: 100 }
+    base_length: 120
+  page_description:          { base_length: 120 }
+  sectionDescription:        { base_length: 30 }
+  section_description:       { base_length: 30 }
+  sectionDescriptions:       { base_length: 30 }
+  section_descriptions:      { base_length: 30 }
   pageTitle:
     base_length: 12
   page_title:                { base_length: 12 }
@@ -74,7 +109,7 @@ fields:
   relatedMaterials:          { base_length: 74 }
   relatedMaterialsTitle:     { base_length: 6 }
   removalMethods:            { base_length: 80 }
-  settings_description:      { base_length: 100 }
+  settings_description:      { base_length: 120 }
   storageRequirements:       { base_length: 90 }
 
 aliases:

@@ -32,14 +32,13 @@ Usage:
 """
 
 import logging
-import json
-import re
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 import yaml
 
 from export.generation.base import BaseGenerator
+from shared.text.utils.text_leaf_normalization import coerce_text_leaf_value, normalize_text_output
 
 logger = logging.getLogger(__name__)
 
@@ -176,98 +175,43 @@ class ContentGenerator(BaseGenerator):
         - JSON string payload wrappers with sectionDescription fields
         """
         fields = config.get('fields', [])
-        if not fields:
-            return frontmatter
+        if fields:
+            for field in fields:
+                if field in frontmatter and isinstance(frontmatter[field], str):
+                    original = frontmatter[field]
+                    normalized = self._normalize_text_output(original)
+                    if normalized != original:
+                        frontmatter[field] = normalized
+                        logger.debug(f"Normalized text field: {field}")
 
-        for field in fields:
-            if field in frontmatter and isinstance(frontmatter[field], str):
-                original = frontmatter[field]
-                normalized = self._normalize_text_output(original)
-                if normalized != original:
-                    frontmatter[field] = normalized
-                    logger.debug(f"Normalized text field: {field}")
+        frontmatter = self._normalize_section_text_leaves(frontmatter)
 
         return frontmatter
 
+    def _normalize_section_text_leaves(self, payload: Any) -> Any:
+        """Recursively normalize section/page text leaves and coerce object payloads to strings."""
+        if isinstance(payload, list):
+            return [self._normalize_section_text_leaves(item) for item in payload]
+
+        if not isinstance(payload, dict):
+            return payload
+
+        normalized: Dict[str, Any] = {}
+        for key, value in payload.items():
+            if key in {'sectionDescription', 'sectionTitle', 'pageDescription', 'pageTitle', 'page_title'}:
+                normalized[key] = self._coerce_text_leaf_value(value, key)
+                continue
+            normalized[key] = self._normalize_section_text_leaves(value)
+
+        return normalized
+
+    def _coerce_text_leaf_value(self, value: Any, leaf_key: str) -> str:
+        """Coerce a known text leaf value to string and normalize wrappers."""
+        return coerce_text_leaf_value(value, leaf_key)
+
     def _normalize_text_output(self, content: Any) -> Any:
         """Normalize plain text output by removing common wrapper artifacts."""
-        if not isinstance(content, str):
-            return content
-
-        text = content.strip()
-        if not text:
-            return text
-
-        # Extract useful text when content is a JSON string payload.
-        if text.startswith('{') and text.endswith('}'):
-            try:
-                payload = json.loads(text)
-                extracted = (
-                    payload.get('sectionContent')
-                    or payload.get('sectionDescription')
-                    or payload.get('description')
-                )
-                if isinstance(extracted, str) and extracted.strip():
-                    text = extracted.strip()
-            except Exception:
-                pass
-
-        # Prefer description payload when template includes both title/description.
-        inline_description = re.split(r"(?i)(?:^|\n)\s*(?:#{1,6}\s*)?description\s*:?[ \t]*", text, maxsplit=1)
-        if len(inline_description) == 2 and inline_description[1].strip():
-            text = inline_description[1].strip()
-
-        # Handle single-line markdown wrapper: "### Title ... ### Description ..."
-        inline_markdown_description = re.split(r"(?i)#{1,6}\s*description\s*:?[ \t]*", text, maxsplit=1)
-        if len(inline_markdown_description) == 2 and inline_markdown_description[1].strip():
-            text = inline_markdown_description[1].strip()
-
-        # Remove explicit title/description labels and markdown label forms.
-        text = re.sub(r"(?im)^\s*#{1,6}\s*title\s*:?[ \t]*", "", text)
-        text = re.sub(r"(?im)^\s*#{1,6}\s*description\s*:?[ \t]*", "", text)
-        text = re.sub(r"(?im)^\s*title\s*:?[ \t]*", "", text)
-        text = re.sub(r"(?im)^\s*description\s*:?[ \t]*", "", text)
-
-        # Handle inline wrapper form: "<title> Description: <content>"
-        inline_description_tail = re.split(r"(?i)\bdescription\s*:\s*", text, maxsplit=1)
-        if (
-            len(inline_description_tail) == 2
-            and inline_description_tail[1].strip()
-            and len(inline_description_tail[0].strip()) <= 120
-        ):
-            text = inline_description_tail[1].strip()
-
-        # Remove markdown heading token if present at the start.
-        text = re.sub(r"\A\s*#{1,6}\s*", "", text)
-        text = re.sub(r"\A\s*(?:title|description)\s*:?[ \t]*", "", text, flags=re.IGNORECASE)
-
-        # Drop first line if it looks like a heading and remaining lines contain content.
-        lines = [line.strip() for line in text.splitlines() if line.strip()]
-        if len(lines) >= 2:
-            first = lines[0]
-            if (
-                len(first) <= 90
-                and not re.search(r"[.!?]$", first)
-                and (
-                    re.search(r"(?i)laser\s+cleaning", first)
-                    or re.search(r"(?i)overview|guide|summary", first)
-                )
-            ):
-                lines = lines[1:]
-        text = " ".join(lines)
-
-        # Remove leading "<Material> Laser Cleaning" heading fragments in single-line output.
-        text = re.sub(
-            r"^\s*(?:[A-Z][A-Za-z0-9()&/\-+,]*\s+){0,8}Laser\s+Cleaning(?:\s+(?:Overview|Guide|Description))?\s+",
-            "",
-            text,
-        )
-
-        # Final whitespace/punctuation cleanup.
-        text = re.sub(r"\s{2,}", " ", text).strip()
-        text = text.replace('..', '.')
-
-        return text
+        return normalize_text_output(content)
     
     def _task_flatten_properties(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
@@ -603,7 +547,7 @@ class ContentGenerator(BaseGenerator):
             if isinstance(node, dict):
                 for key, value in list(node.items()):
                     if key == '_section' and isinstance(value, dict):
-                        section_data = parent_node if isinstance(parent_node, dict) else {}
+                        section_data = node
                         if _enforce_required_section_fields(value, parent_key or 'section', section_data):
                             updates += 1
                     else:
@@ -639,43 +583,60 @@ class ContentGenerator(BaseGenerator):
         root_level_sections = ['materialCharacteristics', 'laserMaterialInteraction', 'faq', 'components']
         
         for section_key in root_level_sections:
-            if section_key in frontmatter and isinstance(frontmatter[section_key], dict):
-                section_data = frontmatter[section_key]
+            if section_key not in frontmatter:
+                continue
+
+            section_value = frontmatter[section_key]
+            if isinstance(section_value, str):
+                section_data = {'description': section_value}
+                frontmatter[section_key] = section_data
+                sections_added += 1
+            elif isinstance(section_value, dict):
+                section_data = section_value
+            else:
+                continue
                 
                 # Lookup metadata from config
-                metadata = configured_metadata.get(section_key)
+            metadata = configured_metadata.get(section_key)
                 
                 # ADD or UPDATE _section metadata
-                if metadata:
-                    if '_section' not in section_data:
-                        # Create new _section block
-                        section_data['_section'] = {}
-                        sections_added += 1
+            if metadata:
+                if '_section' not in section_data:
+                    # Create new _section block
+                    section_data['_section'] = {}
+                    sections_added += 1
                     
-                    # Get existing _section or empty dict
-                    section_meta = section_data['_section']
+                # Get existing _section or empty dict
+                section_meta = section_data['_section']
 
-                    _populate_section_metadata_fields(section_meta, metadata, section_key, section_data)
+                _populate_section_metadata_fields(section_meta, metadata, section_key, section_data)
         
         # PROPERTIES SECTIONS: Handle properties.materialCharacteristics, properties.laserMaterialInteraction
         if 'properties' in frontmatter and isinstance(frontmatter['properties'], dict):
             for prop_key, prop_data in frontmatter['properties'].items():
-                if isinstance(prop_data, dict):
-                    # Build metadata key (properties.prop_key)
-                    metadata_key = f"properties.{prop_key}"
-                    metadata = configured_metadata.get(metadata_key)
-                    
-                    if metadata:
-                        # ADD or UPDATE _section metadata
-                        if '_section' not in prop_data:
-                            # Create new _section block
-                            prop_data['_section'] = {}
-                            sections_added += 1
-                        
-                        # Get existing _section or empty dict
-                        section_meta = prop_data['_section']
+                if isinstance(prop_data, str):
+                    prop_data = {'description': prop_data}
+                    frontmatter['properties'][prop_key] = prop_data
+                    sections_added += 1
 
-                        _populate_section_metadata_fields(section_meta, metadata, metadata_key, prop_data)
+                if not isinstance(prop_data, dict):
+                    continue
+
+                # Build metadata key (properties.prop_key)
+                metadata_key = f"properties.{prop_key}"
+                metadata = configured_metadata.get(metadata_key)
+                
+                if metadata:
+                    # ADD or UPDATE _section metadata
+                    if '_section' not in prop_data:
+                        # Create new _section block
+                        prop_data['_section'] = {}
+                        sections_added += 1
+                    
+                    # Get existing _section or empty dict
+                    section_meta = prop_data['_section']
+
+                    _populate_section_metadata_fields(section_meta, metadata, metadata_key, prop_data)
         
         # COMPONENT SECTIONS: Handle components.micro, components.subtitle, etc.
         if 'components' in frontmatter and isinstance(frontmatter['components'], dict):
@@ -790,28 +751,13 @@ class ContentGenerator(BaseGenerator):
 
         source_field = config['source_field']
         output_field = config['output_field']
-        max_length = config['max_length']
         
         source_text = frontmatter.get(source_field, '')
         
         if not source_text:
             return frontmatter
         
-        # Truncate intelligently at sentence boundary
-        if len(source_text) <= max_length:
-            seo_desc = source_text
-        else:
-            # Find last sentence that fits
-            truncated = source_text[:max_length]
-            last_period = truncated.rfind('.')
-            
-            if last_period > max_length * 0.6:  # At least 60% of max length
-                seo_desc = truncated[:last_period + 1]
-            else:
-                # No good sentence boundary, truncate at word
-                seo_desc = truncated.rsplit(' ', 1)[0] + '...'
-        
-        frontmatter[output_field] = seo_desc
+        frontmatter[output_field] = source_text
         return frontmatter
     
     def _task_seo_excerpt(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
@@ -828,26 +774,13 @@ class ContentGenerator(BaseGenerator):
 
         source_field = config['source_field']
         output_field = config['output_field']
-        max_length = config['max_length']
         
         source_text = frontmatter.get(source_field, '')
         
         if not source_text:
             return frontmatter
         
-        # Similar to SEO description but longer
-        if len(source_text) <= max_length:
-            excerpt = source_text
-        else:
-            truncated = source_text[:max_length]
-            last_period = truncated.rfind('.')
-            
-            if last_period > max_length * 0.6:
-                excerpt = truncated[:last_period + 1]
-            else:
-                excerpt = truncated.rsplit(' ', 1)[0] + '...'
-        
-        frontmatter[output_field] = excerpt
+        frontmatter[output_field] = source_text
         return frontmatter
     
     def _task_breadcrumbs(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:

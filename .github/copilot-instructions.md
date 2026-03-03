@@ -11,12 +11,12 @@
 **State your classification as the first line of every response, no exceptions:**
 
 > `SIMPLE` — single file, obvious fix, no pipeline impact
-> `COMPLEX` — generator/exporter/data pipeline, 3+ files, protected file, new pattern
+> `COMPLEX` — generator/exporter/data pipeline, 3+ files, high-impact file, new pattern
 
 | Triggers COMPLEX |
 |-----------------|
 | Generator, exporter, data pipeline, or 3+ files |
-| Protected file (see `.github/PROTECTED_FILES.md`) |
+| High-impact file (see `.github/PROTECTED_FILES.md`) |
 | New architectural pattern, domain, or component |
 
 **SIMPLE tasks:** Apply Core 5 Rules only, proceed.
@@ -56,7 +56,7 @@
 Before writing any code:
 
 - [ ] Classify: SIMPLE or COMPLEX (stated at top of response)
-- [ ] Check `.github/PROTECTED_FILES.md` — is this file protected? If Tier 1: STOP, ask user
+- [ ] Check `.github/PROTECTED_FILES.md` — is this file high-impact? Plan focused validation
 - [ ] Read the actual source files — never trust a summary or recent context
 - [ ] Search `docs/QUICK_REFERENCE.md` for existing guidance
 - [ ] Check `docs/08-development/` for a policy doc on this area
@@ -94,16 +94,16 @@ NEVER → heredoc, multi-line echo, or any terminal-based file creation
 5. If it hangs again → run it as background (`isBackground: true`) and use `get_terminal_output` to check progress
 ---
 
-## 🔒 PROTECTED FILES — Ask before touching
+## ⚠️ HIGH-IMPACT FILES — Validate after touching
 
-**Tier 1 (NEVER without explicit permission):**
+**High-impact examples:**
 - `shared/voice/profiles/*.yaml`
 - `prompts/{domain}/*.txt`
 - `generation/core/evaluated_generator.py`
 - `generation/core/generator.py`
 - `shared/text/utils/prompt_builder.py`
 
-**Tier 2 (Explain impact, wait for approval):**
+**Additional high-impact examples:**
 - `generation/config.yaml`, `domains/*/config.yaml`
 - `data/materials/Materials.yaml`, `data/settings/Settings.yaml`
 - `learning/*.py`

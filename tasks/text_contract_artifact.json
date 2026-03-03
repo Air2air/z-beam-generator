@@ -1,0 +1,248 @@
+{
+  "source": {
+    "router": "generation/config.yaml: field_router.field_types.*.text",
+    "backfill": "generation/backfill/config/*.yaml: multi_field_text.fields"
+  },
+  "domains": {
+    "applications": {
+      "router_text_fields": [
+        "contaminatedBy",
+        "contaminatedByTitle",
+        "faq",
+        "pageDescription",
+        "pageTitle",
+        "relatedMaterials",
+        "relatedMaterialsTitle"
+      ],
+      "backfill_field_paths": [
+        "faq",
+        "pageDescription",
+        "pageTitle",
+        "relationships.discovery.relatedMaterials._section.sectionDescription",
+        "relationships.discovery.relatedMaterials._section.sectionTitle",
+        "relationships.interactions.contaminatedBy._section.sectionDescription",
+        "relationships.interactions.contaminatedBy._section.sectionTitle"
+      ],
+      "backfill_component_types": [
+        "contaminatedBy",
+        "contaminatedByTitle",
+        "faq",
+        "pageDescription",
+        "pageTitle",
+        "relatedMaterials",
+        "relatedMaterialsTitle"
+      ],
+      "expected_prompt_keys": [
+        "contaminatedBy",
+        "contaminatedByTitle",
+        "faq",
+        "pageDescription",
+        "pageTitle",
+        "relatedMaterials",
+        "relatedMaterialsTitle",
+        "relationships.discovery.relatedMaterials._section.sectionDescription",
+        "relationships.discovery.relatedMaterials._section.sectionTitle",
+        "relationships.interactions.contaminatedBy._section.sectionDescription",
+        "relationships.interactions.contaminatedBy._section.sectionTitle"
+      ]
+    },
+    "materials": {
+      "router_text_fields": [
+        "appearanceVariations",
+        "commonChallenges",
+        "contaminatedBy",
+        "environmentalImpact",
+        "faq",
+        "industryApplications",
+        "laserMaterialInteraction",
+        "materialCharacteristics",
+        "micro",
+        "pageDescription",
+        "pageTitle",
+        "physicalProperties",
+        "preventionStrategies",
+        "relatedMaterials",
+        "removalMethods"
+      ],
+      "backfill_field_paths": [
+        "components._section.sectionDescription",
+        "components.micro",
+        "faq",
+        "pageDescription",
+        "properties.laserMaterialInteraction",
+        "properties.laserMaterialInteraction._section.sectionDescription",
+        "properties.materialCharacteristics",
+        "properties.materialCharacteristics._section.sectionDescription",
+        "relationships.interactions.contaminatedBy._section.sectionDescription"
+      ],
+      "backfill_component_types": [
+        "components.micro",
+        "contaminatedBy",
+        "faq",
+        "laserMaterialInteraction",
+        "materialCharacteristics",
+        "micro",
+        "pageDescription"
+      ],
+      "expected_prompt_keys": [
+        "appearanceVariations",
+        "commonChallenges",
+        "components._section.sectionDescription",
+        "components.micro",
+        "contaminatedBy",
+        "environmentalImpact",
+        "faq",
+        "industryApplications",
+        "laserMaterialInteraction",
+        "materialCharacteristics",
+        "micro",
+        "pageDescription",
+        "pageTitle",
+        "physicalProperties",
+        "preventionStrategies",
+        "properties.laserMaterialInteraction",
+        "properties.laserMaterialInteraction._section.sectionDescription",
+        "properties.materialCharacteristics",
+        "properties.materialCharacteristics._section.sectionDescription",
+        "relatedMaterials",
+        "relationships.interactions.contaminatedBy._section.sectionDescription",
+        "removalMethods"
+      ]
+    },
+    "contaminants": {
+      "router_text_fields": [
+        "appearance",
+        "appearanceVariations",
+        "compounds",
+        "continuousMonitoring",
+        "detectionMethods",
+        "emergencyResponse",
+        "exposureLimits",
+        "healthEffects",
+        "micro",
+        "pageDescription",
+        "pageTitle",
+        "ppeRequirements",
+        "preventionStrategies",
+        "producedByMaterials",
+        "relatedCompounds",
+        "relatedContaminants",
+        "removalMethods"
+      ],
+      "backfill_field_paths": [
+        "pageDescription",
+        "relationships.interactions.producesCompounds._section.sectionDescription",
+        "relationships.visual.appearanceOnCategories._section.sectionDescription"
+      ],
+      "backfill_component_types": [
+        "appearanceVariations",
+        "pageDescription",
+        "relatedCompounds"
+      ],
+      "expected_prompt_keys": [
+        "appearance",
+        "appearanceVariations",
+        "compounds",
+        "continuousMonitoring",
+        "detectionMethods",
+        "emergencyResponse",
+        "exposureLimits",
+        "healthEffects",
+        "micro",
+        "pageDescription",
+        "pageTitle",
+        "ppeRequirements",
+        "preventionStrategies",
+        "producedByMaterials",
+        "relatedCompounds",
+        "relatedContaminants",
+        "relationships.interactions.producesCompounds._section.sectionDescription",
+        "relationships.visual.appearanceOnCategories._section.sectionDescription",
+        "removalMethods"
+      ]
+    },
+    "compounds": {
+      "router_text_fields": [
+        "detectionMethods",
+        "emergencyResponse",
+        "exposureLimits",
+        "healthEffects",
+        "pageDescription",
+        "pageTitle",
+        "ppeRequirements",
+        "producedFromContaminants",
+        "reactivity",
+        "regulatoryClassification",
+        "regulatoryStandards",
+        "relatedCompounds",
+        "storageRequirements"
+      ],
+      "backfill_field_paths": [
+        "detectionMethods",
+        "emergencyResponse",
+        "exposureGuidelines",
+        "faq",
+        "healthEffects",
+        "pageDescription",
+        "relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription",
+        "relationships.safety.emergencyResponse._section.sectionDescription",
+        "relationships.safety.healthEffects._section.sectionDescription"
+      ],
+      "backfill_component_types": [
+        "detectionMethods",
+        "emergencyResponse",
+        "exposureLimits",
+        "faq",
+        "healthEffects",
+        "pageDescription"
+      ],
+      "expected_prompt_keys": [
+        "detectionMethods",
+        "emergencyResponse",
+        "exposureGuidelines",
+        "exposureLimits",
+        "faq",
+        "healthEffects",
+        "pageDescription",
+        "pageTitle",
+        "ppeRequirements",
+        "producedFromContaminants",
+        "reactivity",
+        "regulatoryClassification",
+        "regulatoryStandards",
+        "relatedCompounds",
+        "relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription",
+        "relationships.safety.emergencyResponse._section.sectionDescription",
+        "relationships.safety.healthEffects._section.sectionDescription",
+        "storageRequirements"
+      ]
+    },
+    "settings": {
+      "router_text_fields": [
+        "commonChallenges",
+        "industryApplications",
+        "machineSettings",
+        "pageDescription",
+        "pageTitle",
+        "preventionStrategies"
+      ],
+      "backfill_field_paths": [
+        "pageDescription",
+        "relationships.operational.commonChallenges._section.sectionDescription"
+      ],
+      "backfill_component_types": [
+        "commonChallenges",
+        "pageDescription"
+      ],
+      "expected_prompt_keys": [
+        "commonChallenges",
+        "industryApplications",
+        "machineSettings",
+        "pageDescription",
+        "pageTitle",
+        "preventionStrategies",
+        "relationships.operational.commonChallenges._section.sectionDescription"
+      ]
+    }
+  }
+}

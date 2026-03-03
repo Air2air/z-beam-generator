@@ -3,7 +3,7 @@ chain:
   order:
     - descriptor
     - field_prompt
-  notes: Descriptor prompt is reusable and brief; field prompt remains source-specific.
+  notes: Descriptor prompt is reusable and brief; field prompt is domain-local text/non-text.
 descriptor_prompts:
   synonymsIdentifiers: |
     Describe THIS ITEM'S canonical identifiers and aliases only.
@@ -24,5 +24,3 @@ descriptor_prompts:
     Describe common operational challenges for THIS ITEM only.
   preventionStrategies: |
     Describe prevention strategies for THIS ITEM only.
-section_prompts: {}
-section_prompt_metadata: {}

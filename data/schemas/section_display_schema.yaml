@@ -233,6 +233,18 @@ sections:
     sectionTitle: "Visual Appearance"
     sectionDescription: "Physical appearance and visual characteristics"
     prompt_ref: appearanceVariations
+
+  appearance:
+    icon: eye
+    order: 20
+    variant: default
+    wordCount: 125
+    title: "Visual Appearance"
+    description: "Physical appearance and visual characteristics"
+    sectionTitle: "Visual Appearance"
+    sectionDescription: "Physical appearance and visual characteristics"
+    prompt_ref: appearanceVariations
+    deprecatedAliasOf: appearanceVariations
   
   # SAFETY GROUP (30-39): Health, regulatory, and emergency information
   healthEffects:
@@ -278,6 +290,18 @@ sections:
     sectionTitle: "Emergency Response"
     sectionDescription: "Emergency procedures and first aid"
     prompt_ref: emergencyResponse
+
+  first_aid:
+    icon: ambulance
+    order: 33
+    variant: danger
+    wordCount: 225
+    title: "Emergency Response"
+    description: "Emergency procedures and first aid"
+    sectionTitle: "Emergency Response"
+    sectionDescription: "Emergency procedures and first aid"
+    prompt_ref: emergencyResponse
+    deprecatedAliasOf: emergencyResponse
   
   storageRequirements:
     icon: warehouse
@@ -289,6 +313,18 @@ sections:
     sectionTitle: "Storage Requirements"
     sectionDescription: "Storage conditions and container compatibility"
     prompt_ref: storageRequirements
+
+  ppe_requirements:
+    icon: hard-hat
+    order: 32
+    variant: default
+    wordCount: 200
+    title: "PPE Requirements"
+    description: "Personal protective equipment and safety measures"
+    sectionTitle: "PPE Requirements"
+    sectionDescription: "Personal protective equipment and safety measures"
+    prompt_ref: ppeRequirements
+    deprecatedAliasOf: ppeRequirements
   
   regulatoryStandards:
     icon: shield-check
@@ -300,6 +336,18 @@ sections:
     sectionTitle: "Regulatory Standards"
     sectionDescription: "Compliance requirements and regulatory framework"
     prompt_ref: regulatoryStandards
+
+  regulatory_standards:
+    icon: shield-check
+    order: 35
+    variant: default
+    wordCount: 225
+    title: "Regulatory Standards"
+    description: "Compliance requirements and regulatory framework"
+    sectionTitle: "Regulatory Standards"
+    sectionDescription: "Compliance requirements and regulatory framework"
+    prompt_ref: regulatoryStandards
+    deprecatedAliasOf: regulatoryStandards
 
   relationships.safety.regulatoryStandards:
     icon: shield-check
@@ -367,6 +415,42 @@ sections:
     sectionTitle: "Detection Methods"
     sectionDescription: "Identification and measurement techniques"
     prompt_ref: detectionMethods
+
+  detection_methods:
+    icon: search
+    order: 42
+    variant: default
+    wordCount: 175
+    title: "Detection Methods"
+    description: "Identification and measurement techniques"
+    sectionTitle: "Detection Methods"
+    sectionDescription: "Identification and measurement techniques"
+    prompt_ref: detectionMethods
+    deprecatedAliasOf: detectionMethods
+
+  exposure_guidelines:
+    icon: gauge
+    order: 31
+    variant: warning
+    wordCount: 200
+    title: "Exposure Limits"
+    description: "Regulatory exposure thresholds and monitoring"
+    sectionTitle: "Exposure Limits"
+    sectionDescription: "Regulatory exposure thresholds and monitoring"
+    prompt_ref: exposureLimits
+    deprecatedAliasOf: exposureLimits
+
+  health_effects:
+    icon: heart-pulse
+    order: 30
+    variant: warning
+    wordCount: 250
+    title: "Health Effects"
+    description: "Health impacts and biological effects"
+    sectionTitle: "Health Effects"
+    sectionDescription: "Health impacts and biological effects"
+    prompt_ref: healthEffects
+    deprecatedAliasOf: healthEffects
   
   preventionStrategies:
     icon: shield
@@ -536,6 +620,66 @@ sections:
     sectionTitle: "Related Compounds"
     sectionDescription: "Similar or associated chemical compounds"
     prompt_ref: relatedCompounds
+
+  compounds:
+    icon: atom
+    order: 65
+    variant: default
+    wordCount: 150
+    title: "Related Compounds"
+    description: "Similar or associated chemical compounds"
+    sectionTitle: "Related Compounds"
+    sectionDescription: "Similar or associated chemical compounds"
+    prompt_ref: relatedCompounds
+    deprecatedAliasOf: relatedCompounds
+
+  challenges:
+    icon: alert-triangle
+    order: 41
+    variant: default
+    wordCount: 175
+    title: "Common Challenges"
+    description: "Handling difficulties and operational issues"
+    sectionTitle: "Common Challenges"
+    sectionDescription: "Handling difficulties and operational issues"
+    prompt_ref: commonChallenges
+    deprecatedAliasOf: commonChallenges
+
+  component_summary:
+    icon: settings
+    order: 75
+    variant: default
+    wordCount: 120
+    title: "Machine Settings"
+    description: "Optimal laser parameters and equipment specifications"
+    sectionTitle: "Machine Settings"
+    sectionDescription: "Optimal laser parameters and equipment specifications"
+    prompt_ref: machineSettings
+    deprecatedAliasOf: machineSettings
+
+  operationalConsiderations:
+    icon: shield
+    order: 43
+    variant: default
+    wordCount: 175
+    title: "Operational Considerations"
+    description: "Operational usage guidance and constraints"
+    sectionTitle: "Operational Considerations"
+    sectionDescription: "Operational usage guidance and constraints"
+    prompt_ref: preventionStrategies
+    deprecatedAliasOf: preventionStrategies
+
+  recommendations:
+    icon: shield
+    order: 43
+    variant: default
+    wordCount: 175
+    title: "Recommendations"
+    description: "Practical recommendations and control measures"
+    sectionTitle: "Recommendations"
+    sectionDescription: "Practical recommendations and control measures"
+    prompt_ref: preventionStrategies
+    deprecatedAliasOf: preventionStrategies
 
   # MATERIALS-SPECIFIC SECTIONS
   materialCharacteristics:

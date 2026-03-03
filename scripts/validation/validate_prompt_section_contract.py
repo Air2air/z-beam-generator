@@ -10,6 +10,11 @@ from typing import Any
 import yaml
 
 REQUIRED_METADATA_FIELDS = ("sectionTitle", "sectionDescription", "sectionMetadata")
+NON_SECTION_TEXT_KEYS = {"pageTitle", "pageDescription"}
+
+
+def _is_non_text_prompt_ref(prompt_ref: str) -> bool:
+    return prompt_ref.strip().endswith("Title")
 
 
 def _load_generation_policy(repo_root: Path) -> dict[str, Any]:
@@ -48,6 +53,33 @@ def load_yaml(path: Path) -> dict[str, Any]:
     if not isinstance(data, dict):
         raise ValueError(f"YAML root must be mapping: {path}")
     return data
+
+
+def _normalize_catalog_subject_keyword(domain: str, value: str) -> str:
+    normalized = value.strip()
+    if normalized.endswith('.yaml'):
+        normalized = normalized[:-5]
+
+    if domain == 'applications':
+        normalized = normalized.replace('-laser-cleaning-', '-')
+        if normalized.endswith('-applications'):
+            normalized = normalized[:-13]
+        if normalized.endswith('-laser-cleaning'):
+            normalized = normalized[:-15]
+    elif domain == 'materials':
+        if normalized.endswith('-laser-cleaning'):
+            normalized = normalized[:-15]
+    elif domain == 'settings':
+        if normalized.endswith('-settings'):
+            normalized = normalized[:-9]
+    elif domain == 'contaminants':
+        if normalized.endswith('-contamination'):
+            normalized = normalized[:-14]
+    elif domain == 'compounds':
+        if normalized.endswith('-compound'):
+            normalized = normalized[:-9]
+
+    return normalized.strip()
 
 
 def _shared_prompt_registry_path(repo_root: Path) -> Path:
@@ -101,8 +133,6 @@ def validate_prompt_files(repo_root: Path) -> list[str]:
 
     content_prompt_files = sorted((repo_root / "prompts" / "registry").glob("content_prompts_*.yaml"))
     for prompt_file in content_prompt_files:
-        if prompt_file.name == "content_prompts_shared.yaml":
-            continue
         payload = load_yaml(prompt_file)
         section_prompt_metadata = payload.get("section_prompt_metadata")
         if not isinstance(section_prompt_metadata, dict):
@@ -176,199 +206,223 @@ def validate_prompt_files(repo_root: Path) -> list[str]:
     return errors
 
 
-def validate_single_line_component_prompts(repo_root: Path) -> list[str]:
-    """Validate one single-line prompt + variables contract for every schema component."""
+def validate_domain_text_prompt_files(repo_root: Path) -> list[str]:
+    """Validate domain-local text prompt files contain per-field prompts for all router text fields."""
     errors: list[str] = []
 
+    generation_config_path = repo_root / "generation/config.yaml"
+    generation_config = load_yaml(generation_config_path)
+    field_router = generation_config.get("field_router")
+    if not isinstance(field_router, dict):
+        return [f"{generation_config_path}: missing required mapping field_router"]
+
+    field_types = field_router.get("field_types")
+    if not isinstance(field_types, dict):
+        return [f"{generation_config_path}: field_router.field_types must be a mapping"]
+
     schema_path = repo_root / "data/schemas/section_display_schema.yaml"
-    schema = load_yaml(schema_path)
-    sections = schema.get("sections")
+    schema_payload = load_yaml(schema_path)
+    sections = schema_payload.get("sections")
     if not isinstance(sections, dict):
         return [f"{schema_path}: sections must be a mapping"]
 
-    single_line_path = repo_root / "data/schemas/component_single_line_prompts.yaml"
-    single_line_payload = load_yaml(single_line_path)
-    policy = single_line_payload.get("component_single_line_prompts")
-    if not isinstance(policy, dict):
-        return [
-            f"{single_line_path}: missing required mapping 'component_single_line_prompts'"
-        ]
-
-    required_variables = policy.get("required_variables")
-    if not isinstance(required_variables, list) or not required_variables:
-        return [
-            f"{single_line_path}: component_single_line_prompts.required_variables must be a non-empty list"
-        ]
-    required_variables = [v for v in required_variables if isinstance(v, str) and v.strip()]
-    if len(required_variables) == 0:
-        return [
-            f"{single_line_path}: component_single_line_prompts.required_variables must contain non-empty strings"
-        ]
-
-    by_domain = policy.get("by_domain")
-    if not isinstance(by_domain, dict):
-        return [
-            f"{single_line_path}: component_single_line_prompts.by_domain must be a mapping"
-        ]
+    component_aliases = _load_component_aliases(repo_root)
 
     placeholder_pattern = re.compile(r"\{([a-zA-Z_][a-zA-Z0-9_]*)\}")
+    required_variables = {"subject", "context"}
 
-    component_aliases = _load_component_aliases(repo_root)
-    generation_policy = _load_generation_policy(repo_root)
-    required_by_domain = (((generation_policy.get("backfill") or {}).get("required_fields_by_domain")) or {})
-    if not isinstance(required_by_domain, dict):
-        return [
-            "data/schemas/content_generation_policy.yaml: backfill.required_fields_by_domain must be a mapping"
-        ]
-
-    required_set = set(required_variables)
-
-    for domain in sorted(required_by_domain.keys()):
-        domain_required_entries = required_by_domain.get(domain)
-        if not isinstance(domain_required_entries, list):
-            errors.append(
-                f"data/schemas/content_generation_policy.yaml: domain '{domain}' must map to a list"
-            )
+    for domain, type_map in sorted(field_types.items()):
+        if not isinstance(domain, str) or not isinstance(type_map, dict):
             continue
 
-        domain_prompts = by_domain.get(domain)
-        if not isinstance(domain_prompts, dict):
-            errors.append(
-                f"{single_line_path}: missing component_single_line_prompts.by_domain.{domain}"
-            )
+        text_fields = type_map.get("text")
+        if not isinstance(text_fields, list):
+            errors.append(f"{generation_config_path}: field_router.field_types.{domain}.text must be a list")
             continue
 
-        domain_prompt_entries = {
-            str(key): value
-            for key, value in domain_prompts.items()
-            if isinstance(key, str)
-        }
+        prompt_contract_path = repo_root / "domains" / domain / "prompt.yaml"
+        prompt_contract_payload = load_yaml(prompt_contract_path)
+        prompt_contract = prompt_contract_payload.get("prompt_contract")
+        if not isinstance(prompt_contract, dict):
+            errors.append(f"{prompt_contract_path}: missing required mapping prompt_contract")
+            continue
 
-        required_prompt_refs: set[str] = set()
-        for idx, entry in enumerate(domain_required_entries):
-            if not isinstance(entry, dict):
-                errors.append(
-                    f"data/schemas/content_generation_policy.yaml: domain '{domain}' entry {idx} must be a mapping"
-                )
-                continue
-            component_type = entry.get("componentType")
-            if not isinstance(component_type, str) or not component_type.strip():
-                continue
-            component_type = _normalize_component_type(component_type.strip(), component_aliases)
-            section_data = sections.get(component_type)
-            if not isinstance(section_data, dict):
-                errors.append(
-                    f"{schema_path}: component '{component_type}' referenced by policy for domain '{domain}' is missing"
-                )
-                continue
-            prompt_ref = section_data.get("prompt_ref")
-            if not isinstance(prompt_ref, str) or not prompt_ref.strip():
-                errors.append(
-                    f"{schema_path}: component '{component_type}' for domain '{domain}' missing prompt_ref"
-                )
-                continue
-            required_prompt_refs.add(prompt_ref.strip())
+        text_prompts_file = prompt_contract.get("text_prompts_file")
+        if not isinstance(text_prompts_file, str) or not text_prompts_file.strip():
+            errors.append(f"{prompt_contract_path}: prompt_contract.text_prompts_file must be a non-empty string")
+            continue
 
-        for prompt_ref in sorted(required_prompt_refs):
-            entry = domain_prompt_entries.get(prompt_ref)
-            if not isinstance(entry, dict):
-                errors.append(
-                    f"{single_line_path}: missing component_single_line_prompts.by_domain.{domain}.{prompt_ref}"
-                )
+        text_prompt_path = repo_root / text_prompts_file.strip()
+        text_prompt_payload = load_yaml(text_prompt_path)
+        field_prompts = text_prompt_payload.get("field_prompts")
+        if not isinstance(field_prompts, dict):
+            errors.append(f"{text_prompt_path}: field_prompts must be a mapping")
+            continue
+
+        def _is_section_key(component_key: str) -> bool:
+            key_name = component_key.strip()
+            if not key_name or "." in key_name:
+                return False
+            if key_name in NON_SECTION_TEXT_KEYS:
+                return False
+            canonical_name = component_aliases.get(key_name, key_name)
+            return canonical_name in sections
+
+        def _expected_children_for_key(component_key: str) -> tuple[str, ...]:
+            key_name = component_key.strip()
+            if key_name.endswith(".sectionTitle"):
+                return ("sectionTitle",)
+            if key_name.endswith(".sectionDescription"):
+                return ("sectionDescription",)
+            if _is_section_key(key_name):
+                return ("sectionTitle", "sectionDescription")
+            return ("prompt",)
+
+        expected_children_by_key: dict[str, tuple[str, ...]] = {}
+        required_text_keys: set[str] = set()
+
+        for field_name in text_fields:
+            if not isinstance(field_name, str) or not field_name.strip():
+                continue
+            component_key = field_name.strip()
+            required_text_keys.add(component_key)
+            expected_children_by_key[component_key] = _expected_children_for_key(component_key)
+
+        backfill_path = repo_root / "generation" / "backfill" / "config" / f"{domain}.yaml"
+        if backfill_path.exists():
+            backfill_payload = load_yaml(backfill_path)
+            generators = backfill_payload.get("generators")
+            if isinstance(generators, list):
+                for generator in generators:
+                    if not isinstance(generator, dict):
+                        continue
+                    if str(generator.get("type", "")).strip() != "multi_field_text":
+                        continue
+                    fields = generator.get("fields")
+                    if not isinstance(fields, list):
+                        continue
+                    for field_mapping in fields:
+                        if not isinstance(field_mapping, dict):
+                            continue
+
+                        field_path = field_mapping.get("field")
+                        if isinstance(field_path, str) and field_path.strip():
+                            key_name = field_path.strip()
+                            required_text_keys.add(key_name)
+                            expected_children_by_key.setdefault(
+                                key_name,
+                                _expected_children_for_key(key_name),
+                            )
+
+                        component_type = field_mapping.get("component_type")
+                        if isinstance(component_type, str) and component_type.strip():
+                            component_key = component_type.strip()
+                            required_text_keys.add(component_key)
+                            expected_children_by_key[component_key] = _expected_children_for_key(component_key)
+
+        normalized_entries: dict[str, str] = {}
+        for key, value in field_prompts.items():
+            if not isinstance(key, str) or not key.strip():
                 continue
 
-            prompt = entry.get("prompt")
-            variables = entry.get("variables")
+            key_name = key.strip()
+            expected_children = expected_children_by_key.get(
+                key_name,
+                _expected_children_for_key(key_name),
+            )
 
-            if not isinstance(prompt, str) or not prompt.strip():
-                errors.append(
-                    f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref}.prompt must be a non-empty string"
-                )
+            if isinstance(value, dict):
+                missing_children: list[str] = []
+                child_values: dict[str, str] = {}
+                for child_key in expected_children:
+                    child_value = value.get(child_key)
+                    if not isinstance(child_value, str) or not child_value.strip():
+                        missing_children.append(child_key)
+                    else:
+                        child_values[child_key] = child_value.strip()
+
+                if missing_children:
+                    errors.append(
+                        f"{text_prompt_path}: field_prompts.{key_name} missing required child keys: {', '.join(missing_children)}"
+                    )
+                    continue
+
+                if "sectionDescription" in child_values:
+                    normalized_entries[key_name] = child_values["sectionDescription"]
+                elif "prompt" in child_values:
+                    normalized_entries[key_name] = child_values["prompt"]
+                elif "sectionTitle" in child_values:
+                    normalized_entries[key_name] = child_values["sectionTitle"]
                 continue
 
-            prompt_text = prompt.strip()
+            if isinstance(value, str) and value.strip():
+                errors.append(
+                    f"{text_prompt_path}: field_prompts.{key_name} must use nested child fields ({', '.join(expected_children)})"
+                )
+                normalized_entries[key_name] = value.strip()
+
+        for key_name in sorted(required_text_keys):
+            prompt_text = normalized_entries.get(key_name)
+            if not isinstance(prompt_text, str) or not prompt_text:
+                errors.append(f"{text_prompt_path}: missing field_prompts.{key_name}")
+                continue
+
             if "\n" in prompt_text:
-                errors.append(
-                    f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref}.prompt must be single-line"
-                )
-
-            if not isinstance(variables, list) or not variables:
-                errors.append(
-                    f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref}.variables must be a non-empty list"
-                )
-                continue
-
-            normalized_variables = [v for v in variables if isinstance(v, str) and v.strip()]
-            if len(normalized_variables) != len(variables):
-                errors.append(
-                    f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref}.variables must contain only non-empty strings"
-                )
-                continue
+                errors.append(f"{text_prompt_path}: field_prompts.{key_name} must be single-line")
 
             placeholders = set(placeholder_pattern.findall(prompt_text))
             if not placeholders:
-                errors.append(
-                    f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref}.prompt must include at least one variable placeholder"
-                )
+                errors.append(f"{text_prompt_path}: field_prompts.{key_name} must include variable placeholders")
                 continue
 
-            declared = set(normalized_variables)
-
-            missing_required_vars = sorted(required_set - declared)
-            if missing_required_vars:
+            missing_required = sorted(required_variables - placeholders)
+            if missing_required:
                 errors.append(
-                    f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref}.variables missing required variables: {', '.join(missing_required_vars)}"
+                    f"{text_prompt_path}: field_prompts.{key_name} missing required placeholders: {', '.join('{' + name + '}' for name in missing_required)}"
                 )
-
-            undeclared = sorted(placeholders - declared)
-            if undeclared:
-                errors.append(
-                    f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref}.prompt uses undeclared variables: {', '.join(undeclared)}"
-                )
-
-            missing_placeholders = sorted(required_set - placeholders)
-            if missing_placeholders:
-                errors.append(
-                    f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref}.prompt must include required placeholders: {', '.join('{' + name + '}' for name in missing_placeholders)}"
-                )
-
-        extra_refs = sorted(set(domain_prompt_entries.keys()) - required_prompt_refs)
-        for prompt_ref in extra_refs:
-            errors.append(
-                f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref} is not required by content generation policy"
-            )
 
     return errors
 
 
-def _load_domain_prompt_map(repo_root: Path, domain: str) -> dict[str, str]:
+def _load_domain_text_prompt_refs(repo_root: Path, domain: str) -> set[str]:
     prompt_contract_path = repo_root / "domains" / domain / "prompt.yaml"
     if not prompt_contract_path.exists():
-        return {}
+        return set()
 
     prompt_contract_payload = load_yaml(prompt_contract_path)
     prompt_contract = prompt_contract_payload.get("prompt_contract")
     if not isinstance(prompt_contract, dict):
-        return {}
+        return set()
 
-    content_prompts_file = prompt_contract.get("content_prompts_file")
-    if not isinstance(content_prompts_file, str) or not content_prompts_file.strip():
-        return {}
+    text_prompts_file = prompt_contract.get("text_prompts_file")
+    if not isinstance(text_prompts_file, str) or not text_prompts_file.strip():
+        return set()
 
-    domain_file = repo_root / content_prompts_file.strip()
-    if not domain_file.exists():
-        return {}
+    text_prompt_path = repo_root / text_prompts_file.strip()
+    if not text_prompt_path.exists():
+        return set()
 
-    payload = load_yaml(domain_file)
-    section_prompts = payload.get("section_prompts")
-    if not isinstance(section_prompts, dict):
-        return {}
+    text_prompt_payload = load_yaml(text_prompt_path)
+    field_prompts = text_prompt_payload.get("field_prompts")
+    if not isinstance(field_prompts, dict):
+        return set()
 
-    return {
-        str(key): str(value)
-        for key, value in section_prompts.items()
-        if isinstance(key, str) and isinstance(value, str) and value.strip()
-    }
+    normalized: set[str] = set()
+    for key, value in field_prompts.items():
+        if not isinstance(key, str) or not key.strip():
+            continue
+        key_name = key.strip()
+        if isinstance(value, str) and value.strip():
+            normalized.add(key_name)
+            continue
+        if isinstance(value, dict):
+            for child_key in ("sectionDescription", "sectionTitle", "prompt"):
+                child_value = value.get(child_key)
+                if isinstance(child_value, str) and child_value.strip():
+                    normalized.add(key_name)
+                    break
+
+    return normalized
 
 
 def _normalize_component_type(component_type: str, aliases: dict[str, str]) -> str:
@@ -511,7 +565,7 @@ def validate_backfill_prompt_wiring(repo_root: Path) -> list[str]:
             errors.append(f"{config_file}: missing non-empty 'domain'")
             continue
 
-        domain_prompts = _load_domain_prompt_map(repo_root, domain)
+        domain_prompt_refs = _load_domain_text_prompt_refs(repo_root, domain)
         generators = payload.get("generators")
         if not isinstance(generators, list):
             errors.append(f"{config_file}: generators must be a list")
@@ -557,11 +611,11 @@ def validate_backfill_prompt_wiring(repo_root: Path) -> list[str]:
                     )
                     continue
 
-                has_domain_prompt = prompt_ref in domain_prompts
+                has_single_line_prompt = prompt_ref in domain_prompt_refs
                 has_shared_prompt = prompt_ref in shared_prompts
-                if not has_domain_prompt and not has_shared_prompt:
+                if not has_single_line_prompt and not has_shared_prompt:
                     errors.append(
-                        f"{config_file}: field '{field_path}' component '{component_type}' (canonical '{canonical_component_type}') uses prompt_ref '{prompt_ref}' without domain/shared prompt definition"
+                        f"{config_file}: field '{field_path}' component '{component_type}' (canonical '{canonical_component_type}') uses prompt_ref '{prompt_ref}' without single-line/shared prompt definition"
                     )
 
     return errors
@@ -642,21 +696,24 @@ def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
             errors.append(f"{prompt_contract_path}: missing required mapping prompt_contract")
             continue
 
-        content_prompts_file = prompt_contract_body.get("content_prompts_file")
-        if not isinstance(content_prompts_file, str) or not content_prompts_file.strip():
-            errors.append(
-                f"{prompt_contract_path}: prompt_contract.content_prompts_file must be a non-empty string"
-            )
-            continue
+        descriptor_file = prompt_contract_body.get("descriptor_prompts_file")
+        text_file = prompt_contract_body.get("text_prompts_file")
+        non_text_file = prompt_contract_body.get("non_text_prompts_file")
 
-        expected_prompt_path = repo_root / "prompts" / "registry" / "content_prompts_shared.yaml"
-        configured_prompt_path = repo_root / content_prompts_file.strip()
-        if configured_prompt_path != expected_prompt_path:
-            errors.append(
-                f"{prompt_contract_path}: content_prompts_file must point to prompts/registry/content_prompts_shared.yaml"
-            )
-        if not configured_prompt_path.exists():
-            errors.append(f"{prompt_contract_path}: configured file not found: {configured_prompt_path}")
+        for contract_key, configured in (
+            ("descriptor_prompts_file", descriptor_file),
+            ("text_prompts_file", text_file),
+            ("non_text_prompts_file", non_text_file),
+        ):
+            if not isinstance(configured, str) or not configured.strip():
+                errors.append(
+                    f"{prompt_contract_path}: prompt_contract.{contract_key} must be a non-empty string"
+                )
+                continue
+
+            configured_path = repo_root / configured.strip()
+            if not configured_path.exists():
+                errors.append(f"{prompt_contract_path}: configured file not found: {configured_path}")
 
         declared_catalog_domain = catalog_payload.get("domain")
         if not isinstance(declared_catalog_domain, str) or declared_catalog_domain.strip() != domain:
@@ -722,7 +779,7 @@ def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
         if "one_line_content_prompts" in prompt_contract:
             errors.append(
                 f"{prompt_contract_path}: one_line_content_prompts is not allowed in domain prompt contracts; "
-                "use data/schemas/component_single_line_prompts.yaml as the canonical single-line source"
+                "use domains/*/prompts/text_prompt.yaml field_prompts as the canonical text field source"
             )
 
         article_pages = catalog_payload.get("article_pages")
@@ -738,12 +795,12 @@ def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
             if not isinstance(file_names, list):
                 errors.append(f"{catalog_path}: article_pages.file_names must be a list")
             else:
-                declared_files = {
-                    value.strip()
+                declared_keywords = {
+                    _normalize_catalog_subject_keyword(domain, value)
                     for value in file_names
                     if isinstance(value, str) and value.strip()
                 }
-                if len(declared_files) != len(file_names):
+                if len(declared_keywords) != len(file_names) or any(not value for value in declared_keywords):
                     errors.append(
                         f"{catalog_path}: article_pages.file_names must contain only non-empty unique strings"
                     )
@@ -755,20 +812,20 @@ def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
                             f"{catalog_path}: article_pages.frontmatter_directory not found: {frontmatter_path}"
                         )
                     else:
-                        actual_files = {
-                            entry.name
+                        actual_keywords = {
+                            _normalize_catalog_subject_keyword(domain, entry.name)
                             for entry in frontmatter_path.glob("*.yaml")
                             if entry.is_file()
                         }
-                        missing_files = sorted(actual_files - declared_files)
-                        extra_files = sorted(declared_files - actual_files)
-                        if missing_files:
+                        missing_keywords = sorted(actual_keywords - declared_keywords)
+                        extra_keywords = sorted(declared_keywords - actual_keywords)
+                        if missing_keywords:
                             errors.append(
-                                f"{catalog_path}: article_pages.file_names missing files present in frontmatter: {', '.join(missing_files)}"
+                                f"{catalog_path}: article_pages.file_names missing subject keywords present in frontmatter: {', '.join(missing_keywords)}"
                             )
-                        if extra_files:
+                        if extra_keywords:
                             errors.append(
-                                f"{catalog_path}: article_pages.file_names contains files not present in frontmatter: {', '.join(extra_files)}"
+                                f"{catalog_path}: article_pages.file_names contains subject keywords not present in frontmatter: {', '.join(extra_keywords)}"
                             )
 
     return errors
@@ -786,7 +843,7 @@ def validate_legacy_prompt_registry_absence(repo_root: Path) -> list[str]:
         legacy_path = repo_root / relative_path
         if legacy_path.exists():
             errors.append(
-                f"{legacy_path}: deprecated legacy shared prompt file must not exist; use prompts/registry/shared_prompt_registry.yaml and data/schemas/component_single_line_prompts.yaml"
+                f"{legacy_path}: deprecated legacy shared prompt file must not exist; use prompts/registry/shared_prompt_registry.yaml and domains/*/prompts/text_prompt.yaml"
             )
 
     return errors
@@ -797,7 +854,7 @@ def main() -> int:
 
     errors: list[str] = []
     errors.extend(validate_prompt_files(repo_root))
-    errors.extend(validate_single_line_component_prompts(repo_root))
+    errors.extend(validate_domain_text_prompt_files(repo_root))
     errors.extend(validate_backfill_policy_alignment(repo_root))
     errors.extend(validate_backfill_prompt_wiring(repo_root))
     errors.extend(validate_domain_prompt_contracts(repo_root))

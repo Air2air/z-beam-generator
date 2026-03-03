@@ -81,14 +81,11 @@ class SEODescriptionGenerator(BaseGenerator):
     Generate SEO meta descriptions from content fields.
     
     Takes a long description field (e.g., 'contamination_description'),
-    truncates intelligently at word boundaries, and creates a concise
-    SEO-friendly description (~160 characters).
+    cleans it, and outputs the full text without truncation.
     
     Features:
-    - Truncates at word boundary (not mid-word)
-    - Adds ellipsis if truncated
     - Strips HTML tags (if present)
-    - Preserves first sentence if possible
+    - Removes excess whitespace
     """
     
     def __init__(self, config: Dict[str, Any]):
@@ -156,7 +153,7 @@ class SEODescriptionGenerator(BaseGenerator):
             text: Source text (long description)
         
         Returns:
-            SEO description (~160 chars, word-boundary truncated)
+            Cleaned SEO description without truncation
         """
         # Strip HTML tags if present
         text = re.sub(r'<[^>]+>', '', text)
@@ -164,18 +161,7 @@ class SEODescriptionGenerator(BaseGenerator):
         # Remove excess whitespace
         text = ' '.join(text.split())
         
-        # If already short enough, return as-is
-        if len(text) <= self.max_length:
-            return text
-        
-        # Try to use first sentence if short enough
-        first_sentence = text.split('.')[0] + '.'
-        if len(first_sentence) <= self.max_length:
-            return first_sentence
-        
-        # Truncate at word boundary
-        truncated = text[:self.max_length].rsplit(' ', 1)[0]
-        return truncated.rstrip(',.;:') + '...'
+        return text
 
 
 class ExcerptGenerator(BaseGenerator):
@@ -226,19 +212,8 @@ class ExcerptGenerator(BaseGenerator):
         if not source_text:
             return frontmatter
         
-        # Generate excerpt based on mode
-        if self.mode == 'sentences':
-            excerpt = self._extract_sentences(source_text, self.length)
-        elif self.mode == 'words':
-            excerpt = self._extract_words(source_text, self.length)
-        elif self.mode == 'characters':
-            excerpt = self._extract_characters(source_text, self.length)
-        else:
-            logger.warning(f"Unknown excerpt mode: {self.mode}")
-            return frontmatter
-        
-        frontmatter[self.output_field] = excerpt
-        logger.debug(f"Generated excerpt ({len(excerpt)} chars)")
+        frontmatter[self.output_field] = source_text
+        logger.debug(f"Generated excerpt ({len(source_text)} chars)")
         
         return frontmatter
     

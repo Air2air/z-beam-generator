@@ -10,11 +10,33 @@ generators:
     source_file: data/contaminants/Contaminants.yaml
     items_key: contaminants
     fields:
+      - field: pageTitle
+        component_type: pageTitle
       - field: pageDescription
         component_type: pageDescription
       - field: faq
         component_type: faq
-      - field: appearance
-        component_type: appearance
-      - field: compounds
-        component_type: compounds
+      - field: relationships.visual.appearanceOnCategories._section.sectionDescription
+        component_type: appearanceVariations
+      - field: relationships.interactions.producedByMaterials._section.sectionDescription
+        component_type: producedByMaterials
+      - field: relationships.interactions.relatedContaminants._section.sectionDescription
+        component_type: relatedContaminants
+      - field: relationships.interactions.producesCompounds._section.sectionDescription
+        component_type: relatedCompounds
+      - field: relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription
+        component_type: detectionMethods
+      - field: relationships.operational.removalMethods._section.sectionDescription
+        component_type: removalMethods
+      - field: relationships.operational.preventionStrategies._section.sectionDescription
+        component_type: preventionStrategies
+      - field: relationships.safety.healthEffects._section.sectionDescription
+        component_type: healthEffects
+      - field: relationships.safety.exposureLimits._section.sectionDescription
+        component_type: exposureLimits
+      - field: relationships.safety.ppeRequirements._section.sectionDescription
+        component_type: ppeRequirements
+      - field: relationships.safety.emergencyResponse._section.sectionDescription
+        component_type: emergencyResponse
+      - field: relationships.detectionMonitoring.continuousMonitoring._section.sectionDescription
+        component_type: continuousMonitoring

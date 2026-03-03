@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -19,6 +20,72 @@ class PromptRegistryService:
     _prompt_catalog_cache: Optional[Dict[str, Any]] = None
     _single_line_component_prompts_cache: Optional[Dict[str, Dict[str, Any]]] = None
     _faq_prompt_cache: Optional[Dict[str, Any]] = None
+    _domain_text_prompt_entries_cache: Dict[str, Dict[str, Dict[str, str]]] = {}
+    _domain_non_text_prompt_cache: Dict[str, str] = {}
+    _prompt_gate_config_cache: Optional[Dict[str, Any]] = None
+    _generation_config_cache: Optional[Dict[str, Any]] = None
+    _domain_optimizer_prompt_cache: Dict[str, Optional[str]] = {}
+
+    @staticmethod
+    def _normalize_prompt_line(line: str) -> str:
+        """Normalize a prompt line for conservative duplicate detection."""
+        return re.sub(r"\s+", " ", line.strip().lower())
+
+    @classmethod
+    def _is_descriptor_redundant_for_field_prompt(
+        cls,
+        descriptor_prompt: str,
+        field_prompt: str,
+    ) -> bool:
+        """Determine whether descriptor guidance is redundant when field prompt is already specific."""
+        descriptor = descriptor_prompt.strip()
+        field = field_prompt.strip()
+        if not descriptor or not field:
+            return False
+
+        normalized_descriptor = cls._normalize_prompt_line(descriptor)
+        normalized_field = cls._normalize_prompt_line(field)
+
+        if normalized_descriptor and normalized_descriptor in normalized_field:
+            return True
+
+        directive_tokens = (
+            "describe",
+            "write",
+            "summarize",
+            "provide",
+            "list",
+            "state",
+            "explain",
+        )
+
+        if len(field) >= 80 and any(token in normalized_field for token in directive_tokens):
+            if "{subject}" in field or "{context}" in field:
+                return True
+
+        return False
+
+    @classmethod
+    def _dedupe_optimizer_prompt(cls, base_prompt: str, optimizer_prompt: str) -> str:
+        """Remove optimizer lines that are already present in the base prompt."""
+        base_lines = {
+            cls._normalize_prompt_line(line)
+            for line in base_prompt.splitlines()
+            if cls._normalize_prompt_line(line)
+        }
+
+        deduped_lines: list[str] = []
+        for raw_line in optimizer_prompt.splitlines():
+            normalized_line = cls._normalize_prompt_line(raw_line)
+            if not normalized_line:
+                deduped_lines.append(raw_line)
+                continue
+            if normalized_line in base_lines:
+                continue
+            deduped_lines.append(raw_line)
+
+        deduped = "\n".join(deduped_lines).strip()
+        return deduped
 
     @classmethod
     def _get_domain_prompt_contract(cls, domain: str) -> Dict[str, Any]:
@@ -42,10 +109,10 @@ class PromptRegistryService:
     @classmethod
     def _get_domain_registry_path(cls, domain: str) -> Path:
         prompt_contract = cls._get_domain_prompt_contract(domain)
-        relative_path = prompt_contract.get("content_prompts_file")
+        relative_path = prompt_contract.get("descriptor_prompts_file")
         if not isinstance(relative_path, str) or not relative_path.strip():
             raise ValueError(
-                f"domains/{domain}/prompt.yaml: prompt_contract.content_prompts_file must be a non-empty string"
+                f"domains/{domain}/prompt.yaml: prompt_contract.descriptor_prompts_file must be a non-empty string"
             )
 
         registry_path = cls._project_root() / relative_path.strip()
@@ -55,6 +122,261 @@ class PromptRegistryService:
             )
 
         return registry_path
+
+    @classmethod
+    def _get_domain_field_prompt_path(cls, domain: str, prompt_kind: str) -> Path:
+        prompt_contract = cls._get_domain_prompt_contract(domain)
+        if prompt_kind == "text":
+            contract_key = "text_prompts_file"
+        elif prompt_kind == "non_text":
+            contract_key = "non_text_prompts_file"
+        else:
+            raise ValueError(f"Unsupported prompt kind '{prompt_kind}' for domain '{domain}'")
+
+        relative_path = prompt_contract.get(contract_key)
+        if not isinstance(relative_path, str) or not relative_path.strip():
+            raise ValueError(
+                f"domains/{domain}/prompt.yaml: prompt_contract.{contract_key} must be a non-empty string"
+            )
+
+        prompt_path = cls._project_root() / relative_path.strip()
+        if not prompt_path.exists():
+            raise FileNotFoundError(
+                f"Configured {contract_key} does not exist for '{domain}': {prompt_path}"
+            )
+
+        return prompt_path
+
+    @classmethod
+    def _get_domain_optimizer_prompt_path(cls, domain: str) -> Optional[Path]:
+        prompt_contract = cls._get_domain_prompt_contract(domain)
+        relative_path = prompt_contract.get("optimizer_prompts_file")
+        if not isinstance(relative_path, str) or not relative_path.strip():
+            return None
+
+        prompt_path = cls._project_root() / relative_path.strip()
+        if not prompt_path.exists():
+            raise FileNotFoundError(
+                f"Configured optimizer_prompts_file does not exist for '{domain}': {prompt_path}"
+            )
+
+        return prompt_path
+
+    @classmethod
+    def _load_domain_optimizer_prompt(cls, domain: str) -> Optional[str]:
+        if domain in cls._domain_optimizer_prompt_cache:
+            return cls._domain_optimizer_prompt_cache[domain]
+
+        prompt_path = cls._get_domain_optimizer_prompt_path(domain)
+        if prompt_path is None:
+            cls._domain_optimizer_prompt_cache[domain] = None
+            return None
+
+        payload = cls._load_yaml_file(prompt_path)
+        prompt = payload.get("prompt")
+        if not isinstance(prompt, str) or not prompt.strip():
+            raise ValueError(
+                f"Invalid optimizer prompt file for '{domain}': expected non-empty 'prompt' in {prompt_path}"
+            )
+
+        normalized_prompt = prompt.strip()
+        cls._domain_optimizer_prompt_cache[domain] = normalized_prompt
+        return normalized_prompt
+
+    @classmethod
+    def _load_generation_config(cls) -> Dict[str, Any]:
+        if cls._generation_config_cache is None:
+            config_path = cls._project_root() / "generation" / "config.yaml"
+            cls._generation_config_cache = cls._load_yaml_file(config_path)
+        return cls._generation_config_cache
+
+    @classmethod
+    def _load_prompt_gate_config(cls) -> Dict[str, Any]:
+        if cls._prompt_gate_config_cache is not None:
+            return cls._prompt_gate_config_cache
+
+        config_path = cls._project_root() / "config" / "final_prompt_gate.yaml"
+        if not config_path.exists():
+            cls._prompt_gate_config_cache = {}
+            return cls._prompt_gate_config_cache
+
+        cls._prompt_gate_config_cache = cls._load_yaml_file(config_path)
+        return cls._prompt_gate_config_cache
+
+    @classmethod
+    def _get_min_description_words(cls) -> int:
+        config = cls._load_generation_config()
+        shared_validation = config.get("shared_domain_validation")
+        if not isinstance(shared_validation, dict):
+            raise KeyError("Missing required config block: shared_domain_validation")
+        if "min_description_words" not in shared_validation:
+            raise KeyError("Missing required config key: shared_domain_validation.min_description_words")
+        min_words = shared_validation["min_description_words"]
+        if not isinstance(min_words, int):
+            raise TypeError("shared_domain_validation.min_description_words must be an integer")
+        return min_words
+
+    @classmethod
+    def _get_prompt_gate_max_words(cls, component_type: str) -> Optional[int]:
+        config = cls._load_prompt_gate_config()
+        components = config.get("components")
+        if not isinstance(components, list):
+            return None
+
+        for component in components:
+            if not isinstance(component, dict):
+                continue
+            if component.get("name") != component_type:
+                continue
+            checks = component.get("checks")
+            if not isinstance(checks, dict):
+                raise KeyError(
+                    f"Prompt gate config for '{component_type}' missing required 'checks' mapping"
+                )
+            if "max_prompt_words" not in checks:
+                raise KeyError(
+                    f"Prompt gate config for '{component_type}' missing required 'checks.max_prompt_words'"
+                )
+            max_words = checks["max_prompt_words"]
+            if not isinstance(max_words, int):
+                raise TypeError(
+                    f"Prompt gate config for '{component_type}' requires integer checks.max_prompt_words"
+                )
+            return max_words
+
+        return None
+
+    @classmethod
+    def _should_include_optimizer_prompt(
+        cls,
+        component_type: str,
+        base_prompt: str,
+        optimizer_prompt: str
+    ) -> bool:
+        from shared.text.utils.component_specs import ComponentRegistry
+
+        min_description_words = cls._get_min_description_words()
+        base_length = ComponentRegistry.get_default_length(component_type)
+        if base_length < min_description_words:
+            return False
+
+        max_prompt_words = cls._get_prompt_gate_max_words(component_type)
+        if max_prompt_words is None:
+            return True
+
+        combined_words = len(base_prompt.split()) + len(optimizer_prompt.split())
+        return combined_words <= max_prompt_words
+
+    @classmethod
+    def _load_domain_text_prompt_entries(cls, domain: str) -> Dict[str, Dict[str, str]]:
+        cached = cls._domain_text_prompt_entries_cache.get(domain)
+        if isinstance(cached, dict) and cached:
+            return cached
+
+        prompt_path = cls._get_domain_field_prompt_path(domain, "text")
+        payload = cls._load_yaml_file(prompt_path)
+
+        field_prompts = payload.get("field_prompts")
+        if not isinstance(field_prompts, dict):
+            raise ValueError(
+                f"Invalid text prompt file for '{domain}': expected mapping field_prompts in {prompt_path}"
+            )
+
+        normalized: Dict[str, Dict[str, str]] = {}
+        for key, value in field_prompts.items():
+            if not isinstance(key, str) or not key.strip():
+                continue
+
+            entry_key = key.strip()
+            if not isinstance(value, dict):
+                continue
+
+            child_map: Dict[str, str] = {}
+            for child_key in ("prompt", "sectionTitle", "sectionDescription"):
+                child_value = value.get(child_key)
+                if isinstance(child_value, str) and child_value.strip():
+                    child_map[child_key] = child_value.strip()
+
+            if child_map:
+                normalized[entry_key] = child_map
+
+        if not normalized:
+            raise ValueError(
+                f"Invalid text prompt file for '{domain}': field_prompts must contain non-empty string entries in {prompt_path}"
+            )
+
+        cls._domain_text_prompt_entries_cache[domain] = normalized
+        return normalized
+
+    @classmethod
+    def _load_domain_non_text_prompt(cls, domain: str) -> str:
+        cached = cls._domain_non_text_prompt_cache.get(domain)
+        if isinstance(cached, str) and cached.strip():
+            return cached
+
+        prompt_path = cls._get_domain_field_prompt_path(domain, "non_text")
+        payload = cls._load_yaml_file(prompt_path)
+        field_prompt = payload.get("field_prompt")
+        if not isinstance(field_prompt, str) or not field_prompt.strip():
+            raise ValueError(
+                f"Invalid non-text prompt file for '{domain}': expected non-empty field_prompt in {prompt_path}"
+            )
+
+        normalized_prompt = field_prompt.strip()
+        cls._domain_non_text_prompt_cache[domain] = normalized_prompt
+        return normalized_prompt
+
+    @staticmethod
+    def _is_non_text_prompt_ref(prompt_ref: str) -> bool:
+        normalized = prompt_ref.strip()
+        return normalized.endswith("Title")
+
+    @staticmethod
+    def _expected_text_child_key(entry_key: str, prompt_ref: Optional[str] = None) -> str:
+        normalized = entry_key.strip()
+        if normalized.endswith(".sectionTitle"):
+            return "sectionTitle"
+        if normalized.endswith(".sectionDescription"):
+            return "sectionDescription"
+        if isinstance(prompt_ref, str) and prompt_ref.strip().endswith("Title"):
+            return "sectionTitle"
+        return "prompt"
+
+    @classmethod
+    def _resolve_text_prompt_entry(
+        cls,
+        entry_key: str,
+        entry_value: Dict[str, str],
+        prompt_ref: Optional[str],
+    ) -> Optional[str]:
+        if not isinstance(entry_value, dict):
+            return None
+
+        normalized_key = entry_key.strip()
+        if normalized_key.endswith(".sectionTitle"):
+            value = entry_value.get("sectionTitle")
+            return value.strip() if isinstance(value, str) and value.strip() else None
+        if normalized_key.endswith(".sectionDescription"):
+            value = entry_value.get("sectionDescription")
+            return value.strip() if isinstance(value, str) and value.strip() else None
+
+        section_title = entry_value.get("sectionTitle")
+        section_description = entry_value.get("sectionDescription")
+        if isinstance(section_title, str) and section_title.strip() and isinstance(section_description, str) and section_description.strip():
+            if isinstance(prompt_ref, str) and prompt_ref.strip().endswith("Title"):
+                return section_title.strip()
+            return section_description.strip()
+
+        expected_child = cls._expected_text_child_key(normalized_key, prompt_ref)
+        child_value = entry_value.get(expected_child)
+        if isinstance(child_value, str) and child_value.strip():
+            return child_value.strip()
+
+        fallback = entry_value.get("prompt")
+        if isinstance(fallback, str) and fallback.strip():
+            return fallback.strip()
+
+        return None
 
     @classmethod
     def _project_root(cls) -> Path:
@@ -144,12 +466,15 @@ class PromptRegistryService:
                 raise ValueError("Shared prompt registry missing required section_prompt_metadata.faq")
 
             single_line_by_domain: Dict[str, Dict[str, Any]] = {}
-            for domain, domain_prompts in cls.get_single_line_component_prompts().items():
-                if not isinstance(domain, str) or not isinstance(domain_prompts, dict):
-                    continue
+            for domain in ("applications", "materials", "contaminants", "compounds", "settings"):
+                domain_prompts = cls._load_domain_text_prompt_entries(domain)
                 faq_entry = domain_prompts.get("faq")
-                if isinstance(faq_entry, dict):
-                    single_line_by_domain[domain] = dict(faq_entry)
+                faq_prompt = cls._resolve_text_prompt_entry("faq", faq_entry or {}, "faq") if isinstance(faq_entry, dict) else None
+                if isinstance(faq_prompt, str) and faq_prompt.strip():
+                    single_line_by_domain[domain] = {
+                        "prompt": faq_prompt.strip(),
+                        "variables": ["subject", "context"],
+                    }
 
             if not single_line_by_domain:
                 raise ValueError(
@@ -212,6 +537,8 @@ class PromptRegistryService:
 
         entry = registry.get(prompt_ref)
         if not isinstance(entry, dict):
+            entry = registry.get(component_type)
+        if not isinstance(entry, dict):
             return None
 
         resolved = dict(entry)
@@ -259,15 +586,133 @@ class PromptRegistryService:
 
     @classmethod
     def get_shared_text_prompt_core(cls) -> str:
+        registry = cls._get_shared_prompt_registry()
+        shared_core = registry.get("shared_core_prompts")
+        if not isinstance(shared_core, dict):
+            raise KeyError("Missing required shared prompt registry key: shared_core_prompts")
+
+        section_order = shared_core.get("textPromptCoreOrder")
+        sections = shared_core.get("textPromptCoreSections")
+
+        if isinstance(section_order, list) and isinstance(sections, dict):
+            normalized_order: list[str] = []
+            for key in section_order:
+                if not isinstance(key, str) or not key.strip():
+                    raise ValueError("shared_core_prompts.textPromptCoreOrder must contain non-empty strings")
+                normalized_order.append(key.strip())
+
+            if not normalized_order:
+                raise ValueError("shared_core_prompts.textPromptCoreOrder must not be empty")
+
+            lines = ["GLOBAL TEXT GENERATION CORE (REUSABLE)"]
+            for section_key in normalized_order:
+                section_text = sections.get(section_key)
+                if not isinstance(section_text, str) or not section_text.strip():
+                    raise ValueError(
+                        f"Missing or invalid shared_core_prompts.textPromptCoreSections.{section_key}"
+                    )
+                lines.append(f"- {section_text.strip()}")
+
+            return "\n".join(lines)
+
         return cls._get_shared_registry_value(("shared_core_prompts", "textPromptCore"))
+
+    @classmethod
+    def get_opening_style_bank(cls) -> list[str]:
+        registry = cls._get_shared_prompt_registry()
+        styles = registry.get("shared_core_prompts", {}).get("opening_style_bank")
+        if not isinstance(styles, list) or not styles:
+            raise ValueError("shared_core_prompts.opening_style_bank must be a non-empty list")
+
+        normalized: list[str] = []
+        for style in styles:
+            if isinstance(style, str) and style.strip():
+                normalized.append(style.strip())
+
+        if not normalized:
+            raise ValueError("shared_core_prompts.opening_style_bank must contain non-empty strings")
+
+        return normalized
 
     @classmethod
     def get_humanness_template(cls, compact: bool = False) -> str:
         variant = "compact" if compact else "full"
+        registry = cls._get_shared_prompt_registry()
+        shared_core = registry.get("shared_core_prompts")
+        if not isinstance(shared_core, dict):
+            raise KeyError("Missing required shared prompt registry key: shared_core_prompts")
+
+        humanness = shared_core.get("humanness")
+        if not isinstance(humanness, dict):
+            raise KeyError("Missing required shared prompt registry key: shared_core_prompts.humanness")
+
+        order_key = f"{variant}Order"
+        sections_key = f"{variant}Sections"
+        section_order = humanness.get(order_key)
+        sections = humanness.get(sections_key)
+
+        if isinstance(section_order, list) and isinstance(sections, dict):
+            normalized_order: list[str] = []
+            for key in section_order:
+                if not isinstance(key, str) or not key.strip():
+                    raise ValueError(
+                        f"shared_core_prompts.humanness.{order_key} must contain non-empty strings"
+                    )
+                normalized_order.append(key.strip())
+
+            if not normalized_order:
+                raise ValueError(f"shared_core_prompts.humanness.{order_key} must not be empty")
+
+            blocks: list[str] = []
+            for section_key in normalized_order:
+                section_text = sections.get(section_key)
+                if not isinstance(section_text, str) or not section_text.strip():
+                    raise ValueError(
+                        f"Missing or invalid shared_core_prompts.humanness.{sections_key}.{section_key}"
+                    )
+                blocks.append(section_text.strip())
+
+            return "\n\n".join(blocks)
+
         return cls._get_shared_registry_value(("shared_core_prompts", "humanness", variant))
 
     @classmethod
     def get_quality_evaluation_prompt(cls) -> str:
+        registry = cls._get_shared_prompt_registry()
+        shared_core = registry.get("shared_core_prompts")
+        if not isinstance(shared_core, dict):
+            raise KeyError("Missing required shared prompt registry key: shared_core_prompts")
+
+        quality = shared_core.get("quality")
+        if not isinstance(quality, dict):
+            raise KeyError("Missing required shared prompt registry key: shared_core_prompts.quality")
+
+        section_order = quality.get("evaluationOrder")
+        sections = quality.get("evaluationSections")
+
+        if isinstance(section_order, list) and isinstance(sections, dict):
+            normalized_order: list[str] = []
+            for key in section_order:
+                if not isinstance(key, str) or not key.strip():
+                    raise ValueError(
+                        "shared_core_prompts.quality.evaluationOrder must contain non-empty strings"
+                    )
+                normalized_order.append(key.strip())
+
+            if not normalized_order:
+                raise ValueError("shared_core_prompts.quality.evaluationOrder must not be empty")
+
+            blocks: list[str] = []
+            for section_key in normalized_order:
+                section_text = sections.get(section_key)
+                if not isinstance(section_text, str) or not section_text.strip():
+                    raise ValueError(
+                        f"Missing or invalid shared_core_prompts.quality.evaluationSections.{section_key}"
+                    )
+                blocks.append(section_text.strip())
+
+            return "\n\n".join(blocks)
+
         return cls._get_shared_registry_value(("shared_core_prompts", "quality", "evaluation"))
 
     @classmethod
@@ -410,17 +855,28 @@ class PromptRegistryService:
                 "Fail-fast prompt architecture requires prompt_ref for all schema sections."
             )
 
-        registry = cls.get_domain_registry(domain)
-        section_map = registry.get("section_prompts", {})
-        if isinstance(section_map, dict) and section_map.get(prompt_ref):
-            return str(section_map[prompt_ref])
+        text_prompts = cls._load_domain_text_prompt_entries(domain)
+        field_entry = text_prompts.get(component_type)
+        if isinstance(field_entry, dict):
+            field_prompt = cls._resolve_text_prompt_entry(component_type, field_entry, prompt_ref)
+            if isinstance(field_prompt, str) and field_prompt.strip():
+                return field_prompt.strip()
+
+        field_entry_by_ref = text_prompts.get(prompt_ref)
+        if isinstance(field_entry_by_ref, dict):
+            field_prompt_by_ref = cls._resolve_text_prompt_entry(prompt_ref, field_entry_by_ref, prompt_ref)
+            if isinstance(field_prompt_by_ref, str) and field_prompt_by_ref.strip():
+                return field_prompt_by_ref.strip()
+
+        if cls._is_non_text_prompt_ref(prompt_ref):
+            return cls._load_domain_non_text_prompt(domain)
 
         shared_map = cls._load_shared_inline_prompts()
         if prompt_ref in shared_map:
             return shared_map[prompt_ref]
 
         raise ValueError(
-            f"prompt_ref '{prompt_ref}' for section '{component_type}' not found in domain/shared registries"
+            f"prompt_ref '{prompt_ref}' for section '{component_type}' not found in domain text prompts"
         )
 
     @classmethod
@@ -438,10 +894,25 @@ class PromptRegistryService:
 
         field_prompt = cls.resolve_field_prompt(domain=domain, component_type=component_type, section=section)
 
+        optimizer_prompt = cls._load_domain_optimizer_prompt(domain)
+
         if descriptor_prompt and field_prompt:
-            return f"{descriptor_prompt.strip()}\n\n{field_prompt.strip()}"
+            if cls._is_descriptor_redundant_for_field_prompt(descriptor_prompt, field_prompt):
+                base_prompt = field_prompt.strip()
+            else:
+                base_prompt = f"{descriptor_prompt.strip()}\n\n{field_prompt.strip()}"
+        elif descriptor_prompt:
+            base_prompt = descriptor_prompt
+        else:
+            base_prompt = field_prompt
 
-        if descriptor_prompt:
-            return descriptor_prompt
+        if optimizer_prompt and base_prompt:
+            if cls._should_include_optimizer_prompt(component_type, base_prompt, optimizer_prompt):
+                deduped_optimizer_prompt = cls._dedupe_optimizer_prompt(
+                    base_prompt=base_prompt,
+                    optimizer_prompt=optimizer_prompt,
+                )
+                if deduped_optimizer_prompt:
+                    return f"{base_prompt.strip()}\n\n{deduped_optimizer_prompt}"
 
-        return field_prompt
+        return base_prompt

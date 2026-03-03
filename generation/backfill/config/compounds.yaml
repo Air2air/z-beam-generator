@@ -10,15 +10,43 @@ generators:
     source_file: data/compounds/Compounds.yaml
     items_key: compounds
     fields:
+      - field: pageTitle
+        component_type: pageTitle
       - field: pageDescription
         component_type: pageDescription
       - field: faq
         component_type: faq
-      - field: health_effects
-        component_type: health_effects
-      - field: detection_methods
-        component_type: detection_methods
-      - field: emergency_response
-        component_type: emergency_response
-      - field: exposure_guidelines
-        component_type: exposure_guidelines
+      - field: healthEffects
+        component_type: healthEffects
+      - field: relationships.safety.healthEffects._section.sectionDescription
+        component_type: healthEffects
+      - field: detectionMethods
+        component_type: detectionMethods
+      - field: relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription
+        component_type: detectionMethods
+      - field: emergencyResponse
+        component_type: emergencyResponse
+      - field: relationships.safety.emergencyResponse._section.sectionDescription
+        component_type: emergencyResponse
+      - field: ppeRequirements
+        component_type: ppeRequirements
+      - field: relationships.safety.ppeRequirements._section.sectionDescription
+        component_type: ppeRequirements
+      - field: exposureGuidelines
+        component_type: exposureLimits
+      - field: relationships.safety.exposureLimits._section.sectionDescription
+        component_type: exposureLimits
+      - field: regulatoryStandards
+        component_type: regulatoryStandards
+      - field: relationships.safety.regulatoryStandards._section.sectionDescription
+        component_type: regulatoryStandards
+      - field: relationships.safety.regulatoryClassification._section.sectionDescription
+        component_type: regulatoryClassification
+      - field: relationships.safety.storageRequirements._section.sectionDescription
+        component_type: storageRequirements
+      - field: relationships.interactions.producedFromContaminants._section.sectionDescription
+        component_type: producedFromContaminants
+      - field: relationships.interactions.relatedCompounds._section.sectionDescription
+        component_type: relatedCompounds
+      - field: relationships.interactions.reactivity._section.sectionDescription
+        component_type: reactivity

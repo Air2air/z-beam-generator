@@ -1,5 +1,7 @@
 schemaVersion: 1.0.0
 domain: compounds
 prompt_contract:
-  content_prompts_file: prompts/registry/content_prompts_shared.yaml
-  require_extends_shared: true
+  descriptor_prompts_file: domains/compounds/prompts/descriptor_prompts.yaml
+  text_prompts_file: domains/compounds/prompts/text_prompt.yaml
+  non_text_prompts_file: domains/compounds/prompts/non_text_prompt.yaml
+  optimizer_prompts_file: domains/compounds/prompts/optimizer_prompt.yaml

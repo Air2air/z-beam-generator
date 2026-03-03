@@ -278,7 +278,7 @@ def test_no_word_counts_in_config():
 **settings/config.yaml** (177 lines removed, -71.2%)
 - `component_summary_base`: Full prompt template for individual summaries
 - `component_summaries`: Monolithic bulk generation template
-- `settings_description`: Settings page description template
+- `pageDescription`: Settings page description template
 
 **materials/config.yaml** (105 lines removed, -50.5%)
 - `micro`: Full micro prompt with voice and format instructions

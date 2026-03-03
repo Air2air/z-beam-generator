@@ -3,7 +3,7 @@
 Z-Beam Generator - Simplified Command Line Interface
 
 Streamlined entry point for the Z-Beam Generator system.
-For advanced operations, use run_unified.py with the unified pipeline.
+For advanced operations, use run.py (project root) with the canonical pipeline.
 
 ═══════════════════════════════════════════════════════════════════════════════
 📋 QUICK START GUIDE
@@ -35,9 +35,11 @@ For advanced operations, use run_unified.py with the unified pipeline.
   # WARNING: Never use --skip flags in production - violates fail-fast architecture
 
 🔄 BATCH GENERATION (Meet Humanness Minimums Efficiently):
-  python3 run.py --batch-material-description "Aluminum,Steel,Copper"  # Batch generate material descriptions (2-5 materials)
-  python3 run.py --batch-material-description --all                     # Batch ALL material descriptions (132 materials → ~33 batches)
-  python3 run.py --batch-caption "Aluminum,Steel,Copper"   # Batch generate micros (fallback to individual)
+    ⚠️ Legacy tools-runner batch flags are deprecated.
+    Use canonical commands from project root instead:
+    python3 run.py --batch-generate --domain materials --field pageDescription --items "aluminum-laser-cleaning,steel-laser-cleaning"
+    python3 run.py --batch-generate --domain materials --field pageDescription --all
+    python3 run.py --batch-generate --domain materials --field micro --all
   
     # Cost savings: 75% reduction vs individual detection calls
     # Minimum length: 300 chars (material descriptions ~180 chars each, need batching)
@@ -207,8 +209,8 @@ def main():
     parser.add_argument("--faq", help="Generate AI-powered FAQ")
     
     # Batch Generation Commands
-    parser.add_argument("--batch-material-description", help="Generate material descriptions for multiple materials (comma-separated) or --all")
-    parser.add_argument("--batch-caption", help="Generate micros for multiple materials (comma-separated) or --all")
+    parser.add_argument("--batch-material-description", help="[DEPRECATED] Legacy tools-runner batch path; use root run.py --batch-generate")
+    parser.add_argument("--batch-caption", help="[DEPRECATED] Legacy tools-runner batch path; use root run.py --batch-generate")
     
     # Deployment Commands
     parser.add_argument("--deploy", action="store_true", help="Deploy to Next.js production site")
@@ -408,15 +410,27 @@ def main():
             print(f"❌ Batch test failed: {e}")
             return 1
     
-    if getattr(args, 'batch_description', None):
-        from shared.commands.batch import handle_batch_description_generation
-        result = handle_batch_description_generation(args.batch_description, skip_integrity_check=args.skip_integrity_check)
-        return result
-    
-    if args.batch_micro:
-        from shared.commands.batch import handle_batch_micro_generation
-        result = handle_batch_micro_generation(args.batch_micro, skip_integrity_check=args.skip_integrity_check)
-        return result
+    if args.batch_material_description:
+        print("="*80)
+        print("⚠️  DEPRECATED: --batch-material-description (legacy tools runner)")
+        print("="*80)
+        print("Use canonical batch pipeline instead:")
+        print(f"  python3 run.py --batch-generate --domain materials --field pageDescription --items \"{args.batch_material_description}\"")
+        print("or for all items:")
+        print("  python3 run.py --batch-generate --domain materials --field pageDescription --all")
+        print("\nNo action taken from scripts/tools/run.py for this deprecated command.")
+        return 1
+
+    if args.batch_caption:
+        print("="*80)
+        print("⚠️  DEPRECATED: --batch-caption (legacy tools runner)")
+        print("="*80)
+        print("Use canonical batch pipeline instead:")
+        print(f"  python3 run.py --batch-generate --domain materials --field micro --items \"{args.batch_caption}\"")
+        print("or for all items:")
+        print("  python3 run.py --batch-generate --domain materials --field micro --all")
+        print("\nNo action taken from scripts/tools/run.py for this deprecated command.")
+        return 1
     
     if args.validate_content:
         print("="*80)

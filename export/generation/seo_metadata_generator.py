@@ -542,34 +542,17 @@ class SEOMetadataGenerator(BaseGenerator):
             return "Industrial-quality results."
     
     def _validate_and_truncate_title(self, title: str) -> str:
-        """Validate title character count and truncate if needed."""
-        if len(title) <= self.title_max:
-            return title
-        
-        # Truncate at word boundary
-        truncated = title[:self.title_max]
-        last_space = truncated.rfind(' ')
-        if last_space > self.title_min:
-            truncated = truncated[:last_space]
-        
-        logger.warning(f"Title truncated from {len(title)} to {len(truncated)} chars")
-        return truncated
+        """Validate title character count and log when over limit (no truncation)."""
+        if len(title) > self.title_max:
+            logger.warning(
+                f"Title exceeds recommended length ({len(title)} > {self.title_max} chars)"
+            )
+        return title
     
     def _validate_and_truncate_description(self, description: str) -> str:
-        """Validate description character count and truncate if needed."""
-        if len(description) <= self.desc_max:
-            return description
-        
-        # Truncate at sentence boundary if possible
-        truncated = description[:self.desc_max]
-        last_period = truncated.rfind('.')
-        if last_period > self.desc_min:
-            truncated = truncated[:last_period + 1]
-        else:
-            # Truncate at word boundary
-            last_space = truncated.rfind(' ')
-            if last_space > self.desc_min:
-                truncated = truncated[:last_space]
-        
-        logger.warning(f"Description truncated from {len(description)} to {len(truncated)} chars")
-        return truncated
+        """Validate description character count and log when over limit (no truncation)."""
+        if len(description) > self.desc_max:
+            logger.warning(
+                f"Description exceeds recommended length ({len(description)} > {self.desc_max} chars)"
+            )
+        return description

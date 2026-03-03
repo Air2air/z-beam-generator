@@ -79,13 +79,25 @@ def validate_domain(repo_root: Path, domain: str) -> list[str]:
         if not isinstance(prompt_contract, dict):
             errors.append(f"{domain}: domains/{domain}/prompt.yaml missing required mapping 'prompt_contract'")
         else:
-            configured_registry = prompt_contract.get("content_prompts_file")
-            expected_registry = "prompts/registry/content_prompts_shared.yaml"
-            if configured_registry != expected_registry:
-                errors.append(
-                    f"{domain}: prompt_contract.content_prompts_file must be '{expected_registry}' "
-                    f"(found: {configured_registry!r})"
-                )
+            for key in ("descriptor_prompts_file", "text_prompts_file", "non_text_prompts_file"):
+                configured_path = prompt_contract.get(key)
+                if not isinstance(configured_path, str) or not configured_path.strip():
+                    errors.append(f"{domain}: prompt_contract.{key} must be a non-empty string")
+                    continue
+
+                prompt_file = repo_root / configured_path.strip()
+                if not prompt_file.exists():
+                    errors.append(
+                        f"{domain}: prompt_contract.{key} path not found ({configured_path})"
+                    )
+
+            optimizer_path = prompt_contract.get("optimizer_prompts_file")
+            if isinstance(optimizer_path, str) and optimizer_path.strip():
+                prompt_file = repo_root / optimizer_path.strip()
+                if not prompt_file.exists():
+                    errors.append(
+                        f"{domain}: prompt_contract.optimizer_prompts_file path not found ({optimizer_path})"
+                    )
     except Exception as exc:
         errors.append(f"{domain}: invalid prompt contract domains/{domain}/prompt.yaml ({exc})")
 

@@ -1,0 +1,37 @@
+schemaVersion: 1.0.0
+prompt_type: text
+required_variables:
+- subject
+- context
+field_prompts:
+  commonChallenges:
+    sectionTitle: Write a concise Common Challenges heading for {subject} in {context}.
+    sectionDescription: Describe common operational challenges encountered with {subject}
+      in {context}.
+  faq:
+    sectionTitle: Write a concise FAQ heading for {subject} in {context}.
+    sectionDescription: Describe faq considerations for {subject} in {context} within
+      the settings domain.
+  industryApplications:
+    sectionTitle: Write a concise Industry Applications heading for {subject} in {context}.
+    sectionDescription: Describe industryApplications considerations for {subject}
+      in {context} within the settings domain.
+  machineSettings:
+    sectionTitle: Write a concise Machine Settings heading for {subject} in {context}.
+    sectionDescription: Describe machineSettings considerations for {subject} in
+      {context} within the settings domain.
+  pageDescription:
+    prompt: Describe operational setting guidance for {subject} in {context}.
+  pageTitle:
+    prompt: Write a concise {context} page title for {subject}.
+  preventionStrategies:
+    sectionTitle: Write a concise Prevention Strategies heading for {subject} in
+      {context}.
+    sectionDescription: Describe preventionStrategies considerations for {subject}
+      in {context} within the settings domain.
+  relationships.operational.commonChallenges._section.sectionDescription:
+    sectionDescription: Describe relationships.operational.commonChallenges._section.sectionDescription
+      considerations for {subject} in {context} within the settings domain.
+  relationships.operational.commonChallenges._section.sectionTitle:
+    sectionTitle: Describe relationships.operational.commonChallenges._section.sectionTitle
+      considerations for {subject} in {context} within the settings domain.

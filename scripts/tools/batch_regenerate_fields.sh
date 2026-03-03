@@ -134,7 +134,7 @@ for field in "${FIELDS[@]}"; do
   echo "🧠 Running postprocess for field: $field"
   echo "----------------------------------------------------------------------"
 
-  python3 run.py --postprocess --domain "$DOMAIN" --field "$field" --all
+  python3 run.py --postprocess --no-runtime-prompt-gate --domain "$DOMAIN" --field "$field" --all
 
   echo "✅ Completed field: $field"
 done

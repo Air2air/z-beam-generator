@@ -12,6 +12,7 @@ The workflow orchestration guide is the first step for every AI task.
 - System interactions: docs/SYSTEM_INTERACTIONS.md
 - Architecture overview: docs/02-architecture/
 - Policies: docs/08-development/
+- Batch flow mandate (discrete per-item/per-field requests): docs/08-development/DISCRETE_BATCH_REQUEST_POLICY.md
 
 ## Keyword → Full Page (Centralized)
 - Create a new page from one topic keyword (seed source item, run multi-field generation, sync frontmatter):
@@ -43,6 +44,7 @@ The workflow orchestration guide is the first step for every AI task.
 - Field order canonical spec: data/schemas/FrontmatterFieldOrder.yaml
 - Content-generation field policy (all domains): data/schemas/content_generation_policy.yaml
 - Single-line component prompts + variable contracts: data/schemas/component_single_line_prompts.yaml
+- Section metadata parity rule: when a text prompt key ends with `_section.sectionDescription`, the same prompt file must include the matching `_section.sectionTitle` key.
 
 ## Frontmatter Parity Gates (CI + Local)
 - CI workflow: `.github/workflows/data-validation.yml` job `validate-frontmatter-parity`

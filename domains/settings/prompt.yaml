@@ -1,5 +1,7 @@
 schemaVersion: 1.0.0
 domain: settings
 prompt_contract:
-  content_prompts_file: prompts/registry/content_prompts_shared.yaml
-  require_extends_shared: true
+  descriptor_prompts_file: domains/settings/prompts/descriptor_prompts.yaml
+  text_prompts_file: domains/settings/prompts/text_prompt.yaml
+  non_text_prompts_file: domains/settings/prompts/non_text_prompt.yaml
+  optimizer_prompts_file: domains/settings/prompts/optimizer_prompt.yaml

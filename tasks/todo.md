@@ -5,6 +5,1061 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 166: E2E Prompt/Generator Simplification + Runtime Gate In-Process Refactor
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Implement all identified near-term E2E optimizations: run runtime prompt gate in-process, unify text field config access, and harden prompt length-target validation semantics.
+
+### Steps
+- [x] Refactor runtime prompt gate path in `run.py` to execute in-process and reuse runtime context
+- [x] Consolidate text-field config resolution behind one shared accessor used by prompt builder and component spec resolution
+- [x] Harden duplicate word-target validator to detect true conflicting targets while ignoring range+cap style phrasing
+- [x] Run one runtime-gated verification command for representative applications pageDescription
+- [x] Record lessons learned
+
+---
+
+## Batch 165: Single Word-Target Enforcement + E2E System Audit
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Eliminate duplicate word-target warnings in final prompt validation and evaluate end-to-end optimization/simplification opportunities across prompt, generator, and processing flows.
+
+### Steps
+- [x] Trace duplicate word-target source in assembled prompt output
+- [x] Patch centralized length instruction formatting to emit one numeric word target
+- [x] Verify runtime-gated generation passes with clean prompt validation warning state
+- [x] Audit prompt/generator/runtime-gate flow for optimization opportunities
+- [x] Summarize prioritized simplification roadmap
+
+---
+
+## Batch 164: Per-Field Config-Driven Word Limits in Shared Generator
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Implement centralized per-field word-limit resolution in shared prompt generation, using `generation/text_field_config.yaml` as source of truth.
+
+### Steps
+- [x] Add prompt-builder field config resolver (exact key, alias, nested suffix handling)
+- [x] Use resolved per-field base length for injected WORD LENGTH instructions
+- [x] Add optional per-field randomization factor override support
+- [x] Align `pageDescription` base length in centralized config to long-form expectations
+- [x] Run one runtime-gated verification command
+- [x] Record lessons learned
+
+---
+
+## Batch 163: Prompt Layer Dedup + All-Domain WORD LENGTH Cleanup
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Reduce runtime duplication across descriptor/text/optimizer layers and remove field-level hardcoded WORD LENGTH/HARD LIMIT lines from domain text prompts so dynamic centralized length control is the single source of truth.
+
+### Steps
+- [x] Audit prompt layer composition and identify redundancy points
+- [x] Implement safe runtime deduplication in prompt composition
+- [x] Remove field-level WORD LENGTH/HARD LIMIT lines from all domain text prompt files
+- [x] Run one gated verification command on a representative item
+- [x] Record lessons learned
+
+---
+
+## Batch 162: Live Runtime-Gate Stability Check (Defense PageDescription)
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Validate runtime quality-gate stability after evaluator calibration using isolated live generation for defense applications pageDescription.
+
+### Steps
+- [x] Run live generation with runtime prompt gate enabled
+- [x] Fix blocking YAML parse error in text field config
+- [x] Re-run isolated field generation with `--no-text-bundle`
+- [x] Capture pass/fail outcomes across multiple runs
+- [x] Record lessons learned
+
+---
+
+## Batch 161: Quality Criteria Calibration (Strictness vs False Positives)
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Calibrate shared quality-evaluation criteria to preserve strict AI-detection while reducing false-positive failures from isolated weak signals.
+
+### Steps
+- [x] Define focused optimization scope for quality criteria calibration
+- [x] Update quality criteria wording in shared prompt sections
+- [x] Validate quality prompt retrieval after calibration
+- [x] Record lessons learned
+
+---
+
+## Batch 160: Granularize Shared Quality Evaluation Prompt
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Split the shared quality evaluation prompt into ordered concern-specific sections and compose at runtime with strict validation.
+
+### Steps
+- [x] Identify remaining monolithic shared quality evaluation block
+- [x] Add ordered quality evaluation sections to shared prompt registry
+- [x] Compose quality evaluation prompt from sections in prompt registry service
+- [x] Verify composed prompt retrieval and compile checks
+- [x] Record lessons learned
+
+---
+
+## Batch 159: Domain-Scoped Random Non-Repeating Variation Patterns
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Ensure variation patterns are selected randomly within each domain and avoid repeating the same pattern consecutively.
+
+### Steps
+- [x] Add domain-scoped non-repeating variation pattern selection in generator runtime
+- [x] Add centralized variation pattern bank and factor bands in text field config
+- [x] Thread selected variation pattern through prompt assembly and requirements
+- [x] Verify pattern sequencing behavior and factor-band wiring with focused runtime checks
+- [x] Record lessons learned
+
+---
+
+## Batch 158: Global Per-File Field Variation Mixing
+Date: 2026-03-03
+Status: IN PROGRESS
+
+### Goal
+Apply variation improvements globally by mixing field-specific length bands within each domain prompt file.
+
+### Steps
+- [ ] Audit domain text prompt files for repeated/uniform length ranges
+- [ ] Apply mixed length-band tiers to long-form fields across all core domains
+- [ ] Run targeted cross-domain generation smoke checks
+- [ ] Measure and summarize post-change variation behavior
+- [ ] Record lessons learned
+
+---
+
+## Batch 157: Increase Defense Description Variation
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Increase cross-field variation for defense application long-form descriptions without direct frontmatter edits.
+
+### Steps
+- [x] Measure current variation metrics in defense applications frontmatter
+- [x] Regenerate target long-form fields via canonical batch pipeline
+- [x] Apply source-level prompt length-band differentiation for applications description fields
+- [x] Re-run targeted regeneration and verify updated variation metrics
+- [x] Record lessons learned
+
+---
+
+## Batch 156: Default Generation Speed Optimization
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Identify and implement all high-impact opportunities to speed default generation while preserving quality gates and source-of-truth policies.
+
+### Steps
+- [x] Profile baseline default generation runtime and stage breakdown
+- [x] Identify avoidable overhead in prompt build/validation/evaluation paths
+- [x] Implement safe speed optimizations in core generation path
+- [x] Apply explicit fast-default flags to non-canonical task/script generation entrypoints
+- [x] Run targeted before/after benchmark and quantify improvements
+- [x] Record lessons learned and residual opportunities
+
+---
+
+## Batch 142: Remove Generation + SEO Truncation
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Disable generation smart truncation and remove SEO export truncation for titles/descriptions/excerpts across the project.
+
+### Steps
+- [x] Inspect generation + export truncation paths and confirm exact call sites
+- [x] Disable generation smart truncation via config or guarded behavior
+- [x] Remove SEO truncation in export generators while preserving validation/logging
+- [ ] Run targeted generation/export smoke check to verify no truncation
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 143: Global Variation for Descriptions
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Increase structural variation for all `pageDescription` and `sectionDescription` outputs globally.
+
+### Steps
+- [x] Locate shared prompt sources for pageDescription and sectionDescription
+- [x] Adjust global prompt instructions to increase structural variation
+- [x] Regenerate a representative item and export for verification
+- [x] Compare description structure metrics to confirm increased variation
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 144: Domain Optimizer Prompt Files
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Add per-domain optimizer prompt files and append them to the prompt chain after existing prompts.
+
+### Steps
+- [x] Define optimizer prompt file format and content
+- [x] Add optimizer prompt files to each domain prompts folder
+- [x] Wire optimizer_prompts_file into each domain prompt contract
+- [x] Append optimizer prompt in prompt registry service
+- [x] Update domain bootstrap validation for optional optimizer prompt file
+- [ ] Run a targeted generation to confirm optimizer prompt inclusion
+
+---
+
+## Batch 145: Applications Generation + Variation Audit (3 Items)
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Run full text generation for three application items and measure description-field variation.
+
+### Steps
+- [x] Confirm which three application items to regenerate
+- [x] Regenerate full application fields for those items
+- [x] Export those items to frontmatter
+- [x] Measure variation across description fields
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 146: Generate All Text Fields (Global)
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Ensure batch generation covers all configured text fields across all domains.
+
+### Steps
+- [x] Inventory text-field lists and full-page bundles per domain
+- [x] Identify gaps between configured fields and generated outputs
+- [x] Patch global generation routing to include all text fields
+- [ ] Regenerate one item per domain to confirm coverage
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 147: Enforce Length Settings During Generation
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Ensure generated text follows word-length instructions in prompts and settings.
+
+### Steps
+- [x] Audit current length-control path and prompt range parsing
+- [x] Decide enforcement strategy (smart truncation vs regenerate-on-length-fail)
+- [x] Implement minimal enforcement changes and keep config policy compliant
+- [ ] Regenerate one applications item to verify length compliance
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 148: Disable Truncation + Strengthen Prompt Word Counts
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Disable all truncation and tighten word-count compliance through prompt wording.
+
+### Steps
+- [x] Disable smart truncation in generation config
+- [x] Propose prompt wording changes to strengthen word-count adherence
+- [x] Apply prompt wording updates for applications
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 149: Enforce Cross-Field Opening Diversity
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Increase structural variation by enforcing distinct opening styles across fields in the same item.
+
+### Steps
+- [x] Add opening-style bank to shared prompt registry
+- [x] Inject opening-style guidance into prompts per field
+- [x] Ensure per-item opening styles do not repeat
+- [ ] Regenerate one applications item to verify variation
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 150: Reduce Prompt Size + Validation Overhead
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Reduce prompt size and validation overhead without changing output intent or generation flow.
+
+### Steps
+- [x] Switch facts input to formatted digest for prompt injection
+- [x] Shorten shared text prompt core guidance
+- [x] Gate optimizer prompt injection for short fields
+- [x] Skip coherence validation for short fields
+- [x] Avoid auto-optimization when only warnings are present
+- [x] Remove duplicate WORD LENGTH lines from optimizer prompts
+- [x] Run a targeted prompt build or generation sanity check
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 151: Optimizer Prompt Context + Variability
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Add context-aware optimizer guidance to deepen subject relationships and increase structural/length variability.
+
+### Steps
+- [x] Add context + variability note to optimizer prompts (all domains)
+- [x] Ensure no duplicate length hard limits are reintroduced
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 152: Disable Text Bundles for Batch Generate
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Allow --batch-generate to run only the explicitly requested text field(s) without auto-bundling.
+
+### Steps
+- [x] Add a flag to disable text bundle expansion and FAQ auto-append
+- [x] Run targeted batch generation with the flag to confirm field isolation
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 153: Prompt Size Architecture
+Date: 2026-03-03
+Status: IN PROGRESS
+
+### Goal
+Keep runtime prompts small and usable while preserving voice fidelity and variation.
+
+### Steps
+- [x] Add compact voice instructions to all personas and use for short fields
+- [x] Add config-driven compact voice field list and enforce fail-fast if missing
+- [x] Ensure compact humanness + compact voice are used for pageTitle/pageDescription
+- [x] Re-run pageTitle/pageDescription generation and verify prompt gate passes
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 154: Export Defense Application Frontmatter
+Date: 2026-03-03
+Status: IN PROGRESS
+
+### Goal
+Generate and export frontmatter for defense-laser-cleaning-applications from source data.
+
+### Steps
+- [ ] Review application source data and export config paths
+- [ ] Run targeted generation for required fields and export the item
+- [ ] Verify exported frontmatter output exists and matches expected schema
+- [ ] Record any new lessons learned
+
+---
+
+## Batch 155: Prompt Length Enforcement + Default Length Gate
+Date: 2026-03-03
+Status: IN PROGRESS
+
+### Goal
+Reinforce prompt length instructions and make the length-only retry gate the default behavior.
+
+### Steps
+- [x] Identify prompt files that define length rules for target components and add mandatory length wording
+- [x] Add a length-only retry gate that runs immediately after generation and before other validations
+- [x] Make the length-only retry gate the default via config/flags (no smart truncation)
+- [ ] Run a targeted generation to confirm length gate retries and logging
+- [ ] Record any new lessons learned
+
+## Batch 140: Defense Page Re-regen + Sequential Export Sync
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Fix stale frontmatter sync and truncated defense page description by running targeted regeneration and export in strict sequence, then verifying frontmatter fields.
+
+### Steps
+- [x] Regenerate `pageDescription` for `defense-laser-cleaning-applications`
+- [x] Export the same item after regeneration completes
+- [x] Verify frontmatter `pageTitle` no longer carries markdown hash prefix and `pageDescription` is not truncated
+- [x] Mark batch complete and capture lesson about sequencing generate/export commands
+
+---
+
+## Batch 141: Fix pageTitle Hash Prefix + pageDescription Truncation
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Strip markdown heading prefixes from pageTitle and prevent unintended pageDescription truncation during generation/save/export.
+
+### Steps
+- [ ] Identify where pageTitle/pageDescription normalization and length control occur
+- [ ] Patch normalization to strip heading prefixes for pageTitle
+- [ ] Adjust length control to avoid over-truncating pageDescription outputs
+- [ ] Regenerate defense application fields and export
+- [ ] Verify frontmatter reflects corrected pageTitle and full pageDescription
+- [ ] Record lesson learned if a new failure pattern appears
+
+---
+
+## Batch 139: Regenerate Defense Applications Page (Retry)
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Regenerate text for `defense-laser-cleaning-applications`, export it, and verify the resulting frontmatter reflects a fresh generation pass.
+
+### Steps
+- [x] Run targeted regeneration task for defense applications page text
+- [x] Re-export `defense-laser-cleaning-applications` to frontmatter
+- [x] Verify frontmatter changed (for example `dateModified` and regenerated text fields)
+- [x] Mark batch complete and record lessons only if a new failure pattern appears
+
+---
+
+## Batch 138: Targeted Runtime Smoke Export (Applications)
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Run one targeted runtime generation/export smoke check on applications and verify frontmatter output integrity after normalization refactor.
+
+### Steps
+- [x] Execute single-item applications export task for `defense-laser-cleaning-applications`
+- [x] Confirm export command completes successfully with no contract/runtime errors
+- [x] Verify destination frontmatter file exists and contains canonical section metadata shape
+- [x] Mark batch complete and record any lesson if a new issue pattern is found
+
+---
+
+## Batch 137: Remove Tier-Based File Protection Policy
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Remove tier-based protected-file gating and align guidance docs to a no-tier, validation-focused policy.
+
+### Steps
+- [x] Replace `.github/PROTECTED_FILES.md` tier protocol with advisory high-impact guidance
+- [x] Update `.github/PROMPT_CREATION_ENFORCEMENT.md` to remove tier references and permission-gate language
+- [x] Update `.github/copilot-instructions.md` to remove tier/protected-file gating and keep high-impact validation guidance
+- [x] Run targeted doc grep checks to verify tier language removal in active `.github` policy docs
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 136: Global Section Text Normalization Across Source + Generators
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Enforce cross-domain normalization so section text leaf fields are always persisted as plain strings in source YAML and frontmatter sync/export write paths.
+
+### Steps
+- [x] Add shared write-path normalization for text leaf targets in domain adapter save flow
+- [x] Normalize frontmatter sync writes for nested text leaf targets to prevent object passthrough
+- [x] Strengthen export normalization for section metadata leaves and wrapper-string artifacts
+- [x] Run focused cross-domain validation/audits and verify no regressions
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 135: Applications Section Description Type-Safety Render Fix
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Fix runtime rendering crash on applications pages when `_section.sectionDescription` is stored as structured data instead of a plain string.
+
+### Steps
+- [x] Trace the renderer path causing `section?.sectionDescription?.trim is not a function`
+- [x] Apply minimal UI-layer normalization so section descriptions are rendered safely for both string and object forms
+- [x] Verify `/applications/defense-laser-cleaning-applications` renders without runtime error
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 134: Fast Learning Eval Bypass for Grok Humanness Detection
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Make default fast learning mode (`--fast-learning-eval`) bypass long post-save Grok humanness detection so established-generation runs complete much faster.
+
+### Steps
+- [x] Patch `QualityEvaluatedGenerator` to skip Grok humanness detection when `skip_learning_evaluation=True`
+- [x] Run focused smoke generation and verify skip path is active
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 133: Wire Full-Page Field Contract Test into Canonical Pipeline
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Ensure the full-page generated-field contract test executes as part of canonical validation, not only when run manually.
+
+### Steps
+- [x] Add full-page field contract pytest check to canonical validation sequence
+- [x] Run canonical pipeline and verify the new check executes and passes
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 132: Full-Page Field List Contract Test
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Add automated testing coverage that locks the canonical full-page text-generation field list per domain to prevent drift.
+
+### Steps
+- [x] Add a domain contract test for full-page generated fields from backfill configs
+- [x] Run the new test and confirm it passes
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 131: SectionTitle Pairing Fix in Full-Page Backfill Writer
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Fix source-level section title autofill so every generated `_section.sectionDescription` in full-page backfill writes is paired with `_section.sectionTitle` from canonical schema metadata.
+
+### Steps
+- [x] Trace pairing logic in universal text backfill writer
+- [x] Patch schema loading/title extraction to canonical `sections.*.sectionTitle` keys
+- [x] Run focused nested-field smoke check for sectionDescription→sectionTitle autofill
+- [x] Re-run canonical validation and confirm all checks pass
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 130: Cross-Domain Smoke Test + Canonical Text Prompt Alignment
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Run targeted runtime smoke tests across all core domains and confirm domain text prompt contracts remain canonically aligned to router/backfill expectations.
+
+### Steps
+- [x] Run canonical text-prompt contract validators
+- [x] Run one-item dry-run generation smoke test per domain
+- [x] Patch any prompt-key or contract drift found during smoke tests
+- [x] Re-run canonical validation and confirm all checks pass
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 129: Field Parity Validator Compatibility Key Allowlist
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Unblock canonical pipeline validation by aligning field-parity validator behavior with existing compatibility key exclusions in applications prompt contracts.
+
+### Steps
+- [x] Run canonical validation and capture failing check
+- [x] Patch parity validator so excluded compatibility keys are not reported as extra prompt fields
+- [x] Re-run canonical validation and confirm all checks pass
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 128: Applications Section Metadata Text Generation Parity
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Ensure applications batch generation routes `sectionTitle` and `sectionDescription` through the canonical text-generation pipeline so these fields generate alongside other text fields.
+
+### Steps
+- [x] Trace applications batch generation flow and identify why section metadata fields are excluded
+- [x] Patch the minimal source-path logic so section metadata fields are included in text generation routing
+- [x] Run focused verification for applications batch generation behavior
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 127: All-Domain Catalog Keyword Parity + Global Subject Placeholder
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Ensure parity across all domains by normalizing all domain catalogs to subject keywords, extending validator normalization to every domain, and applying a global `subject` template placeholder mapping in prompt assembly.
+
+### Steps
+- [x] Add global `subject` template parameter mapping in prompt assembly
+- [x] Extend catalog keyword normalization logic in validator for all domains
+- [x] Normalize `article_pages.file_names` to subject keywords in all domain catalogs
+- [x] Re-run canonical pipeline validation and confirm all checks pass
+- [x] Run focused runtime checks for cross-domain keyword resolution and single-item generation path
+
+---
+
+## Batch 126: Catalog Subject Keyword Contract (Applications)
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Switch applications catalog `article_pages.file_names` to subject keywords (for example `food-processing`) and update validation logic so keyword entries are treated as canonical catalog identifiers.
+
+### Steps
+- [x] Add keyword normalization helper in prompt/section contract validator
+- [x] Update catalog/frontmatter parity check to compare normalized subject keywords
+- [x] Convert `domains/applications/catalog.yaml` entries to subject keywords
+- [x] Run canonical pipeline validation and confirm all checks pass
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 125: Generated Text Contract Artifact + Validator
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Create a generated text-contract artifact from router/backfill sources and enforce parity through a dedicated validator integrated into the canonical pipeline gate.
+
+### Steps
+- [x] Implement shared contract computation utility from router/backfill sources
+- [x] Add artifact generator script and write deterministic contract artifact to `tasks/`
+- [x] Add validator to compare live contract vs artifact and enforce required prompt-key coverage
+- [x] Integrate validator into canonical pipeline check sequence
+- [x] Run full canonical validation and confirm all checks pass
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 124: Active Docs Legacy Key Hygiene Pass
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Clean up stale legacy key naming in active user-facing architecture/reference docs so examples and field names match current canonical targets.
+
+### Steps
+- [x] Identify active (non-archive/proposal) docs with stale legacy key examples
+- [x] Update those docs to canonical field naming and guidance
+- [x] Re-run canonical pipeline validation as a regression safety check
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 123: Prune Unused Content Policy Aliases
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Remove unused legacy `content_generation_policy.aliases.componentType` entries now that backfill/router mappings are canonicalized, while preserving green canonical validation.
+
+### Steps
+- [x] Verify no active backfill component_type entries depend on legacy alias keys
+- [x] Remove unused alias entries from `data/schemas/content_generation_policy.yaml`
+- [x] Re-run canonical pipeline validation and confirm all checks pass
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 122: Canonicalize Compounds/Settings Router Text Keys
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Canonicalize compounds and settings `field_router.field_types.*.text` keys to canonical camelCase names and move legacy key forms into alias mappings, while preserving green canonical validation gates.
+
+### Steps
+- [x] Update compounds/settings router text key lists to canonical names and add legacy aliases
+- [x] Align prompt key contracts (single-line and domain text prompts) with updated canonical router keys
+- [x] Update any legacy backfill component aliases that are no longer needed
+- [x] Re-run canonical pipeline validation and confirm all checks pass
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 121: Prompt Contract Simplification + Robustness Recommendations
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Apply low-risk prompt contract simplification where redundant alias keys are no longer required, verify canonical validation remains green, and provide e2e robustness recommendations.
+
+### Steps
+- [x] Identify low-risk removable alias prompt keys not required by router/backfill validators
+- [x] Apply minimal prompt cleanup changes in domain text prompt files
+- [x] Re-run canonical pipeline validation and confirm all checks pass
+- [x] Document lesson learned and summarize architecture recommendations
+
+---
+
+## Batch 120: Final Pipeline Simplification Pass
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Reduce residual legacy fallback complexity in frontend relationship access paths and add a single canonical parity gate command for end-to-end validation.
+
+### Steps
+- [x] Identify remaining high-confidence legacy fallback branches in active frontend layout/helper paths
+- [x] Remove or tighten those fallback branches where canonical coverage is complete
+- [x] Add one canonical parity validator entrypoint that runs key contract/parity checks in sequence
+- [x] Run focused audits/validation and summarize residual complexity
+
+---
+
+## Batch 119: Compounds Canonicalization and Frontend Fallback Reduction
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Canonicalize compounds frontmatter naming/structure via source export and remove remaining compounds-specific legacy frontend fallback branches once coverage is complete.
+
+### Steps
+- [x] Re-export all compounds frontmatter from canonical source pipeline
+- [x] Audit compounds frontmatter for canonical relationship key coverage
+- [x] Remove compounds layout/helper legacy fallback branches only if coverage is complete
+- [x] Re-run focused frontend validation and summarize residual risks
+
+---
+
+## Batch 118: Frontend Layout ↔ Backend Field Sync Repair
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Align frontend layout relationship field access paths with canonical backend/frontmatter key structure to restore rendering parity.
+
+### Steps
+- [x] Identify canonical field paths used by current frontmatter for compounds, contaminants, and settings layouts
+- [x] Patch frontend layout/helper field access to prioritize canonical paths while preserving safe legacy fallback behavior where needed
+- [x] Run focused frontend validation checks and summarize remaining parity risks
+- [x] Record lesson learned and mark batch complete
+
+---
+
+## Batch 117: Applications Catalog ↔ Frontmatter Parity Repair
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Resolve applications domain catalog/frontmatter filename parity so prompt/section validation no longer fails on catalog drift.
+
+### Steps
+- [x] Inspect applications source/catalog/frontmatter filename sets to identify canonical ownership mismatch
+- [x] Apply minimal source-level fix to align `domains/applications/catalog.yaml` with current canonical frontmatter set
+- [x] Re-run prompt/section and field-contract validators to confirm parity repair
+- [x] Record lesson and mark batch complete
+
+---
+
+## Batch 116: Section Key Paired Child Enforcement
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Enforce that text prompt keys representing sections always define `sectionTitle` and `sectionDescription` together under the same section key, and align runtime/validation contracts accordingly.
+
+### Steps
+- [x] Define canonical rule to identify section keys from schema/backfill contracts
+- [x] Update runtime prompt resolution to support paired section children on section keys
+- [x] Update prompt contract validator to require paired section children on section keys
+- [x] Normalize all domain `text_prompt.yaml` section keys to include both children
+- [x] Run focused tests/validation and summarize only residual unrelated failures
+
+---
+
+## Batch 115: Domain-Wide Dual Audit (Prompt Contract + Frontmatter Paths)
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Run a full domain-wide dual audit that verifies (1) domain `text_prompt.yaml` key/child correctness against router+backfill contracts and (2) expected text field paths exist across all frontmatter files per domain.
+
+### Steps
+- [x] Build expected per-domain text key + expected-child map from generation/router/backfill/schema contracts
+- [x] Audit all domain `text_prompt.yaml` files for missing/extra keys and wrong child-field usage
+- [x] Audit all frontmatter files per domain for missing expected text field paths and aggregate gap counts
+- [x] Return concise mismatch report with per-domain totals and top missing-path offenders
+
+---
+
+## Batch 114: Schema-Driven Domain Text Prompt Contract Hardening
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Accurately enforce domain-local `text_prompt.yaml` structure so required text keys are complete and each key uses the correct child prompt field (`sectionTitle` vs `sectionDescription`) based on schema/backfill contracts.
+
+### Steps
+- [x] Build canonical expected text prompt key map from router + backfill configs
+- [x] Derive expected child field type per key from schema component/prompt refs and nested field-path suffixes
+- [x] Normalize all `domains/*/prompts/text_prompt.yaml` files to strict nested child-field format
+- [x] Tighten runtime/validator logic to require strict nested format and expected child field type
+- [x] Run focused tests and validators; report only residual unrelated failures
+
+---
+
+## Batch 113: Prose-Only Prompt Routing and Subfield Prompt Keys
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Ensure domain text prompt files contain prose-only fields, include required nested subfield prompt keys (for example `sectionDescription`/`sectionTitle`), and keep runtime/validators aligned to enforce the same contract.
+
+### Steps
+- [x] Classify prose vs non-prose prompt targets from schema + router contracts
+- [x] Update domain prompt files to keep prose prompts in `text_prompt.yaml` and title/non-prose in `non_text_prompt.yaml`
+- [x] Add explicit nested subfield keys where section subfields are required
+- [x] Update shared prompt resolution to support subfield-key lookup
+- [x] Update validators to enforce prose-only text prompt coverage and required subfield keys
+- [x] Run focused tests/validation and summarize residual unrelated failures
+
+---
+
+## Batch 112: Domain Prompt Split (Text vs Non-Text) and Registry Cleanup
+Date: 2026-03-02
+Status: IN PROGRESS
+
+### Goal
+Move domain content prompts into each `domains/*` folder, split prompt chain field-prompt sources into exactly two files (`text` and `non-text`), enforce that only those files are used for field-prompt resolution, and remove obsolete prompt artifacts.
+
+### Steps
+- [x] Define per-domain prompt contract schema for `text_prompts_file` and `non_text_prompts_file`
+- [x] Create domain-local prompt files for all supported domains with text/non-text split
+- [x] Restore per-field text prompts in each domain `prompts/text_prompt.yaml` from schema/field contracts
+- [x] Update shared runtime field-prompt resolution to use domain-local per-field prompt entries only
+- [x] Update validators/tests to enforce all domain text fields have per-field domain prompt entries
+- [x] Remove centralized field-prompt dependency from prompt-chain resolution paths
+- [x] Run targeted validation tests and summarize outcomes
+
+---
+
+## Batch 111: Remove Orphan Root `_section` at Export Layer
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Eliminate orphan root-level `_section` keys from exported frontmatter while preserving required nested `_section` objects on actual section containers.
+
+### Steps
+- [x] Implement export-layer root `_section` cleanup in universal content generator
+- [x] Re-export affected domains from canonical source pipeline
+- [x] Re-run all-domain section-object audit and confirm no missing nested `_section`
+- [x] Verify orphan root `_section` lists are empty (or only approved exceptions)
+- [x] Record lesson learned and finalize summary
+
+---
+
+## Batch 110: Source-Level Section Object Remediation (All Domains)
+Date: 2026-03-02
+Status: COMPLETE
+
+### Goal
+Resolve all remaining missing nested `_section` section-object violations by fixing canonical source data and/or generator normalization, then re-export and verify clean all-domain audit results.
+
+### Steps
+- [x] Identify canonical source-level causes for compounds FAQ and materials outliers
+- [x] Implement source/generator fixes without frontmatter direct edits
+- [x] Re-export affected compounds/materials outputs from canonical pipeline
+- [x] Re-run section-object audit and confirm missing paths drop to zero
+- [x] Update lessons learned with source-level remediation pattern
+
+---
+
+## Batch 109: Cross-Domain Field Contract Consolidation and Parity Program
+Date: 2026-03-01
+Status: COMPLETE
+
+### Goal
+Consolidate field contract ownership so one canonical source drives router fields, prompt coverage, field order, schema/doc outputs, and validation gates across materials, applications, contaminants, compounds, and settings.
+
+### Steps
+- [x] Define canonical contract model and ownership boundaries (source-of-truth file + generated artifacts)
+- [x] Build contract sync tooling to generate downstream artifacts (prompt coverage, field-order sections, docs references)
+- [x] Add parity validator with fail-fast CI gate across all domains
+- [x] Establish migration sequence per domain using applications as architectural reference
+- [x] Execute domain-by-domain adoption with verification checkpoints and rollback criteria
+- [x] Remove/mark deprecated duplicate contract fragments once parity is enforced
+- [x] Document operating policy and contributor workflow for future field additions
+
+---
+
+## Batch 106: JSON-LD Critical Deployment Audit and Path Hardening
+Date: 2026-03-01
+Status: IN PROGRESS
+
+### Goal
+Identify why deploy-time JSON-LD/SEO checks started failing now, run comprehensive JSON-LD validation, and harden deployment script paths to prevent recurrence.
+
+### Steps
+- [ ] Confirm deploy-environment trigger changes and root-cause chain (`vercel-build`, `.vercelignore`, prebuild gates)
+- [ ] Audit deployment scripts for broken relative-path assumptions affecting JSON-LD validation
+- [ ] Run comprehensive JSON-LD/SEO checks (`test:seo:comprehensive`, `validate:urls`, `validate:seo-infrastructure`) and capture outcomes
+- [ ] Patch verified deploy-path bug(s) with minimal safe changes
+- [ ] Re-run affected checks and summarize risks, findings, and next actions
+
+---
+
+## Batch 107: Regenerate Defense Applications Frontmatter Item
+Date: 2026-03-01
+Status: COMPLETE
+
+### Goal
+Regenerate and export `defense-laser-cleaning-applications` through the canonical generator pipeline so `z-beam/frontmatter/applications/defense-laser-cleaning-applications.yaml` is refreshed from source.
+
+### Steps
+- [x] Run targeted applications export for `defense-laser-cleaning-applications`
+- [x] Verify frontmatter output file updated in `z-beam/frontmatter/applications/`
+- [x] Sanity-check regenerated fields for expected structure/content presence
+- [x] Summarize results and any residual warnings
+
+---
+
+## Batch 108: Restore Aluminum Properties Data and Re-Export
+Date: 2026-03-01
+Status: COMPLETE
+
+### Goal
+Fix missing Aluminum Material Characteristics and Laser-Material Interaction by updating source materials data and re-exporting the aluminum frontmatter item.
+
+### Steps
+- [x] Add structured `properties.materialCharacteristics` values for `aluminum-laser-cleaning` at source
+- [x] Add structured `properties.laserMaterialInteraction` values for `aluminum-laser-cleaning` at source
+- [x] Sync mirrored shared materials data copy
+- [x] Re-export aluminum material frontmatter from generator to `z-beam/frontmatter/materials`
+- [x] Verify regenerated frontmatter includes the restored property values
+
+---
+
+## Batch 105: Remove Project Archive Directories and Identify Follow-up Cleanup
+Date: 2026-03-01
+Status: COMPLETE
+
+### Goal
+Delete project archive directories on request and identify adjacent stale legacy references for follow-up cleanup.
+
+### Steps
+- [x] Inventory archive directories/files across workspace projects
+- [x] Delete dedicated archive directories from project repositories
+- [x] Verify no archive directory/file paths remain (excluding dependencies)
+- [x] Identify similar legacy cleanup opportunities from stale references
+- [x] Record lesson and summarize follow-up candidates
+
+---
+
+## Batch 104: Deprecate Legacy Batch Tooling and Audit Similar Cleanup Targets
+Date: 2026-03-01
+Status: COMPLETE
+
+### Goal
+Deprecate standalone legacy/ad-hoc batch scripts in favor of canonical `run.py --batch-generate` flows, and identify similar low-risk legacy cleanup opportunities.
+
+### Steps
+- [x] Map legacy batch entrypoints and references
+- [x] Add explicit deprecation guardrails/messages for legacy batch commands
+- [x] Document migration path to canonical batch generation commands
+- [x] Audit nearby legacy code paths for similar cleanup opportunities
+- [x] Run focused tests/validation for touched paths
+- [x] Record lesson in `tasks/lessons.md` and mark batch complete
+
+---
+
+## Batch 103: Mandate Discrete Per-Field Requests in Batch Flows
+Date: 2026-03-01
+Status: COMPLETE
+
+### Goal
+Enforce and document a mandatory policy that batch flows execute as a sequence of individual discrete generation requests per item/field, never a combined multi-item prompt request.
+
+### Steps
+- [x] Identify all active batch entry points and any residual single-call batch scaffolding
+- [x] Enforce discrete-request behavior in batch generation code paths
+- [x] Update policy documentation to mandate discrete per-field request sequencing
+- [x] Update operational docs/examples to align with the new mandate
+- [x] Run focused tests for batch command and related generation paths
+- [x] Record lessons learned in `tasks/lessons.md` and mark batch complete
+
+---
+
+## Batch 102: Enforce Runtime Prompt Gate on Generation Commands
+Date: 2026-03-01
+Status: COMPLETE
+
+### Goal
+Run Runtime Prompt gate automatically for text-generation commands so final assembled prompts are audited on every generation without manual invocation.
+
+### Steps
+- [x] Add runtime overrides (`--domain`, `--item`, `--provider`) to `final_prompt_audit.py`
+- [x] Add default-on Runtime Prompt gate flags to `run.py`
+- [x] Invoke Runtime Prompt gate automatically in `--batch-generate` text flow
+- [x] Invoke Runtime Prompt gate automatically in `--seed-from-keyword` generation flow
+- [x] Validate CLI/help wiring and run targeted gate execution successfully
+
+---
+
+## Batch 101: Final Prompt Audit Tooling with Centralized YAML Settings
+Date: 2026-03-01
+Status: COMPLETE
+
+### Goal
+Add a deterministic final-prompt audit workflow that validates the exact assembled prompt sent to text generation, with all thresholds and checks configured in one YAML file.
+
+### Steps
+- [x] Add `scripts/validation/final_prompt_audit.py` to assemble and validate final prompts per component
+- [x] Centralize all audit settings and thresholds in `config/final_prompt_audit.yaml`
+- [x] Run the audit on `defense-laser-cleaning-applications` and generate reports
+- [x] Summarize usage and outcomes for prompt-change workflows
+
+---
+
+## Batch 100: Regenerate Defense Application and Verify Frontmatter
+Date: 2026-03-01
+Status: IN PROGRESS
+
+### Goal
+Regenerate `defense-laser-cleaning-applications` from source pipeline and validate the resulting frontmatter output file content in `z-beam`.
+
+### Steps
+- [ ] Run targeted regeneration for `defense-laser-cleaning-applications`
+- [ ] Re-export/dual-write output to frontmatter destination if needed
+- [ ] Inspect generated frontmatter file and capture updated key fields
+- [ ] Summarize regeneration result and any residual validation issues
+
+---
+
 ## Batch 99: Frontend Cleanup Audit and Low-Risk Prune (z-beam)
 Date: 2026-02-28
 Status: COMPLETE

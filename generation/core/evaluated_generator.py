@@ -1,11 +1,11 @@
 """
 Quality-Evaluated Generator - Single-Pass with Learning
 
-Single-pass content generation with post-save quality evaluation and learning.
-NO gating, NO retries - generate once, save, evaluate for learning only.
+Single-pass content generation with length-only retry gate, then post-save quality evaluation.
+Length gate retries happen before saving and before other validations.
 
 Architecture:
-    Generate → Save → Evaluate → Log for Learning → Done
+    Generate → Length Gate Retry (if needed) → Save → Evaluate → Log for Learning → Done
     
 Quality Evaluation (for learning, NOT blocking):
     1. Subjective Realism: Score logged for learning analysis
@@ -15,12 +15,12 @@ Quality Evaluation (for learning, NOT blocking):
     5. Grok Humanness Detection: Logged for human-score trends
     6. Structural Variation: Logged for diversity analysis
 
-Design: Single-pass approach - generate once, save immediately, then evaluate.
-        Evaluation data feeds learning system for continuous improvement.
-        100% completion rate, fast generation, quality improvement over time.
+Design: Length-only retry gate runs before save; evaluation remains post-save for learning.
+    Evaluation data feeds learning system for continuous improvement.
 """
 
 import logging
+import re
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 
@@ -56,7 +56,7 @@ class QualityEvaluatedGenerator:
     - Log learning data (Grok humanness, Realism, Structural)
     - Return success with quality scores
     
-    NO retry logic, NO gating - evaluation is purely for learning.
+    Length-only retry gate runs before save; evaluation is for learning only.
     """
     
     def __init__(
@@ -107,6 +107,8 @@ class QualityEvaluatedGenerator:
         from learning.consolidated_learning_system import ConsolidatedLearningSystem
         self.learning_system = ConsolidatedLearningSystem(db_path='z-beam.db')
         self.grok_humanness_evaluator = None
+        self._length_gate_config = self._get_length_gate_config()
+        self._length_control_config = self._get_length_control_config()
         
         logger.info(f"QualityEvaluatedGenerator initialized (SIMPLIFIED ARCHITECTURE)")
         logger.info(f"   ✅ Unified parameter provider (1 interface)")
@@ -175,111 +177,161 @@ class QualityEvaluatedGenerator:
             )
             print(f"   ✅ Humanness layer generated ({len(humanness_instructions)} chars)")
         
-        # Generate content
-        try:
-            result = self._generate_content_only(
-                material_name, 
-                component_type,
-                params,  # ✅ SIMPLIFIED: Pass unified params object
-                humanness_layer=humanness_instructions,
-                **kwargs
-            )
-            content = result['content']
-            print(f"\n✅ Generated: {result['length']} chars, {result['word_count']} words")
-            
-            # Apply smart truncation if enabled
-            length_controlled = False
-            
-            # Load generation config to check length control settings
-            import yaml
-            from pathlib import Path
-            config_path = Path(__file__).parent.parent / 'config.yaml'
-            
+        length_gate_config = self._length_gate_config
+        length_gate_enabled = bool(length_gate_config['enabled'])
+        length_gate_attempts = 0
+        length_gate_result = None
+
+        while True:
+            length_gate_attempts += 1
             try:
-                with open(config_path, 'r', encoding='utf-8') as f:
-                    config_data = yaml.safe_load(f)
-            except Exception as e:
-                raise RuntimeError(f"Could not load config.yaml: {e}") from e
+                attempt_kwargs = dict(kwargs)
+                if length_gate_enabled and length_gate_attempts > 1:
+                    attempt_kwargs['skip_prompt_validation'] = True
 
-            if not isinstance(config_data, dict):
-                raise TypeError("config.yaml must parse to a dictionary")
-            if 'length_control' not in config_data:
-                raise KeyError("config.yaml missing required key: 'length_control'")
-            length_control_config = config_data['length_control']
-            if not isinstance(length_control_config, dict):
-                raise TypeError("config.yaml key 'length_control' must be a dictionary")
-            if 'enable_smart_truncation' not in length_control_config:
-                raise KeyError("length_control missing required key: 'enable_smart_truncation'")
+                result = self._generate_content_only(
+                    material_name, 
+                    component_type,
+                    params,  # ✅ SIMPLIFIED: Pass unified params object
+                    humanness_layer=humanness_instructions,
+                    **attempt_kwargs
+                )
+                content = result['content']
+                print(f"\n✅ Generated: {result['length']} chars, {result['word_count']} words")
+                
+                # Apply smart truncation if enabled (skipped when length gate is active)
+                length_controlled = False
+                
+                length_control_config = self._length_control_config
 
-            if length_control_config['enable_smart_truncation']:
-                skip_components = self._get_domain_generation_list('length_control', 'skip_components')
-                if component_type in skip_components:
-                    print("\n✂️  Skipping smart length truncation (per domain config)")
-                else:
-                    from shared.text.utils.length_control import apply_length_control
-                    default_target_words = length_control_config.get('default_target_words')
-                    if default_target_words is None:
-                        raise ValueError(
-                            "length_control.default_target_words is required when smart truncation is enabled"
-                        )
-
-                    # Get the original prompt for word count extraction
-                    final_prompt = getattr(result, 'prompt_used', '') or str(getattr(params, 'prompt', ''))
-
-                    runtime_target_words = kwargs.get('target_words')
-                    fallback_target_words = runtime_target_words if isinstance(runtime_target_words, int) and runtime_target_words > 0 else default_target_words
-
-                    print(f"\n✂️  Applying smart length control...")
-                    control_result = apply_length_control(
-                        content=self._content_to_text(content, component_type),
-                        prompt=final_prompt,
-                        fallback_target=fallback_target_words
-                    )
-
-                    # Update content if truncation occurred
-                    if control_result['truncated']:
-                        controlled_content = control_result['content']
-                        result['content'] = controlled_content
-                        content = controlled_content
-                        length_controlled = True
-
-                        print(f"📏 Length Control: {control_result['original_words']} → {control_result['final_words']} words")
-                        print(f"🎯 Target: {control_result['target_words']}, Accuracy: {100-control_result['compliance']['variance_percent']:.1f}%")
-                        print(f"✂️  Truncated: {control_result['reduction']} words removed")
-
-                        # Update result metrics
-                        result['length'] = len(controlled_content)
-                        result['word_count'] = control_result['final_words']
-                        result['length_controlled'] = True
-                        result['original_words'] = control_result['original_words']
-                        result['truncated'] = True
+                if length_control_config['enable_smart_truncation']:
+                    if length_gate_enabled:
+                        print("\n✂️  Skipping smart length truncation (length gate enabled)")
                     else:
-                        print(f"📏 Length Control: {control_result['final_words']} words (no truncation needed)")
-                        result['length_controlled'] = False
-                        result['truncated'] = False
-            
-            # Display content preview
-            content_text = self._content_to_text(content, component_type)
-            print(f"\n{'─'*80}")
-            print(f"📄 GENERATED CONTENT{' (LENGTH CONTROLLED)' if length_controlled else ''}:")
-            print(f"{'─'*80}")
-            print(content_text[:500] + ("..." if len(content_text) > 500 else ""))
-            print(f"{'─'*80}\n")
-            
-        except Exception as e:
-            logger.error(f"❌ Generation failed: {e}")
-            return QualityEvaluatedResult(
-                success=False,
-                content=None,
-                quality_scores={},
-                evaluation_logged=False,
-                error_message=f"Generation error: {e}"
-            )
+                        skip_components = self._get_domain_generation_list('length_control', 'skip_components')
+                        if component_type in skip_components:
+                            print("\n✂️  Skipping smart length truncation (per domain config)")
+                        else:
+                            from shared.text.utils.length_control import apply_length_control
+                            default_target_words = length_control_config.get('default_target_words')
+                            if default_target_words is None:
+                                raise ValueError(
+                                    "length_control.default_target_words is required when smart truncation is enabled"
+                                )
+
+                            # Get the original prompt for word count extraction
+                            final_prompt = result.get('prompt_used') or str(getattr(params, 'prompt', ''))
+
+                            runtime_target_words = kwargs.get('target_words')
+                            if isinstance(runtime_target_words, int) and runtime_target_words > 0:
+                                fallback_target_words = runtime_target_words
+                            else:
+                                configured_target_words = self.generator.processing_config.get_component_length(component_type)
+                                if not isinstance(configured_target_words, int) or configured_target_words <= 0:
+                                    raise ValueError(
+                                        f"Invalid configured target words for component_type='{component_type}': {configured_target_words}"
+                                    )
+                                fallback_target_words = configured_target_words or default_target_words
+
+                            print(f"\n✂️  Applying smart length control...")
+                            control_result = apply_length_control(
+                                content=self._content_to_text(content, component_type),
+                                prompt=final_prompt,
+                                fallback_target=fallback_target_words
+                            )
+
+                            # Update content if truncation occurred
+                            if control_result['truncated']:
+                                controlled_content = control_result['content']
+                                result['content'] = controlled_content
+                                content = controlled_content
+                                length_controlled = True
+
+                                print(f"📏 Length Control: {control_result['original_words']} → {control_result['final_words']} words")
+                                print(f"🎯 Target: {control_result['target_words']}, Accuracy: {100-control_result['compliance']['variance_percent']:.1f}%")
+                                print(f"✂️  Truncated: {control_result['reduction']} words removed")
+
+                                # Update result metrics
+                                result['length'] = len(controlled_content)
+                                result['word_count'] = control_result['final_words']
+                                result['length_controlled'] = True
+                                result['original_words'] = control_result['original_words']
+                                result['truncated'] = True
+                            else:
+                                print(f"📏 Length Control: {control_result['final_words']} words (no truncation needed)")
+                                result['length_controlled'] = False
+                                result['truncated'] = False
+                
+                content_text = self._content_to_text(content, component_type)
+                prompt_text = result.get('prompt_used') or str(getattr(params, 'prompt', ''))
+                if length_gate_enabled:
+                    length_gate_result = self._evaluate_length_gate(
+                        content=content,
+                        component_type=component_type,
+                        prompt_text=prompt_text,
+                        faq_count=kwargs.get('faq_count')
+                    )
+                    if not length_gate_result['passed']:
+                        max_attempts = length_gate_config['max_attempts']
+                        print(
+                            f"\n❌ Length gate failed (attempt {length_gate_attempts}/{max_attempts})"
+                        )
+                        if length_gate_result.get('mode') == 'per_answer':
+                            violations = length_gate_result.get('violations', [])
+                            if violations:
+                                detail = ", ".join(
+                                    [f"A{v['index']}={v['words']}" for v in violations]
+                                )
+                                print(
+                                    f"   Range: {length_gate_result['min_words']}-{length_gate_result['max_words']} words per answer"
+                                )
+                                print(f"   Violations: {detail}")
+                        else:
+                            print(
+                                f"   Range: {length_gate_result['min_words']}-{length_gate_result['max_words']} words"
+                            )
+                            print(f"   Actual: {length_gate_result.get('words')}")
+
+                        if length_gate_attempts < max_attempts:
+                            print("🔁 Retrying length gate before quality analysis...")
+                            continue
+
+                        if length_gate_config['fail_on_max_attempts']:
+                            return QualityEvaluatedResult(
+                                success=False,
+                                content=None,
+                                quality_scores={},
+                                evaluation_logged=False,
+                                error_message="Length gate failed after max attempts"
+                            )
+                        print("⚠️  Length gate max attempts reached; proceeding")
+
+                # Display content preview (final attempt)
+                print(f"\n{'─'*80}")
+                print(f"📄 GENERATED CONTENT{' (LENGTH CONTROLLED)' if length_controlled else ''}:")
+                print(f"{'─'*80}")
+                print(content_text[:500] + ("..." if len(content_text) > 500 else ""))
+                print(f"{'─'*80}\n")
+                break
+                
+            except Exception as e:
+                logger.error(f"❌ Generation failed: {e}")
+                return QualityEvaluatedResult(
+                    success=False,
+                    content=None,
+                    quality_scores={},
+                    evaluation_logged=False,
+                    error_message=f"Generation error: {e}"
+                )
         
         # UNIFIED QUALITY ANALYSIS (post-generation, pre-save) 🔥 CONSOLIDATED
         quality_analysis = None
+        voice_compliance = None
+        ai_pattern_detection = None
         
-        if VOICE_VALIDATION_AVAILABLE:
+        if skip_learning_evaluation:
+            print("\n⏩ Skipping unified quality analysis and fallback AI-pattern detection (retry speed mode)")
+        elif VOICE_VALIDATION_AVAILABLE:
             try:
                 print(f"\n🎭 Analyzing quality (unified system)...")
                 author_data = self._get_author_data(material_name)
@@ -380,7 +432,12 @@ class QualityEvaluatedGenerator:
             'grok_ai_score': None,
             'diversity_score': None,
             'voice_compliance': voice_compliance,  # Voice compliance data
-            'ai_pattern_detection': ai_pattern_detection  # Legacy AI detection with pattern variation
+            'ai_pattern_detection': ai_pattern_detection,  # Legacy AI detection with pattern variation
+            'length_gate': {
+                'enabled': length_gate_enabled,
+                'attempts': length_gate_attempts,
+                'result': length_gate_result
+            }
         }
         evaluation_logged = False
         
@@ -427,7 +484,18 @@ class QualityEvaluatedGenerator:
                 logger.warning(f"   ⚠️  Subjective evaluation failed: {e}")
         
         # Grok humanness detection
-        grok_result = self._check_grok_detection(eval_text, material_name, component_type)
+        if skip_learning_evaluation:
+            print("⏩ Skipping Grok humanness detection (retry speed mode)")
+            grok_result = {
+                'passed': True,
+                'human_score': None,
+                'ai_score': None,
+                'threshold': None,
+                'message': 'Skipped Grok humanness detection in retry speed mode',
+            }
+        else:
+            grok_result = self._check_grok_detection(eval_text, material_name, component_type)
+
         quality_scores['grok_human_score'] = grok_result.get('human_score')
         quality_scores['grok_ai_score'] = grok_result.get('ai_score')
         
@@ -601,6 +669,104 @@ class QualityEvaluatedGenerator:
         else:
             # String content (description, etc.)
             return str(content)
+
+    def _get_length_gate_config(self) -> Dict[str, Any]:
+        from generation.config.config_loader import get_config
+
+        config = get_config()
+        return config.get_length_gate_config()
+
+    def _get_length_control_config(self) -> Dict[str, Any]:
+        config_data = self.generator.processing_config.config
+        if not isinstance(config_data, dict):
+            raise TypeError("config.yaml must parse to a dictionary")
+        if 'length_control' not in config_data:
+            raise KeyError("config.yaml missing required key: 'length_control'")
+        length_control_config = config_data['length_control']
+        if not isinstance(length_control_config, dict):
+            raise TypeError("config.yaml key 'length_control' must be a dictionary")
+        if 'enable_smart_truncation' not in length_control_config:
+            raise KeyError("length_control missing required key: 'enable_smart_truncation'")
+        return length_control_config
+
+    @staticmethod
+    def _count_words(text: str) -> int:
+        if not isinstance(text, str):
+            return 0
+        return len(re.findall(r"\b[\w']+\b", text))
+
+    @staticmethod
+    def _parse_length_spec(prompt_text: str) -> Optional[Dict[str, Any]]:
+        if not isinstance(prompt_text, str) or not prompt_text.strip():
+            return None
+
+        match = re.search(
+            r"WORD LENGTH:\s*(\d+)\s*-\s*(\d+)\s*words?(?:\s*(per\s+answer|per\s+item|per\s+question|per\s+section))?",
+            prompt_text,
+            flags=re.IGNORECASE
+        )
+        if not match:
+            return None
+
+        min_words = int(match.group(1))
+        max_words = int(match.group(2))
+        per_unit = match.group(3)
+        return {
+            'min_words': min_words,
+            'max_words': max_words,
+            'per_unit': per_unit.lower() if isinstance(per_unit, str) else None
+        }
+
+    def _evaluate_length_gate(
+        self,
+        content: Any,
+        component_type: str,
+        prompt_text: str,
+        faq_count: Optional[int]
+    ) -> Dict[str, Any]:
+        length_gate = self._get_length_gate_config()
+        spec = self._parse_length_spec(prompt_text)
+
+        if spec is None:
+            if component_type == 'faq':
+                target_words = self.generator.processing_config.get_component_length('faqAnswer')
+            else:
+                target_words = self.generator.processing_config.get_component_length(component_type)
+            min_words = max(1, int(round(target_words * length_gate['min_factor'])))
+            max_words = max(min_words, int(round(target_words * length_gate['max_factor'])))
+            spec = {
+                'min_words': min_words,
+                'max_words': max_words,
+                'per_unit': None
+            }
+
+        if component_type == 'faq' and isinstance(content, list):
+            violations = []
+            for index, qa in enumerate(content, start=1):
+                answer = qa.get('answer') if isinstance(qa, dict) else ''
+                count = self._count_words(answer)
+                if count < spec['min_words'] or count > spec['max_words']:
+                    violations.append({'index': index, 'words': count})
+            return {
+                'passed': len(violations) == 0,
+                'min_words': spec['min_words'],
+                'max_words': spec['max_words'],
+                'mode': 'per_answer',
+                'violations': violations,
+                'faq_count': faq_count
+            }
+
+        text = self._content_to_text(content, component_type)
+        total_words = self._count_words(text)
+        passed = spec['min_words'] <= total_words <= spec['max_words']
+        return {
+            'passed': passed,
+            'min_words': spec['min_words'],
+            'max_words': spec['max_words'],
+            'mode': 'total',
+            'words': total_words,
+            'faq_count': faq_count
+        }
 
     def _get_domain_generation_list(self, *path_parts: str) -> list:
         if not self.generator:

@@ -135,7 +135,7 @@ materials:
     description: "[Generated text from QualityEvaluatedGenerator]"
     micro: "[Generated text from QualityEvaluatedGenerator]"
     faq: "[Generated text from QualityEvaluatedGenerator]"
-    settings_description: "[Generated text from QualityEvaluatedGenerator]"
+    pageDescription: "[Generated text from QualityEvaluatedGenerator]"
   # ... 120 more materials
 ```
 

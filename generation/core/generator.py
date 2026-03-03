@@ -23,6 +23,7 @@ Design Principles:
 """
 
 import logging
+import os
 import random
 import re
 from pathlib import Path
@@ -62,6 +63,7 @@ class Generator:
             raise ValueError("API client required for content generation")
         
         self.api_client = api_client
+        self._last_variation_seed = None
         self.domain = domain
         self.logger = logging.getLogger(__name__)
         
@@ -95,6 +97,9 @@ class Generator:
         
         # Humanness cache (session-level to avoid regenerating for each field)
         self._humanness_cache = {}
+        self._opening_style_usage = {}
+        self._variation_pattern_usage = {}
+        self._variation_pattern_bank = None
         
         self.logger.info(f"Generator initialized for '{domain}' domain (single-pass with research)")
     
@@ -173,6 +178,89 @@ class Generator:
             'max_tokens': self.dynamic_config.calculate_max_tokens(component_type),
             'api_penalties': penalties,
         }
+
+    def _should_apply_opening_style(self, component_type: str) -> bool:
+        if component_type.endswith("Title"):
+            return False
+        if component_type in {"faq"}:
+            return False
+        return True
+
+    def _select_opening_style(self, identifier: str, component_type: str) -> Optional[str]:
+        if not self._should_apply_opening_style(component_type):
+            return None
+
+        from shared.text.utils.prompt_registry_service import PromptRegistryService
+
+        styles = PromptRegistryService.get_opening_style_bank()
+        used = self._opening_style_usage.setdefault(identifier, [])
+
+        available = [style for style in styles if style not in used]
+        if not available:
+            available = [style for style in styles if style != used[-1]] if used else styles
+
+        chosen = random.SystemRandom().choice(available)
+        used.append(chosen)
+        return chosen
+
+    def _should_apply_variation_pattern(self, component_type: str) -> bool:
+        if component_type.endswith("Title"):
+            return False
+        return component_type not in {"faq"}
+
+    def _get_variation_pattern_bank(self) -> list[str]:
+        if self._variation_pattern_bank is None:
+            config = load_yaml(Path("generation") / "text_field_config.yaml")
+            variation_patterns = config.get("variation_patterns")
+            if not isinstance(variation_patterns, dict):
+                raise ValueError(
+                    "Missing required config block: variation_patterns in generation/text_field_config.yaml"
+                )
+
+            bank = variation_patterns.get("bank")
+            if not isinstance(bank, list) or not bank:
+                raise ValueError(
+                    "variation_patterns.bank must be a non-empty list in generation/text_field_config.yaml"
+                )
+
+            normalized = []
+            for pattern in bank:
+                if not isinstance(pattern, str) or not pattern.strip():
+                    raise ValueError("variation_patterns.bank entries must be non-empty strings")
+                normalized.append(pattern.strip())
+
+            self._variation_pattern_bank = normalized
+
+        return self._variation_pattern_bank
+
+    def _select_variation_pattern(self, component_type: str) -> Optional[str]:
+        if not self._should_apply_variation_pattern(component_type):
+            return None
+
+        bank = self._get_variation_pattern_bank()
+        state = self._variation_pattern_usage.setdefault(
+            self.domain,
+            {
+                "remaining": [],
+                "last": None,
+            },
+        )
+
+        remaining = state["remaining"]
+        if not remaining:
+            remaining.extend(bank)
+            random.SystemRandom().shuffle(remaining)
+
+            last_pattern = state.get("last")
+            if last_pattern and len(remaining) > 1 and remaining[0] == last_pattern:
+                for index in range(1, len(remaining)):
+                    if remaining[index] != last_pattern:
+                        remaining[0], remaining[index] = remaining[index], remaining[0]
+                        break
+
+        chosen = remaining.pop(0)
+        state["last"] = chosen
+        return chosen
     
     def generate(
         self,
@@ -247,6 +335,8 @@ class Generator:
             FileNotFoundError: If required files missing
         """
         self.logger.info(f"\n🔄 GENERATION: {component_type} for {identifier} ({self.domain} domain)")
+
+        skip_prompt_validation = bool(kwargs.pop('skip_prompt_validation', False))
         
         # Validate component type exists
         from shared.text.utils.component_specs import ComponentRegistry
@@ -313,6 +403,14 @@ class Generator:
         # Get facts and context (pass component_type for section-specific property selection)
         facts = self.data_provider.fetch_real_facts(identifier, component_type=component_type)
         context = self._build_context(item_data)
+
+        voice_params = self.dynamic_config.calculate_voice_parameters()
+        fact_enrichment_params = self.dynamic_config.calculate_enrichment_params()
+        facts = self.data_provider.format_facts_for_prompt(
+            facts,
+            enrichment_params=fact_enrichment_params,
+            voice_params=voice_params
+        )
         
         # Get base parameters
         params = self._get_base_parameters(component_type)
@@ -339,30 +437,17 @@ class Generator:
             'technical_intensity': normalized_intensity
         }
         
-        # 🎯 SIZE-AWARE HUMANNESS LAYER: Check base prompt size BEFORE adding humanness
+        # Build prompt (single pass)
         # Use explicit per-generation variation seed to avoid deterministic repetition.
+        # Ensure a fresh variation seed per generation call to avoid length reuse
         generation_variation_seed = random.SystemRandom().randint(0, 2**31 - 1)
+        if self._last_variation_seed is not None and generation_variation_seed == self._last_variation_seed:
+            generation_variation_seed = random.SystemRandom().randint(0, 2**31 - 1)
+        self._last_variation_seed = generation_variation_seed
 
-        # Build base prompt WITHOUT humanness first
-        base_prompt = PromptBuilder.build_unified_prompt(
-            topic=identifier,
-            voice=voice,
-            length=None,
-            facts=facts,
-            context=context,
-            component_type=component_type,
-            domain=self.domain,
-            enrichment_params=enrichment_params,
-            variation_seed=generation_variation_seed,
-            humanness_layer="",  # Empty first to measure base size
-            faq_count=faq_count,
-            item_data=item_data  # Pass item_data for template placeholders
-        )
-        
-        # Use already-generated humanness layer (HumannessOptimizer auto-selects compact template for micro/caption)
-        final_humanness = humanness_layer
-        
-        # Rebuild prompt with appropriate humanness
+        opening_style = self._select_opening_style(identifier, component_type)
+        variation_pattern = self._select_variation_pattern(component_type)
+
         prompt = PromptBuilder.build_unified_prompt(
             topic=identifier,
             voice=voice,
@@ -373,13 +458,16 @@ class Generator:
             domain=self.domain,
             enrichment_params=enrichment_params,
             variation_seed=generation_variation_seed,
-            humanness_layer=final_humanness,
+            humanness_layer=humanness_layer,
             faq_count=faq_count,
-            item_data=item_data  # Pass item_data for template placeholders
+            item_data=item_data,  # Pass item_data for template placeholders
+            opening_style=opening_style,
+            variation_pattern=variation_pattern,
         )
-        
-        print(f"📊 Final prompt: {len(prompt):,} chars (base: {len(base_prompt):,}, humanness: {len(final_humanness):,})")
-        self.logger.info(f"📊 Final prompt: {len(prompt):,} chars (base: {len(base_prompt):,}, humanness: {len(final_humanness):,})")
+
+        humanness_chars = len(humanness_layer) if isinstance(humanness_layer, str) else 0
+        print(f"📊 Final prompt: {len(prompt):,} chars (humanness: {humanness_chars:,})")
+        self.logger.info(f"📊 Final prompt: {len(prompt):,} chars (humanness: {humanness_chars:,})")
         self.logger.info(f"📝 Prompt built for {component_type}")
         
         # CRITICAL: Validate FULL ASSEMBLED PROMPT before API call
@@ -389,202 +477,218 @@ class Generator:
         self.logger.info("\n" + "="*80)
         self.logger.info("🔍 COMPREHENSIVE PROMPT VALIDATION (FULL PROMPT)")
         self.logger.info("="*80)
-        
-        try:
-            from shared.validation.content.prompt_coherence_validator import (
-                validate_prompt_coherence,
-            )
-            from shared.validation.content.prompt_validator import validate_text_prompt
 
-            # Stage 1: Standard validation (length, format, technical)
-            validation_result = validate_text_prompt(prompt)
-            
-            # Stage 2: Coherence validation (separation of concerns, contradictions)
-            coherence_result = validate_prompt_coherence(prompt)
-            
-            # Print FULL validation metrics (TERMINAL + FILE LOGGING)
-            print(f"\n📊 PROMPT METRICS:")
-            print(f"   • Characters: {validation_result.prompt_length:,}")
-            print(f"   • Words: {validation_result.word_count:,}")
-            print(f"   • Estimated tokens: {validation_result.estimated_tokens:,}")
-            print(f"   • Status: {validation_result.get_summary()}")
-            self.logger.info(f"\n📊 PROMPT METRICS:")
-            self.logger.info(f"   • Characters: {validation_result.prompt_length:,}")
-            self.logger.info(f"   • Words: {validation_result.word_count:,}")
-            self.logger.info(f"   • Estimated tokens: {validation_result.estimated_tokens:,}")
-            self.logger.info(f"   • Status: {validation_result.get_summary()}")
-            
-            # Display FULL PROMPT STRUCTURE (TERMINAL + FILE LOGGING)
-            prompt_lines = prompt.splitlines()
-            print(f"\n📜 FULL PROMPT STRUCTURE:")
-            print(f"   • Total lines: {len(prompt_lines)}")
-            print(f"   • First 15 lines:")
-            for i, line in enumerate(prompt_lines[:15], 1):
-                print(f"      {i:2d}. {line[:100]}{'...' if len(line) > 100 else ''}")
-            if len(prompt_lines) > 15:
-                print(f"   • ... ({len(prompt_lines) - 15} more lines)")
-            
-            self.logger.info(f"\n📜 FULL PROMPT STRUCTURE:")
-            self.logger.info(f"   • Total lines: {len(prompt_lines)}")
-            self.logger.info(f"   • First 10 lines:")
-            for i, line in enumerate(prompt_lines[:10], 1):
-                self.logger.info(f"      {i:2d}. {line[:100]}{'...' if len(line) > 100 else ''}")
-            if len(prompt_lines) > 10:
-                self.logger.info(f"   • ... ({len(prompt_lines) - 10} more lines)")
-            
-            # Check for voice instruction rendering (TERMINAL + FILE LOGGING)
-            print(f"\n🔍 CRITICAL SECTIONS CHECK:")
-            if 'VOICE INSTRUCTIONS' in prompt or 'VOICE:' in prompt or 'voice_instruction' in prompt:
-                print("   • Voice instructions: ✅ PRESENT")
-                self.logger.info("   ✅ Voice instructions present in prompt")
-            else:
-                print("   • Voice instructions: ❌ MISSING")
-                self.logger.warning("   ⚠️  NO voice instructions found in prompt!")
-            
-            # Check for forbidden phrase instructions
-            if 'FORBIDDEN' in prompt.upper() or 'forbidden' in prompt:
-                print("   • Forbidden phrases: ✅ PRESENT")
-                self.logger.info("   ✅ Contains forbidden phrase instructions")
-            else:
-                print("   • Forbidden phrases: ❌ MISSING")
-                self.logger.warning("   ⚠️  NO forbidden phrase instructions found!")
-            
-            # Check for component requirements
-            if 'REQUIREMENTS:' in prompt.upper():
-                print("   • Component requirements: ✅ PRESENT")
-            else:
-                print("   • Component requirements: ❌ MISSING")
-            
-            # Display ALL validation issues (TERMINAL + FILE LOGGING)
-            if validation_result.issues:
-                print(f"\n⚠️  VALIDATION ISSUES ({len(validation_result.issues)} total):")
-                for i, issue in enumerate(validation_result.issues, 1):
-                    print(f"   {i}. [{issue.severity.value}] {issue.message}")
-                    if issue.suggestion:
-                        print(f"      💡 {issue.suggestion}")
-                
-                self.logger.info(f"\n⚠️  VALIDATION ISSUES ({len(validation_result.issues)} total):")
-                for i, issue in enumerate(validation_result.issues, 1):
-                    self.logger.info(f"   {i}. [{issue.severity.value}] {issue.message}")
-                    if issue.suggestion:
-                        self.logger.info(f"      💡 {issue.suggestion}")
-            else:
-                print(f"\n✅ No validation issues found")
-                self.logger.info(f"\n✅ No validation issues found")
-            
-            print("\n" + "="*80)
-            self.logger.info("\n" + "="*80)
-            
-            # Save full prompt to temp file for detailed inspection
-            import tempfile
-            with tempfile.NamedTemporaryFile(mode='w', suffix='_prompt.txt', delete=False, dir='/tmp') as f:
-                f.write(prompt)
-                prompt_file = f.name
-            print(f"📄 Full prompt saved to: {prompt_file}")
-            print(f"   View with: cat {prompt_file}")
-            self.logger.info(f"📄 Full prompt saved to: {prompt_file}\n")
-            
-            # Report standard validation (AUTO-FIX CRITICAL/WARNING issues)
-            if not validation_result.is_valid or validation_result.has_warnings:
-                if validation_result.has_critical_issues or validation_result.has_warnings:
-                    # CRITICAL/WARNING ISSUES: AUTO-FIX
-                    severity_label = "CRITICAL" if validation_result.has_critical_issues else "WARNING"
-                    print(f"\n⚠️  {severity_label} VALIDATION ISSUES - AUTO-FIXING")
+        if skip_prompt_validation:
+            print("⏩ Skipping prompt validation (retry speed mode)")
+            self.logger.info("⏩ Skipping prompt validation (retry speed mode)")
+        else:
+            prompt_diagnostics_enabled = os.getenv('ZBEAM_PROMPT_DIAGNOSTICS', '').lower() in {'1', 'true', 'yes', 'on'}
+            shared_validation = self.config.get('shared_domain_validation')
+            if not isinstance(shared_validation, dict):
+                raise KeyError("Missing required config block: shared_domain_validation")
+            if 'min_description_words' not in shared_validation:
+                raise KeyError("Missing required config key: shared_domain_validation.min_description_words")
+            min_description_words = shared_validation['min_description_words']
+            if not isinstance(min_description_words, int):
+                raise TypeError("shared_domain_validation.min_description_words must be an integer")
+            length_target = self.processing_config.get_component_length(component_type)
+            skip_coherence_validation = length_target < min_description_words
+
+            try:
+                from shared.validation.content.prompt_coherence_validator import (
+                    validate_prompt_coherence,
+                )
+                from shared.validation.content.prompt_validator import validate_text_prompt
+
+                validation_result = validate_text_prompt(prompt)
+
+                coherence_result = None
+                if skip_coherence_validation:
+                    print("\n🔗 COHERENCE VALIDATION: SKIPPED (short field)")
+                    self.logger.info("🔗 COHERENCE VALIDATION: SKIPPED (short field)")
+                else:
+                    coherence_result = validate_prompt_coherence(prompt)
+
+                print(f"\n📊 PROMPT METRICS:")
+                print(f"   • Characters: {validation_result.prompt_length:,}")
+                print(f"   • Words: {validation_result.word_count:,}")
+                print(f"   • Estimated tokens: {validation_result.estimated_tokens:,}")
+                print(f"   • Status: {validation_result.get_summary()}")
+                self.logger.info(f"\n📊 PROMPT METRICS:")
+                self.logger.info(f"   • Characters: {validation_result.prompt_length:,}")
+                self.logger.info(f"   • Words: {validation_result.word_count:,}")
+                self.logger.info(f"   • Estimated tokens: {validation_result.estimated_tokens:,}")
+                self.logger.info(f"   • Status: {validation_result.get_summary()}")
+
+                if prompt_diagnostics_enabled:
+                    prompt_lines = prompt.splitlines()
+                    print(f"\n📜 FULL PROMPT STRUCTURE:")
+                    print(f"   • Total lines: {len(prompt_lines)}")
+                    print(f"   • First 15 lines:")
+                    for i, line in enumerate(prompt_lines[:15], 1):
+                        print(f"      {i:2d}. {line[:100]}{'...' if len(line) > 100 else ''}")
+                    if len(prompt_lines) > 15:
+                        print(f"   • ... ({len(prompt_lines) - 15} more lines)")
+
+                    self.logger.info(f"\n📜 FULL PROMPT STRUCTURE:")
+                    self.logger.info(f"   • Total lines: {len(prompt_lines)}")
+                    self.logger.info(f"   • First 10 lines:")
+                    for i, line in enumerate(prompt_lines[:10], 1):
+                        self.logger.info(f"      {i:2d}. {line[:100]}{'...' if len(line) > 100 else ''}")
+                    if len(prompt_lines) > 10:
+                        self.logger.info(f"   • ... ({len(prompt_lines) - 10} more lines)")
+
+                    print(f"\n🔍 CRITICAL SECTIONS CHECK:")
+                    if 'VOICE INSTRUCTIONS' in prompt or 'VOICE:' in prompt or 'voice_instruction' in prompt:
+                        print("   • Voice instructions: ✅ PRESENT")
+                        self.logger.info("   ✅ Voice instructions present in prompt")
+                    else:
+                        print("   • Voice instructions: ❌ MISSING")
+                        self.logger.warning("   ⚠️  NO voice instructions found in prompt!")
+
+                    if 'FORBIDDEN' in prompt.upper() or 'forbidden' in prompt:
+                        print("   • Forbidden phrases: ✅ PRESENT")
+                        self.logger.info("   ✅ Contains forbidden phrase instructions")
+                    else:
+                        print("   • Forbidden phrases: ❌ MISSING")
+                        self.logger.warning("   ⚠️  NO forbidden phrase instructions found!")
+
+                    if 'REQUIREMENTS:' in prompt.upper():
+                        print("   • Component requirements: ✅ PRESENT")
+                    else:
+                        print("   • Component requirements: ❌ MISSING")
+
+                if validation_result.issues:
+                    print(f"\n⚠️  VALIDATION ISSUES ({len(validation_result.issues)} total):")
+                    for i, issue in enumerate(validation_result.issues, 1):
+                        print(f"   {i}. [{issue.severity.value}] {issue.message}")
+                        if issue.suggestion:
+                            print(f"      💡 {issue.suggestion}")
+
+                    self.logger.info(f"\n⚠️  VALIDATION ISSUES ({len(validation_result.issues)} total):")
+                    for i, issue in enumerate(validation_result.issues, 1):
+                        self.logger.info(f"   {i}. [{issue.severity.value}] {issue.message}")
+                        if issue.suggestion:
+                            self.logger.info(f"      💡 {issue.suggestion}")
+                else:
+                    print(f"\n✅ No validation issues found")
+                    self.logger.info(f"\n✅ No validation issues found")
+
+                print("\n" + "="*80)
+                self.logger.info("\n" + "="*80)
+
+                if prompt_diagnostics_enabled:
+                    import tempfile
+                    with tempfile.NamedTemporaryFile(mode='w', suffix='_prompt.txt', delete=False, dir='/tmp') as f:
+                        f.write(prompt)
+                        prompt_file = f.name
+                    print(f"📄 Full prompt saved to: {prompt_file}")
+                    print(f"   View with: cat {prompt_file}")
+                    self.logger.info(f"📄 Full prompt saved to: {prompt_file}\n")
+
+                if not validation_result.is_valid:
+                    if validation_result.has_critical_issues or validation_result.has_errors:
+                        severity_label = "CRITICAL" if validation_result.has_critical_issues else "ERROR"
+                        print(f"\n⚠️  {severity_label} VALIDATION ISSUES - AUTO-FIXING")
+                        print(validation_result.format_report())
+                        self.logger.warning(f"{severity_label} validation issues detected - attempting auto-fix")
+
+                        from shared.validation.prompt_optimizer import optimize_prompt
+                        optimized_prompt = optimize_prompt(prompt, validation_result)
+
+                        if optimized_prompt != prompt:
+                            print(f"\n✅ PROMPT AUTO-OPTIMIZED:")
+                            print(f"   Original: {len(prompt):,} chars")
+                            print(f"   Optimized: {len(optimized_prompt):,} chars")
+                            print(f"   Reduction: {len(prompt) - len(optimized_prompt):,} chars ({100*(len(prompt)-len(optimized_prompt))/len(prompt):.1f}%)")
+                            self.logger.info(f"Prompt optimized: {len(prompt)} → {len(optimized_prompt)} chars")
+                            prompt = optimized_prompt
+
+                            validation_result = validate_text_prompt(prompt)
+                            if validation_result.has_critical_issues or validation_result.has_warnings:
+                                print(f"   ⚠️  Still has issues after optimization")
+                                self.logger.warning(f"Optimization insufficient - proceeding anyway")
+                            else:
+                                print(f"   ✅ Issues resolved")
+                                self.logger.info(f"Issues resolved by optimization")
+
+                        self._log_validation_issues(
+                            validation_result,
+                            'standard',
+                            material=identifier,
+                            component_type=component_type,
+                            domain=self.domain
+                        )
+                    else:
+                        print(f"\n💡 VALIDATION INFO (logged for learning)")
+                        print(validation_result.format_report())
+                        self.logger.info(f"Validation info detected: {validation_result.format_report()}")
+                        self._log_validation_issues(
+                            validation_result,
+                            'standard',
+                            material=identifier,
+                            component_type=component_type,
+                            domain=self.domain
+                        )
+                elif validation_result.has_warnings:
+                    print(f"\n⚠️  VALIDATION WARNINGS (logged, no auto-fix)")
                     print(validation_result.format_report())
-                    self.logger.warning(f"{severity_label} validation issues detected - attempting auto-fix")
-                    
-                    # Auto-optimize prompt
-                    from shared.validation.prompt_optimizer import optimize_prompt
-                    optimized_prompt = optimize_prompt(prompt, validation_result)
-                    
-                    if optimized_prompt != prompt:
-                        print(f"\n✅ PROMPT AUTO-OPTIMIZED:")
-                        print(f"   Original: {len(prompt):,} chars")
-                        print(f"   Optimized: {len(optimized_prompt):,} chars")
-                        print(f"   Reduction: {len(prompt) - len(optimized_prompt):,} chars ({100*(len(prompt)-len(optimized_prompt))/len(prompt):.1f}%)")
-                        self.logger.info(f"Prompt optimized: {len(prompt)} → {len(optimized_prompt)} chars")
-                        prompt = optimized_prompt
-                        
-                        # Re-validate optimized prompt
-                        validation_result = validate_text_prompt(prompt)
-                        if validation_result.has_critical_issues or validation_result.has_warnings:
-                            print(f"   ⚠️  Still has issues after optimization")
-                            self.logger.warning(f"Optimization insufficient - proceeding anyway")
+                    self.logger.warning(f"Validation warnings detected - no auto-fix")
+                    self._log_validation_issues(
+                        validation_result,
+                        'standard',
+                        material=identifier,
+                        component_type=component_type,
+                        domain=self.domain
+                    )
+                else:
+                    print(f"   ✅ Standard validation passed")
+                    self.logger.info("   ✅ Standard validation passed")
+
+                if coherence_result is not None:
+                    print(f"\n🔗 COHERENCE VALIDATION:")
+                    print(f"   {coherence_result.get_summary()}")
+                    self.logger.info(f"🔗 COHERENCE VALIDATION: {coherence_result.get_summary()}")
+
+                    if not coherence_result.is_coherent:
+                        critical_coherence = [i for i in coherence_result.issues if i.severity == "CRITICAL"]
+
+                        if critical_coherence:
+                            print(f"\n⚠️  CRITICAL COHERENCE ISSUES (logged for learning):")
+                            for issue in critical_coherence:
+                                print(f"   • [{issue.severity}] {issue.message}")
+                                self.logger.warning(f"   [{issue.severity}] {issue.message}")
+
+                            self.logger.warning(f"{len(critical_coherence)} critical coherence issues - logged for learning")
+                            self._log_validation_issues(
+                                coherence_result,
+                                'coherence',
+                                material=identifier,
+                                component_type=component_type,
+                                domain=self.domain
+                            )
                         else:
-                            print(f"   ✅ Issues resolved")
-                            self.logger.info(f"Issues resolved by optimization")
-                    
-                    self._log_validation_issues(
-                        validation_result, 
-                        'standard',
-                        material=identifier,
-                        component_type=component_type,
-                        domain=self.domain
-                    )
-                else:
-                    # INFO ONLY: Log but don't block (learning feedback)
-                    print(f"\n💡 VALIDATION INFO (logged for learning)")
-                    print(validation_result.format_report())
-                    self.logger.info(f"Validation info detected: {validation_result.format_report()}")
-                    # Log to learning database for humanness optimizer to adapt
-                    self._log_validation_issues(
-                        validation_result, 
-                        'standard',
-                        material=identifier,
-                        component_type=component_type,
-                        domain=self.domain
-                    )
-            else:
-                print(f"   ✅ Standard validation passed")
-                self.logger.info("   ✅ Standard validation passed")
-            
-            # Report coherence validation (AUTO-FIX CRITICAL issues)
-            print(f"\n🔗 COHERENCE VALIDATION:")
-            print(f"   {coherence_result.get_summary()}")
-            self.logger.info(f"🔗 COHERENCE VALIDATION: {coherence_result.get_summary()}")
-            
-            if not coherence_result.is_coherent:
-                critical_coherence = [i for i in coherence_result.issues if i.severity == "CRITICAL"]
-                
-                if critical_coherence:
-                    # CRITICAL COHERENCE ISSUES: LOG AND PROCEED
-                    print(f"\n⚠️  CRITICAL COHERENCE ISSUES (logged for learning):")
-                    for issue in critical_coherence:
-                        print(f"   • [{issue.severity}] {issue.message}")
-                        self.logger.warning(f"   [{issue.severity}] {issue.message}")
-                    
-                    self.logger.warning(f"{len(critical_coherence)} critical coherence issues - logged for learning")
-                    self._log_validation_issues(
-                        coherence_result, 
-                        'coherence',
-                        material=identifier,
-                        component_type=component_type,
-                        domain=self.domain
-                    )
-                else:
-                    # ERROR/WARNING: Log but don't block
-                    print(f"\n⚠️  COHERENCE ISSUES DETECTED (logged for learning):")
-                    for issue in coherence_result.issues:
-                        if issue.severity in ["ERROR", "WARNING"]:
-                            print(f"   • [{issue.severity}] {issue.message}")
-                            self.logger.warning(f"   [{issue.severity}] {issue.message}")
-                    
-                    # Log full report to file and learning database
-                    self.logger.info("\n" + coherence_result.format_report())
-                    self._log_validation_issues(
-                        coherence_result, 
-                        'coherence',
-                        material=identifier,
-                        component_type=component_type,
-                        domain=self.domain
-                    )
-            else:
-                print(f"   ✅ Coherence validated successfully")
-                self.logger.info("   ✅ Coherence validated successfully")
-        except ImportError as e:
-            raise RuntimeError(
-                f"UniversalPromptValidator import failed - fail-fast architecture requires validation: {e}"
-            ) from e
+                            print(f"\n⚠️  COHERENCE ISSUES DETECTED (logged for learning):")
+                            for issue in coherence_result.issues:
+                                if issue.severity in ["ERROR", "WARNING"]:
+                                    print(f"   • [{issue.severity}] {issue.message}")
+                                    self.logger.warning(f"   [{issue.severity}] {issue.message}")
+
+                            self.logger.info("\n" + coherence_result.format_report())
+                            self._log_validation_issues(
+                                coherence_result,
+                                'coherence',
+                                material=identifier,
+                                component_type=component_type,
+                                domain=self.domain
+                            )
+                    else:
+                        print(f"   ✅ Coherence validated successfully")
+                        self.logger.info("   ✅ Coherence validated successfully")
+            except ImportError as e:
+                raise RuntimeError(
+                    f"UniversalPromptValidator import failed - fail-fast architecture requires validation: {e}"
+                ) from e
         
         # Make API call
         self.logger.info("📡 Making API request...")
@@ -648,7 +752,8 @@ class Generator:
             'length': char_count,
             'word_count': word_count,
             'saved': False,
-            'temperature': params['temperature']
+            'temperature': params['temperature'],
+            'prompt_used': prompt
         }
     
     def _save_to_yaml(self, identifier: str, component_type: str, content: Any):

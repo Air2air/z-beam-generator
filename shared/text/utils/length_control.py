@@ -18,7 +18,6 @@ Usage:
 """
 
 import re
-from typing import Optional
 
 
 def smart_truncate_to_word_count(content: str, target_words: int, tolerance: float = 0.1) -> str:
@@ -60,7 +59,6 @@ def smart_truncate_to_word_count(content: str, target_words: int, tolerance: flo
     max_allowed_words = int(target_words * (1 + tolerance))
     
     # Try to find good sentence boundary within tolerance
-    sentence_endings = ['. ', '! ', '? ']
     sentences = []
     
     # Split on sentence boundaries while preserving the punctuation
@@ -110,10 +108,8 @@ def smart_truncate_to_word_count(content: str, target_words: int, tolerance: flo
         return truncated_content
     
     # Add period if the truncation doesn't end naturally
-    if not truncated_content.endswith(('.', '!', '?')):
-        # Only add period if it doesn't create an awkward phrase
-        if len(truncated_words) >= 5:  # At least 5 words for a complete thought
-            truncated_content += '.'
+    if not truncated_content.endswith(('.', '!', '?')) and len(truncated_words) >= 5:
+        truncated_content += '.'
     
     return truncated_content
 
@@ -168,35 +164,49 @@ def check_length_compliance(text: str, target_words: int, tolerance: float = 0.1
     }
 
 
-def extract_word_count_from_prompt(prompt: str) -> Optional[int]:
-    """
-    Extract target word count from prompt text.
-    
-    Looks for patterns like:
-    - "Base word count: 30"
-    - "EXACTLY 30 words"
-    - "Target: 30 words"
-    
-    Args:
-        prompt: Prompt text to analyze
-        
-    Returns:
-        Extracted word count or None if not found
-    """
-    patterns = [
+def extract_word_count_range(prompt: str) -> tuple[int, int] | None:
+    """Extract a (min, max) word count range from prompt text."""
+    range_patterns = [
+        r'WORD\s+LENGTH:\s*(\d+)\s*[-–]\s*(\d+)\s+words?\b',
+    ]
+
+    single_patterns = [
+        r'WORD\s+LENGTH:\s*(\d+)\s+words?\b',
         r'Base word count:\s*(\d+)',
         r'EXACTLY\s+(\d+)\s+words?',
         r'Target:\s*(\d+)\s+words?',
         r'(\d+)\s+words?\s+exactly',
         r'word count[:\s]+(\d+)',
     ]
-    
-    for pattern in patterns:
+
+    for pattern in range_patterns:
         match = re.search(pattern, prompt, re.IGNORECASE)
         if match:
-            return int(match.group(1))
+            min_words = int(match.group(1))
+            max_words = int(match.group(2))
+            if min_words > 0 and max_words >= min_words:
+                return min_words, max_words
+    
+    for pattern in single_patterns:
+        match = re.search(pattern, prompt, re.IGNORECASE)
+        if match:
+            target = int(match.group(1))
+            return target, target
     
     return None
+
+
+def extract_word_count_from_prompt(prompt: str) -> int | None:
+    """
+    Extract target word count from prompt text.
+
+    For ranges ("WORD LENGTH: X-Y"), return the max so truncation preserves
+    the upper bound instead of cutting to the minimum.
+    """
+    word_range = extract_word_count_range(prompt)
+    if not word_range:
+        return None
+    return word_range[1]
 
 
 def apply_length_control(content: str, prompt: str, fallback_target: int = 50) -> dict:
@@ -219,8 +229,9 @@ def apply_length_control(content: str, prompt: str, fallback_target: int = 50) -
             'compliance': dict        # Detailed compliance info
         }
     """
-    # Extract target from prompt or use fallback
-    target_words = extract_word_count_from_prompt(prompt) or fallback_target
+    # Extract target from prompt (range max) or use fallback
+    word_range = extract_word_count_range(prompt)
+    target_words = (word_range[1] if word_range else None) or fallback_target
     original_word_count = get_word_count(content)
     
     # Apply smart truncation if needed
@@ -239,6 +250,8 @@ def apply_length_control(content: str, prompt: str, fallback_target: int = 50) -
         'original_words': original_word_count,
         'final_words': final_word_count,
         'target_words': target_words,
+        'min_words': word_range[0] if word_range else None,
+        'max_words': word_range[1] if word_range else None,
         'truncated': truncated,
         'compliance': compliance,
         'reduction': original_word_count - final_word_count if truncated else 0

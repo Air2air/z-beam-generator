@@ -2,7 +2,14 @@
 """
 Batch Generation Command Handlers
 
-Handles batch content generation commands to meet Winston minimums efficiently.
+⚠️ DEPRECATED MODULE
+
+Legacy batch command handlers formerly used by scripts/tools/run.py.
+Canonical batch generation now runs through:
+    python3 run.py --batch-generate --domain <domain> --field <field> --all|--items|--item
+
+This module remains only to provide explicit deprecation messages and avoid silent
+legacy-path execution.
 """
 
 import sys
@@ -21,9 +28,14 @@ def handle_batch_subtitle_generation(materials_input: str, skip_integrity_check:
         True if successful, False otherwise
     """
     print("="*80)
-    print("🔄 BATCH SUBTITLE GENERATION")
+    print("⚠️  DEPRECATED: handle_batch_subtitle_generation")
     print("="*80)
-    print()
+    print("Legacy batch handlers are retired.")
+    print("Use canonical command:")
+    print(f"  python3 run.py --batch-generate --domain materials --field pageDescription --items \"{materials_input}\"")
+    print("or:")
+    print("  python3 run.py --batch-generate --domain materials --field pageDescription --all")
+    return False
     
     # Run pre-generation integrity check
     if not skip_integrity_check:
@@ -150,22 +162,14 @@ def handle_batch_micro_generation(materials_input: str, skip_integrity_check: bo
         True if successful, False otherwise
     """
     print("="*80)
-    print("🔄 BATCH CAPTION GENERATION")
+    print("⚠️  DEPRECATED: handle_batch_micro_generation")
     print("="*80)
-    print()
-    print("ℹ️  Note: Micros already meet Winston minimum individually.")
-    print("   Batch generation available for consistency but may not save costs.")
-    print()
-    
-    # Parse materials list
-    materials = _parse_materials_input(materials_input)
-    
-    if not materials:
-        print("❌ No materials specified")
-        return False
-    
-    # Use individual generation (micros don't benefit from batching)
-    return _generate_individually(materials, 'micro', skip_integrity_check)
+    print("Legacy batch handlers are retired.")
+    print("Use canonical command:")
+    print(f"  python3 run.py --batch-generate --domain materials --field micro --items \"{materials_input}\"")
+    print("or:")
+    print("  python3 run.py --batch-generate --domain materials --field micro --all")
+    return False
 
 
 def _parse_materials_input(materials_input: str) -> list:

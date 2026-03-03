@@ -918,6 +918,35 @@ materials:
         label: Material Characteristics
         title: Aluminum's Distinctive Traits
         description: Aluminum offers a lightweight build compared to denser metals like steel, and its high thermal conductivity spreads heat rapidly during processes. This reflectivity often bounces laser energy more than in ferrous materials, so cleaning requires careful pulse control to avoid surface damage. We typically adjust strategies for its oxide layer which resists corrosion better than iron, but excessive energy can lead to unwanted melting in sensitive applications. These traits matter for parameter selection since they demand lower intensities unlike with rust-prone steels, and overlooking them risks structural weakening in industrial uses.
+        density:
+          value: 2700.0
+          unit: kg/m³
+          source: ai_research
+        youngsModulus:
+          value: 69.0
+          unit: GPa
+          source: ai_research
+        tensileStrength:
+          value: 310.0
+          unit: MPa
+          source: ai_research
+        hardness:
+          value: 95.0
+          unit: HB
+          source: ai_research
+        meltingPoint:
+          value: 933.0
+          unit: K
+          source: ai_research
+        electricalConductivity:
+          value: 37700000.0
+          unit: S/m
+          source: ai_research
+        porosity:
+          value: 0.0
+          unit: fraction
+          source: ai_research
+        percentage: 60.0
         _metadata:
           icon: wrench
           order: 70
@@ -927,6 +956,55 @@ materials:
         label: Laser-Material Interaction
         title: Aluminum Laser Dynamics
         description: Laser energy interacts with aluminum by rapidly heating surface contaminants, but the metal's high reflectivity often bounces back much of the beam compared to more absorbent materials like steel; this requires precise adjustments to avoid inefficient cleaning or unintended surface pitting. Absorption remains lower in aluminum than in ferrous metals, and its excellent thermal conductivity spreads heat quickly, so we typically opt for controlled pulses to maintain effectiveness without risking deformation. These traits demand milder settings than those used for denser metals, yet they enable thorough removal of oxides or paints when balanced properly, and care must be taken in industrial setups to prevent overheating that could compromise structural integrity.
+        absorptivity:
+          value: 0.06
+          unit: dimensionless
+          source: ai_research
+        laserReflectivity:
+          value: 0.94
+          unit: dimensionless
+          source: ai_research
+        thermalConductivity:
+          value: 237.0
+          unit: W/m·K
+          source: ai_research
+        thermalDiffusivity:
+          value: 9.7e-05
+          unit: m²/s
+          source: ai_research
+        ablationThreshold:
+          value: 1.8
+          unit: J/cm²
+          source: ai_research
+        energyDensity:
+          value: 5.1
+          unit: J/cm²
+          source: ai_research
+        pulseWidth:
+          value: 10.0
+          unit: ns
+          source: ai_research
+        scanSpeed:
+          value: 500.0
+          unit: mm/s
+          source: ai_research
+        spotSize:
+          value: 50.0
+          unit: μm
+          source: ai_research
+        frequency:
+          value: 50.0
+          unit: kHz
+          source: ai_research
+        passCount:
+          value: 3
+          unit: passes
+          source: ai_research
+        overlapRatio:
+          value: 50.0
+          unit: '%'
+          source: ai_research
+        percentage: 40.0
         _metadata:
           icon: zap
           order: 71
