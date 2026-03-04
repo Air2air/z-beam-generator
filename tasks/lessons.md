@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-03-03: Repeating the same component-registry path in per-domain prompt contract files creates redundant coupling and multi-file drift risk without adding domain-level behavior. → Rule: resolve the component prompt registry from one canonical path and keep domain-level validation focused on real domain artifacts.
+
 - 2026-03-03: Keeping router text coverage in a secondary single-line schema after centralizing prompt content in the component registry recreates source-of-truth drift. → Rule: derive single-line/router coverage directly from `prompts/registry/component_prompt_registry.yaml` in runtime helpers and validators.
 
 - 2026-03-03: Keeping empty `domains/*/prompts` directories after centralization leaves avoidable contract noise and maintenance overhead. → Rule: once prompt sources are centralized, remove obsolete domain folder requirements and delete empty directories in the same batch, then validate contracts immediately.

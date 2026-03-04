@@ -18,6 +18,7 @@ from typing import Any
 import yaml
 
 CANONICAL_DOMAINS = ("applications", "materials", "contaminants", "compounds", "settings")
+COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH = Path("prompts/registry/component_prompt_registry.yaml")
 
 
 def _load_yaml(path: Path) -> dict[str, Any]:
@@ -69,19 +70,8 @@ def _has_text_content(entry: Any) -> bool:
     return False
 
 
-def _component_registry_path(repo_root: Path, domain: str) -> Path:
-    prompt_cfg = _load_yaml(repo_root / "domains" / domain / "prompt.yaml")
-    prompt_contract = prompt_cfg.get("prompt_contract")
-    if not isinstance(prompt_contract, dict):
-        raise ValueError(f"domains/{domain}/prompt.yaml: missing prompt_contract")
-
-    component_registry_file = prompt_contract.get("component_prompt_registry_file")
-    if not isinstance(component_registry_file, str) or not component_registry_file.strip():
-        raise ValueError(
-            f"domains/{domain}/prompt.yaml: missing prompt_contract.component_prompt_registry_file"
-        )
-
-    return repo_root / component_registry_file.strip()
+def _component_registry_path(repo_root: Path) -> Path:
+    return repo_root / COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH
 
 
 @dataclass
@@ -179,14 +169,7 @@ def main() -> int:
 
     generation_cfg = _load_yaml(generation_path)
     domains = [args.domain] if args.domain else list(CANONICAL_DOMAINS)
-    registry_path = _component_registry_path(repo_root, domains[0])
-
-    for domain in domains[1:]:
-        domain_registry_path = _component_registry_path(repo_root, domain)
-        if domain_registry_path != registry_path:
-            raise ValueError(
-                f"Multiple component registry paths detected: {registry_path} vs {domain_registry_path}"
-            )
+    registry_path = _component_registry_path(repo_root)
 
     registry_cfg = _load_yaml(registry_path)
     components = registry_cfg.get("components")

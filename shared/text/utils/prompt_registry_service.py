@@ -12,6 +12,8 @@ import yaml
 class PromptRegistryService:
     """Single access layer for schema sections, registries, and prompt references."""
 
+    _COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH = Path("prompts/registry/component_prompt_registry.yaml")
+
     _schema_cache: Optional[Dict[str, Any]] = None
     _domain_registry_cache: Dict[str, Dict[str, Any]] = {}
     _shared_prompt_registry_cache: Optional[Dict[str, Any]] = None
@@ -29,14 +31,7 @@ class PromptRegistryService:
 
     @classmethod
     def _get_component_prompt_registry_path(cls, domain: str) -> Path:
-        prompt_contract = cls._get_domain_prompt_contract(domain)
-        relative_path = prompt_contract.get("component_prompt_registry_file")
-        if not isinstance(relative_path, str) or not relative_path.strip():
-            raise ValueError(
-                f"domains/{domain}/prompt.yaml: prompt_contract.component_prompt_registry_file must be a non-empty string"
-            )
-
-        registry_path = cls._project_root() / relative_path.strip()
+        registry_path = cls._project_root() / cls._COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH
         if not registry_path.exists():
             raise FileNotFoundError(
                 f"Configured component prompt registry does not exist for '{domain}': {registry_path}"
@@ -194,25 +189,6 @@ class PromptRegistryService:
 
         deduped = "\n".join(deduped_lines).strip()
         return deduped
-
-    @classmethod
-    def _get_domain_prompt_contract(cls, domain: str) -> Dict[str, Any]:
-        contract_path = cls._project_root() / "domains" / domain / "prompt.yaml"
-        contract = cls._load_yaml_file(contract_path)
-
-        declared_domain = contract.get("domain")
-        if not isinstance(declared_domain, str) or declared_domain.strip() != domain:
-            raise ValueError(
-                f"Invalid prompt contract domain in {contract_path}: expected '{domain}'"
-            )
-
-        prompt_contract = contract.get("prompt_contract")
-        if not isinstance(prompt_contract, dict):
-            raise ValueError(
-                f"Invalid prompt contract in {contract_path}: expected mapping at prompt_contract"
-            )
-
-        return prompt_contract
 
     @classmethod
     def _load_domain_optimizer_prompt(cls, domain: str) -> Optional[str]:

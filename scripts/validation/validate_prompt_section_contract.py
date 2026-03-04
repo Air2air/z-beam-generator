@@ -11,6 +11,7 @@ import yaml
 
 REQUIRED_METADATA_FIELDS = ("sectionTitle", "sectionDescription", "sectionMetadata")
 NON_SECTION_TEXT_KEYS = {"pageTitle", "pageDescription"}
+COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH = Path("prompts/registry/component_prompt_registry.yaml")
 
 
 def _is_non_text_prompt_ref(prompt_ref: str) -> bool:
@@ -121,19 +122,7 @@ def _load_faq_shared_registry(repo_root: Path) -> tuple[str | None, dict[str, An
 
 
 def _load_domain_component_text_entries(repo_root: Path, domain: str) -> dict[str, dict[str, str]]:
-    prompt_contract_path = repo_root / "domains" / domain / "prompt.yaml"
-    prompt_contract_payload = load_yaml(prompt_contract_path)
-    prompt_contract = prompt_contract_payload.get("prompt_contract")
-    if not isinstance(prompt_contract, dict):
-        raise ValueError(f"{prompt_contract_path}: missing required mapping prompt_contract")
-
-    component_registry_file = prompt_contract.get("component_prompt_registry_file")
-    if not isinstance(component_registry_file, str) or not component_registry_file.strip():
-        raise ValueError(
-            f"{prompt_contract_path}: prompt_contract.component_prompt_registry_file must be a non-empty string"
-        )
-
-    component_registry_path = repo_root / component_registry_file.strip()
+    component_registry_path = repo_root / COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH
     component_registry_payload = load_yaml(component_registry_path)
     components = component_registry_payload.get("components")
     if not isinstance(components, dict):
@@ -298,18 +287,11 @@ def validate_domain_text_prompt_files(repo_root: Path) -> list[str]:
             errors.append(f"{generation_config_path}: field_router.field_types.{domain}.text must be a list")
             continue
 
-        prompt_contract_path = repo_root / "domains" / domain / "prompt.yaml"
-        prompt_contract_payload = load_yaml(prompt_contract_path)
-        prompt_contract = prompt_contract_payload.get("prompt_contract")
-        if not isinstance(prompt_contract, dict):
-            errors.append(f"{prompt_contract_path}: missing required mapping prompt_contract")
-            continue
-
+        text_prompt_path = repo_root / COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH
         try:
             field_prompts = _load_domain_component_text_entries(repo_root, domain)
-            text_prompt_path = repo_root / "prompts" / "registry" / "component_prompt_registry.yaml"
         except Exception as exc:
-            errors.append(f"{prompt_contract_path}: invalid component prompt registry contract ({exc})")
+            errors.append(f"{text_prompt_path}: invalid component prompt registry contract ({exc})")
             continue
 
         def _is_section_key(component_key: str) -> bool:
@@ -443,15 +425,6 @@ def validate_domain_text_prompt_files(repo_root: Path) -> list[str]:
 
 
 def _load_domain_text_prompt_refs(repo_root: Path, domain: str) -> set[str]:
-    prompt_contract_path = repo_root / "domains" / domain / "prompt.yaml"
-    if not prompt_contract_path.exists():
-        return set()
-
-    prompt_contract_payload = load_yaml(prompt_contract_path)
-    prompt_contract = prompt_contract_payload.get("prompt_contract")
-    if not isinstance(prompt_contract, dict):
-        return set()
-
     try:
         field_prompts = _load_domain_component_text_entries(repo_root, domain)
     except Exception:
@@ -728,33 +701,17 @@ def validate_naming_parity(repo_root: Path) -> list[str]:
 def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
     errors: list[str] = []
     domains = ("applications", "materials", "contaminants", "compounds", "settings")
+    canonical_registry_path = repo_root / COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH
+    if not canonical_registry_path.exists() or not canonical_registry_path.is_file():
+        errors.append(
+            f"Missing canonical component prompt registry: {canonical_registry_path}"
+        )
 
     for domain in domains:
-        prompt_contract_path = repo_root / "domains" / domain / "prompt.yaml"
         catalog_path = repo_root / "domains" / domain / "catalog.yaml"
         domain_folder = repo_root / "domains" / domain
 
-        prompt_contract = load_yaml(prompt_contract_path)
         catalog_payload = load_yaml(catalog_path)
-
-        declared_domain = prompt_contract.get("domain")
-        if not isinstance(declared_domain, str) or declared_domain.strip() != domain:
-            errors.append(f"{prompt_contract_path}: domain must be '{domain}'")
-
-        prompt_contract_body = prompt_contract.get("prompt_contract")
-        if not isinstance(prompt_contract_body, dict):
-            errors.append(f"{prompt_contract_path}: missing required mapping prompt_contract")
-            continue
-
-        component_registry_file = prompt_contract_body.get("component_prompt_registry_file")
-        if not isinstance(component_registry_file, str) or not component_registry_file.strip():
-            errors.append(
-                f"{prompt_contract_path}: prompt_contract.component_prompt_registry_file must be a non-empty string"
-            )
-        else:
-            configured_path = repo_root / component_registry_file.strip()
-            if not configured_path.exists():
-                errors.append(f"{prompt_contract_path}: configured file not found: {configured_path}")
 
         declared_catalog_domain = catalog_payload.get("domain")
         if not isinstance(declared_catalog_domain, str) or declared_catalog_domain.strip() != domain:
@@ -816,12 +773,6 @@ def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
         cleanup_eval = catalog_payload.get("cleanup_evaluation")
         if not isinstance(cleanup_eval, dict):
             errors.append(f"{catalog_path}: missing required mapping cleanup_evaluation")
-
-        if "one_line_content_prompts" in prompt_contract:
-            errors.append(
-                f"{prompt_contract_path}: one_line_content_prompts is not allowed in domain prompt contracts; "
-                "use prompts/registry/component_prompt_registry.yaml components.*.text as the canonical text field source"
-            )
 
         article_pages = catalog_payload.get("article_pages")
         if not isinstance(article_pages, dict):

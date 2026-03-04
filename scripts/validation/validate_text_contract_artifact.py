@@ -11,6 +11,7 @@ from typing import Any
 import text_contract_common as contract_common  # pyright: ignore[reportMissingImports]
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH = Path("prompts/registry/component_prompt_registry.yaml")
 
 
 def _load_artifact(path: Path) -> dict[str, Any]:
@@ -25,18 +26,11 @@ def _load_artifact(path: Path) -> dict[str, Any]:
 
 
 def _domain_text_prompt_keys(repo_root: Path, domain: str) -> set[str]:
-    prompt_contract = contract_common.load_yaml(repo_root / "domains" / domain / "prompt.yaml").get("prompt_contract")
-    if not isinstance(prompt_contract, dict):
-        raise ValueError(f"domains/{domain}/prompt.yaml missing prompt_contract")
-
-    component_registry_file = prompt_contract.get("component_prompt_registry_file")
-    if not isinstance(component_registry_file, str) or not component_registry_file.strip():
-        raise ValueError(f"domains/{domain}/prompt.yaml missing prompt_contract.component_prompt_registry_file")
-
-    component_registry = contract_common.load_yaml(repo_root / component_registry_file.strip())
+    component_registry_path = repo_root / COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH
+    component_registry = contract_common.load_yaml(component_registry_path)
     components = component_registry.get("components")
     if not isinstance(components, dict):
-        raise ValueError(f"{component_registry_file}: components must be a mapping")
+        raise ValueError(f"{COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH}: components must be a mapping")
 
     keys: set[str] = set()
     for key, value in components.items():

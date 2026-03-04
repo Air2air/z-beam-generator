@@ -5,6 +5,22 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 184: Remove Prompt Contract Indirection
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Simplify prompt-system organization by removing per-domain prompt contract path indirection while preserving granular prompt-layer separation and validation guarantees.
+
+### Steps
+- [x] Refactor runtime prompt registry loader to use canonical component registry path directly
+- [x] Refactor prompt validators/tools to load canonical registry directly (no `domains/*/prompt.yaml` path lookup)
+- [x] Simplify bootstrap/contract validation checks to remove redundant prompt contract coupling
+- [x] Run canonical prompt validators and parity checks
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
 ## Batch 183: Consolidate Field Prompts to One Source
 Date: 2026-03-03
 Status: COMPLETE

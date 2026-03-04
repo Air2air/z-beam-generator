@@ -16,6 +16,7 @@ from typing import Any
 import yaml
 
 CANONICAL_DOMAINS = ("applications", "materials", "contaminants", "compounds", "settings")
+COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH = Path("prompts/registry/component_prompt_registry.yaml")
 
 
 def _load_yaml(path: Path) -> dict[str, Any]:
@@ -55,18 +56,10 @@ def _extract_top_level_keys(path: Path) -> set[str]:
 
 
 def _domain_prompt_fields(repo_root: Path, domain: str, allowed_fields: set[str]) -> set[str]:
-    prompt_contract = _load_yaml(repo_root / "domains" / domain / "prompt.yaml").get("prompt_contract")
-    if not isinstance(prompt_contract, dict):
-        raise ValueError(f"domains/{domain}/prompt.yaml missing prompt_contract")
-
-    component_registry_file = prompt_contract.get("component_prompt_registry_file")
-    if not isinstance(component_registry_file, str) or not component_registry_file.strip():
-        raise ValueError(f"domains/{domain}/prompt.yaml missing prompt_contract.component_prompt_registry_file")
-
-    component_registry = _load_yaml(repo_root / component_registry_file.strip())
+    component_registry = _load_yaml(repo_root / COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH)
     components = component_registry.get("components")
     if not isinstance(components, dict):
-        raise ValueError(f"{component_registry_file}: components must be a mapping")
+        raise ValueError(f"{COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH}: components must be a mapping")
 
     prompt_fields: set[str] = set()
     for key, value in components.items():

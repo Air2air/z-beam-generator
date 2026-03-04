@@ -15,6 +15,7 @@ import yaml
 
 
 REQUIRED_DOMAIN_CONFIG_KEYS = ("data_path", "data_root_key", "frontmatter_pattern")
+COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH = Path("prompts/registry/component_prompt_registry.yaml")
 
 
 def _load_yaml(path: Path) -> dict[str, Any]:
@@ -38,15 +39,15 @@ def validate_domain(repo_root: Path, domain: str) -> list[str]:
     errors: list[str] = []
 
     domain_config_path = repo_root / "domains" / domain / "config.yaml"
-    domain_prompt_path = repo_root / "domains" / domain / "prompt.yaml"
     domain_backfill_config_path = repo_root / "generation" / "backfill" / "config" / f"{domain}.yaml"
     domain_export_config_path = repo_root / "export" / "config" / f"{domain}.yaml"
+    component_registry_path = repo_root / COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH
 
     for required_path in (
         domain_config_path,
-        domain_prompt_path,
         domain_backfill_config_path,
         domain_export_config_path,
+        component_registry_path,
     ):
         if not required_path.exists():
             errors.append(f"{domain}: missing required file {required_path.relative_to(repo_root)}")
@@ -72,24 +73,6 @@ def validate_domain(repo_root: Path, domain: str) -> list[str]:
         source_path = repo_root / data_path_value
         if not source_path.exists():
             errors.append(f"{domain}: data_path does not exist ({data_path_value})")
-
-    try:
-        domain_prompt_contract = _load_yaml(domain_prompt_path)
-        prompt_contract = domain_prompt_contract.get("prompt_contract")
-        if not isinstance(prompt_contract, dict):
-            errors.append(f"{domain}: domains/{domain}/prompt.yaml missing required mapping 'prompt_contract'")
-        else:
-            component_registry_path = prompt_contract.get("component_prompt_registry_file")
-            if not isinstance(component_registry_path, str) or not component_registry_path.strip():
-                errors.append(f"{domain}: prompt_contract.component_prompt_registry_file must be a non-empty string")
-            else:
-                prompt_file = repo_root / component_registry_path.strip()
-                if not prompt_file.exists():
-                    errors.append(
-                        f"{domain}: prompt_contract.component_prompt_registry_file path not found ({component_registry_path})"
-                    )
-    except Exception as exc:
-        errors.append(f"{domain}: invalid prompt contract domains/{domain}/prompt.yaml ({exc})")
 
     try:
         generation_config = _load_yaml(generation_config_path)
