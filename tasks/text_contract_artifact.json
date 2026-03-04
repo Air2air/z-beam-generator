@@ -69,20 +69,38 @@
         "components.micro",
         "faq",
         "pageDescription",
+        "pageTitle",
         "properties.laserMaterialInteraction",
         "properties.laserMaterialInteraction._section.sectionDescription",
         "properties.materialCharacteristics",
         "properties.materialCharacteristics._section.sectionDescription",
-        "relationships.interactions.contaminatedBy._section.sectionDescription"
+        "properties.physicalProperties._section.sectionDescription",
+        "relationships.discovery.relatedMaterials._section.sectionDescription",
+        "relationships.environmental.environmentalImpact._section.sectionDescription",
+        "relationships.interactions.contaminatedBy._section.sectionDescription",
+        "relationships.operational.commonChallenges._section.sectionDescription",
+        "relationships.operational.industryApplications._section.sectionDescription",
+        "relationships.operational.preventionStrategies._section.sectionDescription",
+        "relationships.operational.removalMethods._section.sectionDescription",
+        "relationships.visual.appearanceVariations._section.sectionDescription"
       ],
       "backfill_component_types": [
+        "appearanceVariations",
+        "commonChallenges",
         "components.micro",
         "contaminatedBy",
+        "environmentalImpact",
         "faq",
+        "industryApplications",
         "laserMaterialInteraction",
         "materialCharacteristics",
         "micro",
-        "pageDescription"
+        "pageDescription",
+        "pageTitle",
+        "physicalProperties",
+        "preventionStrategies",
+        "relatedMaterials",
+        "removalMethods"
       ],
       "expected_prompt_keys": [
         "appearanceVariations",
@@ -104,8 +122,16 @@
         "properties.laserMaterialInteraction._section.sectionDescription",
         "properties.materialCharacteristics",
         "properties.materialCharacteristics._section.sectionDescription",
+        "properties.physicalProperties._section.sectionDescription",
         "relatedMaterials",
+        "relationships.discovery.relatedMaterials._section.sectionDescription",
+        "relationships.environmental.environmentalImpact._section.sectionDescription",
         "relationships.interactions.contaminatedBy._section.sectionDescription",
+        "relationships.operational.commonChallenges._section.sectionDescription",
+        "relationships.operational.industryApplications._section.sectionDescription",
+        "relationships.operational.preventionStrategies._section.sectionDescription",
+        "relationships.operational.removalMethods._section.sectionDescription",
+        "relationships.visual.appearanceVariations._section.sectionDescription",
         "removalMethods"
       ]
     },
@@ -118,8 +144,8 @@
         "detectionMethods",
         "emergencyResponse",
         "exposureLimits",
+        "faq",
         "healthEffects",
-        "micro",
         "pageDescription",
         "pageTitle",
         "ppeRequirements",
@@ -130,14 +156,38 @@
         "removalMethods"
       ],
       "backfill_field_paths": [
+        "faq",
         "pageDescription",
+        "pageTitle",
+        "relationships.detectionMonitoring.continuousMonitoring._section.sectionDescription",
+        "relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription",
+        "relationships.interactions.producedByMaterials._section.sectionDescription",
         "relationships.interactions.producesCompounds._section.sectionDescription",
+        "relationships.interactions.relatedContaminants._section.sectionDescription",
+        "relationships.operational.preventionStrategies._section.sectionDescription",
+        "relationships.operational.removalMethods._section.sectionDescription",
+        "relationships.safety.emergencyResponse._section.sectionDescription",
+        "relationships.safety.exposureLimits._section.sectionDescription",
+        "relationships.safety.healthEffects._section.sectionDescription",
+        "relationships.safety.ppeRequirements._section.sectionDescription",
         "relationships.visual.appearanceOnCategories._section.sectionDescription"
       ],
       "backfill_component_types": [
         "appearanceVariations",
+        "continuousMonitoring",
+        "detectionMethods",
+        "emergencyResponse",
+        "exposureLimits",
+        "faq",
+        "healthEffects",
         "pageDescription",
-        "relatedCompounds"
+        "pageTitle",
+        "ppeRequirements",
+        "preventionStrategies",
+        "producedByMaterials",
+        "relatedCompounds",
+        "relatedContaminants",
+        "removalMethods"
       ],
       "expected_prompt_keys": [
         "appearance",
@@ -147,8 +197,8 @@
         "detectionMethods",
         "emergencyResponse",
         "exposureLimits",
+        "faq",
         "healthEffects",
-        "micro",
         "pageDescription",
         "pageTitle",
         "ppeRequirements",
@@ -156,7 +206,17 @@
         "producedByMaterials",
         "relatedCompounds",
         "relatedContaminants",
+        "relationships.detectionMonitoring.continuousMonitoring._section.sectionDescription",
+        "relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription",
+        "relationships.interactions.producedByMaterials._section.sectionDescription",
         "relationships.interactions.producesCompounds._section.sectionDescription",
+        "relationships.interactions.relatedContaminants._section.sectionDescription",
+        "relationships.operational.preventionStrategies._section.sectionDescription",
+        "relationships.operational.removalMethods._section.sectionDescription",
+        "relationships.safety.emergencyResponse._section.sectionDescription",
+        "relationships.safety.exposureLimits._section.sectionDescription",
+        "relationships.safety.healthEffects._section.sectionDescription",
+        "relationships.safety.ppeRequirements._section.sectionDescription",
         "relationships.visual.appearanceOnCategories._section.sectionDescription",
         "removalMethods"
       ]
@@ -184,9 +244,20 @@
         "faq",
         "healthEffects",
         "pageDescription",
+        "pageTitle",
+        "ppeRequirements",
+        "regulatoryStandards",
         "relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription",
+        "relationships.interactions.producedFromContaminants._section.sectionDescription",
+        "relationships.interactions.reactivity._section.sectionDescription",
+        "relationships.interactions.relatedCompounds._section.sectionDescription",
         "relationships.safety.emergencyResponse._section.sectionDescription",
-        "relationships.safety.healthEffects._section.sectionDescription"
+        "relationships.safety.exposureLimits._section.sectionDescription",
+        "relationships.safety.healthEffects._section.sectionDescription",
+        "relationships.safety.ppeRequirements._section.sectionDescription",
+        "relationships.safety.regulatoryClassification._section.sectionDescription",
+        "relationships.safety.regulatoryStandards._section.sectionDescription",
+        "relationships.safety.storageRequirements._section.sectionDescription"
       ],
       "backfill_component_types": [
         "detectionMethods",
@@ -194,7 +265,15 @@
         "exposureLimits",
         "faq",
         "healthEffects",
-        "pageDescription"
+        "pageDescription",
+        "pageTitle",
+        "ppeRequirements",
+        "producedFromContaminants",
+        "reactivity",
+        "regulatoryClassification",
+        "regulatoryStandards",
+        "relatedCompounds",
+        "storageRequirements"
       ],
       "expected_prompt_keys": [
         "detectionMethods",
@@ -212,8 +291,16 @@
         "regulatoryStandards",
         "relatedCompounds",
         "relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription",
+        "relationships.interactions.producedFromContaminants._section.sectionDescription",
+        "relationships.interactions.reactivity._section.sectionDescription",
+        "relationships.interactions.relatedCompounds._section.sectionDescription",
         "relationships.safety.emergencyResponse._section.sectionDescription",
+        "relationships.safety.exposureLimits._section.sectionDescription",
         "relationships.safety.healthEffects._section.sectionDescription",
+        "relationships.safety.ppeRequirements._section.sectionDescription",
+        "relationships.safety.regulatoryClassification._section.sectionDescription",
+        "relationships.safety.regulatoryStandards._section.sectionDescription",
+        "relationships.safety.storageRequirements._section.sectionDescription",
         "storageRequirements"
       ]
     },
@@ -227,12 +314,20 @@
         "preventionStrategies"
       ],
       "backfill_field_paths": [
+        "machineSettings",
         "pageDescription",
-        "relationships.operational.commonChallenges._section.sectionDescription"
+        "pageTitle",
+        "relationships.operational.commonChallenges._section.sectionDescription",
+        "relationships.operational.industryApplications._section.sectionDescription",
+        "relationships.operational.preventionStrategies._section.sectionDescription"
       ],
       "backfill_component_types": [
         "commonChallenges",
-        "pageDescription"
+        "industryApplications",
+        "machineSettings",
+        "pageDescription",
+        "pageTitle",
+        "preventionStrategies"
       ],
       "expected_prompt_keys": [
         "commonChallenges",
@@ -241,7 +336,9 @@
         "pageDescription",
         "pageTitle",
         "preventionStrategies",
-        "relationships.operational.commonChallenges._section.sectionDescription"
+        "relationships.operational.commonChallenges._section.sectionDescription",
+        "relationships.operational.industryApplications._section.sectionDescription",
+        "relationships.operational.preventionStrategies._section.sectionDescription"
       ]
     }
   }

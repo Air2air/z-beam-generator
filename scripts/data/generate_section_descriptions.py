@@ -190,7 +190,7 @@ def main() -> int:
             print(f"\n🧱 {item_key}: {len(sections_to_process)} sections")
 
             for group_key, section_key in sections_to_process:
-                prompt = PromptRegistryService.get_schema_prompt(domain, section_key, include_descriptor=True)
+                prompt = PromptRegistryService.get_schema_prompt(domain, section_key, include_descriptor=False)
                 if not prompt:
                     print(f"  ⏭️  {group_key}.{section_key}: no prompt resolved")
                     overall_stats['skipped'] += 1

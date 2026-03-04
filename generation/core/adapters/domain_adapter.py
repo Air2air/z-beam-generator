@@ -401,7 +401,7 @@ class DomainAdapter(DataSourceAdapter):
         return PromptRegistryService.get_schema_prompt(
             domain=self.domain,
             component_type=component_type,
-            include_descriptor=True,
+            include_descriptor=False,
         )
 
     def get_section_metadata(self, component_type: str) -> Dict[str, Any]:

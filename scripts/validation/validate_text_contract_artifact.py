@@ -126,7 +126,7 @@ def main() -> int:
         missing_text_prompt = sorted(expected_prompt_keys - text_prompt_keys)
         if missing_text_prompt:
             errors.append(
-                f"{domain}: domains/*/prompts/text_prompt.yaml missing keys: {', '.join(missing_text_prompt)}"
+                f"{domain}: prompts/registry/component_prompt_registry.yaml missing components.*.text keys: {', '.join(missing_text_prompt)}"
             )
 
         missing_title_pairs = _missing_section_title_pairs(text_prompt_keys)

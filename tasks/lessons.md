@@ -1,5 +1,13 @@
 # Lessons Learned
 
+- 2026-03-03: Adding new `*_section.sectionDescription` component prompt keys without matching `*_section.sectionTitle` keys breaks cross-domain text-contract validation because key-pair parity is enforced globally. → Rule: whenever adding any `*_section.sectionDescription` key to `component_prompt_registry.yaml`, add its paired `*_section.sectionTitle` key in the same patch.
+
+- 2026-03-03: Leaving legacy prompt directories in place after registry centralization creates accidental governance coupling and stale operational assumptions. → Rule: once centralized prompt loading is confirmed, remove legacy prompt artifacts and immediately align validator/docs wording to the canonical registry paths.
+
+- 2026-03-03: Domain-local prompt YAML folders can become stale after centralizing runtime prompt loading to the component registry, creating source-of-truth ambiguity and misleading validator/doc phrasing. → Rule: keep `prompts/registry/component_prompt_registry.yaml` as the canonical runtime source and either retire `domains/*/prompts/*.yaml` or explicitly mark them non-runtime with synchronized tooling text.
+
+- 2026-03-03: Descriptor prompts can become operationally redundant once component text prompts are comprehensive, but lingering `include_descriptor=True` callsites keep hidden dependency on descriptor content. → Rule: when consolidating prompt ownership into component text/non-text entries, set active runtime callsites to `include_descriptor=False` and leave descriptor mode only for explicit tests/migrations.
+
 - 2026-03-03: Prompt `{category}` can resolve to a domain label (for example `applications`) when source `category` mirrors domain taxonomy, reducing prompt specificity. → Rule: resolve prompt `{category}` from `category` unless it equals domain; then fall back to `subcategory` as parent taxonomy.
 
 - 2026-03-03: Prompt subject placeholders can leak storage/frontmatter suffixes (`-compound`, `-settings`, etc.) when bound directly to canonical item IDs, degrading prompt wording. → Rule: derive prompt-only `{subject}` from domain `frontmatter_pattern` (with domain-name fallback) in shared template binding, while keeping canonical IDs unchanged for data resolution.

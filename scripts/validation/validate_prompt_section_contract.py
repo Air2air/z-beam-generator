@@ -287,7 +287,7 @@ def validate_domain_text_prompt_files(repo_root: Path) -> list[str]:
     component_aliases = _load_component_aliases(repo_root)
 
     placeholder_pattern = re.compile(r"\{([a-zA-Z_][a-zA-Z0-9_]*)\}")
-    required_variables = {"subject", "context"}
+    required_variables = {"subject"}
 
     for domain, type_map in sorted(field_types.items()):
         if not isinstance(domain, str) or not isinstance(type_map, dict):
@@ -432,6 +432,11 @@ def validate_domain_text_prompt_files(repo_root: Path) -> list[str]:
             if missing_required:
                 errors.append(
                     f"{text_prompt_path}: field_prompts.{key_name} missing required placeholders: {', '.join('{' + name + '}' for name in missing_required)}"
+                )
+
+            if "context" not in placeholders and "category" not in placeholders:
+                errors.append(
+                    f"{text_prompt_path}: field_prompts.{key_name} must include either {{context}} or {{category}}"
                 )
 
     return errors
@@ -815,7 +820,7 @@ def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
         if "one_line_content_prompts" in prompt_contract:
             errors.append(
                 f"{prompt_contract_path}: one_line_content_prompts is not allowed in domain prompt contracts; "
-                "use domains/*/prompts/text_prompt.yaml field_prompts as the canonical text field source"
+                "use prompts/registry/component_prompt_registry.yaml components.*.text as the canonical text field source"
             )
 
         article_pages = catalog_payload.get("article_pages")
@@ -879,7 +884,7 @@ def validate_legacy_prompt_registry_absence(repo_root: Path) -> list[str]:
         legacy_path = repo_root / relative_path
         if legacy_path.exists():
             errors.append(
-                f"{legacy_path}: deprecated legacy shared prompt file must not exist; use prompts/registry/shared_prompt_registry.yaml and domains/*/prompts/text_prompt.yaml"
+                f"{legacy_path}: deprecated legacy shared prompt file must not exist; use prompts/registry/shared_prompt_registry.yaml and prompts/registry/component_prompt_registry.yaml"
             )
 
     return errors

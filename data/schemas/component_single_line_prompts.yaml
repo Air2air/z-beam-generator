@@ -147,6 +147,11 @@ component_single_line_prompts:
         variables:
         - subject
         - context
+      faq:
+        prompt: Describe faq considerations for {subject} in {category} within the contaminants domain.
+        variables:
+        - subject
+        - context
       micro:
         prompt: Describe the before-and-after surface transformation of {subject}
           in {category}.

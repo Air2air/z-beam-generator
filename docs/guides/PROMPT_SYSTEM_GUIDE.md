@@ -88,7 +88,7 @@ Each layer has ONE responsibility:
 
 ### 4. Descriptor Chain Contract (Normalization)
 
-The descriptor layer is now resolved through `PromptRegistryService` and domain-local YAML registries under `domains/{domain}/prompts/` (`descriptor_prompts.yaml`, `text_prompt.yaml`, `non_text_prompt.yaml`). It must remain normalized across domains and must never overlap with other descriptor responsibilities.
+The descriptor/text/non-text/optimizer prompt layers are resolved through `PromptRegistryService` from the centralized component registry at `prompts/registry/component_prompt_registry.yaml`. It must remain normalized across domains and must never overlap with other prompt responsibilities.
 
 Single-line section/title prompt templates are centralized in `data/schemas/component_single_line_prompts.yaml` and must not be duplicated in `domains/*/prompt.yaml`.
 

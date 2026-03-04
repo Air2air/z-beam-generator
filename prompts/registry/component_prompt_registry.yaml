@@ -8,7 +8,7 @@ source:
   - contaminants
   - materials
   - settings
-  derivedFrom: domains/*/prompts/{descriptor_prompts,text_prompt,non_text_prompt,optimizer_prompt}.yaml
+  derivedFrom: prompts/registry/component_prompt_registry.yaml
 optimizer:
   shared: 'Optimize the draft for clarity and concision without changing meaning.
 
@@ -539,6 +539,24 @@ components:
         sectionTitle: Describe properties.materialCharacteristics._section.sectionTitle
           considerations for {subject} in {category} within the materials domain.
       domains: {}
+  properties.physicalProperties._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe properties.physicalProperties._section.sectionDescription
+          considerations for {subject} in {category} within the materials domain.
+      domains: {}
+  properties.physicalProperties._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe properties.physicalProperties._section.sectionTitle
+          considerations for {subject} in {category} within the materials domain.
+      domains: {}
   reactivity:
     descriptor:
       shared: null
@@ -645,6 +663,24 @@ components:
         sectionDescription: Describe relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription
           considerations for {subject} in {category} within the compounds domain.
       domains: {}
+  relationships.detectionMonitoring.continuousMonitoring._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.detectionMonitoring.continuousMonitoring._section.sectionDescription
+          considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
+  relationships.detectionMonitoring.continuousMonitoring._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.detectionMonitoring.continuousMonitoring._section.sectionTitle
+          considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
   relationships.detectionMonitoring.detectionMonitoring._section.sectionTitle:
     descriptor:
       shared: null
@@ -675,6 +711,24 @@ components:
       shared:
         sectionTitle: Describe relationships.discovery.relatedMaterials._section.sectionTitle
           considerations for {subject} in {category} within the applications domain.
+      domains: {}
+  relationships.environmental.environmentalImpact._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.environmental.environmentalImpact._section.sectionDescription
+          considerations for {subject} in {category} within the materials domain.
+      domains: {}
+  relationships.environmental.environmentalImpact._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.environmental.environmentalImpact._section.sectionTitle
+          considerations for {subject} in {category} within the materials domain.
       domains: {}
   relationships.interactions.contaminatedBy._section.sectionDescription:
     descriptor:
@@ -711,6 +765,96 @@ components:
         sectionDescription: Describe relationships.interactions.producesCompounds._section.sectionDescription
           considerations for {subject} in {category} within the contaminants domain.
       domains: {}
+  relationships.interactions.producedByMaterials._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.interactions.producedByMaterials._section.sectionDescription
+          considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
+  relationships.interactions.producedByMaterials._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.interactions.producedByMaterials._section.sectionTitle
+          considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
+  relationships.interactions.producedFromContaminants._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.interactions.producedFromContaminants._section.sectionDescription
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.interactions.producedFromContaminants._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.interactions.producedFromContaminants._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.interactions.reactivity._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.interactions.reactivity._section.sectionDescription
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.interactions.reactivity._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.interactions.reactivity._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.interactions.relatedCompounds._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.interactions.relatedCompounds._section.sectionDescription
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.interactions.relatedCompounds._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.interactions.relatedCompounds._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.interactions.relatedContaminants._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.interactions.relatedContaminants._section.sectionDescription
+          considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
+  relationships.interactions.relatedContaminants._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.interactions.relatedContaminants._section.sectionTitle
+          considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
   relationships.interactions.producesCompounds._section.sectionTitle:
     descriptor:
       shared: null
@@ -737,6 +881,75 @@ components:
       shared:
         sectionTitle: Describe relationships.operational.commonChallenges._section.sectionTitle
           considerations for {subject} in {category} within the settings domain.
+      domains: {}
+  relationships.operational.industryApplications._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        materials:
+          sectionDescription: Describe relationships.operational.industryApplications._section.sectionDescription
+            considerations for {subject} in {category} within the materials domain.
+        settings:
+          sectionDescription: Describe relationships.operational.industryApplications._section.sectionDescription
+            considerations for {subject} in {category} within the settings domain.
+  relationships.operational.industryApplications._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.operational.industryApplications._section.sectionTitle
+          considerations for {subject} in {category} within the materials domain.
+      domains: {}
+  relationships.operational.preventionStrategies._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        contaminants:
+          sectionDescription: Describe relationships.operational.preventionStrategies._section.sectionDescription
+            considerations for {subject} in {category} within the contaminants domain.
+        materials:
+          sectionDescription: Describe relationships.operational.preventionStrategies._section.sectionDescription
+            considerations for {subject} in {category} within the materials domain.
+        settings:
+          sectionDescription: Describe relationships.operational.preventionStrategies._section.sectionDescription
+            considerations for {subject} in {category} within the settings domain.
+  relationships.operational.preventionStrategies._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.operational.preventionStrategies._section.sectionTitle
+          considerations for {subject} in {category} within the materials domain.
+      domains: {}
+  relationships.operational.removalMethods._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        contaminants:
+          sectionDescription: Describe relationships.operational.removalMethods._section.sectionDescription
+            considerations for {subject} in {category} within the contaminants domain.
+        materials:
+          sectionDescription: Describe relationships.operational.removalMethods._section.sectionDescription
+            considerations for {subject} in {category} within the materials domain.
+  relationships.operational.removalMethods._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.operational.removalMethods._section.sectionTitle
+          considerations for {subject} in {category} within the materials domain.
       domains: {}
   relationships.relatedMaterials:
     descriptor:
@@ -774,6 +987,104 @@ components:
         sectionDescription: Describe relationships.safety.healthEffects._section.sectionDescription
           considerations for {subject} in {category} within the compounds domain.
       domains: {}
+  relationships.safety.exposureLimits._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        contaminants:
+          sectionDescription: Describe relationships.safety.exposureLimits._section.sectionDescription
+            considerations for {subject} in {category} within the contaminants domain.
+        compounds:
+          sectionDescription: Describe relationships.safety.exposureLimits._section.sectionDescription
+            considerations for {subject} in {category} within the compounds domain.
+  relationships.safety.exposureLimits._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.safety.exposureLimits._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.safety.ppeRequirements._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        contaminants:
+          sectionDescription: Describe relationships.safety.ppeRequirements._section.sectionDescription
+            considerations for {subject} in {category} within the contaminants domain.
+        compounds:
+          sectionDescription: Describe relationships.safety.ppeRequirements._section.sectionDescription
+            considerations for {subject} in {category} within the compounds domain.
+  relationships.safety.ppeRequirements._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.safety.ppeRequirements._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.safety.regulatoryClassification._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.safety.regulatoryClassification._section.sectionDescription
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.safety.regulatoryClassification._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.safety.regulatoryClassification._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.safety.regulatoryStandards._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.safety.regulatoryStandards._section.sectionDescription
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.safety.regulatoryStandards._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.safety.regulatoryStandards._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.safety.storageRequirements._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.safety.storageRequirements._section.sectionDescription
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.safety.storageRequirements._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.safety.storageRequirements._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
   relationships.safety.healthEffects._section.sectionTitle:
     descriptor:
       shared: null
@@ -791,6 +1102,24 @@ components:
       shared:
         sectionDescription: Describe relationships.visual.appearanceOnCategories._section.sectionDescription
           considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
+  relationships.visual.appearanceVariations._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.visual.appearanceVariations._section.sectionDescription
+          considerations for {subject} in {category} within the materials domain.
+      domains: {}
+  relationships.visual.appearanceVariations._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.visual.appearanceVariations._section.sectionTitle
+          considerations for {subject} in {category} within the materials domain.
       domains: {}
   relationships.visual.appearanceOnCategories._section.sectionTitle:
     descriptor:

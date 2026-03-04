@@ -5,6 +5,85 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 180: Validate Prompt Contracts and Publish Cleanup
+Date: 2026-03-03
+Status: IN PROGRESS
+
+### Goal
+Run broad prompt contract validation after prompt-source cleanup and contract reconciliation, then commit and push the resulting backend changes.
+
+### Steps
+- [ ] Run `scripts/validation/validate_prompt_section_contract.py`
+- [ ] Confirm repository change set is limited to intended cleanup/reconciliation scope
+- [ ] Commit staged backend changes with clear message
+- [ ] Push commit to `origin/main`
+- [ ] Record lesson in `tasks/lessons.md` if needed
+
+---
+
+## Batch 179: Reconcile Component Registry Contract Drift
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Resolve text-contract validator drift by aligning `prompts/registry/component_prompt_registry.yaml` and related single-line prompt keys with current router/backfill expectations.
+
+### Steps
+- [x] Identify missing `components.*.text` keys reported by text-contract validation
+- [x] Add required domain text prompt entries in component registry
+- [x] Add missing single-line prompt entries required by router text fields
+- [x] Regenerate text contract artifact and re-run validator
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 178: Execute Prompt Folder Cleanup Phase 1
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Remove legacy domain-local prompt YAML files and align validator/documentation wording with the centralized component prompt registry runtime source-of-truth.
+
+### Steps
+- [x] Remove `domains/*/prompts/*.yaml` legacy prompt files
+- [x] Update validator messaging to reference `prompts/registry/component_prompt_registry.yaml` as canonical
+- [x] Update prompt system docs to remove stale domain-local runtime claims
+- [x] Run targeted grep validation for stale domain-local prompt references
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 177: Evaluate `domains/*/prompts` Cleanup Scope
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Audit every `domains/*/prompts` folder to determine what is active runtime input versus legacy/validation-only artifacts, then define a safe cleanup plan.
+
+### Steps
+- [x] Inventory all files under `domains/*/prompts`
+- [x] Trace runtime prompt-loading paths and contract references
+- [x] Classify each prompt file as runtime-required, validation-required, or cleanup candidate
+- [x] Summarize recommended cleanup actions with risk level and prerequisites
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 176: Remove Active Descriptor-Prompt Dependency in Runtime Paths
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Eliminate descriptor-prompt dependency from active runtime prompt resolution paths where field prompts already provide sufficient guidance.
+
+### Steps
+- [x] Identify non-test callsites requesting `include_descriptor=True`
+- [x] Switch active callsites to `include_descriptor=False`
+- [x] Verify no non-test runtime path still requests descriptor inclusion
+- [x] Record lessons learned
+
+---
+
 ## Batch 175: Bind Prompt `{category}` to Parent Taxonomy (Not Domain Label)
 Date: 2026-03-03
 Status: COMPLETE
