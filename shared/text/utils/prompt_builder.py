@@ -49,6 +49,7 @@ class PromptBuilder:
     _sentence_structure_cache = None  # Cache for shared/config/sentence_structure.yaml
     _prompt_compaction_cache = None  # Cache for prompt_compaction config
     _length_gate_cache = None  # Cache for length_gate config
+    _domain_config_cache: Dict[str, Dict[str, Any]] = {}  # Cache for domains/*/config.yaml
     
     @staticmethod
     def _load_technical_profiles() -> Dict:
@@ -114,6 +115,69 @@ class PromptBuilder:
             PromptBuilder._length_gate_cache = config.get_length_gate_config()
 
         return PromptBuilder._length_gate_cache
+
+    @staticmethod
+    def _load_domain_config(domain: str) -> Dict[str, Any]:
+        """Load domain config from domains/{domain}/config.yaml (cached)."""
+        if domain not in PromptBuilder._domain_config_cache:
+            import yaml
+
+            config_path = os.path.join('domains', domain, 'config.yaml')
+            if not os.path.exists(config_path):
+                raise FileNotFoundError(
+                    f"Domain config file not found at {config_path}. "
+                    "Fail-fast architecture requires this file."
+                )
+
+            with open(config_path, 'r', encoding='utf-8') as file_handle:
+                domain_config = yaml.safe_load(file_handle)
+
+            if not isinstance(domain_config, dict):
+                raise ValueError(f"Domain config must be a YAML dictionary: {config_path}")
+
+            PromptBuilder._domain_config_cache[domain] = domain_config
+
+        return PromptBuilder._domain_config_cache[domain]
+
+    @staticmethod
+    def _strip_subject_suffix_for_prompt(topic: str, domain: str) -> str:
+        """Strip configured domain frontmatter suffix from topic for prompt `{subject}` usage."""
+        domain_config = PromptBuilder._load_domain_config(domain)
+        frontmatter_pattern = domain_config.get('frontmatter_pattern')
+        if not isinstance(frontmatter_pattern, str) or '{slug}' not in frontmatter_pattern:
+            raise ValueError(
+                f"Domain config missing valid frontmatter_pattern with '{{slug}}': domains/{domain}/config.yaml"
+            )
+
+        pattern_without_ext = frontmatter_pattern[:-5] if frontmatter_pattern.endswith('.yaml') else frontmatter_pattern
+        suffix = pattern_without_ext.split('{slug}', 1)[1]
+
+        if suffix and topic.endswith(suffix):
+            stripped_topic = topic[:-len(suffix)]
+            return stripped_topic or topic
+
+        domain_suffix = f"-{domain}"
+        if topic.endswith(domain_suffix):
+            stripped_topic = topic[:-len(domain_suffix)]
+            return stripped_topic or topic
+
+        return topic
+
+    @staticmethod
+    def _resolve_prompt_category(item_data: Dict[str, Any], domain: str) -> str:
+        """Resolve prompt category as parent taxonomy value (never domain label)."""
+        raw_category = item_data.get('category', '')
+        category = raw_category.strip() if isinstance(raw_category, str) else ''
+
+        if category and category.lower() != domain.lower():
+            return category
+
+        raw_subcategory = item_data.get('subcategory', '')
+        subcategory = raw_subcategory.strip() if isinstance(raw_subcategory, str) else ''
+        if subcategory:
+            return subcategory
+
+        return category
 
     @staticmethod
     def _has_word_length_spec(*prompt_sections: str) -> bool:
@@ -926,12 +990,14 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
             
             # Extract from item_data if provided, otherwise use defaults/empty
             item_data = item_data or {}
+            prompt_subject = PromptBuilder._strip_subject_suffix_for_prompt(topic=topic, domain=domain_ctx.domain)
+            prompt_category = PromptBuilder._resolve_prompt_category(item_data=item_data, domain=domain_ctx.domain)
             
             template_params = {
                 'author': author,
                 'author_name': author,  # Alias for postprocess templates
                 'author_country': country,  # Explicit country for postprocess
-                'subject': topic,
+                'subject': prompt_subject,
                 'material': topic,
                 'material_name': topic,  # Alias for postprocess templates
                 'identifier': topic,  # Generic identifier
@@ -943,11 +1009,11 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
                 'sentence_guidance': sentence_guidance,
                 'facts': facts,
                 'properties': facts,  # Alias - properties are in facts
-                'context': facts if facts else context,
+                'context': domain_ctx.domain,
                 'faq_count': faq_count,
                 'voice_instruction': voice_instruction,  # CRITICAL: Must be present
                 # Extract from item_data (postprocess and domain-specific)
-                'category': item_data.get('category', ''),
+                'category': prompt_category,
                 'subcategory': item_data.get('subcategory', ''),
                 'context_notes': item_data.get('context_notes', ''),
                 'description': item_data.get('description', ''),

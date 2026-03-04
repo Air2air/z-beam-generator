@@ -473,8 +473,56 @@ def backfill_command(args):
             print(f"\\n🔍 DRY RUN complete: Would modify {total_modified} total items")
 
 
+def _load_domain_catalog_subjects(domain: str) -> List[str]:
+    """Load authoritative generation subjects from domains/{domain}/catalog.yaml."""
+    catalog_path = Path(f'domains/{domain}/catalog.yaml')
+    if not catalog_path.exists():
+        raise FileNotFoundError(f"Domain catalog not found: {catalog_path}")
+
+    with open(catalog_path, 'r', encoding='utf-8') as f:
+        catalog_payload = yaml.safe_load(f)
+
+    if not isinstance(catalog_payload, dict):
+        raise ValueError(f"Domain catalog must be a mapping: {catalog_path}")
+
+    article_pages = catalog_payload.get('article_pages')
+    if not isinstance(article_pages, dict):
+        raise ValueError(f"Domain catalog missing required mapping article_pages: {catalog_path}")
+
+    file_names = article_pages.get('file_names')
+    if not isinstance(file_names, list):
+        raise ValueError(f"Domain catalog article_pages.file_names must be a list: {catalog_path}")
+    if not file_names:
+        raise ValueError(f"Domain catalog article_pages.file_names is empty: {catalog_path}")
+
+    normalized_subjects: List[str] = []
+    seen_subjects: set[str] = set()
+    for value in file_names:
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(
+                f"Domain catalog article_pages.file_names contains invalid value {value!r}: {catalog_path}"
+            )
+
+        normalized_value = _normalize_subject_keyword(domain, value)
+        if not normalized_value:
+            raise ValueError(
+                f"Domain catalog article_pages.file_names contains empty normalized subject {value!r}: {catalog_path}"
+            )
+        if normalized_value in seen_subjects:
+            raise ValueError(
+                f"Domain catalog article_pages.file_names contains duplicate subject '{normalized_value}': {catalog_path}"
+            )
+
+        seen_subjects.add(normalized_value)
+        normalized_subjects.append(normalized_value)
+
+    return normalized_subjects
+
+
 def _load_domain_items(domain: str) -> List[str]:
-    """Load all item IDs for a domain from the configured source YAML."""
+    """Load executable source item IDs using catalog subjects as authoritative input."""
+    catalog_subjects = _load_domain_catalog_subjects(domain)
+
     config_path = Path(f'domains/{domain}/config.yaml')
     if not config_path.exists():
         raise FileNotFoundError(f"Domain config not found: {config_path}")
@@ -502,7 +550,36 @@ def _load_domain_items(domain: str) -> List[str]:
             f"Expected dict at root key '{data_root_key}' in {source_path}, got {type(items).__name__}"
         )
 
-    return list(items.keys())
+    keyword_to_item_ids: dict[str, List[str]] = {}
+    for item_id in items.keys():
+        normalized_keyword = _normalize_subject_keyword(domain, item_id)
+        keyword_to_item_ids.setdefault(normalized_keyword, []).append(item_id)
+
+    resolved_item_ids: List[str] = []
+    seen_item_ids: set[str] = set()
+    for subject_keyword in catalog_subjects:
+        matches = keyword_to_item_ids.get(subject_keyword, [])
+
+        if not matches:
+            raise ValueError(
+                f"Catalog subject keyword '{subject_keyword}' not found in source data keys for domain '{domain}'"
+            )
+        if len(matches) > 1:
+            raise ValueError(
+                f"Catalog subject keyword '{subject_keyword}' maps to multiple source IDs for domain '{domain}': "
+                f"{', '.join(sorted(matches))}"
+            )
+
+        resolved_item_id = matches[0]
+        if resolved_item_id in seen_item_ids:
+            raise ValueError(
+                f"Catalog subject keywords map to duplicate source item '{resolved_item_id}' for domain '{domain}'"
+            )
+
+        seen_item_ids.add(resolved_item_id)
+        resolved_item_ids.append(resolved_item_id)
+
+    return resolved_item_ids
 
 
 def _normalize_subject_keyword(domain: str, value: str) -> str:

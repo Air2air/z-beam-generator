@@ -120,6 +120,64 @@ def _load_faq_shared_registry(repo_root: Path) -> tuple[str | None, dict[str, An
     return shared_prompt, shared_metadata
 
 
+def _load_domain_component_text_entries(repo_root: Path, domain: str) -> dict[str, dict[str, str]]:
+    prompt_contract_path = repo_root / "domains" / domain / "prompt.yaml"
+    prompt_contract_payload = load_yaml(prompt_contract_path)
+    prompt_contract = prompt_contract_payload.get("prompt_contract")
+    if not isinstance(prompt_contract, dict):
+        raise ValueError(f"{prompt_contract_path}: missing required mapping prompt_contract")
+
+    component_registry_file = prompt_contract.get("component_prompt_registry_file")
+    if not isinstance(component_registry_file, str) or not component_registry_file.strip():
+        raise ValueError(
+            f"{prompt_contract_path}: prompt_contract.component_prompt_registry_file must be a non-empty string"
+        )
+
+    component_registry_path = repo_root / component_registry_file.strip()
+    component_registry_payload = load_yaml(component_registry_path)
+    components = component_registry_payload.get("components")
+    if not isinstance(components, dict):
+        raise ValueError(f"{component_registry_path}: components must be a mapping")
+
+    normalized: dict[str, dict[str, str]] = {}
+    for key, value in components.items():
+        if not isinstance(key, str) or not key.strip() or not isinstance(value, dict):
+            continue
+
+        text_scope = value.get("text")
+        if not isinstance(text_scope, dict):
+            continue
+
+        entry: dict[str, str] = {}
+        domain_map = text_scope.get("domains")
+        if isinstance(domain_map, dict):
+            domain_entry = domain_map.get(domain)
+            if isinstance(domain_entry, dict):
+                entry = {
+                    child_key: child_value.strip()
+                    for child_key, child_value in domain_entry.items()
+                    if isinstance(child_key, str)
+                    and isinstance(child_value, str)
+                    and child_value.strip()
+                }
+
+        if not entry:
+            shared_entry = text_scope.get("shared")
+            if isinstance(shared_entry, dict):
+                entry = {
+                    child_key: child_value.strip()
+                    for child_key, child_value in shared_entry.items()
+                    if isinstance(child_key, str)
+                    and isinstance(child_value, str)
+                    and child_value.strip()
+                }
+
+        if entry:
+            normalized[key.strip()] = entry
+
+    return normalized
+
+
 def parse_string_union_block(ts_text: str, alias: str) -> set[str]:
     pattern = rf"export type {alias}\s*=\s*(.*?);\n\n"
     match = re.search(pattern, ts_text, re.S)
@@ -247,16 +305,11 @@ def validate_domain_text_prompt_files(repo_root: Path) -> list[str]:
             errors.append(f"{prompt_contract_path}: missing required mapping prompt_contract")
             continue
 
-        text_prompts_file = prompt_contract.get("text_prompts_file")
-        if not isinstance(text_prompts_file, str) or not text_prompts_file.strip():
-            errors.append(f"{prompt_contract_path}: prompt_contract.text_prompts_file must be a non-empty string")
-            continue
-
-        text_prompt_path = repo_root / text_prompts_file.strip()
-        text_prompt_payload = load_yaml(text_prompt_path)
-        field_prompts = text_prompt_payload.get("field_prompts")
-        if not isinstance(field_prompts, dict):
-            errors.append(f"{text_prompt_path}: field_prompts must be a mapping")
+        try:
+            field_prompts = _load_domain_component_text_entries(repo_root, domain)
+            text_prompt_path = repo_root / "prompts" / "registry" / "component_prompt_registry.yaml"
+        except Exception as exc:
+            errors.append(f"{prompt_contract_path}: invalid component prompt registry contract ({exc})")
             continue
 
         def _is_section_key(component_key: str) -> bool:
@@ -394,17 +447,9 @@ def _load_domain_text_prompt_refs(repo_root: Path, domain: str) -> set[str]:
     if not isinstance(prompt_contract, dict):
         return set()
 
-    text_prompts_file = prompt_contract.get("text_prompts_file")
-    if not isinstance(text_prompts_file, str) or not text_prompts_file.strip():
-        return set()
-
-    text_prompt_path = repo_root / text_prompts_file.strip()
-    if not text_prompt_path.exists():
-        return set()
-
-    text_prompt_payload = load_yaml(text_prompt_path)
-    field_prompts = text_prompt_payload.get("field_prompts")
-    if not isinstance(field_prompts, dict):
+    try:
+        field_prompts = _load_domain_component_text_entries(repo_root, domain)
+    except Exception:
         return set()
 
     normalized: set[str] = set()
@@ -696,22 +741,13 @@ def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
             errors.append(f"{prompt_contract_path}: missing required mapping prompt_contract")
             continue
 
-        descriptor_file = prompt_contract_body.get("descriptor_prompts_file")
-        text_file = prompt_contract_body.get("text_prompts_file")
-        non_text_file = prompt_contract_body.get("non_text_prompts_file")
-
-        for contract_key, configured in (
-            ("descriptor_prompts_file", descriptor_file),
-            ("text_prompts_file", text_file),
-            ("non_text_prompts_file", non_text_file),
-        ):
-            if not isinstance(configured, str) or not configured.strip():
-                errors.append(
-                    f"{prompt_contract_path}: prompt_contract.{contract_key} must be a non-empty string"
-                )
-                continue
-
-            configured_path = repo_root / configured.strip()
+        component_registry_file = prompt_contract_body.get("component_prompt_registry_file")
+        if not isinstance(component_registry_file, str) or not component_registry_file.strip():
+            errors.append(
+                f"{prompt_contract_path}: prompt_contract.component_prompt_registry_file must be a non-empty string"
+            )
+        else:
+            configured_path = repo_root / component_registry_file.strip()
             if not configured_path.exists():
                 errors.append(f"{prompt_contract_path}: configured file not found: {configured_path}")
 

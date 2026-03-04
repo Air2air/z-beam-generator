@@ -5,6 +5,144 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 175: Bind Prompt `{category}` to Parent Taxonomy (Not Domain Label)
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Ensure prompt `{category}` resolves to the parent taxonomy category for the item, and never to the domain label itself.
+
+### Steps
+- [x] Add shared category resolver in prompt builder with domain-label guard
+- [x] Bind template `category` to resolved parent taxonomy value
+- [x] Verify resolved `{subject}`, `{category}`, `{context}` across domains
+- [x] Record lessons learned
+
+---
+
+## Batch 174: Remove Domain Suffix from `{subject}` in Prompt Rendering
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Ensure `{subject}` uses the base slug (without domain/frontmatter suffix) when rendered in prompts, while preserving canonical item identifiers for data resolution and storage.
+
+### Steps
+- [x] Derive prompt suffix rules from domain config (`frontmatter_pattern`) without hardcoding
+- [x] Apply suffix stripping only in prompt template parameter binding for `subject` aliases
+- [x] Run targeted runtime verification for one representative item per domain
+- [x] Record lessons learned
+
+---
+
+## Batch 173: Migrate Legacy `{context}` Prompt Placeholders to `{category}`
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Migrate legacy prompt placeholder usage from `{context}` (old category semantics) to `{category}` across prompt sources, while preserving explicit domain-context usages where `{context}` should remain the domain name.
+
+### Steps
+- [x] Update domain prompt files to use `{category}` for legacy contextual references
+- [x] Update centralized prompt registry/schema placeholders to match migrated semantics
+- [x] Preserve intentional domain-context placeholders (`{context}`) in page-title/domain-label patterns
+- [x] Run targeted placeholder audit and runtime check
+- [x] Record lessons learned
+
+---
+
+## Batch 172: Prompt Variable Rename (`context`→`category`) + New Domain `context`
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Replace legacy template variable semantics so category text is exposed via `category`, and `context` is newly bound to the domain name (for example `applications`).
+
+### Steps
+- [x] Update prompt template parameter binding in shared prompt builder
+- [x] Verify resolved template variables for a representative domain/item
+- [x] Confirm no syntax/type errors in touched files
+- [x] Record lessons learned
+
+---
+
+## Batch 171: Enforce Catalog Subject Resolution in Canonical CI Validation
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Add a dedicated validation check that enforces catalog (`article_pages.file_names`) to source-data item-ID mapping integrity for every configured domain, and include it in canonical pipeline validation.
+
+### Steps
+- [x] Add `scripts/validation/validate_catalog_subject_resolution.py`
+- [x] Add the new check to `scripts/validation/validate_canonical_pipeline.py`
+- [x] Run targeted validator execution and canonical pipeline execution
+- [x] Record lessons learned
+
+---
+
+## Batch 170: Verify Catalog-Authoritative Subject Sourcing Across All Domains
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Confirm catalog-authoritative subject resolution applies consistently to all configured generation domains and close any remaining domain-specific gaps.
+
+### Steps
+- [x] Enumerate all configured generation domains and confirm catalog presence
+- [x] Run cross-domain resolver checks for catalog subject loading and source-ID mapping
+- [x] Apply code changes only if a domain-specific gap is detected
+- [x] Record lessons learned
+
+---
+
+## Batch 169: Catalog-Authoritative Generation Subject Resolution
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Make domain `catalog.yaml` (`article_pages.file_names`) the authoritative source for generation subjects in `run.py`, while mapping to source-data item IDs fail-fast for execution.
+
+### Steps
+- [x] Load subject list from `domains/{domain}/catalog.yaml` instead of deriving directly from source YAML keys
+- [x] Resolve catalog entries to concrete source IDs with fail-fast checks for missing/ambiguous mappings
+- [x] Verify representative domain/item resolution behavior with targeted runtime checks
+- [x] Record lessons learned
+
+---
+
+## Batch 168: Component Registry Contract Flip + Legacy Fallback Removal
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Make `/prompts/registry/component_prompt_registry.yaml` the explicit prompt source via domain contracts and remove runtime fallback to domain-local prompt files.
+
+### Steps
+- [x] Update domain prompt contracts to reference component registry under `/prompts`
+- [x] Remove legacy domain-file fallback logic from prompt resolution path
+- [x] Update prompt-related validation scripts to validate component registry contract
+- [x] Run focused cross-domain prompt resolution checks
+- [x] Record lessons learned
+
+---
+
+## Batch 167: Component-First Prompt Registry in /prompts (Compatibility Migration)
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Reorganize prompt loading to support a component-first structure under `/prompts` (instead of domain-local prompt files) while preserving backward compatibility and current runtime behavior.
+
+### Steps
+- [x] Add centralized component-first prompt registry file under `/prompts/registry`
+- [x] Implement prompt loader support in `PromptRegistryService` for component-based descriptor/text/non-text/optimizer resolution
+- [x] Preserve compatibility fallback to existing domain-local prompt files during migration
+- [x] Verify prompt resolution for all five domains/components via focused runtime checks
+- [x] Record lessons learned
+
+---
+
 ## Batch 166: E2E Prompt/Generator Simplification + Runtime Gate In-Process Refactor
 Date: 2026-03-03
 Status: COMPLETE

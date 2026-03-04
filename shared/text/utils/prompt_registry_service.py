@@ -25,6 +25,114 @@ class PromptRegistryService:
     _prompt_gate_config_cache: Optional[Dict[str, Any]] = None
     _generation_config_cache: Optional[Dict[str, Any]] = None
     _domain_optimizer_prompt_cache: Dict[str, Optional[str]] = {}
+    _component_prompt_registry_cache: Optional[Dict[str, Any]] = None
+
+    @classmethod
+    def _get_component_prompt_registry_path(cls, domain: str) -> Path:
+        prompt_contract = cls._get_domain_prompt_contract(domain)
+        relative_path = prompt_contract.get("component_prompt_registry_file")
+        if not isinstance(relative_path, str) or not relative_path.strip():
+            raise ValueError(
+                f"domains/{domain}/prompt.yaml: prompt_contract.component_prompt_registry_file must be a non-empty string"
+            )
+
+        registry_path = cls._project_root() / relative_path.strip()
+        if not registry_path.exists():
+            raise FileNotFoundError(
+                f"Configured component prompt registry does not exist for '{domain}': {registry_path}"
+            )
+
+        return registry_path
+
+    @classmethod
+    def _load_component_prompt_registry(cls, domain: str) -> Dict[str, Any]:
+        if cls._component_prompt_registry_cache is not None:
+            return cls._component_prompt_registry_cache
+
+        registry_path = cls._get_component_prompt_registry_path(domain)
+        registry = cls._load_yaml_file(registry_path)
+        cls._component_prompt_registry_cache = registry
+        return registry
+
+    @staticmethod
+    def _resolve_scoped_prompt_value(scope: Any, domain: str) -> Optional[str]:
+        if not isinstance(scope, dict):
+            return None
+
+        domains_map = scope.get("domains")
+        if isinstance(domains_map, dict):
+            domain_value = domains_map.get(domain)
+            if isinstance(domain_value, str) and domain_value.strip():
+                return domain_value.strip()
+
+        shared_value = scope.get("shared")
+        if isinstance(shared_value, str) and shared_value.strip():
+            return shared_value.strip()
+
+        return None
+
+    @classmethod
+    def _resolve_component_descriptor_prompt(cls, domain: str, component_type: str) -> Optional[str]:
+        registry = cls._load_component_prompt_registry(domain)
+        components = registry.get("components")
+        if not isinstance(components, dict):
+            return None
+
+        component_entry = components.get(component_type)
+        if not isinstance(component_entry, dict):
+            return None
+
+        descriptor_scope = component_entry.get("descriptor")
+        return cls._resolve_scoped_prompt_value(descriptor_scope, domain)
+
+    @classmethod
+    def _resolve_component_text_prompt_entry(
+        cls,
+        domain: str,
+        component_key: str,
+    ) -> Optional[Dict[str, str]]:
+        registry = cls._load_component_prompt_registry(domain)
+        components = registry.get("components")
+        if not isinstance(components, dict):
+            return None
+
+        component_entry = components.get(component_key)
+        if not isinstance(component_entry, dict):
+            return None
+
+        text_scope = component_entry.get("text")
+        if not isinstance(text_scope, dict):
+            return None
+
+        domains_map = text_scope.get("domains")
+        if isinstance(domains_map, dict):
+            domain_entry = domains_map.get(domain)
+            if isinstance(domain_entry, dict):
+                return {
+                    key: value.strip()
+                    for key, value in domain_entry.items()
+                    if isinstance(key, str) and isinstance(value, str) and value.strip()
+                }
+
+        shared_entry = text_scope.get("shared")
+        if isinstance(shared_entry, dict):
+            return {
+                key: value.strip()
+                for key, value in shared_entry.items()
+                if isinstance(key, str) and isinstance(value, str) and value.strip()
+            }
+
+        return None
+
+    @classmethod
+    def _resolve_component_non_text_prompt(cls, domain: str) -> Optional[str]:
+        registry = cls._load_component_prompt_registry(domain)
+        return cls._resolve_scoped_prompt_value(registry.get("non_text"), domain)
+
+    @classmethod
+    def _resolve_component_optimizer_prompt(cls, domain: str) -> Optional[str]:
+        registry = cls._load_component_prompt_registry(domain)
+        return cls._resolve_scoped_prompt_value(registry.get("optimizer"), domain)
 
     @staticmethod
     def _normalize_prompt_line(line: str) -> str:
@@ -107,81 +215,17 @@ class PromptRegistryService:
         return prompt_contract
 
     @classmethod
-    def _get_domain_registry_path(cls, domain: str) -> Path:
-        prompt_contract = cls._get_domain_prompt_contract(domain)
-        relative_path = prompt_contract.get("descriptor_prompts_file")
-        if not isinstance(relative_path, str) or not relative_path.strip():
-            raise ValueError(
-                f"domains/{domain}/prompt.yaml: prompt_contract.descriptor_prompts_file must be a non-empty string"
-            )
-
-        registry_path = cls._project_root() / relative_path.strip()
-        if not registry_path.exists():
-            raise FileNotFoundError(
-                f"Configured domain registry does not exist for '{domain}': {registry_path}"
-            )
-
-        return registry_path
-
-    @classmethod
-    def _get_domain_field_prompt_path(cls, domain: str, prompt_kind: str) -> Path:
-        prompt_contract = cls._get_domain_prompt_contract(domain)
-        if prompt_kind == "text":
-            contract_key = "text_prompts_file"
-        elif prompt_kind == "non_text":
-            contract_key = "non_text_prompts_file"
-        else:
-            raise ValueError(f"Unsupported prompt kind '{prompt_kind}' for domain '{domain}'")
-
-        relative_path = prompt_contract.get(contract_key)
-        if not isinstance(relative_path, str) or not relative_path.strip():
-            raise ValueError(
-                f"domains/{domain}/prompt.yaml: prompt_contract.{contract_key} must be a non-empty string"
-            )
-
-        prompt_path = cls._project_root() / relative_path.strip()
-        if not prompt_path.exists():
-            raise FileNotFoundError(
-                f"Configured {contract_key} does not exist for '{domain}': {prompt_path}"
-            )
-
-        return prompt_path
-
-    @classmethod
-    def _get_domain_optimizer_prompt_path(cls, domain: str) -> Optional[Path]:
-        prompt_contract = cls._get_domain_prompt_contract(domain)
-        relative_path = prompt_contract.get("optimizer_prompts_file")
-        if not isinstance(relative_path, str) or not relative_path.strip():
-            return None
-
-        prompt_path = cls._project_root() / relative_path.strip()
-        if not prompt_path.exists():
-            raise FileNotFoundError(
-                f"Configured optimizer_prompts_file does not exist for '{domain}': {prompt_path}"
-            )
-
-        return prompt_path
-
-    @classmethod
     def _load_domain_optimizer_prompt(cls, domain: str) -> Optional[str]:
         if domain in cls._domain_optimizer_prompt_cache:
             return cls._domain_optimizer_prompt_cache[domain]
 
-        prompt_path = cls._get_domain_optimizer_prompt_path(domain)
-        if prompt_path is None:
-            cls._domain_optimizer_prompt_cache[domain] = None
-            return None
+        component_optimizer_prompt = cls._resolve_component_optimizer_prompt(domain)
+        if isinstance(component_optimizer_prompt, str) and component_optimizer_prompt.strip():
+            cls._domain_optimizer_prompt_cache[domain] = component_optimizer_prompt.strip()
+            return cls._domain_optimizer_prompt_cache[domain]
 
-        payload = cls._load_yaml_file(prompt_path)
-        prompt = payload.get("prompt")
-        if not isinstance(prompt, str) or not prompt.strip():
-            raise ValueError(
-                f"Invalid optimizer prompt file for '{domain}': expected non-empty 'prompt' in {prompt_path}"
-            )
-
-        normalized_prompt = prompt.strip()
-        cls._domain_optimizer_prompt_cache[domain] = normalized_prompt
-        return normalized_prompt
+        cls._domain_optimizer_prompt_cache[domain] = None
+        return None
 
     @classmethod
     def _load_generation_config(cls) -> Dict[str, Any]:
@@ -273,36 +317,22 @@ class PromptRegistryService:
         if isinstance(cached, dict) and cached:
             return cached
 
-        prompt_path = cls._get_domain_field_prompt_path(domain, "text")
-        payload = cls._load_yaml_file(prompt_path)
-
-        field_prompts = payload.get("field_prompts")
-        if not isinstance(field_prompts, dict):
-            raise ValueError(
-                f"Invalid text prompt file for '{domain}': expected mapping field_prompts in {prompt_path}"
-            )
-
         normalized: Dict[str, Dict[str, str]] = {}
-        for key, value in field_prompts.items():
+        registry = cls._load_component_prompt_registry(domain)
+        components = registry.get("components")
+        if not isinstance(components, dict):
+            raise ValueError("Component prompt registry missing required mapping: components")
+
+        for key in components:
             if not isinstance(key, str) or not key.strip():
                 continue
-
-            entry_key = key.strip()
-            if not isinstance(value, dict):
-                continue
-
-            child_map: Dict[str, str] = {}
-            for child_key in ("prompt", "sectionTitle", "sectionDescription"):
-                child_value = value.get(child_key)
-                if isinstance(child_value, str) and child_value.strip():
-                    child_map[child_key] = child_value.strip()
-
-            if child_map:
-                normalized[entry_key] = child_map
+            entry = cls._resolve_component_text_prompt_entry(domain, key.strip())
+            if isinstance(entry, dict) and entry:
+                normalized[key.strip()] = entry
 
         if not normalized:
             raise ValueError(
-                f"Invalid text prompt file for '{domain}': field_prompts must contain non-empty string entries in {prompt_path}"
+                f"Component prompt registry must provide non-empty text entries for domain '{domain}'"
             )
 
         cls._domain_text_prompt_entries_cache[domain] = normalized
@@ -310,21 +340,13 @@ class PromptRegistryService:
 
     @classmethod
     def _load_domain_non_text_prompt(cls, domain: str) -> str:
-        cached = cls._domain_non_text_prompt_cache.get(domain)
-        if isinstance(cached, str) and cached.strip():
-            return cached
+        component_non_text_prompt = cls._resolve_component_non_text_prompt(domain)
+        if isinstance(component_non_text_prompt, str) and component_non_text_prompt.strip():
+            return component_non_text_prompt.strip()
 
-        prompt_path = cls._get_domain_field_prompt_path(domain, "non_text")
-        payload = cls._load_yaml_file(prompt_path)
-        field_prompt = payload.get("field_prompt")
-        if not isinstance(field_prompt, str) or not field_prompt.strip():
-            raise ValueError(
-                f"Invalid non-text prompt file for '{domain}': expected non-empty field_prompt in {prompt_path}"
-            )
-
-        normalized_prompt = field_prompt.strip()
-        cls._domain_non_text_prompt_cache[domain] = normalized_prompt
-        return normalized_prompt
+        raise ValueError(
+            f"Component prompt registry missing required non_text prompt for domain '{domain}'"
+        )
 
     @staticmethod
     def _is_non_text_prompt_ref(prompt_ref: str) -> bool:
@@ -728,18 +750,20 @@ class PromptRegistryService:
         if domain in cls._domain_registry_cache:
             return cls._domain_registry_cache[domain]
 
-        registry_path = cls._get_domain_registry_path(domain)
+        component_registry = cls._load_component_prompt_registry(domain)
+        components = component_registry.get("components")
+        if not isinstance(components, dict):
+            raise ValueError("Component prompt registry missing required mapping: components")
 
-        registry = cls._load_yaml_file(registry_path)
-        extends_path = registry.get("extends")
+        descriptor_prompts: Dict[str, str] = {}
+        for component_key in components:
+            if not isinstance(component_key, str) or not component_key.strip():
+                continue
+            descriptor_value = cls._resolve_component_descriptor_prompt(domain, component_key.strip())
+            if isinstance(descriptor_value, str) and descriptor_value.strip():
+                descriptor_prompts[component_key.strip()] = descriptor_value.strip()
 
-        if extends_path:
-            base_path = cls._project_root() / str(extends_path)
-            base_registry = cls._load_yaml_file(base_path)
-            registry = cls._deep_merge(base_registry, registry)
-
-        cls._validate_prompt_metadata_contract(registry, registry_path)
-
+        registry: Dict[str, Any] = {"descriptor_prompts": descriptor_prompts}
         cls._domain_registry_cache[domain] = registry
         return registry
 
@@ -840,10 +864,9 @@ class PromptRegistryService:
         domain: str,
         component_type: str,
     ) -> Optional[str]:
-        registry = cls.get_domain_registry(domain)
-        descriptor_map = registry.get("descriptor_prompts", {})
-        if isinstance(descriptor_map, dict) and descriptor_map.get(component_type):
-            return str(descriptor_map[component_type])
+        component_descriptor_prompt = cls._resolve_component_descriptor_prompt(domain, component_type)
+        if isinstance(component_descriptor_prompt, str) and component_descriptor_prompt.strip():
+            return component_descriptor_prompt.strip()
         return None
 
     @classmethod
@@ -855,18 +878,21 @@ class PromptRegistryService:
                 "Fail-fast prompt architecture requires prompt_ref for all schema sections."
             )
 
-        text_prompts = cls._load_domain_text_prompt_entries(domain)
-        field_entry = text_prompts.get(component_type)
-        if isinstance(field_entry, dict):
-            field_prompt = cls._resolve_text_prompt_entry(component_type, field_entry, prompt_ref)
-            if isinstance(field_prompt, str) and field_prompt.strip():
-                return field_prompt.strip()
+        component_entry = cls._resolve_component_text_prompt_entry(domain, component_type)
+        if isinstance(component_entry, dict):
+            component_field_prompt = cls._resolve_text_prompt_entry(component_type, component_entry, prompt_ref)
+            if isinstance(component_field_prompt, str) and component_field_prompt.strip():
+                return component_field_prompt.strip()
 
-        field_entry_by_ref = text_prompts.get(prompt_ref)
-        if isinstance(field_entry_by_ref, dict):
-            field_prompt_by_ref = cls._resolve_text_prompt_entry(prompt_ref, field_entry_by_ref, prompt_ref)
-            if isinstance(field_prompt_by_ref, str) and field_prompt_by_ref.strip():
-                return field_prompt_by_ref.strip()
+        component_entry_by_ref = cls._resolve_component_text_prompt_entry(domain, str(prompt_ref))
+        if isinstance(component_entry_by_ref, dict):
+            component_field_prompt_by_ref = cls._resolve_text_prompt_entry(
+                str(prompt_ref),
+                component_entry_by_ref,
+                prompt_ref,
+            )
+            if isinstance(component_field_prompt_by_ref, str) and component_field_prompt_by_ref.strip():
+                return component_field_prompt_by_ref.strip()
 
         if cls._is_non_text_prompt_ref(prompt_ref):
             return cls._load_domain_non_text_prompt(domain)
@@ -876,7 +902,7 @@ class PromptRegistryService:
             return shared_map[prompt_ref]
 
         raise ValueError(
-            f"prompt_ref '{prompt_ref}' for section '{component_type}' not found in domain text prompts"
+            f"prompt_ref '{prompt_ref}' for section '{component_type}' not found in component prompt registry or shared prompt registry"
         )
 
     @classmethod

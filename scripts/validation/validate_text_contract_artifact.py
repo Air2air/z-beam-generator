@@ -29,16 +29,36 @@ def _domain_text_prompt_keys(repo_root: Path, domain: str) -> set[str]:
     if not isinstance(prompt_contract, dict):
         raise ValueError(f"domains/{domain}/prompt.yaml missing prompt_contract")
 
-    text_prompts_file = prompt_contract.get("text_prompts_file")
-    if not isinstance(text_prompts_file, str) or not text_prompts_file.strip():
-        raise ValueError(f"domains/{domain}/prompt.yaml missing prompt_contract.text_prompts_file")
+    component_registry_file = prompt_contract.get("component_prompt_registry_file")
+    if not isinstance(component_registry_file, str) or not component_registry_file.strip():
+        raise ValueError(f"domains/{domain}/prompt.yaml missing prompt_contract.component_prompt_registry_file")
 
-    text_prompt = contract_common.load_yaml(repo_root / text_prompts_file.strip())
-    field_prompts = text_prompt.get("field_prompts")
-    if not isinstance(field_prompts, dict):
-        raise ValueError(f"{text_prompts_file}: field_prompts must be a mapping")
+    component_registry = contract_common.load_yaml(repo_root / component_registry_file.strip())
+    components = component_registry.get("components")
+    if not isinstance(components, dict):
+        raise ValueError(f"{component_registry_file}: components must be a mapping")
 
-    return {key.strip() for key in field_prompts if isinstance(key, str) and key.strip()}
+    keys: set[str] = set()
+    for key, value in components.items():
+        if not isinstance(key, str) or not key.strip() or not isinstance(value, dict):
+            continue
+
+        text_scope = value.get("text")
+        if not isinstance(text_scope, dict):
+            continue
+
+        domain_entries = text_scope.get("domains")
+        if isinstance(domain_entries, dict):
+            domain_entry = domain_entries.get(domain)
+            if isinstance(domain_entry, dict) and domain_entry:
+                keys.add(key.strip())
+                continue
+
+        shared_entry = text_scope.get("shared")
+        if isinstance(shared_entry, dict) and shared_entry:
+            keys.add(key.strip())
+
+    return keys
 
 
 def _missing_section_title_pairs(prompt_keys: set[str]) -> list[str]:

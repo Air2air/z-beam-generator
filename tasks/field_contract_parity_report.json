@@ -1,7 +1,7 @@
 {
   "summary": {
     "domain_count": 5,
-    "domains_with_errors": 0
+    "domains_with_errors": 1
   },
   "results": [
     {
@@ -23,8 +23,12 @@
     {
       "domain": "contaminants",
       "sample_frontmatter_file": "z-beam/frontmatter/contaminants/adhesive-residue-contamination.yaml",
-      "missing_prompt_fields": [],
-      "extra_prompt_fields": [],
+      "missing_prompt_fields": [
+        "faq"
+      ],
+      "extra_prompt_fields": [
+        "micro"
+      ],
       "missing_section_schema_fields": [],
       "missing_required_in_sample_frontmatter": []
     },

@@ -1,7 +1,4 @@
 schemaVersion: 1.0.0
 domain: contaminants
 prompt_contract:
-  descriptor_prompts_file: domains/contaminants/prompts/descriptor_prompts.yaml
-  text_prompts_file: domains/contaminants/prompts/text_prompt.yaml
-  non_text_prompts_file: domains/contaminants/prompts/non_text_prompt.yaml
-  optimizer_prompts_file: domains/contaminants/prompts/optimizer_prompt.yaml
+  component_prompt_registry_file: prompts/registry/component_prompt_registry.yaml

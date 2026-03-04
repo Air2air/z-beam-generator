@@ -5,33 +5,33 @@ required_variables:
 - context
 field_prompts:
   commonChallenges:
-    sectionTitle: Write a concise Common Challenges heading for {subject} in {context}.
+    sectionTitle: Write a concise Common Challenges heading for {subject} in {category}.
     sectionDescription: Describe common operational challenges encountered with {subject}
-      in {context}.
+      in {category}.
   faq:
-    sectionTitle: Write a concise FAQ heading for {subject} in {context}.
-    sectionDescription: Describe faq considerations for {subject} in {context} within
+    sectionTitle: Write a concise FAQ heading for {subject} in {category}.
+    sectionDescription: Describe faq considerations for {subject} in {category} within
       the settings domain.
   industryApplications:
-    sectionTitle: Write a concise Industry Applications heading for {subject} in {context}.
+    sectionTitle: Write a concise Industry Applications heading for {subject} in {category}.
     sectionDescription: Describe industryApplications considerations for {subject}
-      in {context} within the settings domain.
+      in {category} within the settings domain.
   machineSettings:
-    sectionTitle: Write a concise Machine Settings heading for {subject} in {context}.
+    sectionTitle: Write a concise Machine Settings heading for {subject} in {category}.
     sectionDescription: Describe machineSettings considerations for {subject} in
-      {context} within the settings domain.
+      {category} within the settings domain.
   pageDescription:
-    prompt: Describe operational setting guidance for {subject} in {context}.
+    prompt: Describe operational setting guidance for {subject} in {category}.
   pageTitle:
     prompt: Write a concise {context} page title for {subject}.
   preventionStrategies:
     sectionTitle: Write a concise Prevention Strategies heading for {subject} in
-      {context}.
+      {category}.
     sectionDescription: Describe preventionStrategies considerations for {subject}
-      in {context} within the settings domain.
+      in {category} within the settings domain.
   relationships.operational.commonChallenges._section.sectionDescription:
     sectionDescription: Describe relationships.operational.commonChallenges._section.sectionDescription
-      considerations for {subject} in {context} within the settings domain.
+      considerations for {subject} in {category} within the settings domain.
   relationships.operational.commonChallenges._section.sectionTitle:
     sectionTitle: Describe relationships.operational.commonChallenges._section.sectionTitle
-      considerations for {subject} in {context} within the settings domain.
+      considerations for {subject} in {category} within the settings domain.

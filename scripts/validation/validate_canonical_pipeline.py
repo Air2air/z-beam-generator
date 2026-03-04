@@ -31,6 +31,10 @@ CHECKS = [
         [sys.executable, "scripts/validation/validate_domain_bootstrap.py"],
     ),
     (
+        "Catalog subject resolution",
+        [sys.executable, "scripts/validation/validate_catalog_subject_resolution.py"],
+    ),
+    (
         "Full-page text field contract",
         [sys.executable, "-m", "pytest", "tests/services/test_full_page_text_fields_contract.py", "-q"],
     ),

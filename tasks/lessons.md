@@ -1,5 +1,23 @@
 # Lessons Learned
 
+- 2026-03-03: Prompt `{category}` can resolve to a domain label (for example `applications`) when source `category` mirrors domain taxonomy, reducing prompt specificity. → Rule: resolve prompt `{category}` from `category` unless it equals domain; then fall back to `subcategory` as parent taxonomy.
+
+- 2026-03-03: Prompt subject placeholders can leak storage/frontmatter suffixes (`-compound`, `-settings`, etc.) when bound directly to canonical item IDs, degrading prompt wording. → Rule: derive prompt-only `{subject}` from domain `frontmatter_pattern` (with domain-name fallback) in shared template binding, while keeping canonical IDs unchanged for data resolution.
+
+- 2026-03-03: Placeholder semantic flips require content-level migration in both domain prompt files and centralized registry/schema to stay consistent. → Rule: when a template variable meaning changes, run a repository placeholder inventory and migrate all prompt source layers in one batch, preserving explicitly intended exceptions.
+
+- 2026-03-03: Template placeholder semantics can drift when variable names encode legacy meaning. → Rule: keep placeholder semantics explicit and stable in one binding layer (`template_params`), and when renaming meaning (`context`→`category`), migrate by updating centralized binding first.
+
+- 2026-03-03: Source-of-truth rules can regress silently unless enforced in the canonical CI chain. → Rule: add a dedicated validator and include it in `scripts/validation/validate_canonical_pipeline.py` whenever introducing a new cross-domain contract.
+
+- 2026-03-03: Applying a new source-of-truth rule in one resolver path is not enough unless every configured domain is verified against it. → Rule: after source-of-truth changes, run a cross-domain resolver sweep (catalog presence + subject count + 1:1 subject→source mapping) before declaring completion.
+
+- 2026-03-03: Generation subject resolution sourced item IDs directly from data YAML keys, which conflicted with catalog-as-authoritative policy intent. → Rule: load generation subjects from `domains/*/catalog.yaml` (`article_pages.file_names`) and only map to source IDs for execution with fail-fast missing/ambiguous checks.
+
+- 2026-03-03: Keeping compatibility paths too long leaves ambiguous prompt source-of-truth during migrations. → Rule: once component registry under `prompts/registry` is validated, enforce it explicitly in domain contracts and remove runtime fallback to domain-local prompt files.
+
+- 2026-03-03: Domain-local prompt files duplicated shared intent and made cross-domain prompt maintenance noisy. → Rule: keep the active prompt source in a component-first registry under `prompts/registry`, and preserve backward-compatible fallback loaders until all legacy domain prompt files are safely retired.
+
 - 2026-03-03: Runtime prompt gate subprocess execution and duplicated text-field config loaders added avoidable latency and policy drift risk. → Rule: run final prompt audit in-process with shared client context and resolve text-field config through one shared accessor used by both prompt builder and component specs.
 
 - 2026-03-03: A single length instruction can still trigger duplicate word-target warnings when validator regex counts both range and hard-limit `... words` phrases. → Rule: emit one numeric `... words` target and keep hard-limit phrasing numeric without repeating `words`.

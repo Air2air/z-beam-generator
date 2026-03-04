@@ -1,0 +1,829 @@
+schemaVersion: 1.0.0
+generatedAt: '2026-03-03T22:26:34.206606+00:00'
+source:
+  type: component-first-registry
+  domains:
+  - applications
+  - compounds
+  - contaminants
+  - materials
+  - settings
+  derivedFrom: domains/*/prompts/{descriptor_prompts,text_prompt,non_text_prompt,optimizer_prompt}.yaml
+optimizer:
+  shared: 'Optimize the draft for clarity and concision without changing meaning.
+
+    Remove redundancy, tighten phrasing, and keep the original tone.
+
+    Do not add new facts or claims.
+
+    Use the provided context to drill into subject-specific details and uncover non-obvious
+    relationships.
+
+    Vary sentence structure and length to avoid template-like cadence while staying
+    within the prompt''s constraints.
+
+    Output plain text only.'
+  domains: {}
+non_text:
+  shared: null
+  domains:
+    applications: 'Generate concise non-body text for THIS ITEM in the applications
+      domain.
+
+      Return a single short line suitable for a title or heading.
+
+      Do not include labels, quotes, bullets, or explanatory text.'
+    compounds: 'Generate concise non-body text for THIS ITEM in the compounds domain.
+
+      Return a single short line suitable for a title or heading.
+
+      Do not include labels, quotes, bullets, or explanatory text.'
+    contaminants: 'Generate concise non-body text for THIS ITEM in the contaminants
+      domain.
+
+      Return a single short line suitable for a title or heading.
+
+      Do not include labels, quotes, bullets, or explanatory text.'
+    materials: 'Generate concise non-body text for THIS ITEM in the materials domain.
+
+      Return a single short line suitable for a title or heading.
+
+      Do not include labels, quotes, bullets, or explanatory text.'
+    settings: 'Generate concise non-body text for THIS ITEM in the settings domain.
+
+      Return a single short line suitable for a title or heading.
+
+      Do not include labels, quotes, bullets, or explanatory text.'
+components:
+  appearanceVariations:
+    descriptor:
+      shared: Describe THIS ITEM'S appearance variations only.
+      domains: {}
+    text:
+      shared: null
+      domains:
+        contaminants:
+          sectionTitle: Write a concise Visual Appearance heading for {subject} in
+            {category}.
+          sectionDescription: Describe appearanceVariations considerations for {subject}
+            in {category} within the contaminants domain.
+        materials:
+          sectionTitle: Write a concise Visual Appearance heading for {subject} in
+            {category}.
+          sectionDescription: Describe appearanceVariations considerations for {subject}
+            in {category} within the materials domain.
+  chemicalProperties:
+    descriptor:
+      shared: Describe THIS ITEM'S chemical behavior only.
+      domains: {}
+    text:
+      shared: null
+      domains: {}
+  commonChallenges:
+    descriptor:
+      shared: Describe common operational challenges for THIS ITEM only.
+      domains: {}
+    text:
+      shared: null
+      domains:
+        materials:
+          sectionTitle: Write a concise Common Challenges heading for {subject} in
+            {category}.
+          sectionDescription: Describe commonChallenges considerations for {subject}
+            in {category} within the materials domain.
+        settings:
+          sectionTitle: Write a concise Common Challenges heading for {subject} in
+            {category}.
+          sectionDescription: Describe common operational challenges encountered with
+            {subject} in {category}.
+  healthEffects:
+    descriptor:
+      shared: Describe health and safety effects of THIS ITEM only.
+      domains: {}
+    text:
+      shared: null
+      domains:
+        compounds:
+          sectionTitle: Write a concise Health Effects heading for {subject} in {category}.
+          sectionDescription: Describe the main health effects and exposure risks
+            of {subject} in {category}.
+        contaminants:
+          sectionTitle: Write a concise Health Effects heading for {subject} in {category}.
+          sectionDescription: Describe healthEffects considerations for {subject}
+            in {category} within the contaminants domain.
+  industryApplications:
+    descriptor:
+      shared: Describe industry applications of THIS ITEM only.
+      domains: {}
+    text:
+      shared: null
+      domains:
+        materials:
+          sectionTitle: Write a concise Industry Applications heading for {subject}
+            in {category}.
+          sectionDescription: Describe industryApplications considerations for {subject}
+            in {category} within the materials domain.
+        settings:
+          sectionTitle: Write a concise Industry Applications heading for {subject}
+            in {category}.
+          sectionDescription: Describe industryApplications considerations for {subject}
+            in {category} within the settings domain.
+  page:
+    descriptor:
+      shared: 'State what THIS ITEM is in concise context-setting terms only.
+
+        Do NOT explain why it matters, operational impacts, recommendations, or workflow
+        guidance.'
+      domains: {}
+    text:
+      shared: null
+      domains: {}
+  physicalProperties:
+    descriptor:
+      shared: Describe THIS ITEM'S physical characteristics only.
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Physical Properties heading for {subject} in
+          {category}.
+        sectionDescription: Describe physicalProperties considerations for {subject}
+          in {category} within the materials domain.
+      domains: {}
+  preventionStrategies:
+    descriptor:
+      shared: Describe prevention strategies for THIS ITEM only.
+      domains: {}
+    text:
+      shared: null
+      domains:
+        contaminants:
+          sectionTitle: Write a concise Prevention Strategies heading for {subject}
+            in {category}.
+          sectionDescription: Describe preventionStrategies considerations for {subject}
+            in {category} within the contaminants domain.
+        materials:
+          sectionTitle: Write a concise Prevention Strategies heading for {subject}
+            in {category}.
+          sectionDescription: Describe preventionStrategies considerations for {subject}
+            in {category} within the materials domain.
+        settings:
+          sectionTitle: Write a concise Prevention Strategies heading for {subject}
+            in {category}.
+          sectionDescription: Describe preventionStrategies considerations for {subject}
+            in {category} within the settings domain.
+  synonymsIdentifiers:
+    descriptor:
+      shared: Describe THIS ITEM'S canonical identifiers and aliases only.
+      domains: {}
+    text:
+      shared: null
+      domains: {}
+  appearance:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Visual Appearance heading for {subject} in {category}.
+        sectionDescription: Describe appearance considerations for {subject} in {category}
+          within the contaminants domain.
+      domains: {}
+  components._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe components._section.sectionDescription considerations
+          for {subject} in {category} within the materials domain.
+      domains: {}
+  components._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe components._section.sectionTitle considerations for
+          {subject} in {category} within the materials domain.
+      domains: {}
+  components.micro:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        prompt: Describe the before-and-after surface transformation of {subject}
+          in {category}.
+      domains: {}
+  compounds:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Related Compounds heading for {subject} in {category}.
+        sectionDescription: Describe compounds considerations for {subject} in {category}
+          within the contaminants domain.
+      domains: {}
+  contaminatedBy:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        applications:
+          sectionTitle: Write a concise Contaminated By heading for {subject} in {category}.
+          sectionDescription: Describe the standout effects of {subject} contamination
+            in {category}, why it matters, and what users should expect from contamination
+            in {category}. Draw from the deepest, most credible, multi-perspective
+            research. Surface non-obvious insights, key debates, historical/scientific/cultural
+            context, recent developments, and reasonable future implications. Feel
+            authoritative, surprising, and elegantly concise. Avoid hype, clichés,
+            and generic phrasing.
+        materials:
+          sectionTitle: Write a concise Contaminated By heading for {subject} in {category}.
+          sectionDescription: Describe contaminants most commonly associated with
+            {subject} in {category}.
+  contaminatedByTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe contaminatedByTitle considerations for {subject} in
+          {category} within the applications domain.
+        sectionDescription: Describe contaminatedByTitle considerations for {subject}
+          in {category} within the applications domain.
+      domains: {}
+  continuousMonitoring:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Continuous Monitoring heading for {subject}
+          in {category}.
+        sectionDescription: Describe continuousMonitoring considerations for {subject}
+          in {category} within the contaminants domain.
+      domains: {}
+  detectionMethods:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        compounds:
+          sectionTitle: Write a concise Detection Methods heading for {subject} in
+            {category}.
+          sectionDescription: Describe detectionMethods considerations for {subject}
+            in {category} within the compounds domain.
+        contaminants:
+          sectionTitle: Write a concise Detection Methods heading for {subject} in
+            {category}.
+          sectionDescription: Describe detectionMethods considerations for {subject}
+            in {category} within the contaminants domain.
+  emergencyResponse:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        compounds:
+          sectionTitle: Write a concise Emergency Response heading for {subject} in
+            {category}.
+          sectionDescription: Provide immediate emergency response guidance for {subject}
+            in {category}.
+        contaminants:
+          sectionTitle: Write a concise Emergency Response heading for {subject} in
+            {category}.
+          sectionDescription: Describe emergencyResponse considerations for {subject}
+            in {category} within the contaminants domain.
+  environmentalImpact:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Environmental Impact heading for {subject} in
+          {category}.
+        sectionDescription: Describe environmentalImpact considerations for {subject}
+          in {category} within the materials domain.
+      domains: {}
+  exposureGuidelines:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        prompt: Describe exposure guidelines for {subject} in {category}.
+      domains: {}
+  exposureLimits:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        compounds:
+          sectionTitle: Write a concise Exposure Limits heading for {subject} in {category}.
+          sectionDescription: Summarize practical exposure limits and thresholds for
+            {subject} in {category}.
+        contaminants:
+          sectionTitle: Write a concise Exposure Limits heading for {subject} in {category}.
+          sectionDescription: Describe exposureLimits considerations for {subject}
+            in {category} within the contaminants domain.
+  faq:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        applications:
+          sectionTitle: Write a concise FAQ heading for {subject} in {category}.
+          sectionDescription: List a few commonly asked issues about {subject} relevant
+            to {category} using thorough current web research.
+        compounds:
+          sectionTitle: Write a concise FAQ heading for {subject} in {category}.
+          sectionDescription: Describe faq considerations for {subject} in {category}
+            within the compounds domain.
+        contaminants:
+          sectionTitle: Write a concise FAQ heading for {subject} in {category}.
+          sectionDescription: Describe faq considerations for {subject} in {category}
+            within the contaminants domain.
+        materials:
+          sectionTitle: Write a concise FAQ heading for {subject} in {category}.
+          sectionDescription: Provide concise FAQ content for {subject} relevant to
+            {category} using thorough current web research synthesis, practical evidence,
+            and domain-specific details.
+        settings:
+          sectionTitle: Write a concise FAQ heading for {subject} in {category}.
+          sectionDescription: Describe faq considerations for {subject} in {category}
+            within the settings domain.
+  laserMaterialInteraction:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Laser Material Interaction heading for {subject}
+          in {category}.
+        sectionDescription: Describe how laser energy interacts with {subject} during
+          workflows in {category}.
+      domains: {}
+  machineSettings:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Machine Settings heading for {subject} in {category}.
+        sectionDescription: Describe machineSettings considerations for {subject}
+          in {category} within the settings domain.
+      domains: {}
+  materialCharacteristics:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Material Characteristics heading for {subject}
+          in {category}.
+        sectionDescription: Describe material characteristics of {subject} that influence
+          operations in {category}.
+      domains: {}
+  micro:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Micro Description heading for {subject} in {category}.
+        sectionDescription: Describe the before-and-after surface transformation of
+          {subject} in {category}.
+      domains: {}
+  pageDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        applications:
+          prompt: Describe the standout effects of {subject} in {category}, why it
+            matters, and what users should expect in {category}. Draw from the deepest,
+            most credible, multi-perspective research. Surface non-obvious insights,
+            key debates, historical/scientific/cultural context, recent developments,
+            and reasonable future implications. Feel authoritative, surprising, and
+            elegantly concise. Avoid hype, clichés, and generic phrasing.
+        compounds:
+          prompt: Describe what {subject} is and safety relevance in {category}.
+        contaminants:
+          prompt: Describe what {subject} is and practical relevance in {category}.
+        materials:
+          prompt: Describe what {subject} is and operationally why it matters in {category}.
+        settings:
+          prompt: Describe operational setting guidance for {subject} in {category}.
+  pageTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        applications:
+          prompt: Describe the standout effects of {subject} in {category}. The title
+            should be magnetically clickable yet intellectually honest, precise, evocative,
+            and curiosity-driving.
+        compounds:
+          prompt: Write a concise {context} page title for {subject}.
+        contaminants:
+          prompt: Write a concise {context} page title for {subject}.
+        materials:
+          prompt: Write a concise {context} page title for {subject}.
+        settings:
+          prompt: Write a concise {context} page title for {subject}.
+  ppeRequirements:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        compounds:
+          sectionTitle: Write a concise PPE Requirements heading for {subject} in
+            {category}.
+          sectionDescription: Describe ppeRequirements considerations for {subject}
+            in {category} within the compounds domain.
+        contaminants:
+          sectionTitle: Write a concise PPE Requirements heading for {subject} in
+            {category}.
+          sectionDescription: Describe ppeRequirements considerations for {subject}
+            in {category} within the contaminants domain.
+  producedByMaterials:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Produced By Materials heading for {subject}
+          in {category}.
+        sectionDescription: Describe producedByMaterials considerations for {subject}
+          in {category} within the contaminants domain.
+      domains: {}
+  producedFromContaminants:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Produced From Contaminants heading for {subject}
+          in {category}.
+        sectionDescription: Describe producedFromContaminants considerations for {subject}
+          in {category} within the compounds domain.
+      domains: {}
+  properties.laserMaterialInteraction:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        prompt: Describe how laser energy interacts with {subject} during workflows
+          in {category}.
+      domains: {}
+  properties.laserMaterialInteraction._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe properties.laserMaterialInteraction._section.sectionDescription
+          considerations for {subject} in {category} within the materials domain.
+      domains: {}
+  properties.laserMaterialInteraction._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe properties.laserMaterialInteraction._section.sectionTitle
+          considerations for {subject} in {category} within the materials domain.
+      domains: {}
+  properties.materialCharacteristics:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        prompt: Describe material characteristics of {subject} that influence operations
+          in {category}.
+      domains: {}
+  properties.materialCharacteristics._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe properties.materialCharacteristics._section.sectionDescription
+          considerations for {subject} in {category} within the materials domain.
+      domains: {}
+  properties.materialCharacteristics._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe properties.materialCharacteristics._section.sectionTitle
+          considerations for {subject} in {category} within the materials domain.
+      domains: {}
+  reactivity:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Chemical Reactivity heading for {subject} in
+          {category}.
+        sectionDescription: Describe reactivity considerations for {subject} in {category}
+          within the compounds domain.
+      domains: {}
+  regulatoryClassification:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Regulatory Classification heading for {subject}
+          in {category}.
+        sectionDescription: Describe regulatoryClassification considerations for {subject}
+          in {category} within the compounds domain.
+      domains: {}
+  regulatoryStandards:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Regulatory Standards heading for {subject} in
+          {category}.
+        sectionDescription: Describe regulatoryStandards considerations for {subject}
+          in {category} within the compounds domain.
+      domains: {}
+  relatedCompounds:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        compounds:
+          sectionTitle: Write a concise Related Compounds heading for {subject} in
+            {category}.
+          sectionDescription: Describe relatedCompounds considerations for {subject}
+            in {category} within the compounds domain.
+        contaminants:
+          sectionTitle: Write a concise Related Compounds heading for {subject} in
+            {category}.
+          sectionDescription: Describe relatedCompounds considerations for {subject}
+            in {category} within the contaminants domain.
+  relatedContaminants:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Related Contaminants heading for {subject} in
+          {category}.
+        sectionDescription: Describe relatedContaminants considerations for {subject}
+          in {category} within the contaminants domain.
+      domains: {}
+  relatedMaterials:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        applications:
+          sectionTitle: Write a concise Related Materials heading for {subject} in
+            {category}.
+          sectionDescription: Describe relatedMaterials considerations for {subject}
+            in {category} within the applications domain.
+        materials:
+          sectionTitle: Write a concise Related Materials heading for {subject} in
+            {category}.
+          sectionDescription: Describe materials commonly related to {subject} and
+            comparison context in {category}.
+  relatedMaterialsTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relatedMaterialsTitle considerations for {subject}
+          in {category} within the applications domain.
+        sectionDescription: Describe relatedMaterialsTitle considerations for {subject}
+          in {category} within the applications domain.
+      domains: {}
+  relationships.contaminatedBy:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        prompt: Describe contaminants most commonly associated with {subject} in {category}.
+      domains: {}
+  relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.detectionMonitoring.detectionMonitoring._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.detectionMonitoring.detectionMonitoring._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.discovery.relatedMaterials._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe the unique differences of {subject} in {category},
+          why it matters, and what users should expect from contamination in {category}.
+          Draw from the deepest, most credible, multi-perspective research. Surface
+          non-obvious insights, key debates, historical/scientific/cultural context,
+          recent developments, and reasonable future implications. Feel authoritative,
+          surprising, and elegantly concise. Avoid hype, clichés, and generic phrasing.
+      domains: {}
+  relationships.discovery.relatedMaterials._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.discovery.relatedMaterials._section.sectionTitle
+          considerations for {subject} in {category} within the applications domain.
+      domains: {}
+  relationships.interactions.contaminatedBy._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        applications:
+          sectionDescription: Describe relationships.interactions.contaminatedBy._section.sectionDescription
+            considerations for {subject} in {category} within the applications domain.
+        materials:
+          sectionDescription: Describe relationships.interactions.contaminatedBy._section.sectionDescription
+            considerations for {subject} in {category} within the materials domain.
+  relationships.interactions.contaminatedBy._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        applications:
+          sectionTitle: Describe relationships.interactions.contaminatedBy._section.sectionTitle
+            considerations for {subject} in {category} within the applications domain.
+        materials:
+          sectionTitle: Describe relationships.interactions.contaminatedBy._section.sectionTitle
+            considerations for {subject} in {category} within the materials domain.
+  relationships.interactions.producesCompounds._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.interactions.producesCompounds._section.sectionDescription
+          considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
+  relationships.interactions.producesCompounds._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.interactions.producesCompounds._section.sectionTitle
+          considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
+  relationships.operational.commonChallenges._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.operational.commonChallenges._section.sectionDescription
+          considerations for {subject} in {category} within the settings domain.
+      domains: {}
+  relationships.operational.commonChallenges._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.operational.commonChallenges._section.sectionTitle
+          considerations for {subject} in {category} within the settings domain.
+      domains: {}
+  relationships.relatedMaterials:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        prompt: Describe materials commonly related to {subject} and comparison context
+          in {category}.
+      domains: {}
+  relationships.safety.emergencyResponse._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.safety.emergencyResponse._section.sectionDescription
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.safety.emergencyResponse._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.safety.emergencyResponse._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.safety.healthEffects._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.safety.healthEffects._section.sectionDescription
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.safety.healthEffects._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.safety.healthEffects._section.sectionTitle
+          considerations for {subject} in {category} within the compounds domain.
+      domains: {}
+  relationships.visual.appearanceOnCategories._section.sectionDescription:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionDescription: Describe relationships.visual.appearanceOnCategories._section.sectionDescription
+          considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
+  relationships.visual.appearanceOnCategories._section.sectionTitle:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Describe relationships.visual.appearanceOnCategories._section.sectionTitle
+          considerations for {subject} in {category} within the contaminants domain.
+      domains: {}
+  removalMethods:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared: null
+      domains:
+        contaminants:
+          sectionTitle: Write a concise Removal Methods heading for {subject} in {category}.
+          sectionDescription: Describe removalMethods considerations for {subject}
+            in {category} within the contaminants domain.
+        materials:
+          sectionTitle: Write a concise Removal Methods heading for {subject} in {category}.
+          sectionDescription: Describe removalMethods considerations for {subject}
+            in {category} within the materials domain.
+  storageRequirements:
+    descriptor:
+      shared: null
+      domains: {}
+    text:
+      shared:
+        sectionTitle: Write a concise Storage Requirements heading for {subject} in
+          {category}.
+        sectionDescription: Describe storageRequirements considerations for {subject}
+          in {category} within the compounds domain.
+      domains: {}
