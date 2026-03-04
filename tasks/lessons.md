@@ -1,5 +1,15 @@
 # Lessons Learned
 
+- 2026-03-04: Consolidated short-content prompts can exist but remain ineffective unless they are injected at runtime chain entry for text fields only. → Rule: prepend `component_short_content_prompts.yaml` entries as the first prompt block in `PromptRegistryService.get_schema_prompt(...)` for non-title text refs, and validate with unit tests plus prompt/parity gates.
+
+- 2026-03-03: Domain-split short prompt files make consolidation requests harder and duplicate near-identical prompt intent across domains. → Rule: maintain one domain-agnostic short prompt registry keyed by component field with explicit required variables (`subject`, `category`, `context`), and treat domain-specific wording as optional overrides only when truly required.
+
+- 2026-03-03: Centralized prompt registries accumulate large amounts of non-behavioral YAML scaffolding (`shared: null`, `domains: {}`, empty descriptor/text blocks) that doubles file length without changing runtime output. → Rule: treat null/empty scoped prompt keys as removable by default and keep only behavior-bearing prompt entries, then enforce safety with prompt contract + parity validators.
+
+- 2026-03-03: After replacing hardcoded domain literals with `{context}`, many per-domain entries became text-identical and remained duplicated. → Rule: when `components.*.text.domains` entries are semantically identical, promote them to `text.shared` and retain domain overrides only where wording truly differs.
+
+- 2026-03-03: Repeating domain literals directly inside centralized component prompt text increases maintenance cost and creates avoidable drift when domain semantics evolve. → Rule: use shared template variables (especially `{context}`) for domain references in `prompts/registry/component_prompt_registry.yaml` whenever the prompt intent is domain-agnostic.
+
 - 2026-03-03: Repeating the same component-registry path in per-domain prompt contract files creates redundant coupling and multi-file drift risk without adding domain-level behavior. → Rule: resolve the component prompt registry from one canonical path and keep domain-level validation focused on real domain artifacts.
 
 - 2026-03-03: Keeping router text coverage in a secondary single-line schema after centralizing prompt content in the component registry recreates source-of-truth drift. → Rule: derive single-line/router coverage directly from `prompts/registry/component_prompt_registry.yaml` in runtime helpers and validators.

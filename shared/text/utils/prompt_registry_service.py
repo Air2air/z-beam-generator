@@ -13,6 +13,9 @@ class PromptRegistryService:
     """Single access layer for schema sections, registries, and prompt references."""
 
     _COMPONENT_PROMPT_REGISTRY_RELATIVE_PATH = Path("prompts/registry/component_prompt_registry.yaml")
+    _COMPONENT_SHORT_CONTENT_PROMPT_REGISTRY_RELATIVE_PATH = Path(
+        "prompts/registry/component_short_content_prompts.yaml"
+    )
 
     _schema_cache: Optional[Dict[str, Any]] = None
     _domain_registry_cache: Dict[str, Dict[str, Any]] = {}
@@ -28,6 +31,7 @@ class PromptRegistryService:
     _generation_config_cache: Optional[Dict[str, Any]] = None
     _domain_optimizer_prompt_cache: Dict[str, Optional[str]] = {}
     _component_prompt_registry_cache: Optional[Dict[str, Any]] = None
+    _component_short_content_prompt_registry_cache: Optional[Dict[str, Any]] = None
 
     @classmethod
     def _get_component_prompt_registry_path(cls, domain: str) -> Path:
@@ -48,6 +52,71 @@ class PromptRegistryService:
         registry = cls._load_yaml_file(registry_path)
         cls._component_prompt_registry_cache = registry
         return registry
+
+    @classmethod
+    def _load_component_short_content_prompt_registry(cls) -> Dict[str, Any]:
+        if cls._component_short_content_prompt_registry_cache is not None:
+            return cls._component_short_content_prompt_registry_cache
+
+        registry_path = cls._project_root() / cls._COMPONENT_SHORT_CONTENT_PROMPT_REGISTRY_RELATIVE_PATH
+        if not registry_path.exists():
+            raise FileNotFoundError(
+                "Configured short-content prompt registry does not exist: "
+                f"{registry_path}"
+            )
+
+        registry = cls._load_yaml_file(registry_path)
+        required_variables = registry.get("required_variables")
+        if not isinstance(required_variables, list):
+            raise ValueError("Short-content prompt registry requires list: required_variables")
+
+        required_variable_set = {str(value).strip() for value in required_variables if isinstance(value, str)}
+        required_expected = {"subject", "category", "context"}
+        if not required_expected.issubset(required_variable_set):
+            raise ValueError(
+                "Short-content prompt registry required_variables must include "
+                "subject, category, context"
+            )
+
+        by_component = registry.get("by_component")
+        if not isinstance(by_component, dict):
+            raise ValueError("Short-content prompt registry requires mapping: by_component")
+
+        cls._component_short_content_prompt_registry_cache = registry
+        return registry
+
+    @classmethod
+    def _resolve_short_content_prompt(
+        cls,
+        component_type: str,
+        prompt_ref: Optional[str],
+    ) -> Optional[str]:
+        registry = cls._load_component_short_content_prompt_registry()
+        by_component = registry.get("by_component")
+        if not isinstance(by_component, dict):
+            return None
+
+        candidate_keys: list[str] = []
+        if isinstance(prompt_ref, str) and prompt_ref.strip():
+            candidate_keys.append(prompt_ref.strip())
+        if isinstance(component_type, str) and component_type.strip():
+            candidate_keys.append(component_type.strip())
+
+        seen: set[str] = set()
+        for key in candidate_keys:
+            if key in seen:
+                continue
+            seen.add(key)
+
+            entry = by_component.get(key)
+            if not isinstance(entry, dict):
+                continue
+
+            prompt = entry.get("prompt")
+            if isinstance(prompt, str) and prompt.strip():
+                return prompt.strip()
+
+        return None
 
     @staticmethod
     def _resolve_scoped_prompt_value(scope: Any, domain: str) -> Optional[str]:
@@ -883,6 +952,14 @@ class PromptRegistryService:
         if not section:
             return None
 
+        prompt_ref = section.get("prompt_ref")
+        short_content_prompt: Optional[str] = None
+        if isinstance(prompt_ref, str) and not cls._is_non_text_prompt_ref(prompt_ref):
+            short_content_prompt = cls._resolve_short_content_prompt(
+                component_type=component_type,
+                prompt_ref=prompt_ref,
+            )
+
         descriptor_prompt = None
         if include_descriptor:
             descriptor_prompt = cls.resolve_descriptor_prompt(
@@ -903,6 +980,11 @@ class PromptRegistryService:
             base_prompt = descriptor_prompt
         else:
             base_prompt = field_prompt
+
+        if short_content_prompt and base_prompt:
+            base_prompt = f"{short_content_prompt.strip()}\n\n{base_prompt.strip()}"
+        elif short_content_prompt:
+            base_prompt = short_content_prompt
 
         if optimizer_prompt and base_prompt:
             if cls._should_include_optimizer_prompt(component_type, base_prompt, optimizer_prompt):

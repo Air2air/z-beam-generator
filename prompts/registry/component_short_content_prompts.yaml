@@ -1,0 +1,601 @@
+schemaVersion: 1.0.0
+description: Domain-agnostic short content prompts keyed by component field.
+required_variables:
+- subject
+- category
+- context
+by_component:
+  appearance:
+    prompt: Provide concise appearance content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  appearanceVariations:
+    prompt: Provide concise appearanceVariations content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  chemicalProperties:
+    prompt: Provide concise chemicalProperties content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  commonChallenges:
+    prompt: Provide concise commonChallenges content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  components._section.sectionDescription:
+    prompt: Provide concise components._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  components._section.sectionTitle:
+    prompt: Provide concise components._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  components.micro:
+    prompt: Provide concise components.micro content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  compounds:
+    prompt: Provide concise compounds content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  contaminatedBy:
+    prompt: Provide concise contaminatedBy content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  contaminatedByTitle:
+    prompt: Provide concise contaminatedByTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  continuousMonitoring:
+    prompt: Provide concise continuousMonitoring content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  detectionMethods:
+    prompt: Provide concise detectionMethods content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  emergencyResponse:
+    prompt: Provide concise emergencyResponse content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  environmentalImpact:
+    prompt: Provide concise environmentalImpact content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  exposureGuidelines:
+    prompt: Provide concise exposureGuidelines content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  exposureLimits:
+    prompt: Provide concise exposureLimits content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  faq:
+    prompt: Provide concise faq content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  healthEffects:
+    prompt: Provide concise healthEffects content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  industryApplications:
+    prompt: Provide concise industryApplications content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  laserMaterialInteraction:
+    prompt: Provide concise laserMaterialInteraction content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  machineSettings:
+    prompt: Provide concise machineSettings content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  materialCharacteristics:
+    prompt: Provide concise materialCharacteristics content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  micro:
+    prompt: Provide concise micro content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  page:
+    prompt: Provide concise page content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  pageDescription:
+    prompt: Provide concise pageDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  pageTitle:
+    prompt: Provide concise pageTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  physicalProperties:
+    prompt: Provide concise physicalProperties content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  ppeRequirements:
+    prompt: Provide concise ppeRequirements content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  preventionStrategies:
+    prompt: Provide concise preventionStrategies content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  producedByMaterials:
+    prompt: Provide concise producedByMaterials content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  producedFromContaminants:
+    prompt: Provide concise producedFromContaminants content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  properties.laserMaterialInteraction:
+    prompt: Provide concise properties.laserMaterialInteraction content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  properties.laserMaterialInteraction._section.sectionDescription:
+    prompt: Provide concise properties.laserMaterialInteraction._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  properties.laserMaterialInteraction._section.sectionTitle:
+    prompt: Provide concise properties.laserMaterialInteraction._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  properties.materialCharacteristics:
+    prompt: Provide concise properties.materialCharacteristics content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  properties.materialCharacteristics._section.sectionDescription:
+    prompt: Provide concise properties.materialCharacteristics._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  properties.materialCharacteristics._section.sectionTitle:
+    prompt: Provide concise properties.materialCharacteristics._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  properties.physicalProperties._section.sectionDescription:
+    prompt: Provide concise properties.physicalProperties._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  properties.physicalProperties._section.sectionTitle:
+    prompt: Provide concise properties.physicalProperties._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  reactivity:
+    prompt: Provide concise reactivity content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  regulatoryClassification:
+    prompt: Provide concise regulatoryClassification content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  regulatoryStandards:
+    prompt: Provide concise regulatoryStandards content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relatedCompounds:
+    prompt: Provide concise relatedCompounds content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relatedContaminants:
+    prompt: Provide concise relatedContaminants content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relatedMaterials:
+    prompt: Provide concise relatedMaterials content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relatedMaterialsTitle:
+    prompt: Provide concise relatedMaterialsTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.contaminatedBy:
+    prompt: Provide concise relationships.contaminatedBy content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.detectionMonitoring.continuousMonitoring._section.sectionDescription:
+    prompt: Provide concise relationships.detectionMonitoring.continuousMonitoring._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.detectionMonitoring.continuousMonitoring._section.sectionTitle:
+    prompt: Provide concise relationships.detectionMonitoring.continuousMonitoring._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription:
+    prompt: Provide concise relationships.detectionMonitoring.detectionMonitoring._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.detectionMonitoring.detectionMonitoring._section.sectionTitle:
+    prompt: Provide concise relationships.detectionMonitoring.detectionMonitoring._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.discovery.relatedMaterials._section.sectionDescription:
+    prompt: Provide concise relationships.discovery.relatedMaterials._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.discovery.relatedMaterials._section.sectionTitle:
+    prompt: Provide concise relationships.discovery.relatedMaterials._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.environmental.environmentalImpact._section.sectionDescription:
+    prompt: Provide concise relationships.environmental.environmentalImpact._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.environmental.environmentalImpact._section.sectionTitle:
+    prompt: Provide concise relationships.environmental.environmentalImpact._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.contaminatedBy._section.sectionDescription:
+    prompt: Provide concise relationships.interactions.contaminatedBy._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.contaminatedBy._section.sectionTitle:
+    prompt: Provide concise relationships.interactions.contaminatedBy._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.producedByMaterials._section.sectionDescription:
+    prompt: Provide concise relationships.interactions.producedByMaterials._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.producedByMaterials._section.sectionTitle:
+    prompt: Provide concise relationships.interactions.producedByMaterials._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.producedFromContaminants._section.sectionDescription:
+    prompt: Provide concise relationships.interactions.producedFromContaminants._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.producedFromContaminants._section.sectionTitle:
+    prompt: Provide concise relationships.interactions.producedFromContaminants._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.producesCompounds._section.sectionDescription:
+    prompt: Provide concise relationships.interactions.producesCompounds._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.producesCompounds._section.sectionTitle:
+    prompt: Provide concise relationships.interactions.producesCompounds._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.reactivity._section.sectionDescription:
+    prompt: Provide concise relationships.interactions.reactivity._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.reactivity._section.sectionTitle:
+    prompt: Provide concise relationships.interactions.reactivity._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.relatedCompounds._section.sectionDescription:
+    prompt: Provide concise relationships.interactions.relatedCompounds._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.relatedCompounds._section.sectionTitle:
+    prompt: Provide concise relationships.interactions.relatedCompounds._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.relatedContaminants._section.sectionDescription:
+    prompt: Provide concise relationships.interactions.relatedContaminants._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.interactions.relatedContaminants._section.sectionTitle:
+    prompt: Provide concise relationships.interactions.relatedContaminants._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.operational.commonChallenges._section.sectionDescription:
+    prompt: Provide concise relationships.operational.commonChallenges._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.operational.commonChallenges._section.sectionTitle:
+    prompt: Provide concise relationships.operational.commonChallenges._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.operational.industryApplications._section.sectionDescription:
+    prompt: Provide concise relationships.operational.industryApplications._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.operational.industryApplications._section.sectionTitle:
+    prompt: Provide concise relationships.operational.industryApplications._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.operational.preventionStrategies._section.sectionDescription:
+    prompt: Provide concise relationships.operational.preventionStrategies._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.operational.preventionStrategies._section.sectionTitle:
+    prompt: Provide concise relationships.operational.preventionStrategies._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.operational.removalMethods._section.sectionDescription:
+    prompt: Provide concise relationships.operational.removalMethods._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.operational.removalMethods._section.sectionTitle:
+    prompt: Provide concise relationships.operational.removalMethods._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.relatedMaterials:
+    prompt: Provide concise relationships.relatedMaterials content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.emergencyResponse._section.sectionDescription:
+    prompt: Provide concise relationships.safety.emergencyResponse._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.emergencyResponse._section.sectionTitle:
+    prompt: Provide concise relationships.safety.emergencyResponse._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.exposureLimits._section.sectionDescription:
+    prompt: Provide concise relationships.safety.exposureLimits._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.exposureLimits._section.sectionTitle:
+    prompt: Provide concise relationships.safety.exposureLimits._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.healthEffects._section.sectionDescription:
+    prompt: Provide concise relationships.safety.healthEffects._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.healthEffects._section.sectionTitle:
+    prompt: Provide concise relationships.safety.healthEffects._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.ppeRequirements._section.sectionDescription:
+    prompt: Provide concise relationships.safety.ppeRequirements._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.ppeRequirements._section.sectionTitle:
+    prompt: Provide concise relationships.safety.ppeRequirements._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.regulatoryClassification._section.sectionDescription:
+    prompt: Provide concise relationships.safety.regulatoryClassification._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.regulatoryClassification._section.sectionTitle:
+    prompt: Provide concise relationships.safety.regulatoryClassification._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.regulatoryStandards._section.sectionDescription:
+    prompt: Provide concise relationships.safety.regulatoryStandards._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.regulatoryStandards._section.sectionTitle:
+    prompt: Provide concise relationships.safety.regulatoryStandards._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.storageRequirements._section.sectionDescription:
+    prompt: Provide concise relationships.safety.storageRequirements._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.safety.storageRequirements._section.sectionTitle:
+    prompt: Provide concise relationships.safety.storageRequirements._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.visual.appearanceOnCategories._section.sectionDescription:
+    prompt: Provide concise relationships.visual.appearanceOnCategories._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.visual.appearanceOnCategories._section.sectionTitle:
+    prompt: Provide concise relationships.visual.appearanceOnCategories._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.visual.appearanceVariations._section.sectionDescription:
+    prompt: Provide concise relationships.visual.appearanceVariations._section.sectionDescription content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  relationships.visual.appearanceVariations._section.sectionTitle:
+    prompt: Provide concise relationships.visual.appearanceVariations._section.sectionTitle content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  removalMethods:
+    prompt: Provide concise removalMethods content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  storageRequirements:
+    prompt: Provide concise storageRequirements content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context
+  synonymsIdentifiers:
+    prompt: Provide concise synonymsIdentifiers content for {subject} in {category} within the {context} domain.
+    variables:
+    - subject
+    - category
+    - context

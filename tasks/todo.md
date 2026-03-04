@@ -5,6 +5,81 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 189: Prepend Short Content Prompt for All Text Fields
+Date: 2026-03-04
+Status: COMPLETE
+
+### Goal
+Use `prompts/registry/component_short_content_prompts.yaml` as the first prompt block in the runtime chain for all text fields.
+
+### Steps
+- [x] Load consolidated short-content prompt registry in `PromptRegistryService`
+- [x] Prepend short-content prompt to schema prompt chain for text fields only
+- [x] Add focused unit coverage for prepend behavior and non-text exclusion
+- [x] Run prompt validators and record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 188: Consolidated Short Content Prompt File
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Create one domain-agnostic file containing short content prompts keyed by component field, using `{subject}`, `{category}`, and `{context}` variables.
+
+### Steps
+- [x] Audit existing short/single-line prompt sources and component registry content
+- [x] Define minimal consolidated schema for short prompts by component field
+- [x] Create consolidated short prompt file under `prompts/registry/`
+- [x] Run prompt validation/sanity checks for regression safety
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 187: Component Registry Aggressive Noise Reduction
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Further shorten `component_prompt_registry.yaml` by removing redundant null/empty descriptor and map scaffolding while preserving prompt resolution behavior.
+
+### Steps
+- [x] Remove empty descriptor objects and empty scoped map keys where behavior is unchanged
+- [x] Re-run prompt contract and parity validators
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 186: Component Prompt Registry Structural Consolidation
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Further simplify `component_prompt_registry.yaml` by removing structurally redundant entries while preserving prompt resolution behavior and validation parity.
+
+### Steps
+- [x] Audit prompt loader/validator requirements for optional vs required registry keys
+- [x] Remove redundant empty per-component blocks and keep only behavior-bearing prompt entries
+- [x] Re-run prompt contract and parity validators
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 185: Simplify Registry Hardcoded Domain Literals
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Simplify `component_prompt_registry.yaml` by consolidating repeated hardcoded domain literals into template variables while retaining per-component separation of concerns.
+
+### Steps
+- [x] Replace repeated hardcoded domain literals in prompt text with `{context}` variable usage
+- [x] Consolidate duplicated non-text domain prompts into shared variable-driven prompt text
+- [x] Run prompt contract and text/parity validators
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
 ## Batch 184: Remove Prompt Contract Indirection
 Date: 2026-03-03
 Status: COMPLETE
