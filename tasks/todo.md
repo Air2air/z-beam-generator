@@ -5,19 +5,49 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
-## Batch 180: Validate Prompt Contracts and Publish Cleanup
+## Batch 182: Publish Prompt Organization Simplification
 Date: 2026-03-03
 Status: IN PROGRESS
+
+### Goal
+Commit and push the final prompt-organization structural simplification after successful validator checks.
+
+### Steps
+- [ ] Stage prompt-organization simplification changes
+- [ ] Commit with clear message
+- [ ] Push to origin/main
+- [ ] Verify clean working tree
+
+---
+
+## Batch 181: Simplify Prompt Organization Structure
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Remove residual empty per-domain prompt directory structure and align domain folder contracts with centralized prompt registry architecture.
+
+### Steps
+- [x] Update domain catalog folder contracts to remove `prompts` directory requirement
+- [x] Delete empty `domains/*/prompts` directories
+- [x] Run prompt contract validators to verify no regressions
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 180: Validate Prompt Contracts and Publish Cleanup
+Date: 2026-03-03
+Status: COMPLETE
 
 ### Goal
 Run broad prompt contract validation after prompt-source cleanup and contract reconciliation, then commit and push the resulting backend changes.
 
 ### Steps
-- [ ] Run `scripts/validation/validate_prompt_section_contract.py`
-- [ ] Confirm repository change set is limited to intended cleanup/reconciliation scope
-- [ ] Commit staged backend changes with clear message
-- [ ] Push commit to `origin/main`
-- [ ] Record lesson in `tasks/lessons.md` if needed
+- [x] Run `scripts/validation/validate_prompt_section_contract.py`
+- [x] Confirm repository change set is limited to intended cleanup/reconciliation scope
+- [x] Commit staged backend changes with clear message
+- [x] Push commit to `origin/main`
+- [x] Record lesson in `tasks/lessons.md` if needed
 
 ---
 

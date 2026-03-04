@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-03-03: Keeping empty `domains/*/prompts` directories after centralization leaves avoidable contract noise and maintenance overhead. → Rule: once prompt sources are centralized, remove obsolete domain folder requirements and delete empty directories in the same batch, then validate contracts immediately.
+
 - 2026-03-03: Adding new `*_section.sectionDescription` component prompt keys without matching `*_section.sectionTitle` keys breaks cross-domain text-contract validation because key-pair parity is enforced globally. → Rule: whenever adding any `*_section.sectionDescription` key to `component_prompt_registry.yaml`, add its paired `*_section.sectionTitle` key in the same patch.
 
 - 2026-03-03: Leaving legacy prompt directories in place after registry centralization creates accidental governance coupling and stale operational assumptions. → Rule: once centralized prompt loading is confirmed, remove legacy prompt artifacts and immediately align validator/docs wording to the canonical registry paths.
