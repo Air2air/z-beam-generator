@@ -43,7 +43,7 @@ The workflow orchestration guide is the first step for every AI task.
 - All field names, every domain, camelCase ↔ snake_case mapping: **docs/08-development/FIELD_NAMING_REFERENCE.md**
 - Field order canonical spec: data/schemas/FrontmatterFieldOrder.yaml
 - Content-generation field policy (all domains): data/schemas/content_generation_policy.yaml
-- Single-line component prompts + variable contracts: data/schemas/component_single_line_prompts.yaml
+- Field content and single-line prompt contracts: prompts/registry/component_prompt_registry.yaml
 - Section metadata parity rule: when a text prompt key ends with `_section.sectionDescription`, the same prompt file must include the matching `_section.sectionTitle` key.
 
 ## Frontmatter Parity Gates (CI + Local)

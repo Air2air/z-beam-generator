@@ -73,12 +73,7 @@ def _missing_section_title_pairs(prompt_keys: set[str]) -> list[str]:
 
 
 def _single_line_keys(repo_root: Path, domain: str) -> set[str]:
-    payload = contract_common.load_yaml(repo_root / "data/schemas/component_single_line_prompts.yaml")
-    by_domain = ((payload.get("component_single_line_prompts") or {}).get("by_domain") or {})
-    domain_map = by_domain.get(domain)
-    if not isinstance(domain_map, dict):
-        raise ValueError(f"component_single_line_prompts.by_domain.{domain} must be a mapping")
-    return {key.strip() for key in domain_map if isinstance(key, str) and key.strip()}
+    return _domain_text_prompt_keys(repo_root, domain)
 
 
 def main() -> int:
@@ -139,7 +134,7 @@ def main() -> int:
         missing_single_line = sorted(router_text_fields - single_line_keys)
         if missing_single_line:
             errors.append(
-                f"{domain}: component_single_line_prompts missing router text keys: {', '.join(missing_single_line)}"
+                f"{domain}: prompts/registry/component_prompt_registry.yaml missing router text keys: {', '.join(missing_single_line)}"
             )
 
     if errors:

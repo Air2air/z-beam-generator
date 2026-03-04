@@ -3,7 +3,7 @@
 
 Phase 2 scope (current):
 - Canonical source: generation/config.yaml -> field_router.field_types.<domain>.text
-- Target artifact: data/schemas/component_single_line_prompts.yaml
+- Target artifact: prompts/registry/component_prompt_registry.yaml
 - Preserves domain-specific field sets (per-domain sync only)
 """
 
@@ -18,7 +18,6 @@ from typing import Any
 import yaml
 
 CANONICAL_DOMAINS = ("applications", "materials", "contaminants", "compounds", "settings")
-DEFAULT_VARIABLES = ["subject", "context"]
 
 
 def _load_yaml(path: Path) -> dict[str, Any]:
@@ -60,6 +59,31 @@ def _default_prompt_for_field(domain: str, field: str) -> str:
     return f"Describe {field} considerations for {{subject}} in {{context}} within the {domain} domain."
 
 
+def _has_text_content(entry: Any) -> bool:
+    if not isinstance(entry, dict):
+        return False
+    for key in ("prompt", "sectionTitle", "sectionDescription"):
+        value = entry.get(key)
+        if isinstance(value, str) and value.strip():
+            return True
+    return False
+
+
+def _component_registry_path(repo_root: Path, domain: str) -> Path:
+    prompt_cfg = _load_yaml(repo_root / "domains" / domain / "prompt.yaml")
+    prompt_contract = prompt_cfg.get("prompt_contract")
+    if not isinstance(prompt_contract, dict):
+        raise ValueError(f"domains/{domain}/prompt.yaml: missing prompt_contract")
+
+    component_registry_file = prompt_contract.get("component_prompt_registry_file")
+    if not isinstance(component_registry_file, str) or not component_registry_file.strip():
+        raise ValueError(
+            f"domains/{domain}/prompt.yaml: missing prompt_contract.component_prompt_registry_file"
+        )
+
+    return repo_root / component_registry_file.strip()
+
+
 @dataclass
 class SyncResult:
     domain: str
@@ -70,56 +94,62 @@ class SyncResult:
 
 
 def _sync_domain_prompts(
-    prompts_by_domain: dict[str, Any],
+    components: dict[str, Any],
     domain: str,
     router_text_fields: list[str],
     prune_extras: bool,
 ) -> SyncResult:
-    existing = prompts_by_domain.get(domain)
-    if not isinstance(existing, dict):
-        existing = {}
-
     canonical_order = list(dict.fromkeys(router_text_fields))
-    existing_keys = {key for key in existing.keys() if isinstance(key, str)}
+    existing_keys = {key for key in components.keys() if isinstance(key, str)}
     router_keys = set(canonical_order)
 
     added_fields = sorted(router_keys - existing_keys)
-    removed_fields = sorted(existing_keys - router_keys) if prune_extras else []
-
-    synced: dict[str, Any] = {}
+    removed_fields: list[str] = []
     unchanged_fields: list[str] = []
 
     for field in canonical_order:
-        current_entry = existing.get(field)
-        if isinstance(current_entry, dict):
-            prompt_text = current_entry.get("prompt")
-            variables = current_entry.get("variables")
-
-            if not isinstance(prompt_text, str) or not prompt_text.strip():
-                prompt_text = _default_prompt_for_field(domain, field)
-            if not isinstance(variables, list) or not all(isinstance(v, str) and v.strip() for v in variables):
-                variables = list(DEFAULT_VARIABLES)
-
-            synced[field] = {"prompt": prompt_text, "variables": variables}
-            unchanged_fields.append(field)
-        else:
-            synced[field] = {
-                "prompt": _default_prompt_for_field(domain, field),
-                "variables": list(DEFAULT_VARIABLES),
+        component_entry = components.get(field)
+        if not isinstance(component_entry, dict):
+            component_entry = {
+                "descriptor": {"shared": None, "domains": {}},
+                "text": {"shared": None, "domains": {}},
             }
+            components[field] = component_entry
 
-    if not prune_extras:
+        text_entry = component_entry.get("text")
+        if not isinstance(text_entry, dict):
+            text_entry = {"shared": None, "domains": {}}
+            component_entry["text"] = text_entry
+
+        if "shared" not in text_entry:
+            text_entry["shared"] = None
+        domains_entry = text_entry.get("domains")
+        if not isinstance(domains_entry, dict):
+            domains_entry = {}
+            text_entry["domains"] = domains_entry
+
+        shared_entry = text_entry.get("shared")
+        domain_entry = domains_entry.get(domain)
+
+        if _has_text_content(domain_entry) or _has_text_content(shared_entry):
+            unchanged_fields.append(field)
+            continue
+
+        domains_entry[domain] = {"prompt": _default_prompt_for_field(domain, field)}
+
+    if prune_extras:
         for extra_key in sorted(existing_keys - router_keys):
-            extra_entry = existing.get(extra_key)
-            if isinstance(extra_entry, dict):
-                synced[extra_key] = extra_entry
-            else:
-                synced[extra_key] = {
-                    "prompt": _default_prompt_for_field(domain, extra_key),
-                    "variables": list(DEFAULT_VARIABLES),
-                }
+            component_entry = components.get(extra_key)
+            if not isinstance(component_entry, dict):
+                continue
+            text_entry = component_entry.get("text")
+            if not isinstance(text_entry, dict):
+                continue
+            domains_entry = text_entry.get("domains")
+            if isinstance(domains_entry, dict) and domain in domains_entry:
+                del domains_entry[domain]
+                removed_fields.append(extra_key)
 
-    prompts_by_domain[domain] = synced
     return SyncResult(
         domain=domain,
         added_fields=added_fields,
@@ -146,21 +176,24 @@ def main() -> int:
 
     repo_root = Path(__file__).resolve().parents[2]
     generation_path = repo_root / "generation/config.yaml"
-    prompts_path = repo_root / "data/schemas/component_single_line_prompts.yaml"
 
     generation_cfg = _load_yaml(generation_path)
-    prompts_cfg = _load_yaml(prompts_path)
+    domains = [args.domain] if args.domain else list(CANONICAL_DOMAINS)
+    registry_path = _component_registry_path(repo_root, domains[0])
+
+    for domain in domains[1:]:
+        domain_registry_path = _component_registry_path(repo_root, domain)
+        if domain_registry_path != registry_path:
+            raise ValueError(
+                f"Multiple component registry paths detected: {registry_path} vs {domain_registry_path}"
+            )
+
+    registry_cfg = _load_yaml(registry_path)
+    components = registry_cfg.get("components")
+    if not isinstance(components, dict):
+        raise ValueError(f"{registry_path.relative_to(repo_root).as_posix()}: missing components mapping")
 
     field_types = (((generation_cfg.get("field_router") or {}).get("field_types") or {}))
-    prompt_root = prompts_cfg.get("component_single_line_prompts")
-    if not isinstance(prompt_root, dict):
-        raise ValueError("data/schemas/component_single_line_prompts.yaml: missing component_single_line_prompts mapping")
-
-    by_domain = prompt_root.get("by_domain")
-    if not isinstance(by_domain, dict):
-        raise ValueError("data/schemas/component_single_line_prompts.yaml: missing component_single_line_prompts.by_domain mapping")
-
-    domains = [args.domain] if args.domain else list(CANONICAL_DOMAINS)
     results: list[SyncResult] = []
 
     for domain in domains:
@@ -170,7 +203,7 @@ def main() -> int:
 
         router_text_fields = _normalize_list(domain_field_cfg.get("text"))
         result = _sync_domain_prompts(
-            prompts_by_domain=by_domain,
+            components=components,
             domain=domain,
             router_text_fields=router_text_fields,
             prune_extras=args.prune_extras,
@@ -197,7 +230,7 @@ def main() -> int:
     report_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
 
     if args.write:
-        _save_yaml(prompts_path, prompts_cfg)
+        _save_yaml(registry_path, registry_cfg)
 
     for item in report["domains"]:
         print(f"[{item['domain']}]")
@@ -207,7 +240,7 @@ def main() -> int:
 
     print(f"Wrote report: {report_path.relative_to(repo_root).as_posix()}")
     if args.write:
-        print(f"Updated: {prompts_path.relative_to(repo_root).as_posix()}")
+        print(f"Updated: {registry_path.relative_to(repo_root).as_posix()}")
 
     return 0
 

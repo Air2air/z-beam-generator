@@ -90,7 +90,7 @@ Each layer has ONE responsibility:
 
 The descriptor/text/non-text/optimizer prompt layers are resolved through `PromptRegistryService` from the centralized component registry at `prompts/registry/component_prompt_registry.yaml`. It must remain normalized across domains and must never overlap with other prompt responsibilities.
 
-Single-line section/title prompt templates are centralized in `data/schemas/component_single_line_prompts.yaml` and must not be duplicated in `domains/*/prompt.yaml`.
+Single-line section/title prompt templates are centralized in `prompts/registry/component_prompt_registry.yaml` and must not be duplicated in `domains/*/prompt.yaml`.
 
 **Required descriptor entries per domain (catalog `catalog.byPath`, keys like `prompts/{domain}/`)**:
 - `identifiers.txt`

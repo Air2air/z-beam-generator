@@ -5,18 +5,34 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 183: Consolidate Field Prompts to One Source
+Date: 2026-03-03
+Status: COMPLETE
+
+### Goal
+Use `prompts/registry/component_prompt_registry.yaml` as the only active source for field content and single-line prompt coverage checks.
+
+### Steps
+- [x] Update prompt runtime helper to derive single-line entries from component registry
+- [x] Update validators to derive single-line coverage from component registry
+- [x] Update docs to point field content prompts to one canonical file
+- [x] Run prompt validators to verify no regressions
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
 ## Batch 182: Publish Prompt Organization Simplification
 Date: 2026-03-03
-Status: IN PROGRESS
+Status: COMPLETE
 
 ### Goal
 Commit and push the final prompt-organization structural simplification after successful validator checks.
 
 ### Steps
-- [ ] Stage prompt-organization simplification changes
-- [ ] Commit with clear message
-- [ ] Push to origin/main
-- [ ] Verify clean working tree
+- [x] Stage prompt-organization simplification changes
+- [x] Commit with clear message
+- [x] Push to origin/main
+- [x] Verify clean working tree
 
 ---
 

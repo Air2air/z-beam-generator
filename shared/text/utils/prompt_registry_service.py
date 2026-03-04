@@ -500,7 +500,7 @@ class PromptRegistryService:
 
             if not single_line_by_domain:
                 raise ValueError(
-                    "component_single_line_prompts registry missing FAQ single-line entries by domain"
+                    "component prompt registry missing FAQ single-line entries by domain"
                 )
 
             cls._faq_prompt_cache = {
@@ -512,31 +512,27 @@ class PromptRegistryService:
 
     @classmethod
     def get_single_line_component_prompts(cls) -> Dict[str, Dict[str, Any]]:
-        """Load centralized single-line component prompt registry (fail-fast)."""
+        """Derive single-line component prompt registry from centralized component prompt registry."""
         if cls._single_line_component_prompts_cache is None:
-            prompts_path = cls._project_root() / "data" / "schemas" / "component_single_line_prompts.yaml"
-            payload = cls._load_yaml_file(prompts_path)
-            policy = payload.get("component_single_line_prompts")
-            if not isinstance(policy, dict):
-                raise ValueError(
-                    f"Invalid single-line prompt registry in {prompts_path}: expected mapping at component_single_line_prompts"
-                )
-
-            by_domain = policy.get("by_domain")
-            if not isinstance(by_domain, dict):
-                raise ValueError(
-                    f"Invalid single-line prompt registry in {prompts_path}: expected mapping at component_single_line_prompts.by_domain"
-                )
-
             normalized_by_domain: Dict[str, Dict[str, Any]] = {}
-            for domain_key, domain_prompts in by_domain.items():
-                if not isinstance(domain_key, str) or not isinstance(domain_prompts, dict):
-                    continue
-                normalized_prompts = {
-                    str(key): dict(value)
-                    for key, value in domain_prompts.items()
-                    if isinstance(key, str) and isinstance(value, dict)
-                }
+            for domain_key in ("applications", "materials", "contaminants", "compounds", "settings"):
+                domain_prompts = cls._load_domain_text_prompt_entries(domain_key)
+                normalized_prompts: Dict[str, Any] = {}
+
+                for component_key, prompt_entry in domain_prompts.items():
+                    if not isinstance(component_key, str) or not component_key.strip():
+                        continue
+                    if not isinstance(prompt_entry, dict):
+                        continue
+
+                    resolved_prompt = cls._resolve_text_prompt_entry(component_key, prompt_entry, component_key)
+                    if not isinstance(resolved_prompt, str) or not resolved_prompt.strip():
+                        continue
+
+                    normalized_prompts[component_key] = {
+                        "prompt": resolved_prompt.strip(),
+                        "variables": ["subject", "context"],
+                    }
 
                 normalized_by_domain[domain_key] = normalized_prompts
 

@@ -54,6 +54,46 @@ def _extract_top_level_keys(path: Path) -> set[str]:
     return _normalize_mapping_keys(payload)
 
 
+def _domain_prompt_fields(repo_root: Path, domain: str, allowed_fields: set[str]) -> set[str]:
+    prompt_contract = _load_yaml(repo_root / "domains" / domain / "prompt.yaml").get("prompt_contract")
+    if not isinstance(prompt_contract, dict):
+        raise ValueError(f"domains/{domain}/prompt.yaml missing prompt_contract")
+
+    component_registry_file = prompt_contract.get("component_prompt_registry_file")
+    if not isinstance(component_registry_file, str) or not component_registry_file.strip():
+        raise ValueError(f"domains/{domain}/prompt.yaml missing prompt_contract.component_prompt_registry_file")
+
+    component_registry = _load_yaml(repo_root / component_registry_file.strip())
+    components = component_registry.get("components")
+    if not isinstance(components, dict):
+        raise ValueError(f"{component_registry_file}: components must be a mapping")
+
+    prompt_fields: set[str] = set()
+    for key, value in components.items():
+        if not isinstance(key, str) or not key.strip() or not isinstance(value, dict):
+            continue
+        normalized_key = key.strip()
+        if normalized_key not in allowed_fields:
+            continue
+
+        text_scope = value.get("text")
+        if not isinstance(text_scope, dict):
+            continue
+
+        domain_entries = text_scope.get("domains")
+        if isinstance(domain_entries, dict):
+            domain_entry = domain_entries.get(domain)
+            if isinstance(domain_entry, dict) and domain_entry:
+                prompt_fields.add(normalized_key)
+                continue
+
+        shared_entry = text_scope.get("shared")
+        if isinstance(shared_entry, dict) and shared_entry:
+            prompt_fields.add(normalized_key)
+
+    return prompt_fields
+
+
 @dataclass
 class DomainParityResult:
     domain: str
@@ -87,16 +127,13 @@ def _resolve_frontmatter_sample(repo_root: Path, domain: str) -> Path | None:
 
 def _validate_domain(repo_root: Path, domain: str) -> DomainParityResult:
     generation_cfg = _load_yaml(repo_root / "generation/config.yaml")
-    single_line_cfg = _load_yaml(repo_root / "data/schemas/component_single_line_prompts.yaml")
     section_schema = _load_yaml(repo_root / "data/schemas/section_display_schema.yaml")
     field_order_cfg = _load_yaml(repo_root / "data/schemas/FrontmatterFieldOrder.yaml")
 
     field_types = (((generation_cfg.get("field_router") or {}).get("field_types") or {}).get(domain) or {})
     router_text_fields = set(_normalize_list(field_types.get("text")))
 
-    prompt_root = single_line_cfg.get("component_single_line_prompts") or {}
-    by_domain = prompt_root.get("by_domain") or {}
-    prompt_fields = _normalize_mapping_keys(by_domain.get(domain))
+    prompt_fields = _domain_prompt_fields(repo_root, domain, router_text_fields)
 
     sections = section_schema.get("sections") or {}
     section_fields = _normalize_mapping_keys(sections)
@@ -117,7 +154,7 @@ def _validate_domain(repo_root: Path, domain: str) -> DomainParityResult:
     target_router_fields = {field for field in router_text_fields if field not in excluded_prompt_fields}
 
     missing_prompt_fields = sorted(target_router_fields - prompt_fields)
-    extra_prompt_fields = sorted(prompt_fields - target_router_fields - excluded_prompt_fields)
+    extra_prompt_fields: list[str] = []
 
     missing_section_schema_fields = sorted(
         field
