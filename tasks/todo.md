@@ -5,6 +5,145 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 198: Commit + Push Remaining Outstanding Work
+Date: 2026-03-07
+Status: IN PROGRESS
+
+### Goal
+Safely commit and push all remaining outstanding changes across `z-beam` and `z-beam-generator`, including previously stashed frontend artifacts.
+
+### Steps
+- [ ] Audit working tree + stash inventory in both repositories
+- [ ] Restore required frontend stashes and verify final staged scope
+- [ ] Commit and push remaining `z-beam` changes
+- [ ] Commit and push remaining `z-beam-generator` changes
+- [ ] Record corrective lesson in `tasks/lessons.md`
+
+---
+
+## Batch 197: Contaminant Artifact Remediation + Dev Server Start
+Date: 2026-03-07
+Status: IN PROGRESS
+
+### Goal
+Fix the malformed duplicate contaminant artifact currently breaking frontend predeploy/tests, verify the requested checks, then start the frontend dev server in the background.
+
+### Steps
+- [ ] Inspect the failing contaminant artifact and confirm canonical counterpart
+- [ ] Apply minimal source fix (remove malformed duplicate artifact)
+- [ ] Re-run `npm run prebuild` and `npm run test:all` in `z-beam`
+- [ ] Start dev server in background and confirm it is running
+- [ ] Record corrective lesson in `tasks/lessons.md`
+
+---
+
+## Batch 196: Frontend Build + Full Test Recovery
+Date: 2026-03-05
+Status: IN PROGRESS
+
+### Goal
+Restore a green verification run by fixing the frontend prerender `variant` error and resolving the current 16 failing generator pytest cases with minimal root-cause changes.
+
+### Steps
+- [ ] Diagnose frontend prerender failure source for undefined `variant` on contaminant routes
+- [ ] Apply minimal frontend/data fix at source and rerun `npm run build`
+- [ ] Triage failing pytest set into root-cause clusters
+- [ ] Apply minimal fixes for failing clusters (contract drift, author/data completeness, sync expectations)
+- [ ] Rerun full frontend tests and full generator pytest suite
+- [ ] Record corrective lesson in `tasks/lessons.md`
+
+---
+
+## Batch 195: Applications Length Spread Tuning
+Date: 2026-03-04
+Status: COMPLETE
+
+### Goal
+Apply length randomization tuning globally across all text fields (not only `pageDescription`) while preserving length-gate stability.
+
+### Steps
+- [x] Apply minimal global config-level variation tuning in centralized text-field config
+- [x] Run cross-domain smoke check (`applications`, `materials`, `contaminants`) for gate stability
+- [x] Compare immediate retry/pass behavior to ensure no regression in smoke validation
+- [x] Keep global setting (no revert) after successful smoke checks
+
+---
+
+## Batch 194: Expanded 12-Item Length Benchmark
+Date: 2026-03-04
+Status: COMPLETE
+
+### Goal
+Run an expanded cross-domain benchmark for `pageDescription` (12 items total) to strengthen confidence in length-gate pass rate, retry behavior, and output-length spread after Batch 192.
+
+### Steps
+- [x] Select representative items from `applications`, `materials`, and `contaminants` (applications constrained to 3 valid catalog subjects)
+- [x] Run forced single-field generation with `--no-text-bundle` for 12 valid items and capture per-item logs
+- [x] Parse logs into aggregate metrics (pass rate, retries, attempts, spread, and per-domain breakdown)
+- [x] Summarize findings and parameter-tuning recommendation
+
+---
+
+## Batch 193: Cross-Domain Length Gate Benchmark
+Date: 2026-03-04
+Status: COMPLETE
+
+### Goal
+Run a scoped cross-domain benchmark for `pageDescription` to measure length-gate pass reliability, retry behavior, and output-length spread after Batch 192 stabilization changes.
+
+### Steps
+- [x] Select one representative item per domain (`applications`, `materials`, `contaminants`)
+- [x] Run forced single-field generation with `--no-text-bundle` and capture logs
+- [x] Compute per-run metrics (pass/fail, attempts, retries, word count vs target range)
+- [x] Summarize findings and tuning recommendations
+
+---
+
+## Batch 192: Global Length Variation + Compliance Stabilization
+Date: 2026-03-04
+Status: COMPLETE
+
+### Goal
+Improve global length variation quality while increasing length-gate pass reliability across domains by using config-driven instruction buffering and adaptive retry target correction.
+
+### Steps
+- [x] Add config-driven length-gate tuning fields for prompt hard-limit buffering and retry target correction
+- [x] Apply buffered WORD LENGTH hard-limit construction in prompt builder
+- [x] Apply adaptive retry target adjustment on length-gate failures in evaluated generator
+- [x] Add focused unit tests for buffered instruction and adaptive retry math
+- [x] Run targeted pytest and record lessons learned
+
+---
+
+## Batch 191: Author-Scoped Prompt Enrichment Intensity Wiring
+Date: 2026-03-04
+Status: COMPLETE
+
+### Goal
+Ensure prompt-level enrichment intensity uses author-scoped dynamic config (not global config) so independent per-author intensity control is fully applied end-to-end.
+
+### Steps
+- [x] Replace global prompt technical-intensity lookup with author-scoped enrichment params in generator runtime
+- [x] Add focused unit test coverage for prompt builder receiving author-specific enrichment params
+- [x] Run targeted pytest for generator tests and record lessons learned
+
+---
+
+## Batch 190: Independent Intensity Control Per Author Voice
+Date: 2026-03-04
+Status: COMPLETE
+
+### Goal
+Enable independent intensity control for each of the four author voices without coupling all voices to the same global slider values.
+
+### Steps
+- [x] Add per-author absolute intensity override support in author config loading
+- [x] Keep backward compatibility with existing offset-based author profiles
+- [x] Add focused tests for override precedence and fail-fast validation
+- [x] Run targeted validation and update lessons learned
+
+---
+
 ## Batch 189: Prepend Short Content Prompt for All Text Fields
 Date: 2026-03-04
 Status: COMPLETE

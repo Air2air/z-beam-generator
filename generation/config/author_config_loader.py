@@ -32,6 +32,21 @@ from generation.config.config_loader import ProcessingConfig
 logger = logging.getLogger(__name__)
 
 
+SLIDER_FIELDS = [
+    'author_voice_intensity',
+    'personality_intensity',
+    'engagement_style',
+    'emotional_intensity',
+    'technical_language_intensity',
+    'context_specificity',
+    'sentence_rhythm_variation',
+    'imperfection_tolerance',
+    'structural_predictability',
+    'ai_avoidance_intensity',
+    'humanness_intensity'
+]
+
+
 class AuthorConfigLoader:
     """Loads and applies author-specific configuration offsets."""
     
@@ -113,34 +128,48 @@ class AuthorConfigLoader:
             logger.info(f"No offsets for author {author_id}, using base config")
             return base_config
         
-        if 'offsets' not in profile:
-            raise KeyError(f"Author profile missing required key: offsets (author_id={author_id})")
-        offsets = profile['offsets']
-        if not isinstance(offsets, dict):
-            raise ValueError(f"Author profile offsets must be a dictionary (author_id={author_id})")
-        if not offsets:
-            logger.info(f"No offsets defined for author {author_id}")
-            return base_config
-        
         # Load base config data
         config_data = load_yaml(base_config.config_path)
-        
-        # Apply offsets (clamped to [1, 10] for 1-10 scale)
-        slider_fields = [
-            'author_voice_intensity',
-            'personality_intensity',
-            'engagement_style',
-            'emotional_intensity',  # Phase 4
-            'technical_language_intensity',
-            'context_specificity',
-            'sentence_rhythm_variation',
-            'imperfection_tolerance',
-            'structural_predictability',
-            'ai_avoidance_intensity'
-        ]
-        
+
+        # Optional absolute per-author overrides take precedence over offsets
+        intensity_overrides = profile.get('intensity_overrides', {})
+        if not isinstance(intensity_overrides, dict):
+            raise ValueError(
+                f"Author profile intensity_overrides must be a dictionary (author_id={author_id})"
+            )
+
+        # Offsets remain supported for backward compatibility
+        offsets = profile.get('offsets', {})
+        if not isinstance(offsets, dict):
+            raise ValueError(f"Author profile offsets must be a dictionary (author_id={author_id})")
+
+        if not intensity_overrides and not offsets:
+            logger.info(f"No intensity_overrides or offsets defined for author {author_id}")
+            return base_config
+
         applied_offsets = []
-        for field in slider_fields:
+        applied_overrides = []
+
+        for field in SLIDER_FIELDS:
+            if field in intensity_overrides:
+                if field not in config_data:
+                    raise KeyError(
+                        f"Missing required slider field '{field}' in base config: {base_config.config_path}"
+                    )
+                override_value = intensity_overrides[field]
+                if not isinstance(override_value, int) or not 1 <= override_value <= 10:
+                    raise ValueError(
+                        f"Invalid intensity_overrides value for '{field}' (author_id={author_id}): "
+                        f"{override_value}. Expected integer 1-10"
+                    )
+                base_value = config_data[field]
+                if base_value != override_value:
+                    config_data[field] = override_value
+                    applied_overrides.append(f"{field}: {base_value} → {override_value}")
+
+        for field in SLIDER_FIELDS:
+            if field in intensity_overrides:
+                continue
             if field in offsets:
                 if field not in config_data:
                     raise KeyError(
@@ -161,15 +190,25 @@ class AuthorConfigLoader:
                     applied_offsets.append(
                         f"{field}: {base_value} → {new_value} ({offset:+d})"
                     )
-        
-        if applied_offsets:
+
+        if applied_overrides or applied_offsets:
             if 'name' not in profile or not isinstance(profile['name'], str) or not profile['name'].strip():
                 raise KeyError(f"Author profile missing required non-empty key: name (author_id={author_id})")
             author_name = profile['name']
-            logger.info(
-                f"Applied {len(applied_offsets)} offsets for {author_name}:\n  " +
-                "\n  ".join(applied_offsets)
-            )
+
+            details = []
+            if applied_overrides:
+                details.append(
+                    f"Applied {len(applied_overrides)} intensity_overrides for {author_name}:\n  " +
+                    "\n  ".join(applied_overrides)
+                )
+            if applied_offsets:
+                details.append(
+                    f"Applied {len(applied_offsets)} offsets for {author_name}:\n  " +
+                    "\n  ".join(applied_offsets)
+                )
+
+            logger.info("\n".join(details))
         
         # Create temporary config with modified values
         import tempfile

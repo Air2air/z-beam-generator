@@ -804,7 +804,11 @@ class PromptRegistryService:
             if isinstance(descriptor_value, str) and descriptor_value.strip():
                 descriptor_prompts[component_key.strip()] = descriptor_value.strip()
 
-        registry: Dict[str, Any] = {"descriptor_prompts": descriptor_prompts}
+        schema_version = component_registry.get("schemaVersion")
+        registry: Dict[str, Any] = {
+            "schemaVersion": schema_version,
+            "descriptor_prompts": descriptor_prompts,
+        }
         cls._domain_registry_cache[domain] = registry
         return registry
 

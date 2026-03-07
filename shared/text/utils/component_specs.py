@@ -56,6 +56,7 @@ class ComponentRegistry:
 
     LEGACY_COMPONENT_ALIASES = {
         'description': 'pageDescription',
+        'micro': 'pageDescription',
     }
     
     @classmethod

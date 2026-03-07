@@ -120,10 +120,6 @@ def coerce_text_leaf_value(value: Any, leaf_key: str, field_label: Optional[str]
         raise ValueError(f"Normalization failed for {target}: expected string output")
 
     if leaf_key in {'sectionDescription', 'pageDescription', 'page_description', 'description'}:
-        normalized = re.sub(r"\s+(?:this|that|these|those|it)\.\s*$", "", normalized, flags=re.IGNORECASE)
-        normalized = re.sub(r"[,:;]\s*$", ".", normalized)
         normalized = normalized.strip()
-        if normalized and normalized[-1] not in '.!?':
-            normalized += '.'
 
     return normalized

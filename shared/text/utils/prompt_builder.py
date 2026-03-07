@@ -13,7 +13,7 @@ ComponentRegistry and DomainContext.
 import logging
 import os
 import random
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Tuple
 
 from generation.config.text_field_config_service import (
     load_text_field_config,
@@ -50,6 +50,7 @@ class PromptBuilder:
     _prompt_compaction_cache = None  # Cache for prompt_compaction config
     _length_gate_cache = None  # Cache for length_gate config
     _domain_config_cache: Dict[str, Dict[str, Any]] = {}  # Cache for domains/*/config.yaml
+    _length_variation_history_cache: Dict[str, list[int]] = {}
     
     @staticmethod
     def _load_technical_profiles() -> Dict:
@@ -193,6 +194,7 @@ class PromptBuilder:
         length_gate = PromptBuilder._load_length_gate_config()
         min_factor = length_gate['min_factor']
         max_factor = length_gate['max_factor']
+        buffer_factor = length_gate['instruction_max_buffer_factor']
 
         if component_type == 'faq':
             text_field_config = PromptBuilder._load_text_field_config()
@@ -203,18 +205,20 @@ class PromptBuilder:
             )
             min_words = max(1, int(round(answer_base * min_factor)))
             max_words = max(min_words, int(round(answer_base * max_factor)))
+            hard_limit_words = max(min_words, int(max_words * buffer_factor))
             answer_count = faq_count if isinstance(faq_count, int) and faq_count > 0 else 3
             return (
                 f"WORD LENGTH: {min_words}-{max_words} words per answer ({answer_count} answers). "
-                f"HARD LIMIT: Do not exceed {max_words} per answer. "
+                f"HARD LIMIT: Do not exceed {hard_limit_words} per answer. "
                 "Count words and rewrite until within range."
             )
 
         min_words = max(1, int(round(base_length * min_factor)))
         max_words = max(min_words, int(round(base_length * max_factor)))
+        hard_limit_words = max(min_words, int(max_words * buffer_factor))
         return (
             f"WORD LENGTH: {min_words}-{max_words} words. "
-            f"HARD LIMIT: Do not exceed {max_words}. "
+            f"HARD LIMIT: Do not exceed {hard_limit_words}. "
             "Count words and rewrite until within range."
         )
 
@@ -382,6 +386,58 @@ class PromptBuilder:
             )
 
         return instruction.strip()
+
+    @staticmethod
+    def _select_variation_factor_with_memory(
+        domain: str,
+        component_type: str,
+        base_length: int,
+        rng,
+        factor_min: float,
+        factor_max: float,
+    ) -> Tuple[float, int]:
+        """Select variation factor with bounded anti-repeat resampling."""
+        if base_length <= 0:
+            raise ValueError("base_length must be > 0")
+
+        length_gate_config = PromptBuilder._load_length_gate_config()
+        memory_size = length_gate_config['variation_memory_size']
+        min_gap_words = length_gate_config['variation_min_gap_words']
+        max_resamples = length_gate_config['variation_max_resamples']
+
+        history_key = f"{domain}:{component_type}"
+        history = PromptBuilder._length_variation_history_cache.setdefault(history_key, [])
+
+        sampled: list[Tuple[float, int]] = []
+        chosen: Optional[Tuple[float, int]] = None
+
+        for _ in range(max_resamples):
+            factor = rng.uniform(factor_min, factor_max)
+            candidate_length = max(1, int(round(base_length * factor)))
+            sampled.append((factor, candidate_length))
+
+            if all(abs(candidate_length - prior_length) >= min_gap_words for prior_length in history):
+                chosen = (factor, candidate_length)
+                break
+
+        if chosen is None:
+            if not sampled:
+                raise RuntimeError("Length variation sampling failed unexpectedly")
+
+            if history:
+                chosen = max(
+                    sampled,
+                    key=lambda sample: min(abs(sample[1] - prior_length) for prior_length in history),
+                )
+            else:
+                chosen = sampled[-1]
+
+        _, chosen_length = chosen
+        history.append(chosen_length)
+        if len(history) > memory_size:
+            del history[:-memory_size]
+
+        return chosen
 
     @staticmethod
     def _load_sentence_structure_config() -> Dict:
@@ -586,7 +642,6 @@ class PromptBuilder:
         forbidden = voice.get('forbidden_phrases', [])
         
         voice_section = f"""AUTHOR: {author} from {country}
-- Regional patterns: {esl_traits}
 
 VOICE INSTRUCTIONS (from shared/voice/profiles/{author.lower().replace(' ', '_').replace(',', '').replace('.', '')}.yaml):
 {core_voice}"""
@@ -599,7 +654,8 @@ VOICE INSTRUCTIONS (from shared/voice/profiles/{author.lower().replace(' ', '_')
             voice_section += f"\n\n**FORBIDDEN PHRASES** (never use these):\n{forbidden_str}"
         
         # GLOBAL VOICE ENFORCEMENT (applies to all domains automatically)
-        # Single source of truth - edit once, propagates everywhere
+        # Generic technical English is unacceptable
+        # at least 1-2 distinctive markers per paragraph
         voice_section += f"""\n\n🔥 VOICE COMPLIANCE REQUIREMENT (MANDATORY):
     {compliance_note}"""
         
@@ -807,8 +863,14 @@ VOICE INSTRUCTIONS (from shared/voice/profiles/{author.lower().replace(' ', '_')
             variation_pattern=variation_pattern,
         )
 
-        variation_factor = rng.uniform(factor_min, factor_max)
-        length = int(length * variation_factor)
+        variation_factor, length = PromptBuilder._select_variation_factor_with_memory(
+            domain=domain,
+            component_type=component_type,
+            base_length=length,
+            rng=rng,
+            factor_min=factor_min,
+            factor_max=factor_max,
+        )
         logger.info(
             f"📏 Length variation: {length} words (base × {variation_factor:.2f}, "
             f"seed={variation_seed}, pattern={variation_pattern or 'random'})"
@@ -1066,7 +1128,7 @@ VOICE INSTRUCTIONS:
         ):
             length_instruction = PromptBuilder._build_length_instruction(
                 component_type=spec.name,
-                base_length=resolved_base_length,
+                base_length=length,
                 faq_count=faq_count
             )
             requirements.append(f"- {length_instruction}")

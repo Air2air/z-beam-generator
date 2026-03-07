@@ -19,6 +19,20 @@ authors:
     name: "Yi-Chun Lin"
     country: "Taiwan"
     personality: "Precise, methodical, evidence-focused"
+
+    # Absolute per-author controls (independent from global sliders)
+    intensity_overrides:
+      author_voice_intensity: 7
+      personality_intensity: 5
+      engagement_style: 3
+      emotional_intensity: 5
+      technical_language_intensity: 5
+      context_specificity: 7
+      sentence_rhythm_variation: 5
+      imperfection_tolerance: 5
+      structural_predictability: 5
+      ai_avoidance_intensity: 5
+      humanness_intensity: 5
     
     offsets:
       author_voice_intensity: +2         # Boost to 7-8: Strong regional voice
@@ -43,6 +57,20 @@ authors:
     name: "Alessandro Moretti"
     country: "Italy"
     personality: "Sophisticated, elegant, balanced objectivity"
+
+    # Absolute per-author controls (independent from global sliders)
+    intensity_overrides:
+      author_voice_intensity: 7
+      personality_intensity: 5
+      engagement_style: 5
+      emotional_intensity: 5
+      technical_language_intensity: 5
+      context_specificity: 5
+      sentence_rhythm_variation: 5
+      imperfection_tolerance: 5
+      structural_predictability: 5
+      ai_avoidance_intensity: 5
+      humanness_intensity: 5
     
     offsets:
       author_voice_intensity: +2         # Boost to 7-8: Strong Italian EFL traits
@@ -67,6 +95,20 @@ authors:
     name: "Ikmanda Roswati"
     country: "Indonesia"
     personality: "Practical, accessible, efficiency-focused"
+
+    # Absolute per-author controls (independent from global sliders)
+    intensity_overrides:
+      author_voice_intensity: 7
+      personality_intensity: 7
+      engagement_style: 7
+      emotional_intensity: 5
+      technical_language_intensity: 5
+      context_specificity: 5
+      sentence_rhythm_variation: 5
+      imperfection_tolerance: 5
+      structural_predictability: 5
+      ai_avoidance_intensity: 5
+      humanness_intensity: 5
     
     offsets:
       author_voice_intensity: +2         # Boost to 7-8: Strong Southeast Asian voice
@@ -91,6 +133,20 @@ authors:
     name: "Todd Dunning"
     country: "United States"
     personality: "Conversational academic, balanced engagement"
+
+    # Absolute per-author controls (independent from global sliders)
+    intensity_overrides:
+      author_voice_intensity: 5
+      personality_intensity: 5
+      engagement_style: 7
+      emotional_intensity: 5
+      technical_language_intensity: 5
+      context_specificity: 5
+      sentence_rhythm_variation: 5
+      imperfection_tolerance: 5
+      structural_predictability: 5
+      ai_avoidance_intensity: 5
+      humanness_intensity: 5
     
     offsets:
       author_voice_intensity: 0          # Keep at 5: Moderate
@@ -111,10 +167,11 @@ authors:
 
 # Usage Notes:
 # 
-# 1. Final intensity = base_value + author_offset
-# 2. Clamped to [1, 10] range automatically
-# 3. Author selection happens via Materials.yaml author.id field
-# 4. Offsets applied dynamically during generation
+# 0. Set per-author values directly in intensity_overrides for independent control.
+# 1. If intensity_overrides[field] exists, that absolute value is used (1-10)
+# 2. Otherwise final intensity = base_value + author_offset
+# 3. Values are clamped to [1, 10] range automatically
+# 4. Author selection happens via Materials.yaml author.id field
 #
 # Example calculation (1-10 scale):
 #   Base technical_language_intensity = 3 (from config.yaml, slider 3)

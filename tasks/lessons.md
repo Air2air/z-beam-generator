@@ -1,5 +1,23 @@
 # Lessons Learned
 
+- 2026-03-07: Frontend predeploy/test failures can persist after generation batches when malformed duplicate frontmatter files remain in `z-beam/frontmatter/contaminants` (e.g., doubled slug suffix). → Rule: before validation runs, enforce one canonical file per slug and remove malformed duplicate artifacts first.
+
+- 2026-03-07: Ads conversion actions can be correctly configured in the UI but still undercount if thank-you events fire before deferred gtag is ready, or optimize poorly if page-view goals remain primary. → Rule: emit `generate_lead` from the confirmation page with gtag-readiness retry and keep contact page-load goals secondary/non-primary.
+
+- 2026-03-05: Contract and compatibility tests can fail after prompt-registry and field-router refactors even when runtime behavior is healthy (missing mock config blocks, moved registry paths, stricter arg signatures, bundled text-field defaults). → Rule: when architecture contracts change, update test fixtures/mocks and canonical registry-path assumptions in the same batch, and keep one focused rerun for only prior failing tests before full-suite execution.
+
+- 2026-03-05: Duplicate frontmatter artifacts with doubled suffixes (`*-contamination-contamination.yaml`) can bypass generation checks but break frontend integration contracts expecting canonical contaminant schema fields. → Rule: keep one canonical frontmatter file per item slug and remove duplicate artifact files before running predeploy pipelines.
+
+- 2026-03-04: Field-specific length-factor tuning can conflict with requests for global text behavior and create uneven results across domains. → Rule: when tuning is intended to be global, set `generation/text_field_config.yaml` `randomization_range` + `variation_patterns.bands` centrally and avoid field-only overrides.
+
+- 2026-03-04: Applications benchmark item IDs can appear valid in source YAML but still fail in batch generation when not present in `domains/applications/catalog.yaml` (`article_pages.file_names`). → Rule: select benchmark subjects from domain catalog first, then map to source IDs.
+
+- 2026-03-04: Length variation can look broad in prompt ranges yet still fail repeatedly near the upper bound when hard-limit wording equals range max and retries reuse the same target. → Rule: apply a config-driven hard-limit buffer below max in prompt instructions and use adaptive retry target correction (overflow/underflow distance with minimum step) before each retry attempt.
+
+- 2026-03-04: Per-author intensity can still partially regress when prompt-builder enrichment parameters are sourced from global config after author-specific dynamic config is resolved. → Rule: in `Generator.generate_without_save(...)`, pass `author_dynamic_config.calculate_enrichment_params()` directly to both fact formatting and prompt building; never recompute prompt technical intensity from global `voice_parameters`.
+
+- 2026-03-04: Per-author intensity controls can appear configured but remain ineffective if generation runtime keeps using only global DynamicConfig. → Rule: resolve `author_id` first in `Generator.generate_without_save(...)`, build `DynamicConfig(base_config=get_author_config(author_id))`, and use that author-scoped config for voice/enrichment/base parameter calculation.
+
 - 2026-03-04: Consolidated short-content prompts can exist but remain ineffective unless they are injected at runtime chain entry for text fields only. → Rule: prepend `component_short_content_prompts.yaml` entries as the first prompt block in `PromptRegistryService.get_schema_prompt(...)` for non-title text refs, and validate with unit tests plus prompt/parity gates.
 
 - 2026-03-03: Domain-split short prompt files make consolidation requests harder and duplicate near-identical prompt intent across domains. → Rule: maintain one domain-agnostic short prompt registry keyed by component field with explicit required variables (`subject`, `category`, `context`), and treat domain-specific wording as optional overrides only when truly required.

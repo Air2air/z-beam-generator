@@ -181,11 +181,20 @@ class QualityEvaluatedGenerator:
         length_gate_enabled = bool(length_gate_config['enabled'])
         length_gate_attempts = 0
         length_gate_result = None
+        configured_target_words = kwargs.get('target_words')
+        if not isinstance(configured_target_words, int) or configured_target_words <= 0:
+            if component_type == 'faq':
+                configured_target_words = self.generator.processing_config.get_component_length('faqAnswer')
+            else:
+                configured_target_words = self.generator.processing_config.get_component_length(component_type)
+        adaptive_target_words = configured_target_words
 
         while True:
             length_gate_attempts += 1
             try:
                 attempt_kwargs = dict(kwargs)
+                if isinstance(adaptive_target_words, int) and adaptive_target_words > 0:
+                    attempt_kwargs['target_words'] = adaptive_target_words
                 if length_gate_enabled and length_gate_attempts > 1:
                     attempt_kwargs['skip_prompt_validation'] = True
 
@@ -293,6 +302,17 @@ class QualityEvaluatedGenerator:
                             print(f"   Actual: {length_gate_result.get('words')}")
 
                         if length_gate_attempts < max_attempts:
+                            updated_target_words = self._calculate_adaptive_retry_target_words(
+                                current_target_words=adaptive_target_words,
+                                baseline_target_words=configured_target_words,
+                                length_gate_result=length_gate_result,
+                                length_gate_config=length_gate_config,
+                            )
+                            if updated_target_words != adaptive_target_words:
+                                print(
+                                    f"🎯 Adaptive retry target: {adaptive_target_words} → {updated_target_words} words"
+                                )
+                                adaptive_target_words = updated_target_words
                             print("🔁 Retrying length gate before quality analysis...")
                             continue
 
@@ -767,6 +787,52 @@ class QualityEvaluatedGenerator:
             'words': total_words,
             'faq_count': faq_count
         }
+
+    @staticmethod
+    def _calculate_adaptive_retry_target_words(
+        current_target_words: int,
+        baseline_target_words: int,
+        length_gate_result: Dict[str, Any],
+        length_gate_config: Dict[str, Any],
+    ) -> int:
+        """Calculate next retry target words from length-gate miss distance."""
+        if not isinstance(current_target_words, int) or current_target_words <= 0:
+            raise ValueError("current_target_words must be a positive integer")
+        if not isinstance(baseline_target_words, int) or baseline_target_words <= 0:
+            raise ValueError("baseline_target_words must be a positive integer")
+        if not isinstance(length_gate_result, dict):
+            raise TypeError("length_gate_result must be a dictionary")
+        if not isinstance(length_gate_config, dict):
+            raise TypeError("length_gate_config must be a dictionary")
+
+        mode = length_gate_result.get('mode')
+        if mode != 'total':
+            return current_target_words
+
+        words = length_gate_result.get('words')
+        min_words = length_gate_result.get('min_words')
+        max_words = length_gate_result.get('max_words')
+        if not isinstance(words, int) or not isinstance(min_words, int) or not isinstance(max_words, int):
+            return current_target_words
+
+        overflow_ratio = length_gate_config['retry_overflow_reduction_ratio']
+        underflow_ratio = length_gate_config['retry_underflow_increase_ratio']
+        min_step_words = length_gate_config['retry_min_step_words']
+        retry_target_min_factor = length_gate_config['retry_target_min_factor']
+
+        min_target_words = max(1, int(round(baseline_target_words * retry_target_min_factor)))
+
+        if words > max_words:
+            overflow = words - max_words
+            reduction = max(min_step_words, int(round(overflow * overflow_ratio)))
+            return max(min_target_words, current_target_words - reduction)
+
+        if words < min_words:
+            underflow = min_words - words
+            increase = max(min_step_words, int(round(underflow * underflow_ratio)))
+            return current_target_words + increase
+
+        return current_target_words
 
     def _get_domain_generation_list(self, *path_parts: str) -> list:
         if not self.generator:

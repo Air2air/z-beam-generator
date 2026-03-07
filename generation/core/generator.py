@@ -165,17 +165,27 @@ class Generator:
         """Build context using domain adapter"""
         return self.adapter.build_context(item_data)
     
-    def _get_base_parameters(self, component_type: str) -> Dict[str, Any]:
+    def _get_dynamic_config_for_author(self, author_id: int):
+        """Build DynamicConfig using author-specific intensity configuration."""
+        from generation.config.author_config_loader import get_author_config
+        from generation.config.dynamic_config import DynamicConfig
+
+        author_processing_config = get_author_config(author_id)
+        return DynamicConfig(base_config=author_processing_config)
+
+    def _get_base_parameters(self, component_type: str, dynamic_config=None) -> Dict[str, Any]:
         """Get base generation parameters from dynamic config"""
-        penalties = self.dynamic_config.calculate_penalties(component_type)
+        active_dynamic_config = dynamic_config if dynamic_config is not None else self.dynamic_config
+
+        penalties = active_dynamic_config.calculate_penalties(component_type)
         if 'frequency_penalty' not in penalties:
             raise KeyError("Dynamic penalties missing required key: frequency_penalty")
         if 'presence_penalty' not in penalties:
             raise KeyError("Dynamic penalties missing required key: presence_penalty")
 
         return {
-            'temperature': self.dynamic_config.calculate_temperature(),
-            'max_tokens': self.dynamic_config.calculate_max_tokens(component_type),
+            'temperature': active_dynamic_config.calculate_temperature(),
+            'max_tokens': active_dynamic_config.calculate_max_tokens(component_type),
             'api_penalties': penalties,
         }
 
@@ -399,13 +409,14 @@ class Generator:
         # Get author ID using adapter (domain-agnostic)
         author_id = self.adapter.get_author_id(item_data)
         voice = self._get_persona_by_author_id(author_id)
+        author_dynamic_config = self._get_dynamic_config_for_author(author_id)
         
         # Get facts and context (pass component_type for section-specific property selection)
         facts = self.data_provider.fetch_real_facts(identifier, component_type=component_type)
         context = self._build_context(item_data)
 
-        voice_params = self.dynamic_config.calculate_voice_parameters()
-        fact_enrichment_params = self.dynamic_config.calculate_enrichment_params()
+        voice_params = author_dynamic_config.calculate_voice_parameters()
+        fact_enrichment_params = author_dynamic_config.calculate_enrichment_params()
         facts = self.data_provider.format_facts_for_prompt(
             facts,
             enrichment_params=fact_enrichment_params,
@@ -413,29 +424,13 @@ class Generator:
         )
         
         # Get base parameters
-        params = self._get_base_parameters(component_type)
+        params = self._get_base_parameters(component_type, dynamic_config=author_dynamic_config)
         self.logger.info(f"🌡️  Temperature: {params['temperature']:.3f}")
         
         # Build prompt using unified builder for all components
         from shared.text.utils.prompt_builder import PromptBuilder
 
-        # Get technical intensity from config and normalize to 0.0-1.0 scale
-        voice_parameters = self.config.get('voice_parameters')
-        if not isinstance(voice_parameters, dict):
-            raise TypeError("Missing or invalid config section: voice_parameters")
-        if 'technical_intensity' not in voice_parameters:
-            raise KeyError("Missing required config key: voice_parameters.technical_intensity")
-        config_technical_intensity = voice_parameters['technical_intensity']
-        if not isinstance(config_technical_intensity, (int, float)):
-            raise TypeError(
-                "Invalid config type for voice_parameters.technical_intensity: "
-                f"{type(config_technical_intensity).__name__}"
-            )
-        normalized_intensity = (config_technical_intensity - 1) / 2.0  # 1→0.0, 2→0.5, 3→1.0
-        
-        enrichment_params = {
-            'technical_intensity': normalized_intensity
-        }
+        enrichment_params = fact_enrichment_params
         
         # Build prompt (single pass)
         # Use explicit per-generation variation seed to avoid deterministic repetition.
@@ -447,11 +442,13 @@ class Generator:
 
         opening_style = self._select_opening_style(identifier, component_type)
         variation_pattern = self._select_variation_pattern(component_type)
+        runtime_target_words = kwargs.get('target_words')
+        length_override = runtime_target_words if isinstance(runtime_target_words, int) and runtime_target_words > 0 else None
 
         prompt = PromptBuilder.build_unified_prompt(
             topic=identifier,
             voice=voice,
-            length=None,
+            length=length_override,
             facts=facts,
             context=context,
             component_type=component_type,

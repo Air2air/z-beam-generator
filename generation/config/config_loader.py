@@ -422,6 +422,14 @@ class ProcessingConfig:
         fail_on_max_attempts = self._require_value('length_gate.fail_on_max_attempts', bool)
         min_factor = self._require_value('length_gate.min_factor')
         max_factor = self._require_value('length_gate.max_factor')
+        instruction_max_buffer_factor = self._require_value('length_gate.instruction_max_buffer_factor')
+        retry_overflow_reduction_ratio = self._require_value('length_gate.retry_overflow_reduction_ratio')
+        retry_underflow_increase_ratio = self._require_value('length_gate.retry_underflow_increase_ratio')
+        retry_min_step_words = self._require_value('length_gate.retry_min_step_words', int)
+        retry_target_min_factor = self._require_value('length_gate.retry_target_min_factor')
+        variation_memory_size = self._require_value('length_gate.variation_memory_size', int)
+        variation_min_gap_words = self._require_value('length_gate.variation_min_gap_words', int)
+        variation_max_resamples = self._require_value('length_gate.variation_max_resamples', int)
 
         if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
             raise ValueError("length_gate.min_factor and length_gate.max_factor must be numeric")
@@ -429,6 +437,30 @@ class ProcessingConfig:
             raise ValueError(
                 f"Invalid length_gate range: min_factor={min_factor}, max_factor={max_factor}"
             )
+        if not isinstance(instruction_max_buffer_factor, (int, float)):
+            raise ValueError("length_gate.instruction_max_buffer_factor must be numeric")
+        if not 0 < float(instruction_max_buffer_factor) <= 1:
+            raise ValueError("length_gate.instruction_max_buffer_factor must be in (0, 1]")
+        if not isinstance(retry_overflow_reduction_ratio, (int, float)):
+            raise ValueError("length_gate.retry_overflow_reduction_ratio must be numeric")
+        if float(retry_overflow_reduction_ratio) <= 0:
+            raise ValueError("length_gate.retry_overflow_reduction_ratio must be > 0")
+        if not isinstance(retry_underflow_increase_ratio, (int, float)):
+            raise ValueError("length_gate.retry_underflow_increase_ratio must be numeric")
+        if float(retry_underflow_increase_ratio) <= 0:
+            raise ValueError("length_gate.retry_underflow_increase_ratio must be > 0")
+        if retry_min_step_words < 1:
+            raise ValueError("length_gate.retry_min_step_words must be >= 1")
+        if not isinstance(retry_target_min_factor, (int, float)):
+            raise ValueError("length_gate.retry_target_min_factor must be numeric")
+        if not 0 < float(retry_target_min_factor) <= 1:
+            raise ValueError("length_gate.retry_target_min_factor must be in (0, 1]")
+        if variation_memory_size < 1:
+            raise ValueError("length_gate.variation_memory_size must be >= 1")
+        if variation_min_gap_words < 0:
+            raise ValueError("length_gate.variation_min_gap_words must be >= 0")
+        if variation_max_resamples < 1:
+            raise ValueError("length_gate.variation_max_resamples must be >= 1")
         if max_attempts < 1:
             raise ValueError("length_gate.max_attempts must be >= 1")
 
@@ -437,7 +469,15 @@ class ProcessingConfig:
             'max_attempts': max_attempts,
             'fail_on_max_attempts': fail_on_max_attempts,
             'min_factor': float(min_factor),
-            'max_factor': float(max_factor)
+            'max_factor': float(max_factor),
+            'instruction_max_buffer_factor': float(instruction_max_buffer_factor),
+            'retry_overflow_reduction_ratio': float(retry_overflow_reduction_ratio),
+            'retry_underflow_increase_ratio': float(retry_underflow_increase_ratio),
+            'retry_min_step_words': retry_min_step_words,
+            'retry_target_min_factor': float(retry_target_min_factor),
+            'variation_memory_size': variation_memory_size,
+            'variation_min_gap_words': variation_min_gap_words,
+            'variation_max_resamples': variation_max_resamples,
         }
     
     # =========================================================================
