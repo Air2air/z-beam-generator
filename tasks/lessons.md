@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-03-07: Automated pre-push hooks can mutate tracked content after an initial commit/push, leaving hidden residual changes that block a true fully-synced state. → Rule: after every push, immediately run `git status -sb`; if any file changed, commit/push that residual delta before declaring completion.
+
 - 2026-03-07: Frontend predeploy/test failures can persist after generation batches when malformed duplicate frontmatter files remain in `z-beam/frontmatter/contaminants` (e.g., doubled slug suffix). → Rule: before validation runs, enforce one canonical file per slug and remove malformed duplicate artifacts first.
 
 - 2026-03-07: Ads conversion actions can be correctly configured in the UI but still undercount if thank-you events fire before deferred gtag is ready, or optimize poorly if page-view goals remain primary. → Rule: emit `generate_lead` from the confirmation page with gtag-readiness retry and keep contact page-load goals secondary/non-primary.
