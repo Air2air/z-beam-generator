@@ -1,8 +1,18 @@
 # Grok GitHub Manifest (Minimum Required)
 
-Generated: 2026-03-07
+Generated: 2026-03-11
 Repository: https://github.com/Air2air/z-beam-generator
 Scope: Minimum required files only (not full project) for Grok to understand and run core generation logic.
+
+Note: Treat this in-repo manifest as the canonical second-pass contract for Pipeline 2. The external gist must mirror this file's section order and path set.
+
+## 0) Output Files
+- Repo: https://github.com/Air2air/z-beam/tree/main/frontmatter
+- frontmatter/materials/
+- frontmatter/contaminants/
+- frontmatter/applications/
+- frontmatter/settings/
+- frontmatter/compounds/
 
 ## 1) Core Runtime + Generation Pipeline
 - run.py
@@ -37,6 +47,8 @@ Scope: Minimum required files only (not full project) for Grok to understand and
 
 ## 6) Required Source Data (Essentials)
 - aggregates/Materials.yaml
+- aggregates/contaminants.yaml
+- aggregates/Compounds.yaml
 - aggregates/MaterialApplications.yaml
 - aggregates/IndustryApplications.yaml
 - aggregates/MaterialApplicationRelationships.yaml
@@ -53,15 +65,12 @@ Scope: Minimum required files only (not full project) for Grok to understand and
 
 ## 8) Grok Instructions
 1. Open this repository: https://github.com/Air2air/z-beam-generator
-2. Load files in section order (1 → 7).
+2. Load files in section order (0 → 7).
 3. Treat this manifest as the minimum contract set.
 4. Prefer Grok-first canonical files in `governance/`, `aggregates/`, `voices/`, and `frontmatter-templates/`.
-5. If a canonical file is unavailable, fall back to the listed compatibility path before requesting user intervention.
+5. Passes 2-4 and 6 depend on Grok-backed quality evaluation and fail fast if Grok-required services are unavailable.
+6. Where composite quality scoring applies, preserve the published weighting contract: Grok humanness 60%, subjective quality 30%, readability 10%.
+7. If a canonical file is unavailable, fall back to the listed compatibility path before requesting user intervention.
 
 ## 9) Related Frontmatter Repo (Minimum)
-- Repo: https://github.com/Air2air/z-beam/tree/main/frontmatter
-- frontmatter/materials/
-- frontmatter/applications/
-- frontmatter/settings/
-
 Use these frontmatter folders for output shape/reference only after loading generator contracts above.

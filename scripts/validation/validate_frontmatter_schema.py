@@ -26,6 +26,8 @@ from typing import Dict, List, Tuple
 import yaml
 from jsonschema import Draft7Validator, ValidationError
 
+from shared.utils.file_ops.path_manager import PathManager
+
 
 def load_schema(schema_path: str) -> Dict:
     """Load JSON schema from file."""
@@ -77,14 +79,18 @@ def validate_file(filepath: str, validator: Draft7Validator) -> Tuple[bool, List
 
 
 def main():
+    project_root = PathManager.get_project_root()
+    default_schema = str(PathManager.get_path('data', 'schemas', 'frontmatter.json'))
+    default_frontmatter_dir = str(project_root.parent / 'z-beam' / 'frontmatter')
+
     parser = argparse.ArgumentParser(description='Validate frontmatter files against schema')
     parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                         help='Validate specific domain only')
     parser.add_argument('--strict', action='store_true',
                         help='Exit with code 1 if any validation errors found')
-    parser.add_argument('--schema', default='data/schemas/frontmatter.json',
+    parser.add_argument('--schema', default=default_schema,
                         help='Path to schema file')
-    parser.add_argument('--frontmatter-dir', default='../z-beam/frontmatter',
+    parser.add_argument('--frontmatter-dir', default=default_frontmatter_dir,
                         help='Path to frontmatter directory')
     args = parser.parse_args()
     

@@ -27,6 +27,8 @@ from typing import Dict, List, Optional, Set, Tuple
 
 import yaml
 
+from shared.utils.file_ops.path_manager import PathManager
+
 
 @dataclass
 class ReferenceInfo:
@@ -40,22 +42,13 @@ class ReferenceInfo:
 class ReferenceRegistry:
     """Central registry of all valid domain IDs"""
     
-    # Data file locations
-    DATA_FILES = {
-        'materials': 'data/materials/Materials.yaml',
-        'contaminants': 'data/contaminants/contaminants.yaml',
-        'compounds': 'data/compounds/Compounds.yaml',
-        'settings': 'data/settings/Settings.yaml',
-        'applications': 'data/applications/Applications.yaml',
-    }
-    
     # Root keys for each domain
     DOMAIN_KEYS = {
-        'materials': 'materials',
-        'contaminants': 'contamination_patterns',
-        'compounds': 'compounds',
-        'settings': 'settings',
-        'applications': 'applications',
+        'materials': ('materials',),
+        'contaminants': ('contaminants', 'contamination_patterns'),
+        'compounds': ('compounds',),
+        'settings': ('settings',),
+        'applications': ('applications',),
     }
     
     # Suffix rules
@@ -71,29 +64,60 @@ class ReferenceRegistry:
 
     def _validate_domain(self, domain: str):
         """Validate domain is explicitly configured"""
-        if domain not in self.DATA_FILES:
-            raise KeyError(f"Unknown domain: {domain}. Valid domains: {list(self.DATA_FILES.keys())}")
+        data_files = self._get_data_files()
+        if domain not in data_files:
+            raise KeyError(f"Unknown domain: {domain}. Valid domains: {list(data_files.keys())}")
     
     def _find_project_root(self) -> Path:
         """Find project root from current file location"""
         current = Path(__file__).resolve()
         # Go up from shared/validation/ to project root
         return current.parent.parent.parent
+
+    def _get_data_files(self) -> Dict[str, Path]:
+        """Resolve canonical-first domain data files."""
+        return {
+            'materials': PathManager.get_materials_file(),
+            'contaminants': PathManager.get_contaminants_file(),
+            'compounds': PathManager.get_compounds_file(),
+            'settings': PathManager.get_settings_file(),
+            'applications': PathManager.get_applications_file(),
+        }
+
+    def _get_items_for_domain(self, domain: str, content: Dict, full_path: Path) -> Dict:
+        """Resolve the configured root mapping for a domain with canonical fallback."""
+        if domain not in self.DOMAIN_KEYS:
+            raise KeyError(f"Missing root-key configuration for domain: {domain}")
+
+        root_candidates = self.DOMAIN_KEYS[domain]
+        for root_key in root_candidates:
+            if root_key in content:
+                items = content[root_key]
+                if not isinstance(items, dict):
+                    raise RuntimeError(
+                        f"Invalid items structure for domain '{domain}': root key '{root_key}' must map to dictionary"
+                    )
+                return items
+
+        raise KeyError(
+            f"Missing required root key for domain '{domain}' in {full_path}. "
+            f"Expected one of: {', '.join(root_candidates)}"
+        )
     
     def load_all(self, force: bool = False):
         """Load all domain data into registry"""
         if self._loaded and not force:
             return
         
-        for domain, file_path in self.DATA_FILES.items():
+        for domain, file_path in self._get_data_files().items():
             self.load_domain(domain, file_path)
         
         self._loaded = True
     
-    def load_domain(self, domain: str, file_path: str):
+    def load_domain(self, domain: str, file_path: Path):
         """Load a single domain into registry"""
         self._validate_domain(domain)
-        full_path = self.project_root / file_path
+        full_path = file_path if file_path.is_absolute() else self.project_root / file_path
         
         if not full_path.exists():
             return
@@ -107,22 +131,7 @@ class ReferenceRegistry:
                     f"Invalid YAML structure for domain '{domain}': expected dictionary root"
                 )
             
-            # Get items based on domain structure
-            if domain not in self.DOMAIN_KEYS:
-                raise KeyError(f"Missing root-key configuration for domain: {domain}")
-
-            root_key = self.DOMAIN_KEYS[domain]
-            if root_key not in content:
-                raise KeyError(
-                    f"Missing required root key '{root_key}' for domain '{domain}' in {full_path}"
-                )
-
-            items = content[root_key]
-            
-            if not isinstance(items, dict):
-                raise RuntimeError(
-                    f"Invalid items structure for domain '{domain}': root key '{root_key}' must map to dictionary"
-                )
+            items = self._get_items_for_domain(domain, content, full_path)
             
             # Build index
             for item_id, item_data in items.items():

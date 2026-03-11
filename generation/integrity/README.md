@@ -48,6 +48,13 @@ python3 -m generation.integrity.check_integrity --json > report.json
 
 ## Integration
 
+### Pipeline 2 Fail-Fast Contract
+
+- Pipeline 2 uses canonical repo inputs first: `governance/`, `aggregates/`, `voices/`, `frontmatter-templates/`, and `schemas/pipeline_2_policy.yaml`.
+- Grok-backed quality evaluation remains a required dependency for the quality, gate, learning-adjustment, and retry-selection stages of the six-pass workflow.
+- If Grok-required services, contracts, or clients are unavailable, the affected workflow must fail fast instead of degrading to mock, heuristic-only, or fallback scoring.
+- Where composite quality scoring is used, preserve the published weighting contract: Grok humanness 60%, subjective quality 30%, readability 10%.
+
 ### Default Pre-Generation Check
 
 **As of November 15, 2025**, the integrity checker runs **automatically by default** before every content generation:

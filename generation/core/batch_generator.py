@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from generation.config.config_loader import ProcessingConfig
+from shared.utils.file_ops.path_manager import PathManager
 from shared.utils.yaml_utils import load_yaml, save_yaml
 from shared.text.validation.constants import ValidationConstants
 
@@ -549,7 +550,7 @@ class BatchGenerator:
             component_type: Type of component
             content: Generated content
         """
-        materials_path = Path("data/materials/Materials.yaml")
+        materials_path = PathManager.get_materials_file()
         
         data = load_yaml(materials_path)
         
@@ -614,7 +615,7 @@ class BatchGenerator:
         print(f"   • Word count: {len(content.split())} words")
         print()
         print("💾 STORAGE:")
-        print("   • Location: data/materials/Materials.yaml")
+        print(f"   • Location: {materials_path}")
         print(f"   • Component: {component_type}")
         print(f"   • Material: {material_name}")
         print()
@@ -630,7 +631,7 @@ class BatchGenerator:
         Returns:
             Material data dict
         """
-        materials_path = Path("data/materials/Materials.yaml")
+        materials_path = PathManager.get_materials_file()
         
         data = load_yaml(materials_path)
         

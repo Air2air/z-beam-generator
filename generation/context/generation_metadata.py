@@ -26,8 +26,9 @@ Usage:
 import logging
 import yaml
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import Dict, Any
+
+from shared.utils.file_ops.path_manager import PathManager
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +42,7 @@ class GenerationMetadata:
         
     def _load_authors(self) -> Dict:
         """Load author registry from Authors.yaml."""
-        authors_file = Path('data/authors/Authors.yaml')
+        authors_file = PathManager.get_authors_file()
         if not authors_file.exists():
             raise FileNotFoundError(f"Author registry not found: {authors_file}")
         

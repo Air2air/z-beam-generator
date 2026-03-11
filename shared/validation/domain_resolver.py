@@ -26,6 +26,8 @@ from typing import Dict, List, Optional
 
 import yaml
 
+from shared.utils.file_ops.path_manager import PathManager
+
 
 @dataclass
 class LinkInfo:
@@ -41,20 +43,12 @@ class LinkInfo:
 class DomainResolver:
     """Resolves link information from domain source files"""
     
-    DATA_FILES = {
-        'materials': 'data/materials/Materials.yaml',
-        'contaminants': 'data/contaminants/contaminants.yaml',
-        'compounds': 'data/compounds/Compounds.yaml',
-        'settings': 'data/settings/Settings.yaml',
-        'applications': 'data/applications/Applications.yaml',
-    }
-    
     DOMAIN_KEYS = {
-        'materials': 'materials',
-        'contaminants': 'contamination_patterns',
-        'compounds': 'compounds',
-        'settings': 'settings',
-        'applications': 'applications',
+        'materials': ('materials',),
+        'contaminants': ('contaminants', 'contamination_patterns'),
+        'compounds': ('compounds',),
+        'settings': ('settings',),
+        'applications': ('applications',),
     }
     
     def __init__(self, project_root: Optional[Path] = None):
@@ -65,18 +59,49 @@ class DomainResolver:
         """Find project root from current file location"""
         current = Path(__file__).resolve()
         return current.parent.parent.parent
+
+    def _get_data_files(self) -> Dict[str, Path]:
+        """Resolve canonical-first domain data files."""
+        return {
+            'materials': PathManager.get_materials_file(),
+            'contaminants': PathManager.get_contaminants_file(),
+            'compounds': PathManager.get_compounds_file(),
+            'settings': PathManager.get_settings_file(),
+            'applications': PathManager.get_applications_file(),
+        }
+
+    def _get_items_for_domain(self, domain: str, content: Dict) -> Dict:
+        """Resolve the configured root mapping for a domain with canonical fallback."""
+        if domain not in self.DOMAIN_KEYS:
+            raise KeyError(f"Missing root-key mapping for domain '{domain}'")
+
+        root_candidates = self.DOMAIN_KEYS[domain]
+        for root_key in root_candidates:
+            if root_key in content:
+                items = content[root_key]
+                if not isinstance(items, dict):
+                    raise RuntimeError(
+                        f"Invalid domain data format for '{domain}': root key '{root_key}' must map to a dictionary"
+                    )
+                return items
+
+        raise RuntimeError(
+            f"Invalid domain data format for '{domain}': missing required root key. "
+            f"Expected one of: {', '.join(root_candidates)}"
+        )
     
     def _load_domain(self, domain: str) -> Dict:
         """Load domain data from file"""
         if domain in self._cache:
             return self._cache[domain]
 
-        if domain not in self.DATA_FILES:
-            raise KeyError(f"Unknown domain: {domain}. Valid domains: {list(self.DATA_FILES.keys())}")
+        data_files = self._get_data_files()
+        if domain not in data_files:
+            raise KeyError(f"Unknown domain: {domain}. Valid domains: {list(data_files.keys())}")
 
-        file_path = self.DATA_FILES[domain]
+        file_path = data_files[domain]
         
-        full_path = self.project_root / file_path
+        full_path = file_path if file_path.is_absolute() else self.project_root / file_path
         if not full_path.exists():
             raise FileNotFoundError(f"Domain data file not found for domain '{domain}': {full_path}")
         
@@ -89,22 +114,7 @@ class DomainResolver:
                     f"Invalid domain data format for '{domain}': expected dictionary"
                 )
             
-            # Get items based on domain structure
-            if domain not in self.DOMAIN_KEYS:
-                raise KeyError(f"Missing root-key mapping for domain '{domain}'")
-
-            root_key = self.DOMAIN_KEYS[domain]
-            if root_key not in content:
-                raise RuntimeError(
-                    f"Invalid domain data format for '{domain}': missing required root key '{root_key}'"
-                )
-
-            items = content[root_key]
-
-            if not isinstance(items, dict):
-                raise RuntimeError(
-                    f"Invalid domain data format for '{domain}': root key '{root_key}' must map to a dictionary"
-                )
+            items = self._get_items_for_domain(domain, content)
 
             self._cache[domain] = items
             return self._cache[domain]

@@ -12,20 +12,39 @@ Usage:
 """
 
 import logging
+import re
 from pathlib import Path
 from typing import List, Dict, Optional
+
+from shared.utils.file_ops.path_manager import PathManager
 from shared.utils.yaml_utils import load_yaml
 
 logger = logging.getLogger(__name__)
 
 
-# Valid author IDs (centralized list)
-VALID_AUTHORS = [
-    'todd_dunning',
-    'yi_chun_lin',
-    'alessandro_moretti',
-    'ikmanda_roswati'
-]
+def _normalize_slug(value: str) -> str:
+    """Normalize author or country names to underscore slugs."""
+    return re.sub(r'[^a-z0-9]+', '_', value.strip().lower()).strip('_')
+
+
+def _load_author_slug_map() -> Dict[str, str]:
+    """Map author-name slugs to canonical voice profile filenames."""
+    authors_data = load_yaml(PathManager.get_authors_file())
+    if 'authors' not in authors_data or not isinstance(authors_data['authors'], dict):
+        raise ValueError("Authors.yaml missing required 'authors' mapping")
+
+    slug_map: Dict[str, str] = {}
+    for author in authors_data['authors'].values():
+        if not isinstance(author, dict):
+            raise ValueError("Authors.yaml author entries must be mappings")
+        if 'name' not in author or 'country' not in author:
+            raise ValueError("Authors.yaml author entries must include 'name' and 'country'")
+
+        author_slug = _normalize_slug(str(author['name']))
+        country_slug = _normalize_slug(str(author['country']))
+        slug_map[author_slug] = country_slug
+
+    return slug_map
 
 
 def validate_author_id(author_id: str, strict: bool = True) -> bool:
@@ -48,12 +67,13 @@ def validate_author_id(author_id: str, strict: bool = True) -> bool:
         >>> validate_author_id("invalid_author")
         ValueError: Invalid author_id: invalid_author...
     """
-    is_valid = author_id in VALID_AUTHORS
+    valid_authors = _load_author_slug_map()
+    is_valid = author_id in valid_authors
     
     if not is_valid and strict:
         raise ValueError(
             f"Invalid author_id: {author_id}. "
-            f"Must be one of: {', '.join(VALID_AUTHORS)}"
+            f"Must be one of: {', '.join(sorted(valid_authors))}"
         )
     
     return is_valid
@@ -66,7 +86,7 @@ def get_valid_authors() -> List[str]:
     Returns:
         List of valid author ID strings
     """
-    return VALID_AUTHORS.copy()
+    return sorted(_load_author_slug_map())
 
 
 def load_author_profile(author_id: str) -> Optional[Dict]:
@@ -83,9 +103,10 @@ def load_author_profile(author_id: str) -> Optional[Dict]:
         ValueError: If author_id is invalid
     """
     validate_author_id(author_id, strict=True)
+    author_slug_map = _load_author_slug_map()
     
     # Path to persona files
-    persona_path = Path("shared/voice/profiles") / f"{author_id}.yaml"
+    persona_path = PathManager.get_voice_profiles_dir() / f"{author_slug_map[author_id]}.yaml"
     
     if not persona_path.exists():
         logger.warning(f"Persona file not found: {persona_path}")

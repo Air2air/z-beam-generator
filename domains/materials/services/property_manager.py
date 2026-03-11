@@ -31,6 +31,7 @@ from typing import Callable, Dict, List, Optional, Set, Tuple
 
 import yaml
 from generation.config.config_loader import ProcessingConfig
+from shared.utils.file_ops.path_manager import PathManager
 
 # Qualitative property definitions
 from export.qualitative_properties import (
@@ -125,7 +126,7 @@ class PropertyManager:
         self.enhance_descriptions = enhance_descriptions_func
         self.categories_data = categories_data
         self.logger = logger
-        self.materials_file = Path("data/materials/Materials.yaml")
+        self.materials_file = PathManager.get_materials_file()
     
     # ===== HELPER METHODS =====
     

@@ -5,6 +5,22 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 205: Grok-First Second-Pass Parity Fixes
+Date: 2026-03-11
+Status: COMPLETE
+
+### Goal
+Bring second-pass Grok parity into line by fixing manifest and governance drift, converting key legacy-only path lookups to canonical-first resolution, and revalidating fail-fast behavior without breaking compatibility.
+
+### Steps
+- [x] Audit and update in-repo Grok manifest and governance references to reflect the canonical Pipeline 2 contract and compatibility rules
+- [x] Refactor high-value runtime and validation path lookups to use canonical-first resolution through `PathManager`
+- [x] Strengthen Grok fail-fast and health-check documentation where the second-pass handoff still has gaps
+- [x] Run focused validation for integrity and the touched path-resolution surfaces
+- [x] Record the second-pass lesson in `tasks/lessons.md`
+
+---
+
 ## Batch 204: Grok-First Repo Reorganization
 Date: 2026-03-11
 Status: COMPLETE
