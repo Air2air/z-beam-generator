@@ -1,0 +1,16 @@
+Use the repository's canonical Grok-first inputs to draft frontmatter directly.
+
+Read order:
+1. governance/
+2. aggregates/
+3. domains/
+4. prompts/registry/
+5. voices/
+6. frontmatter-templates/
+7. schemas/pipeline_2_policy.yaml
+
+Requirements:
+- Match the field names, nesting, and ordering required by the existing schemas and templates.
+- Ground claims in aggregate source YAML data and existing domain contracts.
+- Preserve author voice using the matched file in voices/.
+- Treat outputs/ as preview-only until the source-of-truth update path is confirmed.

@@ -3,6 +3,9 @@
 **Archived pre-refactor version**: `docs/archive/2026-02/copilot-instructions-pre-refactor-feb2026.md`
 **Full policy library**: `docs/08-development/`
 **Quick answers**: `docs/QUICK_REFERENCE.md`
+**Grok-first mirror**: `governance/copilot-instructions.md`
+
+**Pipeline 2 note**: Grok-first direct generation should read `governance/`, `aggregates/`, `voices/`, `frontmatter-templates/`, and `schemas/pipeline_2_policy.yaml` first; legacy runtime paths remain available for compatibility.
 
 ---
 
@@ -116,6 +119,9 @@ Full list: `.github/PROTECTED_FILES.md`
 
 | Task | Resource |
 |------|----------|
+| Grok-first governance | `governance/` |
+| Pipeline 2 policy | `schemas/pipeline_2_policy.yaml` |
+| Aggregate source YAMLs | `aggregates/` |
 | Generate content | `.github/COPILOT_GENERATION_GUIDE.md` |
 | Understand data flow | `docs/02-architecture/processing-pipeline.md` |
 | Policy lookup (hardcoded values, prompts, naming, etc.) | `docs/08-development/` |
@@ -136,7 +142,7 @@ Once `author.id` is written to a data YAML, it **NEVER changes**.
 
 - Author assignment happens **once** at content creation time
 - All regenerations for that item use the same author's voice
-- Voice is controlled by `shared/voice/profiles/*.yaml` — do not override in prompts
+- Canonical Grok-first voice profiles live in `voices/*.yaml`; `shared/voice/profiles/*.yaml` remains the compatibility path used by legacy runtime code.
 - See `docs/08-development/AUTHOR_ASSIGNMENT_POLICY.md` for full policy
 
 ---

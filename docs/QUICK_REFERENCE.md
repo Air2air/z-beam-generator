@@ -5,6 +5,15 @@ The workflow orchestration guide is the first step for every AI task.
 
 - Primary guide: docs/08-development/AI_ASSISTANT_GUIDE.md#workflow-orchestration
 - Copilot instructions: .github/copilot-instructions.md
+- Grok-first governance mirror: governance/copilot-instructions.md
+- Pipeline 2 policy: schemas/pipeline_2_policy.yaml
+
+## Pipeline 2 Canonical Inputs
+- Governance: governance/
+- Aggregate Source YAML hubs: aggregates/
+- Voice profiles: voices/
+- Frontmatter templates: frontmatter-templates/
+- Legacy CLI compatibility: run.py → legacy/run.py
 
 ## Common Tasks
 - Generate content: .github/COPILOT_GENERATION_GUIDE.md

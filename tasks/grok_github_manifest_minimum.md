@@ -6,13 +6,16 @@ Scope: Minimum required files only (not full project) for Grok to understand and
 
 ## 1) Core Runtime + Generation Pipeline
 - run.py
+- legacy/run.py
 - generation/core/evaluated_generator.py
 - generation/core/generator.py
 - shared/text/utils/prompt_builder.py
 
 ## 2) Required Governance / Rules
+- governance/copilot-instructions.md
+- governance/QUICK_REFERENCE.md
+- governance/grok-policies.md
 - .github/copilot-instructions.md
-- docs/QUICK_REFERENCE.md
 
 ## 3) Required Domain Contracts
 - domains/materials/catalog.yaml
@@ -27,31 +30,33 @@ Scope: Minimum required files only (not full project) for Grok to understand and
 - prompts/voice/material_description.yaml
 
 ## 5) Required Voice Profiles
-- shared/voice/profiles/indonesia.yaml
-- shared/voice/profiles/italy.yaml
-- shared/voice/profiles/taiwan.yaml
-- shared/voice/profiles/united_states.yaml
+- voices/indonesia.yaml
+- voices/italy.yaml
+- voices/taiwan.yaml
+- voices/united_states.yaml
 
 ## 6) Required Source Data (Essentials)
-- data/materials/Materials.yaml
-- data/materials/MaterialApplications.yaml
-- data/materials/IndustryApplications.yaml
-- data/associations/MaterialApplicationRelationships.yaml
-- data/associations/DomainAssociations.yaml
-- data/applications/Applications.yaml
-- data/authors/Authors.yaml
-- data/settings/Settings.yaml
+- aggregates/Materials.yaml
+- aggregates/MaterialApplications.yaml
+- aggregates/IndustryApplications.yaml
+- aggregates/MaterialApplicationRelationships.yaml
+- aggregates/DomainAssociations.yaml
+- aggregates/Applications.yaml
+- aggregates/Authors.yaml
+- aggregates/Settings.yaml
 
 ## 7) Required Schemas
 - data/schemas/content_generation_policy.yaml
 - data/schemas/component_single_line_prompts.yaml
 - data/schemas/frontmatter.json
+- schemas/pipeline_2_policy.yaml
 
 ## 8) Grok Instructions
 1. Open this repository: https://github.com/Air2air/z-beam-generator
 2. Load files in section order (1 → 7).
 3. Treat this manifest as the minimum contract set.
-4. If any file here is unavailable, request it before generating output.
+4. Prefer Grok-first canonical files in `governance/`, `aggregates/`, `voices/`, and `frontmatter-templates/`.
+5. If a canonical file is unavailable, fall back to the listed compatibility path before requesting user intervention.
 
 ## 9) Related Frontmatter Repo (Minimum)
 - Repo: https://github.com/Air2air/z-beam/tree/main/frontmatter

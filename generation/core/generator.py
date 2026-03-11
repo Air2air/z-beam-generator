@@ -104,11 +104,13 @@ class Generator:
         self.logger.info(f"Generator initialized for '{domain}' domain (single-pass with research)")
     
     def _load_all_personas(self) -> Dict[int, Dict[str, Any]]:
-        """Load all author voice profiles from shared/voice/profiles/."""
+        """Load all author voice profiles from the canonical voice profiles directory."""
         personas = {}
         
         # Canonical voice source per policy
-        personas_dir = Path("shared/voice/profiles")
+        from shared.utils.file_ops.path_manager import PathManager
+
+        personas_dir = PathManager.get_voice_profiles_dir()
         if not personas_dir.exists():
             raise FileNotFoundError(f"Voice profiles directory not found: {personas_dir}")
         

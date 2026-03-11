@@ -14,6 +14,8 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Set, Any
 from collections import defaultdict
 
+from shared.utils.file_ops.path_manager import PathManager
+
 
 @dataclass
 class DataIssue:
@@ -64,6 +66,65 @@ class DataIntegrityValidator:
         'settings': ['suitable_materials', 'effective_contaminants'],
         'applications': []
     }
+
+    # Canonical aggregate relationship paths
+    CANONICAL_RELATIONSHIPS = {
+        'materials': [
+            {
+                'path': ('relationships', 'interactions', 'contaminatedBy', 'items'),
+                'rel_type': 'contaminatedBy',
+                'target_domain': 'contaminants',
+            },
+            {
+                'path': ('relationships', 'operational', 'industryApplications', 'items'),
+                'rel_type': 'industryApplications',
+                'target_domain': 'applications',
+            },
+        ],
+        'contaminants': [
+            {
+                'path': ('validMaterials',),
+                'rel_type': 'validMaterials',
+                'target_domain': 'materials',
+            },
+            {
+                'path': ('relationships', 'interactions', 'producesCompounds', 'items'),
+                'rel_type': 'producesCompounds',
+                'target_domain': 'compounds',
+            },
+        ],
+        'compounds': [
+            {
+                'path': ('relationships', 'interactions', 'producedFromContaminants', 'items'),
+                'rel_type': 'producedFromContaminants',
+                'target_domain': 'contaminants',
+            },
+        ],
+        'settings': [
+            {
+                'path': ('relationships', 'interactions', 'worksOnMaterials', 'items'),
+                'rel_type': 'worksOnMaterials',
+                'target_domain': 'materials',
+            },
+            {
+                'path': ('relationships', 'interactions', 'removesContaminants', 'items'),
+                'rel_type': 'removesContaminants',
+                'target_domain': 'contaminants',
+            },
+        ],
+        'applications': [
+            {
+                'path': ('relationships', 'discovery', 'relatedMaterials', 'items'),
+                'rel_type': 'relatedMaterials',
+                'target_domain': 'materials',
+            },
+            {
+                'path': ('relationships', 'interactions', 'contaminatedBy', 'items'),
+                'rel_type': 'contaminatedBy',
+                'target_domain': 'contaminants',
+            },
+        ],
+    }
     
     # Bidirectional relationship mappings
     BIDIRECTIONAL_MAPPINGS = {
@@ -76,11 +137,11 @@ class DataIntegrityValidator:
     
     # Data file paths
     DATA_FILES = {
-        'materials': 'data/materials/Materials.yaml',
-        'contaminants': 'data/contaminants/contaminants.yaml',  # lowercase filename
-        'compounds': 'data/compounds/Compounds.yaml',
-        'settings': 'data/settings/Settings.yaml',
-        'applications': 'data/applications/Applications.yaml'
+        'materials': ('aggregates/Materials.yaml', 'data/materials/Materials.yaml'),
+        'contaminants': ('aggregates/contaminants.yaml', 'data/contaminants/contaminants.yaml'),
+        'compounds': ('aggregates/Compounds.yaml', 'data/compounds/Compounds.yaml'),
+        'settings': ('aggregates/Settings.yaml', 'data/settings/Settings.yaml'),
+        'applications': ('aggregates/Applications.yaml', 'data/applications/Applications.yaml'),
     }
     
     def __init__(self, project_root: Path):
@@ -89,14 +150,24 @@ class DataIntegrityValidator:
         self.data: Dict[str, Dict[str, Any]] = {}
         self.report = DataValidationReport()
         self.link_graph = defaultdict(lambda: defaultdict(list))
+        self.source_file_display: Dict[str, str] = {}
+
+    def _resolve_data_file(self, domain: str) -> tuple[Path, str]:
+        relative_candidates = self.DATA_FILES[domain]
+        resolved = PathManager.get_preferred_existing_path(*relative_candidates)
+        return resolved, str(resolved.relative_to(self.project_root))
     
     def load_data_files(self):
         """Load all source data files"""
         print("\n🔍 Loading source data files...")
         
-        for domain, file_path in self.DATA_FILES.items():
-            full_path = self.project_root / file_path
-            
+        for domain in self.DATA_FILES:
+            try:
+                full_path, display_path = self._resolve_data_file(domain)
+            except FileNotFoundError:
+                display_path = self.DATA_FILES[domain][0]
+                full_path = self.project_root / display_path
+
             if not full_path.exists():
                 print(f"   ⚠️  File not found: {full_path}")
                 self.data[domain] = {}
@@ -105,13 +176,14 @@ class DataIntegrityValidator:
             try:
                 with open(full_path, 'r') as f:
                     content = yaml.safe_load(f)
+                self.source_file_display[domain] = display_path
                 
                 # Handle different YAML structures
                 if domain == 'materials' and 'materials' in content:
                     items = content['materials']
+                elif domain == 'contaminants' and 'contaminants' in content:
+                    items = content['contaminants']
                 elif domain == 'contaminants' and 'contamination_patterns' in content:
-                    # Contaminants use 'contamination_patterns' key and IDs have '-contamination' suffix
-                    # Strip suffix to match how materials reference them
                     items = content['contamination_patterns']
                 elif domain == 'compounds' and 'compounds' in content:
                     items = content['compounds']
@@ -129,10 +201,10 @@ class DataIntegrityValidator:
                     self.index[domain].add(item_id)
                     self.report.total_items += 1
                 
-                print(f"   ✅ {domain}: {len(self.data[domain])} items loaded from {file_path}")
+                print(f"   ✅ {domain}: {len(self.data[domain])} items loaded from {display_path}")
                 
             except Exception as e:
-                print(f"   ❌ Error loading {file_path}: {e}")
+                print(f"   ❌ Error loading {display_path}: {e}")
                 self.data[domain] = {}
     
     def validate_all(self) -> DataValidationReport:
@@ -163,19 +235,45 @@ class DataIntegrityValidator:
         """Validate relationships in a single item"""
         if not isinstance(item_data, dict):
             return
+
+        self.validate_canonical_relationships(item_id, item_data, domain)
         
         # Check relationships section
         relationships = item_data.get('relationships', {})
-        if not relationships:
+        if not isinstance(relationships, dict):
             return
         
         for rel_type, links in relationships.items():
-            self.validate_relationship(
+            if rel_type in self.VALID_RELATIONSHIPS.get(domain, []):
+                self.validate_relationship(
+                    source_id=item_id,
+                    source_domain=domain,
+                    rel_type=rel_type,
+                    links=links
+                )
+
+    def validate_canonical_relationships(self, item_id: str, item_data: Dict[str, Any], domain: str):
+        """Validate nested aggregate-era relationship structures."""
+        for relation in self.CANONICAL_RELATIONSHIPS.get(domain, []):
+            links = self._extract_nested_value(item_data, relation['path'])
+            if links is None:
+                continue
+
+            self.validate_explicit_relationship(
                 source_id=item_id,
                 source_domain=domain,
-                rel_type=rel_type,
-                links=links
+                rel_type=relation['rel_type'],
+                target_domain=relation['target_domain'],
+                links=links,
             )
+
+    def _extract_nested_value(self, data: Dict[str, Any], path: tuple[str, ...]) -> Any:
+        current: Any = data
+        for segment in path:
+            if not isinstance(current, dict) or segment not in current:
+                return None
+            current = current[segment]
+        return current
     
     def validate_relationship(self, source_id: str, source_domain: str, 
                             rel_type: str, links: Any):
@@ -203,8 +301,28 @@ class DataIntegrityValidator:
         target_domain = self.get_target_domain(source_domain, rel_type)
         if not target_domain:
             return
+
+        self.validate_explicit_relationship(
+            source_id=source_id,
+            source_domain=source_domain,
+            rel_type=rel_type,
+            target_domain=target_domain,
+            links=links,
+        )
+
+    def validate_explicit_relationship(
+        self,
+        source_id: str,
+        source_domain: str,
+        rel_type: str,
+        target_domain: str,
+        links: Any,
+    ):
+        """Validate a relationship when the target domain is already known."""
+
+        if rel_type == 'regulatory_standards':
+            return
         
-        # Validate each link
         if not isinstance(links, list):
             return
         
@@ -218,6 +336,8 @@ class DataIntegrityValidator:
             
             if not target_id:
                 continue
+
+            target_id = self.normalize_target_id(target_domain, target_id)
             
             self.report.total_relationships += 1
             
@@ -226,7 +346,7 @@ class DataIntegrityValidator:
                 self.report.broken_references.append(DataIssue(
                     severity='error',
                     issue_type='broken_reference',
-                    source_file=self.DATA_FILES[source_domain],
+                    source_file=self.source_file_display.get(source_domain, self.DATA_FILES[source_domain][0]),
                     source_id=source_id,
                     source_domain=source_domain,
                     target_id=target_id,
@@ -236,6 +356,15 @@ class DataIntegrityValidator:
             else:
                 # Track link in graph for bidirectional checking
                 self.link_graph[f"{source_domain}:{source_id}"][rel_type].append(target_id)
+
+    def normalize_target_id(self, target_domain: str, target_id: str) -> str:
+        """Normalize known cross-domain alias patterns before validation."""
+        if target_domain == 'applications' and target_id not in self.index[target_domain]:
+            canonical_application_id = f"{target_id}-applications"
+            if canonical_application_id in self.index[target_domain]:
+                return canonical_application_id
+
+        return target_id
     
     def get_target_domain(self, source_domain: str, rel_type: str) -> str:
         """Determine target domain from relationship type"""
@@ -273,7 +402,7 @@ class DataIntegrityValidator:
                         self.report.missing_backlinks.append(DataIssue(
                             severity='warning',
                             issue_type='missing_backlink',
-                            source_file=self.DATA_FILES[source_domain],
+                            source_file=self.source_file_display.get(source_domain, self.DATA_FILES[source_domain][0]),
                             source_id=source_id,
                             source_domain=source_domain,
                             target_id=target_id,
@@ -304,7 +433,7 @@ class DataIntegrityValidator:
                     self.report.orphaned_items.append(DataIssue(
                         severity='info',
                         issue_type='orphaned',
-                        source_file=self.DATA_FILES[domain],
+                        source_file=self.source_file_display.get(domain, self.DATA_FILES[domain][0]),
                         source_id=item_id,
                         source_domain=domain,
                         target_id='',

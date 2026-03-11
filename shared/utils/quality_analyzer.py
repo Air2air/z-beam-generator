@@ -14,6 +14,8 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 
+from shared.utils.file_ops.path_manager import PathManager
+
 
 @dataclass
 class VoiceAnalysis:
@@ -61,7 +63,7 @@ class QualityAnalyzer:
     """Analyzes generated content for quality compliance"""
     
     def __init__(self):
-        self.voice_profiles_path = Path("shared/voice/profiles")
+        self.voice_profiles_path = PathManager.get_voice_profiles_dir()
         self.generation_config_path = Path("generation/config.yaml")
         
         # Load AI detection patterns

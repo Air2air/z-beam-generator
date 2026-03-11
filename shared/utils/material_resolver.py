@@ -13,13 +13,15 @@ from pathlib import Path
 
 import yaml
 
+from shared.utils.file_ops.path_manager import PathManager
+
 
 class MaterialResolver:
     """Resolves user-friendly material names to correct YAML keys"""
     
     def __init__(self, materials_yaml_path: str | None = None):
         if materials_yaml_path is None:
-            materials_yaml_path = "data/materials/Materials.yaml"
+            materials_yaml_path = str(PathManager.get_materials_file())
         
         self.materials_yaml_path = Path(materials_yaml_path)
         self._material_mappings = None

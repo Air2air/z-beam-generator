@@ -2001,7 +2001,9 @@ class IntegrityChecker:
             'prompts/compounds/',
             'prompts/applications/',
         )
-        personas_dir = Path('shared/voice/profiles')
+        from shared.utils.file_ops.path_manager import PathManager
+
+        personas_dir = PathManager.get_voice_profiles_dir()
         
         # Voice keywords that should ONLY be in persona templates
         voice_keywords = [

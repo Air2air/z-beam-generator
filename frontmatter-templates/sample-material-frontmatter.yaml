@@ -1,0 +1,135 @@
+# Frontmatter Template for Materials
+# CANONICAL REFERENCE: materials/data/frontmatter_example.yaml
+# This template uses <VariableName> placeholders for values that should be replaced
+# All values shown here are template variables - replace with actual material data
+
+# CRITICAL: This is the GROUPED structure - properties has category groups
+# Each group (material_characteristics, laser_material_interaction) contains properties
+
+# NOTE: The exporter automatically strips generation metadata (generated timestamps,
+# word_count, question_count, character_count) - these should NOT appear in final files
+
+name: <MaterialName>
+category: <Category>
+subcategory: <Subcategory>
+title: <MaterialName> Laser Cleaning  # The title should vary based on special characteristics or requirements the material has
+subtitle: Laser cleaning parameters and specifications for <MaterialName>  # Should highlight unique aspects of this material
+description: <SEO Meta Description>  # Short description for search engines (50-160 chars)
+datePublished: <ISO8601Date>  # First commit date from Materials.yaml git history (same for all materials)
+dateModified: <ISO8601Date>  # Last modification date from Materials.yaml git history (per material)
+
+_metadata: # Internal metadata for tracking
+  voice:
+    author_name: <AuthorName>
+    author_country: <Country>
+    voice_applied: true
+    content_type: material
+
+author: # this is the author information.  It also determines the Author Voice from the requirements.
+  id: <AuthorID>
+  name: <AuthorName>
+  sex: <Sex>
+  title: <Title>
+  country: <Country>
+  expertise: <Expertise>
+  image: /images/author/<author-slug>.jpg
+
+images: # this is a list of images related to laser cleaning of this specific material
+  hero:
+    alt: <MaterialName> surface undergoing laser cleaning showing precise contamination removal
+    url: /images/materials/<material-slug>-laser-cleaning-hero.png
+  micro:
+    alt: Microscopic view of <MaterialName> surface showing laser cleaning effects
+    url: /images/materials/<material-slug>-laser-cleaning-micro.png
+
+micro: # this is a micro for the micro image above, describing the visual content and context.  It should always highlight special characteristics of the material that set it apart from other materials in the category and subcategory.
+  before: <BeforeText>  # Describe contaminated state at microscopic level with specific measurements
+  after: <AfterText>  # Describe cleaned state revealing material microstructure 
+
+regulatory_standards: # this is a list of relevant regulatory standards and guidelines for laser cleaning of this specific material.  Include links and logos.
+  - name: FDA
+    description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    image: /images/logo/logo-org-fda.png
+
+  - name: ANSI
+    description: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    image: /images/logo/logo-org-ansi.png
+
+  - name: IEC
+    description: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/en/publication/3587
+    image: /images/logo/logo-org-iec.png
+
+  - name: OSHA
+    description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+    image: /images/logo/logo-org-osha.png
+
+
+properties:
+  material_characteristics: # this is a list of properties related to the material's physical characteristics
+    label: Material Characteristics
+    
+    <PropertyName1>: # Example: density, porosity, tensileStrength, hardness, etc.
+      value: <Value>
+      min: <MinValue>
+      max: <MaxValue>
+      unit: <Unit>
+      research_basis: <ResearchSource>
+    
+    <PropertyName2>:
+      value: <Value>
+      min: <MinValue>
+      max: <MaxValue>
+      unit: <Unit>
+      research_basis: <ResearchSource>
+    # Add more properties as needed
+
+  laser_material_interaction: # this is a list of properties related to laser-material interaction
+    label: Laser-Material Interaction
+    
+    <PropertyName1>: # Example: thermalConductivity, laserReflectivity, ablationThreshold, etc.
+      value: <Value>
+      min: <MinValue>
+      max: <MaxValue>
+      unit: <Unit>
+      research_basis: <ResearchSource>
+    
+    <PropertyName2>:
+      value: <Value>
+      min: <MinValue>
+      max: <MaxValue>
+      unit: <Unit>
+      research_basis: <ResearchSource>
+    # Add more properties as needed
+
+machine_settings: # this is a list of the machine settings relevant to laser cleaning of this specific material.  These settings should be highly researched and specific to the material.
+  
+  <SettingName1>: # Example: powerRange, wavelength, pulseDuration, spotSize, etc.
+    value: <Value>
+    min: <MinValue>
+    max: <MaxValue>
+    unit: <Unit>
+    description: <SettingDescription>
+  
+  <SettingName2>:
+    value: <Value>
+    min: <MinValue>
+    max: <MaxValue>
+    unit: <Unit>
+    description: <SettingDescription>
+  # Add more settings as needed
+
+faq: # Nested structure: questions is a list of Q&A pairs
+  questions:
+    - question: <Question1>  # Practical question users commonly ask about this material
+      answer: <Answer1>  # Detailed, material-specific answer based on properties and research
+    
+    - question: <Question2>
+      answer: <Answer2>
+    
+    # Add more Q&A pairs as needed (typically 5-10 questions per material)
+    # Note: Generation metadata (generated, question_count, total_words) is automatically stripped during export
+

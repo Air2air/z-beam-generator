@@ -99,6 +99,25 @@ class PathManager:
         return path
 
     @classmethod
+    def get_preferred_existing_path(
+        cls, *relative_paths: Union[str, Path], must_exist: bool = True
+    ) -> Path:
+        """Return the first existing project-relative path from a preferred list."""
+        if not cls._initialized:
+            cls.initialize()
+
+        candidates = [cls._project_root / Path(path) for path in relative_paths]
+        for candidate in candidates:
+            if candidate.exists():
+                return candidate
+
+        if must_exist:
+            joined = ", ".join(str(candidate) for candidate in candidates)
+            raise FileNotFoundError(f"None of the candidate paths exist: {joined}")
+
+        return candidates[0]
+
+    @classmethod
     def ensure_directory(cls, *path_components: Union[str, Path]) -> Path:
         """Ensure a directory exists, creating it if necessary."""
         path = cls.get_path(*path_components, must_exist=False)
@@ -122,6 +141,29 @@ class PathManager:
         return cls.get_path("data")
 
     @classmethod
+    def get_governance_dir(cls) -> Path:
+        """Get the Grok-first governance directory path."""
+        return cls.get_preferred_existing_path("governance", ".github")
+
+    @classmethod
+    def get_aggregates_dir(cls) -> Path:
+        """Get the canonical aggregate YAML directory path."""
+        return cls.get_preferred_existing_path("aggregates", "data")
+
+    @classmethod
+    def get_aggregate_file(cls, filename: str, *legacy_parts: str) -> Path:
+        """Get an aggregate YAML file, preferring the new canonical location."""
+        candidates = [Path("aggregates") / filename]
+        if legacy_parts:
+            candidates.append(Path(*legacy_parts))
+        return cls.get_preferred_existing_path(*candidates)
+
+    @classmethod
+    def get_voice_profiles_dir(cls) -> Path:
+        """Get the canonical voice profiles directory, with legacy fallback."""
+        return cls.get_preferred_existing_path("voices", "shared/voice/profiles")
+
+    @classmethod
     def get_config_dir(cls) -> Path:
         """Get config directory path."""
         return cls.get_path("config")
@@ -129,7 +171,32 @@ class PathManager:
     @classmethod
     def get_materials_file(cls) -> Path:
         """Get materials YAML file path."""
-        return cls.get_path("data", "Materials.yaml")
+        return cls.get_aggregate_file("Materials.yaml", "data", "materials", "Materials.yaml")
+
+    @classmethod
+    def get_contaminants_file(cls) -> Path:
+        """Get contaminants YAML file path."""
+        return cls.get_aggregate_file("contaminants.yaml", "data", "contaminants", "contaminants.yaml")
+
+    @classmethod
+    def get_compounds_file(cls) -> Path:
+        """Get compounds YAML file path."""
+        return cls.get_aggregate_file("Compounds.yaml", "data", "compounds", "Compounds.yaml")
+
+    @classmethod
+    def get_settings_file(cls) -> Path:
+        """Get settings YAML file path."""
+        return cls.get_aggregate_file("Settings.yaml", "data", "settings", "Settings.yaml")
+
+    @classmethod
+    def get_applications_file(cls) -> Path:
+        """Get applications YAML file path."""
+        return cls.get_aggregate_file("Applications.yaml", "data", "applications", "Applications.yaml")
+
+    @classmethod
+    def get_authors_file(cls) -> Path:
+        """Get authors YAML file path."""
+        return cls.get_aggregate_file("Authors.yaml", "data", "authors", "Authors.yaml")
 
     @classmethod
     def get_api_keys_file(cls) -> Path:

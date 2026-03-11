@@ -1,0 +1,49 @@
+version: 1.0.0
+name: pipeline_2_policy
+description: Canonical policy for Grok-first direct frontmatter generation and repository organization.
+canonical_inputs:
+  governance:
+    - governance/copilot-instructions.md
+    - governance/QUICK_REFERENCE.md
+    - governance/grok-policies.md
+  aggregates:
+    - aggregates/Materials.yaml
+    - aggregates/contaminants.yaml
+    - aggregates/Compounds.yaml
+    - aggregates/Applications.yaml
+    - aggregates/Authors.yaml
+    - aggregates/Settings.yaml
+  prompts:
+    - prompts/registry/prompt_catalog.yaml
+    - prompts/registry/component_prompt_registry.yaml
+    - prompts/registry/shared_prompt_registry.yaml
+    - prompts/grok-direct-frontmatter.txt
+  voices:
+    - voices/indonesia.yaml
+    - voices/italy.yaml
+    - voices/taiwan.yaml
+    - voices/united_states.yaml
+  templates:
+    - frontmatter-templates/sample-material-frontmatter.yaml
+    - frontmatter-templates/sample-contaminant-frontmatter.yaml
+compatibility_paths:
+  governance:
+    - .github/copilot-instructions.md
+    - docs/QUICK_REFERENCE.md
+  source_data:
+    - data/materials/Materials.yaml
+    - data/contaminants/contaminants.yaml
+    - data/compounds/Compounds.yaml
+    - data/applications/Applications.yaml
+    - data/authors/Authors.yaml
+    - data/settings/Settings.yaml
+  voices:
+    - shared/voice/profiles/indonesia.yaml
+    - shared/voice/profiles/italy.yaml
+    - shared/voice/profiles/taiwan.yaml
+    - shared/voice/profiles/united_states.yaml
+rules:
+  - Prefer canonical inputs over compatibility paths for Grok-driven reads.
+  - Preserve compatibility paths until runtime and governance references are fully migrated.
+  - Validate generated frontmatter against existing repo schemas before promotion.
+  - Keep outputs as previews unless the change also updates the source-of-truth data.

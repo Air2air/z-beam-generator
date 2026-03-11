@@ -606,11 +606,12 @@ class PromptBuilder:
             raise ValueError(
                 f"Voice instructions are MANDATORY for all text generation. "
                 f"Author '{author}' from '{country}' has no voice/persona data loaded. "
-                f"Check that persona file exists in shared/voice/profiles/"
+                f"Check that persona file exists in voices/ or shared/voice/profiles/"
             )
         
         # VOICE INSTRUCTION CENTRALIZATION POLICY:
-        # Voice instructions ONLY exist in shared/voice/profiles/*.yaml
+        # Canonical Grok-first voice instructions live in voices/*.yaml
+        # shared/voice/profiles/*.yaml remains as the compatibility path
         # They are injected directly into domain prompts via {voice_instruction} placeholder
         # Humanness layer provides structural variation only (separate concern)
         
@@ -643,7 +644,7 @@ class PromptBuilder:
         
         voice_section = f"""AUTHOR: {author} from {country}
 
-VOICE INSTRUCTIONS (from shared/voice/profiles/{author.lower().replace(' ', '_').replace(',', '').replace('.', '')}.yaml):
+VOICE INSTRUCTIONS (from voices/{author.lower().replace(' ', '_').replace(',', '').replace('.', '')}.yaml):
 {core_voice}"""
         
         if tonal_restraint:

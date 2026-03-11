@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-03-11: Canonical-path migrations can still fail validation if integrity tooling only knows legacy flat YAML shapes, even when the new files are present and wired correctly. -> Rule: whenever source data moves to canonical aggregate hubs, update validators for both canonical paths and canonical nested relationship schemas before declaring the migration complete.
+
 - 2026-03-11: Production rich-data regressions can be misdiagnosed when validation samples use non-canonical route paths (for example, missing subcategory segments), producing false schema-gap warnings. -> Rule: validate against canonical full paths and enforce recommended-schema thresholds on a broader sitemap-derived URL sample by default.
 
 - 2026-03-09: Relative-time tests can fail intermittently around timezone/DST boundaries when they depend on live system time and `Date` arithmetic. -> Rule: freeze test clock (`jest.useFakeTimers` + `setSystemTime`) for date-relative assertions and prefer calendar-day comparisons over raw millisecond flooring in utilities.

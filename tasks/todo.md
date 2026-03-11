@@ -5,6 +5,23 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 204: Grok-First Repo Reorganization
+Date: 2026-03-11
+Status: COMPLETE
+
+### Goal
+Introduce a Grok-optimized repository structure centered on governance, aggregate source YAMLs, templates, and legacy compatibility while preserving existing GitHub/Copilot/runtime paths and validating integrity after path updates.
+
+### Steps
+- [x] Finalize compatibility-first target structure and identify paths that must remain at legacy locations
+- [x] Create new top-level folders (`governance`, `aggregates`, `voices`, `frontmatter-templates`, `legacy`, `outputs`) and move/copy compatible content into them
+- [x] Update runtime/config/validation code to resolve canonical Grok-first paths without breaking legacy paths
+- [x] Update Grok-facing governance docs and manifests to reference the new structure and Pipeline 2 workflow
+- [x] Run focused integrity validation for moved aggregate data and updated governance references
+- [x] Commit reorganization changes and record the lesson learned
+
+---
+
 ## Batch 203: Production Rich-Data Gap Remediation
 Date: 2026-03-11
 Status: IN PROGRESS

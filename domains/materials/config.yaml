@@ -3,7 +3,7 @@
 # Author/persona voice is controlled centrally via shared persona profiles.
 
 domain_name: "materials"
-data_path: "data/materials/Materials.yaml"
+data_path: "aggregates/Materials.yaml"
 data_root_key: "materials"
 frontmatter_pattern: "{slug}-laser-cleaning.yaml"
 
@@ -13,7 +13,7 @@ frontmatter:
 
 # DomainAdapter contract (required for generation/core/adapters/domain_adapter.py)
 data_adapter:
-  data_path: "data/materials/Materials.yaml"
+  data_path: "aggregates/Materials.yaml"
   data_root_key: "materials"
   author_key: "author.id"
   context_keys:

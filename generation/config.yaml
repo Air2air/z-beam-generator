@@ -605,7 +605,7 @@ component_extraction:
 
 # Data sources (required by ProcessingConfig)
 data_sources:
-  materials_yaml: data/materials/Materials.yaml
+  materials_yaml: aggregates/Materials.yaml
   categories_yaml: data/materials/Categories.yaml
 
 # Output settings (required by ProcessingConfig)
@@ -618,12 +618,12 @@ output:
 # Defines data locations and frontmatter naming for each domain
 domains:
   materials:
-    data_path: "data/materials/Materials.yaml"
+    data_path: "aggregates/Materials.yaml"
     data_root_key: "materials"
     frontmatter_pattern: "{slug}-laser-cleaning.yaml"
   
   contaminants:
-    data_path: "data/contaminants/contaminants.yaml"
+    data_path: "aggregates/contaminants.yaml"
     data_root_key: "contaminants"
     frontmatter_pattern: "{slug}-contamination.yaml"
   
