@@ -3,6 +3,7 @@
 ## Workflow Orchestration (Read First)
 The workflow orchestration guide is the first step for every AI task.
 
+- Fast Grok maintainer brief: governance/GROK_READ_THIS_FIRST.md
 - Primary guide: docs/08-development/AI_ASSISTANT_GUIDE.md#workflow-orchestration
 - Copilot instructions: .github/copilot-instructions.md
 - Grok-first governance mirror: governance/copilot-instructions.md
@@ -21,6 +22,8 @@ The workflow orchestration guide is the first step for every AI task.
 - System interactions: docs/SYSTEM_INTERACTIONS.md
 - Architecture overview: docs/02-architecture/
 - Policies: docs/08-development/
+- Fast Grok maintainer brief: governance/GROK_READ_THIS_FIRST.md
+- Repo adaptation handoff for Grok maintainers: governance/GROK_REPO_ADAPTATIONS.md
 - Batch flow mandate (discrete per-item/per-field requests): docs/08-development/DISCRETE_BATCH_REQUEST_POLICY.md
 
 ## Keyword → Full Page (Centralized)
