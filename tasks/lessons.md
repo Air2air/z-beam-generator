@@ -1,5 +1,15 @@
 # Lessons Learned
 
+- 2026-03-11: Production rich-data regressions can be misdiagnosed when validation samples use non-canonical route paths (for example, missing subcategory segments), producing false schema-gap warnings. -> Rule: validate against canonical full paths and enforce recommended-schema thresholds on a broader sitemap-derived URL sample by default.
+
+- 2026-03-09: Relative-time tests can fail intermittently around timezone/DST boundaries when they depend on live system time and `Date` arithmetic. -> Rule: freeze test clock (`jest.useFakeTimers` + `setSystemTime`) for date-relative assertions and prefer calendar-day comparisons over raw millisecond flooring in utilities.
+
+- 2026-03-09: Conversion tracking can silently miss Workiz submissions when the success state stays inside a cross-origin iframe or redirects to a route without a tracker. -> Rule: attach lead conversion tracking to every real success route (e.g., `/thank-you` and `/confirmation`) and add a parent-window iframe message bridge for trusted Workiz/sendajob origins with once-per-session dedupe.
+
+- 2026-03-08: Compound frontmatter gained new relationship sections (`identity.chemicalProperties`, `safety.healthEffects`, `safety.storageRequirements`, FAQ metadata) that were not wired into the compound layout, so valid generated sections were omitted at render time. → Rule: when section fields are added to frontmatter, update the corresponding domain layout section map immediately and keep rendering order aligned with `_section.order` semantics.
+
+- 2026-03-07: Domain catalogs can silently drift when `article_pages.file_names` omit canonical frontmatter basename suffixes, causing source→frontmatter mapping mismatches. → Rule: keep every domain catalog `file_names` as exact frontmatter basenames (without `.yaml`) and validate one-to-one parity against `z-beam/frontmatter/<domain>/`.
+
 - 2026-03-07: Automated pre-push hooks can mutate tracked content after an initial commit/push, leaving hidden residual changes that block a true fully-synced state. → Rule: after every push, immediately run `git status -sb`; if any file changed, commit/push that residual delta before declaring completion.
 
 - 2026-03-07: Frontend predeploy/test failures can persist after generation batches when malformed duplicate frontmatter files remain in `z-beam/frontmatter/contaminants` (e.g., doubled slug suffix). → Rule: before validation runs, enforce one canonical file per slug and remove malformed duplicate artifacts first.

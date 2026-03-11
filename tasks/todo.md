@@ -5,6 +5,66 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 203: Production Rich-Data Gap Remediation
+Date: 2026-03-11
+Status: IN PROGRESS
+
+### Goal
+Close observed production monitoring gaps by tightening schema-validation coverage/enforcement and resolving current homepage SEO metadata warning.
+
+### Steps
+- [x] Update homepage metadata title length into recommended range (50-60 chars)
+- [x] Expand live schema validation sample set to better represent production routes
+- [x] Enable recommended-schema threshold enforcement by default
+- [x] Re-run production rich-data and live schema validators
+- [ ] Summarize remaining gaps and commit fix set
+
+---
+
+## Batch 202: Validate And Fix z-beam Branches
+Date: 2026-03-09
+Status: IN PROGRESS
+
+### Goal
+Fix current build/test blockers across all available `z-beam` branches and verify with reproducible checks.
+
+### Steps
+- [x] Inventory branches and git state in `z-beam`
+- [ ] Resolve parse/build blockers on each branch
+- [ ] Run targeted failing tests
+- [ ] Run full predeploy/build checks
+- [ ] Report branch-by-branch results and next actions
+
+---
+
+## Batch 201: Align All Domain Catalog File Names to Frontmatter
+Date: 2026-03-07
+Status: COMPLETE
+
+### Goal
+Update every domain `catalog.yaml` so `article_pages.file_names` matches actual frontmatter file basenames.
+
+### Steps
+- [x] Audit current domain catalog file_names vs frontmatter directories
+- [x] Update all domain catalogs (`applications`, `materials`, `contaminants`, `compounds`, `settings`)
+- [x] Verify exact one-to-one parity for each domain
+
+---
+
+## Batch 200: Grok-First Frontmatter Generation Architecture Proposal
+Date: 2026-03-07
+Status: COMPLETE
+
+### Goal
+Assess whether existing schemas/templates are sufficient for Grok-agent frontmatter generation and propose an organized migration structure including catalogs.
+
+### Steps
+- [x] Audit current schema, template, and catalog organization used by generation/export
+- [x] Identify readiness strengths and gaps for Grok-driven generation
+- [x] Propose target directory, contract, and pipeline model for Grok-first generation
+
+---
+
 ## Batch 198: Commit + Push Remaining Outstanding Work
 Date: 2026-03-07
 Status: IN PROGRESS
