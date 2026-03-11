@@ -1,0 +1,145 @@
+# Grok Upload Manifest (All-In)
+
+Generated: 2026-03-07
+Scope: Full manual upload pack for Grok-first generation workflows.
+Mode: Include all core contracts, catalogs, prompts, author profiles, policies, and essential source data files.
+
+## 1) Core Entry + Pipeline Files
+- run.py
+- generation/core/evaluated_generator.py
+- generation/core/generator.py
+- shared/text/utils/prompt_builder.py
+- docs/QUICK_REFERENCE.md
+- docs/02-architecture/processing-pipeline.md
+
+## 2) Governance Files
+- .github/COPILOT_GENERATION_GUIDE.md
+- .github/PROMPT_CREATION_ENFORCEMENT.md
+- .github/PROTECTED_FILES.md
+- .github/copilot-instructions.md
+
+## 3) Domain Catalogs + Configs
+- domains/applications/catalog.yaml
+- domains/applications/config.yaml
+- domains/compounds/catalog.yaml
+- domains/compounds/config.yaml
+- domains/contaminants/catalog.yaml
+- domains/contaminants/config.yaml
+- domains/contaminants/schema.yaml
+- domains/materials/catalog.yaml
+- domains/materials/config.yaml
+- domains/settings/catalog.yaml
+- domains/settings/config.yaml
+
+## 4) Prompt System Files
+- prompts/profiles/voice/indonesia.yaml
+- prompts/profiles/voice/italy.yaml
+- prompts/profiles/voice/taiwan.yaml
+- prompts/profiles/voice/united_states.yaml
+- prompts/quality/grok_humanness_evaluator_contract.yaml
+- prompts/quality/learned_patterns.yaml
+- prompts/registry/component_prompt_registry.yaml
+- prompts/registry/component_short_content_prompts.yaml
+- prompts/registry/prompt_catalog.yaml
+- prompts/registry/prompt_catalog_schema.yaml
+- prompts/registry/rhythm_profiles.yaml
+- prompts/registry/shared_prompt_registry.yaml
+- prompts/registry/technical_profiles.yaml
+- prompts/research/data/context_analysis.yaml
+- prompts/research/data/health_effects.yaml
+- prompts/research/data/process_documentation.yaml
+- prompts/research/data/property_research.yaml
+- prompts/research/data/safety_standards.yaml
+- prompts/research/visual/appearance_analysis.yaml
+- prompts/research/visual/surface_condition.yaml
+- prompts/voice/faq_array_enhancement.yaml
+- prompts/voice/faq_response.yaml
+- prompts/voice/material_description.yaml
+- prompts/voice/subtitle_generation.yaml
+- prompts/voice/subtitle_transformation.yaml
+- prompts/voice/voice_enhancement.yaml
+
+## 5) Author Voice Profiles
+- shared/voice/profiles/indonesia.yaml
+- shared/voice/profiles/italy.yaml
+- shared/voice/profiles/taiwan.yaml
+- shared/voice/profiles/united_states.yaml
+
+## 6) Policy Docs (docs/08-development)
+- docs/08-development/AI_ASSISTANT_GUIDE.md
+- docs/08-development/ARCHITECTURAL_INTEGRITY_REQUIREMENTS.md
+- docs/08-development/AUTHOR_ASSIGNMENT_POLICY.md
+- docs/08-development/AUTHOR_DATA_SOURCE_POLICY.md
+- docs/08-development/BACKGROUND_PROCESSING_POLICY.md
+- docs/08-development/CHANGELOG.md
+- docs/08-development/COMPONENT_TYPE_MIGRATION_JAN2026.md
+- docs/08-development/CONTAMINANT_URL_POLICY.md
+- docs/08-development/DATASET_DYNAMIC_FIELD_DETECTION.md
+- docs/08-development/DISCRETE_BATCH_REQUEST_POLICY.md
+- docs/08-development/ENRICHMENT_ARCHITECTURE_SUMMARY.md
+- docs/08-development/FIELD_NAMING_REFERENCE.md
+- docs/08-development/FRONTMATTER_LINK_VALIDATION.md
+- docs/08-development/FRONTMATTER_SOURCE_OF_TRUTH_POLICY.md
+- docs/08-development/GROK_HUMANNESS_EVALUATOR_INTEGRATION.md
+- docs/08-development/HARDCODED_VALUE_POLICY.md
+- docs/08-development/IMAGE_ARCHITECTURE.md
+- docs/08-development/IMAGE_GENERATION_IMPLEMENTATION_CHECKLIST.md
+- docs/08-development/IMAGE_GENERATION_MONITORING_POLICY.md
+- docs/08-development/ISO_8601_TIMESTAMP_POLICY.md
+- docs/08-development/MANDATORY_OVERWRITE_POLICY.md
+- docs/08-development/MATERIAL_NAME_CONSISTENCY_POLICY.md
+- docs/08-development/NAMING_CONVENTIONS_POLICY.md
+- docs/08-development/NAMING_CONVENTIONS_STANDARDIZATION_JAN3_2026.md
+- docs/08-development/NAMING_STANDARDIZATION_COMPLETE_JAN3_2026.md
+- docs/08-development/NO_CACHE_POLICY.md
+- docs/08-development/NUMERIC_FORMATTING_POLICY.md
+- docs/08-development/PIPELINE_REFACTORING_PROGRESS_DEC2025.md
+- docs/08-development/POSTPROCESSING_RETRY_POLICY.md
+- docs/08-development/PROMPTS_LOCATION_INVESTIGATION.md
+- docs/08-development/PROMPT_CHAIN_TESTS_SCHEMAS_DOCS_CLEANUP_FEB16_2026.md
+- docs/08-development/README.md
+- docs/08-development/REFERENCE_VALIDATION_INTEGRATION.md
+- docs/08-development/SIZE_AWARE_COMPRESSION_POLICY.md
+- docs/08-development/STRUCTURAL_LENGTH_CONSTRAINTS_POLICY.md
+- docs/08-development/TASK_METHOD_NAMING_GUIDE.md
+- docs/08-development/TEMPLATE_ONLY_POLICY.md
+- docs/08-development/TERMINAL_LOGGING_POLICY.md
+- docs/08-development/TEST_COVERAGE_IMPROVEMENT_PROPOSAL.md
+- docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md
+- docs/08-development/implementation-dataset-complete-2025-12-30.md
+- docs/08-development/new_component_guide.md
+- docs/08-development/plan-generation-architecture-improvement-2025-12-16.md
+- docs/08-development/plan-integration-2025-12-16.md
+
+## 7) Source Data Files (Essentials)
+- data/applications/Applications.yaml
+- data/compounds/Compounds.yaml
+- data/contaminants/contaminants.yaml
+- data/materials/Materials.yaml
+- data/settings/Settings.yaml
+- data/authors/Authors.yaml
+
+- data/associations/DomainAssociations.yaml
+- data/associations/ExtractedLinkages.yaml
+- data/associations/MaterialApplicationRelationships.yaml
+
+- data/materials/MaterialApplications.yaml
+- data/materials/IndustryApplications.yaml
+- data/materials/MaterialProperties.yaml
+- data/materials/Categories.yaml
+- data/materials/CategoryTaxonomy.yaml
+
+- data/materials/content/FAQs.yaml
+- data/materials/content/Micros.yaml
+
+- data/schemas/FrontmatterFieldOrder.yaml
+- data/schemas/content_generation_policy.yaml
+- data/schemas/component_single_line_prompts.yaml
+- data/schemas/section_display_schema.yaml
+- data/schemas/frontmatter.json
+
+## 8) Upload Notes for Grok
+1. Upload this manifest first.
+2. Upload files in the order of sections above.
+3. If size limits are hit, split by section (e.g., Source Data part 1/2/3) but keep full filenames unchanged.
+4. In your first prompt to Grok, instruct it to treat this manifest as the contract index and to request any missing listed files before generating output.
