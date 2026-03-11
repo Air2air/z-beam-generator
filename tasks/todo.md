@@ -5,6 +5,22 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 206: AI Assistant Instructions Refresh
+Date: 2026-03-11
+Status: COMPLETE
+
+### Goal
+Update the canonical AI assistant instruction surfaces to the new Grok/Pipeline 2 wording, keep the mirror synchronized, and add any missing linked governance reference needed by the new navigation block.
+
+### Steps
+- [x] Audit the current instruction files, protected-file guidance, and referenced navigation targets
+- [x] Update `.github/copilot-instructions.md` and `governance/copilot-instructions.md` with the requested instruction text
+- [x] Add the missing `governance/grok-tools.md` quick-reference target used by the updated instructions
+- [x] Run focused verification for instruction parity and link-target existence
+- [x] Record the correction pattern in `tasks/lessons.md`
+
+---
+
 ## Batch 205: Grok-First Second-Pass Parity Fixes
 Date: 2026-03-11
 Status: COMPLETE

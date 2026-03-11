@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-03-11: Control-surface documentation refreshes can introduce dead quick-navigation targets when new governance references are added without checking the repo. -> Rule: whenever instruction text adds a new referenced path, verify the file exists and create the minimal canonical doc in the same batch.
+
 - 2026-03-11: Canonical-first path updates can still break runtime helpers if shared validators assume legacy root keys or obsolete voice-file naming conventions. -> Rule: after switching loaders to canonical-first resolution, run a runtime probe against canonical aggregates and mirrored voice profiles, then normalize helper root-key and filename assumptions in the same batch.
 
 - 2026-03-11: Canonical-path migrations can still fail validation if integrity tooling only knows legacy flat YAML shapes, even when the new files are present and wired correctly. -> Rule: whenever source data moves to canonical aggregate hubs, update validators for both canonical paths and canonical nested relationship schemas before declaring the migration complete.
