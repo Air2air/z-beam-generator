@@ -5,6 +5,81 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 220: Single Schema Consolidation
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Consolidate back to one canonical frontmatter schema, remove the duplicate domain schema contract files, and align active docs/tests to the single-schema model.
+
+### Steps
+- [x] Remove the duplicate `schemas/*.schema.yaml` domain contract files
+- [x] Update active docs to point at the single canonical frontmatter schema instead of per-domain schema files
+- [x] Add focused regression coverage for the single-schema model and run targeted verification
+
+### Review
+- Removed the duplicate per-domain schema contract files from `schemas/`, leaving the repo with one canonical frontmatter schema path: `data/schemas/frontmatter.json`.
+- Updated active quick-reference and contaminant policy docs so they now describe the single-schema model instead of pointing at separate domain schema files.
+- Added `tests/unit/test_single_frontmatter_schema_contract.py` to fail if duplicate `*.schema.yaml` files are reintroduced under `schemas/`.
+- Verification: `python3 -m pytest tests/test_frontmatter_schema_page_description.py tests/unit/test_single_frontmatter_schema_contract.py -q` passed (`5 passed in 2.65s`).
+
+---
+
+## Batch 219: Domain Schema Root Relocation
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Relocate the five canonical source-domain schema contracts from `schemas/domains/` to the `schemas/` root and update active references so Grok can edit them in the requested location.
+
+### Steps
+- [x] Move the five domain schema contract files from `schemas/domains/` into `schemas/`
+- [x] Update active docs and task tracking to reference the new root-level schema paths
+- [x] Remove the now-obsolete `schemas/domains/` container files and verify the touched files remain clean
+
+### Review
+- Moved the canonical source-domain contracts to `schemas/materials.schema.yaml`, `schemas/contaminants.schema.yaml`, `schemas/compounds.schema.yaml`, `schemas/applications.schema.yaml`, and `schemas/settings.schema.yaml`.
+- Updated active quick-reference and domain-policy docs to point at `schemas/` instead of `schemas/domains/`.
+- Corrected the recent lesson/task notes so the documented canonical location now matches the requested root-level layout.
+- Verification: VS Code problem checks remained clean on the touched docs and the `schemas/` root now holds the five domain schema files alongside `pipeline_2_policy.yaml`.
+
+---
+
+## Batch 218: Canonical Domain Schema Root
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Create one canonical root folder under `schemas/` that holds the five source-domain schema contracts so Grok and human editors have a single place for domain schema ownership.
+
+### Steps
+- [x] Create `schemas/domains/` and add canonical schema contracts for materials, contaminants, compounds, applications, and settings
+- [x] Update active quick-reference and source-schema docs to point at the canonical domain schema root
+- [x] Run focused validation on the new schema files and touched docs
+
+### Review
+- Added a canonical source-domain schema root at `schemas/domains/` with one schema contract file each for materials, contaminants, compounds, applications, and settings, plus a local README that distinguishes these contracts from dataset/export schemas in `data/schemas/`.
+- Updated the active quick-reference surfaces (`docs/QUICK_REFERENCE.md` and `governance/QUICK_REFERENCE.md`) so Grok-facing and human-facing guidance now point to `schemas/domains/` for domain schema ownership.
+- Updated `docs/05-data/CONTAMINANT_SLUG_POLICY.md` to reference the new canonical contaminant schema path instead of the old domain-local one-off location.
+- Verification: VS Code problem check reported no errors in the touched docs, and the new `schemas/domains/` directory contains the expected five domain schema files plus README.
+
+---
+
+## Batch 217: Contaminant Signature Leakage And Active Doc Hygiene
+Date: 2026-03-12
+Status: IN PROGRESS
+
+### Goal
+Remove embedded author-signature leakage from canonical contaminant source content and synced mirrors, add regression coverage so it cannot re-enter, and fix active docs that still point at dead archive paths or overstate Python-owned text generation.
+
+### Steps
+- [ ] Remove author-signature leakage from canonical and mirrored contaminant source YAML
+- [ ] Add regression checks forbidding embedded author-signature leakage in contaminant content fields
+- [ ] Update active architecture/reference docs to reflect Grok-first source ownership and current archive locations
+- [ ] Re-export contaminants and run focused verification
+
+---
+
 ## Batch 216: Contaminant Data Cleanup And Long-Tail Doc Alignment
 Date: 2026-03-12
 Status: COMPLETE

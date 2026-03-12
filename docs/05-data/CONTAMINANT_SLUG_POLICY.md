@@ -112,10 +112,8 @@ if 'subcategory' not in pattern or not pattern['subcategory']:
 **Result**: System will NOT export contaminants with missing categories. This ensures 100% data quality.
 
 ### Schema Documentation
-See `domains/contaminants/schema.yaml` for complete list of:
-- Allowed categories (8 total)
-- Allowed subcategories by category (27 total)
-- Subcategory descriptions and examples
+Use `data/schemas/frontmatter.json` for the shared frontmatter contract.
+Use this policy and the canonical contaminant source file (`data/contaminants/contaminants.yaml`) for contaminant-specific category and slug rules.
 
 ---
 

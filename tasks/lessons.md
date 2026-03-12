@@ -8,6 +8,10 @@
 
 - 2026-03-12: Export configs can already enforce source-owned content rules while top-level architecture docs and tests still describe the older Python-generation model. -> Rule: when exporter responsibilities change, align the active architecture docs and add one real-config temp-output parity test against live frontmatter in the same batch.
 
+- 2026-03-12: Domain schema ownership can drift when one-off schema files live under individual domain folders while the rest of the repo documents schema locations generically. -> Rule: keep source-domain contracts together under the `schemas/` root and update both quick-reference surfaces and the nearest active domain doc in the same batch.
+
+- 2026-03-12: Duplicating full domain schema contracts beside an already-canonical frontmatter schema adds overlap without adding much validation value. -> Rule: keep one canonical frontmatter schema (`data/schemas/frontmatter.json`) and enforce domain-specific rules through narrow policies/tests instead of parallel full-schema copies.
+
 - 2026-03-12: Bulk cleanup of aggregate YAML content can miss placeholder text when YAML folding splits one logical sentence across multiple physical lines, and stale backup artifacts can keep false positives alive after canonical output is fixed. -> Rule: when removing repeated source-text contamination, use whitespace-tolerant verification against canonical source files first, then delete any non-canonical backup artifacts that keep search noise in derived output trees.
 
 - 2026-03-11: Canonical-first path updates can still break runtime helpers if shared validators assume legacy root keys or obsolete voice-file naming conventions. -> Rule: after switching loaders to canonical-first resolution, run a runtime probe against canonical aggregates and mirrored voice profiles, then normalize helper root-key and filename assumptions in the same batch.
