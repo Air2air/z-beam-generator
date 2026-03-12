@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-"""Fail-fast validator for frontmatter schema property/patternProperties contradictions."""
+"""Fail-fast validator for canonical frontmatter schema property/pattern collisions."""
 
-import json
 import re
 import sys
 from pathlib import Path
 
+import yaml
+
 
 def main() -> int:
-    schema_path = Path("data/schemas/frontmatter.json")
+    schema_path = Path("schemas/all_domains_schema.yaml")
     if not schema_path.exists():
         print(f"❌ Schema file not found: {schema_path}")
         return 1
 
-    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    schema = yaml.safe_load(schema_path.read_text(encoding="utf-8"))
     properties = schema.get("properties", {})
     pattern_properties = schema.get("patternProperties", {})
 
@@ -33,7 +34,7 @@ def main() -> int:
             print(f"   - property '{prop}' is forbidden by pattern '{pattern}'")
         return 1
 
-    print("✅ No property/patternProperties contradictions detected")
+    print("✅ No canonical-schema property/patternProperties contradictions detected")
     return 0
 
 

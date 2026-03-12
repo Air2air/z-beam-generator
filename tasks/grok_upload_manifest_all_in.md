@@ -25,7 +25,6 @@ Mode: Include all core contracts, catalogs, prompts, author profiles, policies, 
 - domains/compounds/config.yaml
 - domains/contaminants/catalog.yaml
 - domains/contaminants/config.yaml
-- domains/contaminants/schema.yaml
 - domains/materials/catalog.yaml
 - domains/materials/config.yaml
 - domains/settings/catalog.yaml
@@ -136,7 +135,7 @@ Mode: Include all core contracts, catalogs, prompts, author profiles, policies, 
 - data/schemas/content_generation_policy.yaml
 - data/schemas/component_single_line_prompts.yaml
 - data/schemas/section_display_schema.yaml
-- data/schemas/frontmatter.json
+- schemas/all_domains_schema.yaml
 
 ## 8) Upload Notes for Grok
 1. Upload this manifest first.

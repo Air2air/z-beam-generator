@@ -1,0 +1,133 @@
+# schemas/all_domains_schema.yaml
+# Consolidated shared schema for all domains (materials, applications, contaminants, compounds)
+# Version: 5.0.0 – March 2026
+# Enforces EEAT conformity, mandatory sectionDescription, high random length variation, citations
+
+type: object
+properties:
+  # ── Metadata (top level) ───────────────────────────────────────────────
+  pageTitle:
+    type: string
+    description: Page headline, concise and keyword-rich
+  pageDescription:
+    type: string
+    description: SEO/meta summary, 20–70 words, high random variation
+  metaDescription:
+    type: string
+    description: Shorter SEO description, 120–160 chars
+
+  # ── Navigation & Card ──────────────────────────────────────────────────
+  breadcrumbs:
+    type: array
+    items:
+      type: object
+      properties:
+        title: { type: string }
+        url:   { type: string }
+
+  card:
+    type: object
+    properties:
+      title:       { type: string }
+      description: { type: string }
+      image:       { type: string }
+      url:         { type: string }
+
+  # ── EEAT block (required for all pages) ────────────────────────────────
+  eeat:
+    type: object
+    required: [experience, expertise, authoritativeness, trustworthiness]
+    properties:
+      experience:       { type: string }  # e.g. "15 years in industrial laser applications, Navy-tested protocols 2019–2025"
+      expertise:        { type: string }  # e.g. "Certified laser safety officer with Ph.D. in Materials Science"
+      authoritativeness: { type: string } # e.g. "Backed by peer-reviewed studies and OSHA guidelines"
+      trustworthiness:  { type: string }  # Mandatory AI disclosure: "AI-assisted generation with human verification"
+      credentials:      { type: string }  # New – e.g. "Ph.D. Metallurgy, Certified Laser Safety Officer"
+      ymyLCompliance:   { type: string }  # New – e.g. "Conforms to OSHA and FDA standards for health/safety data"
+      biasDisclaimer:   { type: string }  # New – e.g. "Checked for biases in exposure risk data; objective analysis"
+      sourceLinks:
+        type: array
+        description: ">2 citations per major claim/field, tested non-404"
+        items:
+          type: object
+          properties:
+            url:         { type: string }
+            description: { type: string }
+            title:       { type: string }
+
+  # ── Author (immutable once assigned) ───────────────────────────────────
+  author:
+    type: object
+    properties:
+      name:           { type: string }
+      bio:            { type: string }
+      profileUrl:     { type: string }
+      personaFile:    { type: string }     # e.g. indonesia.yaml
+      formattingFile: { type: string }     # e.g. united_states.yaml
+
+  # ── Domain-flexible content (core variable part) ───────────────────────
+  properties:
+    type: object
+    description: Domain-specific properties (flexible nesting)
+    properties:
+      commonName:         { type: string }
+      chemicalFormula:    { type: string }  # materials & compounds
+      appearance:         { type: string }
+      healthEffects:      { type: string }  # contaminants & compounds
+      density:            { type: string }  # materials
+      hardness:           { type: string }  # materials
+      tensileStrength:    { type: string }  # materials
+      laserDamageThreshold: { type: string }  # materials
+      industryLinks:      { type: array }   # applications
+      riskCitations:      { type: array }   # contaminants – YMYL
+      safetyStandards:    { type: array }   # compounds – YMYL
+      sourceLinks:        { type: array }   # citations for any property
+
+  # ── Methods, Settings, Applications ────────────────────────────────────
+  removalMethods:
+    type: object
+    properties:
+      laser:      { type: string }
+      traditional: { type: string }
+
+  machineSettings:
+    type: object
+    properties:
+      power:         { type: string }
+      wavelength:    { type: string }
+      pulseDuration: { type: string }
+
+  applications:
+    type: array
+    items: { type: string }
+
+  # ── FAQ / Sectional Content (mandatory description pattern) ─────────────
+  faq:
+    type: object
+    properties:
+      _section:
+        type: string
+        description: sectionTitle (e.g. "Frequently Asked Questions")
+      sectionDescription:
+        type: string
+        description: Mandatory 20–70 word context/summary (high random variation)
+      questions:
+        type: array
+        items:
+          type: object
+          properties:
+            question: { type: string }
+            answer:   { type: string }
+
+  # Generic section pattern (for any custom block)
+  # Example usage:
+  # laser_interaction:
+  #   sectionTitle: Pulsed Laser Ablation
+  #   sectionDescription: | 
+  #     Rust forms brittle layers... (20–70 words, varied structure)
+  #   citations:
+  #     - url: ...
+  #       title: ...
+  #   content: ... (list, table, etc.)
+
+required: [pageTitle, eeat, author, properties]

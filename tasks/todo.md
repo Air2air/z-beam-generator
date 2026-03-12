@@ -5,6 +5,59 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 223: Contaminant Signature Leakage Completion
+Date: 2026-03-11
+Status: IN PROGRESS
+
+### Goal
+Finish removing embedded author-signature leakage from contaminant source content, add regression coverage that targets content fields rather than valid author metadata, and verify the exported frontmatter stays clean.
+
+### Steps
+- [ ] Remove leftover embedded signature artifacts from canonical and mirrored contaminant source YAML without disturbing valid author objects
+- [ ] Add a focused regression check for contaminant content-field leakage patterns and run it
+- [ ] Re-export contaminants and verify the cleaned strings are absent from website frontmatter
+
+---
+
+## Batch 222: Legacy Schema Cleanup
+Date: 2026-03-11
+Status: COMPLETE
+
+### Goal
+Remove obsolete schema files that no longer have live consumers, then align tests and active docs so `schemas/all_domains_schema.yaml` is the only active schema reference across both repos.
+
+### Steps
+- [x] Delete unused legacy schema files in generator and website repos
+- [x] Rewrite schema tests that still pinned removed compatibility schemas
+- [x] Update active docs and manifests to reference only the canonical consolidated schema
+
+### Review
+- Removed `data/schemas/frontmatter.json`, `domains/contaminants/schema.json`, `domains/contaminants/schema.yaml`, and `z-beam/schemas/frontmatter-v5.0.0.json` because they no longer had live runtime consumers.
+- Reworked the remaining schema tests so they validate the canonical consolidated contract and config-driven cleanup rules instead of asserting Draft 7 compatibility-schema details.
+- Simplified active docs and manifest files so both repos now point only to `schemas/all_domains_schema.yaml` as the schema reference.
+- Verification: focused schema-contract pytest coverage passed after the cleanup.
+
+---
+
+## Batch 221: Consolidated Schema Canonicalization
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Make `schemas/all_domains_schema.yaml` the canonical schema reference for both repos, keep legacy schema files explicitly in compatibility mode, and record cleanup guidance instead of deleting live compatibility surfaces prematurely.
+
+### Steps
+- [x] Repoint active docs, manifests, validators, and canonical-schema regression checks to `schemas/all_domains_schema.yaml`
+- [x] Mark legacy backend/frontend schema files as compatibility artifacts rather than canonical sources
+- [x] Record a concrete legacy-schema cleanup assessment with current keep/remove recommendations
+
+### Review
+- Updated the active quick-reference, Grok manifest, validator, and regression-test surfaces so `schemas/all_domains_schema.yaml` is now the documented canonical schema path for generator and website workflows.
+- Added `docs/08-development/SCHEMA_AUTHORITY_AND_CLEANUP.md` to capture the authority model and cleanup sequence while the repo transitioned away from older schema surfaces.
+- Verification: targeted pytest on the touched schema-contract tests and a focused conflict-script run both pass against the new canonical path.
+
+---
+
 ## Batch 220: Single Schema Consolidation
 Date: 2026-03-12
 Status: COMPLETE
@@ -18,7 +71,7 @@ Consolidate back to one canonical frontmatter schema, remove the duplicate domai
 - [x] Add focused regression coverage for the single-schema model and run targeted verification
 
 ### Review
-- Removed the duplicate per-domain schema contract files from `schemas/`, leaving the repo with one canonical frontmatter schema path: `data/schemas/frontmatter.json`.
+- Removed the duplicate per-domain schema contract files from `schemas/`, leaving the repo with one canonical frontmatter schema path at the time: `data/schemas/frontmatter.json`.
 - Updated active quick-reference and contaminant policy docs so they now describe the single-schema model instead of pointing at separate domain schema files.
 - Added `tests/unit/test_single_frontmatter_schema_contract.py` to fail if duplicate `*.schema.yaml` files are reintroduced under `schemas/`.
 - Verification: `python3 -m pytest tests/test_frontmatter_schema_page_description.py tests/unit/test_single_frontmatter_schema_contract.py -q` passed (`5 passed in 2.65s`).

@@ -2,8 +2,9 @@
 """
 Frontmatter Schema Validator
 
-Validates all frontmatter files against data/schemas/frontmatter.json to ensure
-compliance with naming conventions (page_title, meta_description, page_description).
+Validates frontmatter files against the canonical consolidated schema in
+schemas/all_domains_schema.yaml by default. Legacy compatibility schemas can
+still be passed explicitly via --schema when narrower historical checks are needed.
 
 Usage:
     python3 scripts/validation/validate_frontmatter_schema.py
@@ -17,7 +18,6 @@ Exit codes:
 """
 
 import argparse
-import json
 import os
 import sys
 from pathlib import Path
@@ -30,13 +30,13 @@ from shared.utils.file_ops.path_manager import PathManager
 
 
 def load_schema(schema_path: str) -> Dict:
-    """Load JSON schema from file."""
+    """Load schema from JSON or YAML file."""
     if not os.path.exists(schema_path):
         print(f"❌ Schema not found: {schema_path}")
         sys.exit(2)
     
     with open(schema_path, 'r') as f:
-        return json.load(f)
+        return yaml.safe_load(f)
 
 
 def validate_file(filepath: str, validator: Draft7Validator) -> Tuple[bool, List[str]]:
@@ -80,7 +80,7 @@ def validate_file(filepath: str, validator: Draft7Validator) -> Tuple[bool, List
 
 def main():
     project_root = PathManager.get_project_root()
-    default_schema = str(PathManager.get_path('data', 'schemas', 'frontmatter.json'))
+    default_schema = str(PathManager.get_path('schemas', 'all_domains_schema.yaml'))
     default_frontmatter_dir = str(project_root.parent / 'z-beam' / 'frontmatter')
 
     parser = argparse.ArgumentParser(description='Validate frontmatter files against schema')

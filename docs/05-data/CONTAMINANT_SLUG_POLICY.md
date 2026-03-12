@@ -112,7 +112,7 @@ if 'subcategory' not in pattern or not pattern['subcategory']:
 **Result**: System will NOT export contaminants with missing categories. This ensures 100% data quality.
 
 ### Schema Documentation
-Use `data/schemas/frontmatter.json` for the shared frontmatter contract.
+Use `schemas/all_domains_schema.yaml` for the canonical shared frontmatter contract.
 Use this policy and the canonical contaminant source file (`data/contaminants/contaminants.yaml`) for contaminant-specific category and slug rules.
 
 ---

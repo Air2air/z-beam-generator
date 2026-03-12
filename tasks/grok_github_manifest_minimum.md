@@ -60,7 +60,7 @@ Note: Treat this in-repo manifest as the canonical second-pass contract for Pipe
 ## 7) Required Schemas
 - data/schemas/content_generation_policy.yaml
 - data/schemas/component_single_line_prompts.yaml
-- data/schemas/frontmatter.json
+- schemas/all_domains_schema.yaml
 - schemas/pipeline_2_policy.yaml
 
 ## 8) Grok Instructions

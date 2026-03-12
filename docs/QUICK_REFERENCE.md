@@ -13,7 +13,7 @@ The workflow orchestration guide is the first step for every AI task.
 - Aggregate Source YAML hubs: aggregates/
 - Voice profiles: voices/
 - Frontmatter templates: frontmatter-templates/
-- Canonical frontmatter schema: data/schemas/frontmatter.json
+- Canonical frontmatter schema: schemas/all_domains_schema.yaml
 - Legacy CLI compatibility: run.py → legacy/run.py
 
 ## Common Tasks
