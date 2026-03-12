@@ -132,10 +132,10 @@ materials:
           unit: kg/m³
           source: "Materials Database 2024"
         # ... more material characteristics
-    description: "[Generated text from QualityEvaluatedGenerator]"
-    micro: "[Generated text from QualityEvaluatedGenerator]"
-    faq: "[Generated text from QualityEvaluatedGenerator]"
-    pageDescription: "[Generated text from QualityEvaluatedGenerator]"
+    description: "[Canonical source text written upstream before export]"
+    micro: "[Canonical source text written upstream before export]"
+    faq: "[Canonical source text written upstream before export]"
+    pageDescription: "[Canonical source text written upstream before export]"
   # ... 120 more materials
 ```
 

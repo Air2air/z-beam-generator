@@ -42,14 +42,16 @@ data/
 
 ### 1. Text Generation Pipeline
 ```
-User Request → Domain Coordinator → QualityEvaluatedGenerator
+Python Text Request → Domain Coordinator → QualityEvaluatedGenerator
 → Materials.yaml (SAVE) → Frontmatter (SYNC) → Learning DB
 ```
+
+Grok-first source workflows write canonical aggregate YAML upstream of export and are not part of the Python generation path shown above.
 
 ### 2. Export Pipeline
 ```
 Deploy Command → FrontmatterExporter → Load Source Data
-→ Apply Enrichers → Order Fields → Write Frontmatter
+→ Apply Export Transforms → Order Fields → Write Frontmatter
 ```
 
 ### 3. Research Pipeline

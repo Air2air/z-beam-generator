@@ -160,7 +160,7 @@ python3 run.py --batch-test
 - **Fixed**: Removed non-existent fallback method calls
 - **Grade**: C+ → B+ (85/100)
 - **Tests**: 10/10 automated compliance tests passing
-- **Docs**: [docs/archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md](docs/archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md)
+- **Docs**: [docs/08-development/CHANGELOG.md](docs/08-development/CHANGELOG.md)
 
 ### ✅ November 16: Composite Quality Scoring
 - **Architecture**: Grok (60%) + Subjective (30%) + Readability (10%)
@@ -174,7 +174,7 @@ python3 run.py --batch-test
 - **Auto-Enforcement**: Runs before every generation
 - **Docs**: [generation/integrity/README.md](generation/integrity/README.md)
 
-**📜 Full Changelog**: See [docs/archive/2025-11/](docs/archive/2025-11/) for detailed reports
+**📜 Full Changelog**: See [docs/08-development/CHANGELOG.md](docs/08-development/CHANGELOG.md) and [docs/decisions/](docs/decisions/) for active implementation history.
 
 ---
 

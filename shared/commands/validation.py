@@ -15,7 +15,7 @@ def generate_content_validation_report(output_file: str) -> bool:
     from pathlib import Path
 
     from domains.materials.materials_cache import get_material_by_name, load_materials
-    from export.utils.author_manager import get_author_info_for_material
+    from shared.utils.author_manager import get_author_info_for_material
     from shared.validation.integration import (
         get_dimension_scores_dict,
         validate_generated_content,

@@ -125,17 +125,131 @@ To modify system behavior, edit config/settings.py:
 ═══════════════════════════════════════════════════════════════════════════════
 """
 
+# Standard library imports
+import os
+import sys
+import argparse
+from pathlib import Path
+
+# Ensure direct script execution resolves project-root modules, including run.py.
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 # Import all configuration from centralized location
 from shared.config.settings import (
     GLOBAL_OPERATIONAL_CONFIG,
     API_PROVIDERS,
     COMPONENT_CONFIG,
 )
+from export.config.loader import load_domain_config
+from export.core.frontmatter_exporter import FrontmatterExporter
+from export.utils.url_formatter import format_filename
+from shared.utils.material_resolver import material_resolver
 
-# Standard library imports
-import os
-import sys
-import argparse
+
+EXPORT_DOMAIN_ALIASES = {
+    "application": "applications",
+    "applications": "applications",
+    "compound": "compounds",
+    "compounds": "compounds",
+    "contaminant": "contaminants",
+    "contaminants": "contaminants",
+    "material": "materials",
+    "materials": "materials",
+    "setting": "settings",
+    "settings": "settings",
+}
+
+
+def _resolve_export_domain(content_type: str) -> str | None:
+    return EXPORT_DOMAIN_ALIASES.get(content_type.strip().lower())
+
+
+def _resolve_export_item_key(exporter: FrontmatterExporter, identifier: str) -> tuple[str | None, str | None]:
+    items = exporter._load_domain_data()[exporter.items_key]
+    normalized_identifier = identifier.strip()
+    normalized_lower = normalized_identifier.lower()
+
+    if exporter.domain == 'materials':
+        resolved_key, error = material_resolver.resolve_material(normalized_identifier)
+        if resolved_key:
+            return resolved_key, None
+        return None, error
+
+    if normalized_identifier in items:
+        return normalized_identifier, None
+
+    for item_key, item_data in items.items():
+        candidates = [
+            item_key,
+            str(item_data.get(exporter.id_field, '')),
+            str(item_data.get('slug', '')),
+            str(item_data.get('name', '')),
+            str(item_data.get('displayName', '')),
+        ]
+        if any(candidate.lower() == normalized_lower for candidate in candidates if candidate):
+            return item_key, None
+
+    return None, (
+        f"Item '{identifier}' not found in export domain '{exporter.domain}'. "
+        f"Expected a source key, id, slug, name, or displayName present in {exporter.config['source_file']}"
+    )
+
+
+def _export_single_item(domain: str, identifier: str) -> tuple[bool, str]:
+    config = load_domain_config(domain)
+    exporter = FrontmatterExporter(config)
+    item_key, error = _resolve_export_item_key(exporter, identifier)
+    if item_key is None:
+        return False, error or f"Item '{identifier}' could not be resolved"
+
+    item_data = exporter._load_domain_data()[exporter.items_key][item_key]
+    success = exporter.export_single(item_key, item_data, force=True)
+    if not success:
+        return False, f"Export skipped or failed for '{item_key}'"
+
+    filename = format_filename(
+        item_id=item_key,
+        suffix=exporter.filename_suffix,
+        slugify_id=exporter.slugify_filenames,
+    )
+    output_path = exporter.output_path / filename
+    return True, str(output_path)
+
+
+def _export_all_items(domain: str) -> tuple[bool, str]:
+    config = load_domain_config(domain)
+    exporter = FrontmatterExporter(config)
+    results = exporter.export_all(force=True)
+    success_count = sum(1 for exported in results.values() if exported)
+    total_count = len(results)
+    return success_count > 0, f"{success_count}/{total_count} items exported"
+
+
+def _create_frontmatter_orchestrator(no_completeness_check: bool):
+    from export.core.orchestrator import FrontmatterOrchestrator
+    from shared.api.client_factory import create_api_client
+
+    return FrontmatterOrchestrator(
+        api_client=create_api_client("grok"),
+        enforce_completeness=not no_completeness_check,
+    )
+
+
+def _resolve_material_author_data(material_identifier: str, material_data: dict | None = None) -> dict | None:
+    from domains.materials.materials_cache import get_material_by_name_cached
+    from shared.utils.author_manager import get_author_info_for_material
+
+    candidate_material = material_data or get_material_by_name_cached(material_identifier)
+    if not candidate_material:
+        return None
+
+    try:
+        return get_author_info_for_material(candidate_material)
+    except (ValueError, KeyError) as error:
+        print(f"⚠️  Author assignment failed: {error}")
+        return None
 
 
 def _enable_terminal_streaming() -> None:
@@ -458,8 +572,8 @@ def main():
         print()
         return False
     
-    if args.caption:
-        result = handle_micro_generation(args.caption, skip_integrity_check=args.skip_integrity_check)
+    if args.micro:
+        result = handle_micro_generation(args.micro, skip_integrity_check=args.skip_integrity_check)
         # Per-iteration learning happens inline - no global evaluation needed
         return result
     
@@ -512,23 +626,19 @@ def main():
     
     # NEW: Multi-type orchestrator generation (Phase 1 architecture)
     if args.content_type and args.identifier:
-        from export.core.orchestrator import FrontmatterOrchestrator
-        from shared.api.client_factory import create_api_client
-        
         print(f"🚀 Generating {args.content_type} frontmatter: {args.identifier}")
+
+        export_domain = _resolve_export_domain(args.content_type)
+        if args.data_only and export_domain is not None:
+            success, message = _export_single_item(export_domain, args.identifier)
+            if success:
+                print(f"✅ Exported → {message}")
+                return True
+            print(f"❌ Export failed: {message}")
+            return False
         
         try:
-            # Initialize API client (optional for data-only mode)
-            api_client = create_api_client("grok") if not args.data_only else None
-            
-            # Determine completeness enforcement (enabled by default, disabled with --no-completeness-check)
-            enforce_completeness = not args.no_completeness_check
-            
-            # Create orchestrator
-            orchestrator = FrontmatterOrchestrator(
-                api_client=api_client,
-                enforce_completeness=enforce_completeness
-            )
+            orchestrator = _create_frontmatter_orchestrator(args.no_completeness_check)
             
             # Check if content type is supported
             if not orchestrator.is_type_supported(args.content_type):
@@ -541,18 +651,7 @@ def main():
             # Reusable approach: Check content data first, then enrich from registry
             author_data = None
             if args.content_type == 'material':
-                # For materials, load author from material data and enrich from registry
-                from domains.materials.materials_cache import get_material_by_name_cached
-                from export.utils.author_manager import get_author_info_for_material
-                
-                material_data = get_material_by_name_cached(args.identifier)
-                if material_data:
-                    try:
-                        # This handles extraction + registry enrichment automatically
-                        author_data = get_author_info_for_material(material_data)
-                    except (ValueError, KeyError) as e:
-                        print(f"⚠️  Author assignment failed: {e}")
-                        # Let generator handle missing author (fail-fast)
+                author_data = _resolve_material_author_data(args.identifier)
             # For other content types (region, application, thesaurus):
             # Each can implement similar logic by checking their data files for author info
             # then enriching with get_author_by_id() from registry
@@ -627,33 +726,18 @@ def main():
     # Single material generation
     if args.material:
         print(f"🚀 Generating frontmatter for {args.material}")
+
+        if args.data_only:
+            success, message = _export_single_item('materials', args.material)
+            if success:
+                print(f"✅ Exported → {message}")
+                return True
+            print(f"❌ Export failed: {message}")
+            return False
         
         try:
-            # Use FrontmatterOrchestrator (modern architecture)
-            from export.core.orchestrator import FrontmatterOrchestrator
-            
-            api_client = create_api_client("grok") if not args.data_only else None
-            
-            # Determine completeness enforcement (enabled by default, disabled with --no-completeness-check)
-            enforce_completeness = not args.no_completeness_check
-            
-            orchestrator = FrontmatterOrchestrator(
-                api_client=api_client,
-                enforce_completeness=enforce_completeness
-            )
-            
-            # Get author data from material data (reusable approach)
-            from domains.materials.materials_cache import get_material_by_name_cached
-            from export.utils.author_manager import get_author_info_for_material
-            
-            author_data = None
-            material_data = get_material_by_name_cached(args.material)
-            if material_data:
-                try:
-                    author_data = get_author_info_for_material(material_data)
-                except (ValueError, KeyError) as e:
-                    print(f"⚠️  Author assignment failed: {e}")
-                    # Let generator handle missing author (fail-fast)
+            orchestrator = _create_frontmatter_orchestrator(args.no_completeness_check)
+            author_data = _resolve_material_author_data(args.material)
             
             result = orchestrator.generate(
                 content_type='material',
@@ -683,16 +767,9 @@ def main():
         
         if args.data_only:
             try:
-                from export.core.trivial_exporter import export_all_frontmatter
-                import time
-                
-                start_time = time.time()
-                results = export_all_frontmatter()
-                elapsed = time.time() - start_time
-                
-                success_count = sum(1 for v in results.values() if v)
-                print(f"\n✅ Export complete: {success_count}/{len(results)} materials ({elapsed:.1f}s)")
-                return success_count > 0
+                success, message = _export_all_items('materials')
+                print(f"\n✅ Export complete: {message}")
+                return success
                 
             except Exception as e:
                 print(f"❌ Export failed: {e}")
@@ -717,12 +794,7 @@ def main():
                 return False
             
             # Use orchestrator with completeness control
-            from export.core.orchestrator import FrontmatterOrchestrator
-            enforce_completeness = not args.no_completeness_check
-            orchestrator = FrontmatterOrchestrator(
-                api_client=api_client,
-                enforce_completeness=enforce_completeness
-            )
+            orchestrator = _create_frontmatter_orchestrator(args.no_completeness_check)
             
             success_count = 0
             failure_count = 0
@@ -731,13 +803,7 @@ def main():
                 print(f"\n📋 Processing {material_name}...")
                 
                 try:
-                    # Get author data
-                    from export.utils.author_manager import get_author_info_for_material
-                    author_data = None
-                    try:
-                        author_data = get_author_info_for_material(material_info)
-                    except (ValueError, KeyError):
-                        pass  # Let orchestrator handle missing author
+                    author_data = _resolve_material_author_data(material_name, material_info)
                     
                     result = orchestrator.generate(
                         content_type='material',

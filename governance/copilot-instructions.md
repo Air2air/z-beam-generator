@@ -1,6 +1,6 @@
 # AI Assistant Instructions for Z-Beam Generator
 
-**Archived pre-refactor version**: `docs/archive/2026-02/copilot-instructions-pre-refactor-feb2026.md`
+**Archived pre-refactor version**: not stored as a workspace doc; use git history when you need the pre-refactor snapshot
 **Full policy library**: `docs/08-development/`
 **Quick answers**: `docs/QUICK_REFERENCE.md`
 **Grok-first mirror**: `governance/copilot-instructions.md`

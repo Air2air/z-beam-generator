@@ -17,7 +17,7 @@ No manual steps. No separate scripts. Everything orchestrated inline.
 from typing import Any, Dict
 
 # Import frontmatter export
-from export.orchestrator import FrontmatterOrchestrator
+from export.core.orchestrator import FrontmatterOrchestrator
 
 # Import voice enhancement
 from scripts.voice.enhance_materials_voice import MaterialsVoiceEnhancer

@@ -19,57 +19,9 @@ import yaml
 import time
 from pathlib import Path
 from typing import List
+from shared.config.settings import API_PROVIDERS, COMPONENT_CONFIG
 from shared.utils.material_resolver import material_resolver
 from shared.utils.quality_analyzer import quality_analyzer
-
-# Configuration required by ConfigManager
-API_PROVIDERS = {
-    'grok': {
-        'name': 'Grok',
-        'model': 'grok-4-0709',
-        'default_model': 'grok-4-0709',
-        'env_var': 'GROK_API_KEY',
-        'base_url': 'https://api.x.ai',
-        'max_tokens': 4096,
-        'temperature': 0.7,
-        'timeout_connect': 30.0,
-        'timeout_read': 300.0,
-        'max_retries': 3,
-        'retry_delay': 1.0
-    },
-    'deepseek': {
-        'name': 'DeepSeek',
-        'model': 'deepseek-chat',
-        'default_model': 'deepseek-chat',
-        'env_var': 'DEEPSEEK_API_KEY',
-        'base_url': 'https://api.deepseek.com',
-        'max_tokens': 4096,
-        'temperature': 0.7,
-        'timeout_connect': 30.0,
-        'timeout_read': 300.0,
-        'max_retries': 3,
-        'retry_delay': 1.0
-    },
-    'openai': {
-        'name': 'OpenAI',
-        'model': 'gpt-4',
-        'default_model': 'gpt-4',
-        'env_var': 'OPENAI_API_KEY',
-        'base_url': 'https://api.openai.com/v1',
-        'max_tokens': 4096,
-        'temperature': 0.7,
-        'timeout_connect': 30.0,
-        'timeout_read': 300.0,
-        'max_retries': 3,
-        'retry_delay': 1.0
-    }
-}
-
-COMPONENT_CONFIG = {
-    'micro': {'enabled': True, 'priority': 1},
-    'description': {'enabled': True, 'priority': 2},
-    'faq': {'enabled': True, 'priority': 3}
-}
 
 from shared.commands.postprocess import PostprocessCommand
 from export.core.frontmatter_exporter import FrontmatterExporter

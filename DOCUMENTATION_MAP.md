@@ -20,4 +20,4 @@ Start every AI task with the workflow orchestration guide.
 - docs/07-api/
 - docs/08-development/
 - docs/09-reference/
-- docs/archive/
+- docs/decisions/

@@ -5,6 +5,193 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 216: Contaminant Data Cleanup And Long-Tail Doc Alignment
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Remove the placeholder Aluminum relationship text from contaminant source data and synced frontmatter, then align the remaining active docs that still overstate Python generation relative to the current Grok-first export boundary.
+
+### Steps
+- [x] Update active reference docs to distinguish Python-generated text from Grok-first source-content workflows
+- [x] Replace placeholder Aluminum relationship text in canonical and mirrored contaminant source YAML
+- [x] Add a regression check that forbids the placeholder string in contaminant source data
+- [x] Re-export contaminants and verify the placeholder is gone from live frontmatter
+
+### Review
+- Updated the remaining active architecture/reference docs that still overstated Python generation so they now distinguish Grok-first source-owned content from the narrower Python text-generation path.
+- Replaced the repeated Aluminum placeholder description in both contaminant source mirrors (`data/contaminants/contaminants.yaml` and `shared/data/contaminants/contaminants.yaml`) with real exportable relationship text, then re-exported the full contaminants domain so website frontmatter stayed in sync.
+- Added a regression check in `tests/unit/test_frontmatter_parity_contracts.py` that forbids the placeholder string from re-entering contaminant source data.
+- Verification: `/usr/local/bin/python3 run.py --export --domain contaminants` exported 98/98 items successfully with link integrity passing; `/usr/local/bin/python3 -m pytest tests/unit/test_frontmatter_parity_contracts.py -q` passed (`6 passed in 7.85s`).
+- Removed the stale non-canonical backup artifact in `z-beam/frontmatter/contaminants/carbon-buildup-contamination.yaml.backup` so the website frontmatter tree no longer reports false-positive placeholder hits.
+
+---
+
+## Batch 215: Export Role Doc And Test Tightening
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Align active architecture docs with the Grok-first aggregate-source model, add focused export integration/parity coverage, and verify the generator is framed and tested primarily as a deterministic frontmatter exporter.
+
+### Steps
+- [x] Update active architecture docs to describe Grok as aggregate-content producer and Python as export/normalization layer
+- [x] Add focused exporter integration coverage against temp output paths
+- [x] Add source-to-frontmatter parity coverage for adhesive-residue contaminant export shape
+- [x] Run targeted verification and summarize remaining non-export cleanup opportunities
+
+### Review
+- Updated the active processing and export architecture docs so they now distinguish Grok-first source-content ownership from the Python export layer, while preserving the legacy rule that any remaining Python-generated text must still flow through the evaluated pipeline.
+- Added focused real-config exporter coverage in `tests/test_exporter.py` that exports `adhesive-residue-contamination` to a temp output path, verifies source-owned fields survive export unchanged, and confirms export-only transforms such as author hydration and `_section.sectionMetadata`.
+- Added live-parity coverage against `z-beam/frontmatter/contaminants/adhesive-residue-contamination.yaml` for stable source-owned fields and the visual appearance section shape.
+- Verification: `/usr/local/bin/python3 -m pytest tests/test_exporter.py -q` → `15 passed, 10 skipped in 45.50s`.
+- Remaining non-export cleanup opportunities are narrower and data-centric: the live placeholder Aluminum relationship description in contaminant frontmatter still needs a source-data correction, and some legacy Python generation guidance remains in long-tail docs outside the active architecture pair updated here.
+
+---
+
+## Batch 214: Doc Cleanup And Runner Test Supplementation
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Fix broken active archive/orchestrator references in generator and website docs, add focused test coverage for the repaired tools runner entrypoint, and verify the updated guidance against the current runtime behavior.
+
+### Steps
+- [x] Update active generator docs to remove broken archive references and dead orchestrator paths
+- [x] Update active website docs to remove broken archive-path guidance
+- [x] Add focused test coverage for direct `scripts/tools/run.py` execution/helpers
+- [x] Run targeted verification and summarize remaining follow-up items
+
+### Review
+- Cleaned active generator docs and instruction entrypoints so they no longer send users to missing `docs/archive` snapshots, and updated the stale roadmap example to the live `export.core.orchestrator` path.
+- Cleaned active website deployment/SEO docs to remove broken `/archive` and `docs/archived` guidance while preserving historical lookup via git history or current changelog locations.
+- Added `tests/integration/test_tools_runner_smoke.py` to cover direct script execution, `--content-type ... --data-only` export dispatch, and the repaired `--micro` command branch.
+- Verification: `/usr/local/bin/python3 -m pytest tests/integration/test_tools_runner_smoke.py -q` → `3 passed in 5.40s`.
+
+---
+
+## Batch 213: Cleanup Opportunity Audit
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Audit the repo for additional cleanup opportunities such as archive surfaces, then identify whether tests and docs should be updated or supplemented to match the current Grok-first and exporter-backed runtime behavior.
+
+### Steps
+- [x] Inspect archive and legacy cleanup surfaces still present in the repo and classify low-risk vs higher-risk cleanup candidates
+- [x] Identify test coverage gaps exposed by the recent runtime/exporter cleanup work
+- [x] Identify documentation gaps or stale guidance that should be updated to reflect the current runtime/export paths
+- [x] Summarize recommended next actions with rationale and scope
+
+### Review
+- The generator repo no longer has a live `docs/archive/` directory, but several active docs still reference it as if it exists, including `DOCUMENTATION_MAP.md`, `README.md`, `docs/08-development/AI_ASSISTANT_GUIDE.md`, and multiple architecture/guides documents
+- A current architecture example still points to the dead import path `components.frontmatter.core.orchestrator.FrontmatterOrchestrator` in `docs/02-architecture/EXTENSIBILITY_ROADMAP.md`, while the live runtime now uses `export.core.orchestrator`
+- There is no visible test coverage for direct execution of `scripts/tools/run.py` or for the `--content-type ... --data-only` runner path that recently required source-level fixes, so a focused CLI smoke/integration test should be added
+- `tests/test_exporter.py` still contains deprecated archive-path comments for enrichers, which is low-risk but contributes to stale maintenance guidance
+- The website repo shows the same documentation-hygiene pattern: active docs reference `docs/archived/` or `/archive/` even though those paths do not exist at the referenced locations
+
+---
+
+## Batch 211: Tools Runner Data-Only Export Migration
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Move the `--data-only` export paths in `scripts/tools/run.py` off deprecated orchestrator and trivial-exporter code so export-only CLI behavior runs directly through `FrontmatterExporter`.
+
+### Steps
+- [x] Audit the remaining `scripts/tools/run.py` orchestrator branches and confirm which `--data-only` paths can migrate safely
+- [x] Add exporter-backed resolution for content-type, single-material, and batch-material data-only exports
+- [x] Run focused validation on the tools runner and summarize the remaining non-export orchestrator callers
+
+### Review
+- `scripts/tools/run.py` now routes exporter-only `--data-only` paths through `FrontmatterExporter` helpers instead of the deprecated orchestrator/trivial-exporter paths
+- Focused validation found no errors in the updated runner, and the remaining direct `FrontmatterOrchestrator` callers are limited to non-export generation branches inside `scripts/tools/run.py`
+- Live frontmatter verification against `z-beam/frontmatter` confirms the migrated export path still produces post-processed output structures such as nested `_section.sectionMetadata`
+
+---
+
+## Batch 212: Frontmatter-Backed Orchestration Verification + Runner Cleanup
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Verify current orchestration against live `z-beam/frontmatter`, audit a representative export sample, and reduce another legacy runner path while using the exported website artifacts as the verification boundary.
+
+### Steps
+- [x] Verify one contaminant source item end to end against live frontmatter output
+- [x] Audit a small cross-domain sample of exported frontmatter files to confirm current exporter shape
+- [x] Reduce one additional legacy orchestration surface in `scripts/tools/run.py`
+- [x] Run focused verification and summarize results against live `z-beam/frontmatter`
+
+### Review
+- End-to-end verification confirmed that `data/contaminants/contaminants.yaml` for `adhesive-residue-contamination` matches the live exported contaminant frontmatter, including the ceramic appearance text and exporter-added `_section.sectionMetadata`
+- Cross-domain frontmatter sampling confirmed current exporter shape in contaminants, settings, and applications, with live output read directly from `z-beam/frontmatter`
+- `scripts/tools/run.py` now supports direct script execution by forcing the project root onto `sys.path`, and duplicated orchestrator/author-resolution logic has been centralized into shared helpers
+- Direct smoke test now succeeds: `python3 scripts/tools/run.py --content-type contaminant --identifier adhesive-residue-contamination --data-only` exports successfully to `../z-beam/frontmatter/contaminants/adhesive-residue-contamination.yaml`
+- Verification surfaced a separate live data-quality issue still present in production frontmatter: many contaminant exports currently include the placeholder Aluminum test description in `relationships.interactions.affectsMaterials`
+
+---
+
+## Batch 210: Orchestrator Caller Migration In Export Test Script
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Replace one low-risk `FrontmatterOrchestrator` caller with direct `FrontmatterExporter` usage in the normalized export test script, updating stale identifiers and assertions to match the current exporter contract.
+
+### Steps
+- [x] Audit the test script against current export configs, source IDs, and live frontmatter field names
+- [x] Replace the script's `FrontmatterOrchestrator` dependency with `FrontmatterExporter` and config-driven export calls
+- [x] Run focused validation on the updated script and record the remaining orchestrator callers for later batches
+
+### Review
+- `tests/test_normalized_exports.py` now exercises `FrontmatterExporter` directly instead of the deprecated orchestrator path
+- The migrated script now uses current source identifiers such as `adhesive-residue-contamination` and `aluminum-settings` rather than legacy shorthand IDs
+- The script assertions now match the current export contract (`pageDescription`, `relationships`, `author`, `machineSettings`) instead of stale legacy field names
+- Remaining direct orchestrator imports are currently limited to `scripts/tools/run.py` and `export/core/orchestrator.py`
+
+---
+
+## Batch 209: Legacy Runtime Cleanup Phase 1
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Implement the first low-risk legacy-runtime cleanup slice by removing duplicate CLI config ownership from `legacy/run.py` and migrating selected non-core author-manager imports off the export-layer shim.
+
+### Steps
+- [x] Reconfirm the current config ownership and non-core author-shim callers
+- [x] Re-export shared config constants from `run.py` and remove duplicate constant definitions from `legacy/run.py`
+- [x] Migrate selected non-core imports from `export.utils.author_manager` to `shared.utils.author_manager`
+- [x] Run focused verification on the touched runtime paths and summarize residual legacy callers
+
+### Review
+- `run.py` now re-exports `API_PROVIDERS` and `COMPONENT_CONFIG` from `shared.config.settings` for compatibility, while `legacy/run.py` no longer duplicates those constant dictionaries
+- Focused validation found no errors in the touched runtime files
+- Residual `export.utils.author_manager` references are now limited to the shim itself and planning/docs, so the remaining code-path cleanup can focus on higher-impact workflow/export surfaces
+
+---
+
+## Batch 208: Legacy Runtime Cleanup Audit + Refactor Proposal
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Audit the remaining legacy Python orchestration surface against the new Grok-first Pipeline 2 policy and produce a concrete, low-risk cleanup/refactor plan that preserves compatibility while reducing duplicated control paths.
+
+### Steps
+- [x] Re-audit the live CLI, exporter, orchestration, author-voice, and policy surfaces
+- [x] Identify concrete legacy seams, active callers, and documentation drift that still keep the repo in a mixed architecture state
+- [x] Write a staged cleanup/refactor proposal with explicit non-goals, sequencing, and low-risk first actions
+- [x] Verify the proposal matches the currently referenced runtime surfaces before marking complete
+
+### Review
+- Proposal written in `docs/08-development/LEGACY_RUNTIME_CLEANUP_PROPOSAL_2026-03-12.md`
+- Main findings: root CLI is already a compatibility shim, `FrontmatterExporter` is the practical export center, `FrontmatterOrchestrator` is deprecated but still called, author/voice resolution still crosses canonical and compatibility paths, and architecture docs still overstate the legacy Python pipeline as the universal control surface
+
+---
+
 ## Batch 207: Grok Frontmatter Repo Reference Refresh
 Date: 2026-03-11
 Status: COMPLETE

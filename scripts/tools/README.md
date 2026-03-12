@@ -71,9 +71,9 @@ Batch generates SEO-optimized titles for materials/compounds/contaminants.
 
 ## Archived Scripts
 
-**14 historical migration scripts** moved to `scripts/archive/historical-migrations/`:
+**14 historical migration scripts** were removed from the active tools surface and remain recoverable from git history:
 - One-time normalization, fix, migrate, refactor scripts from 2024
-- See `scripts/archive/README.md` for details
+- Use `git log -- scripts/tools/` to review or restore them when needed
 
 ## Usage Guidelines
 

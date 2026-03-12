@@ -230,10 +230,10 @@ Generate → Evaluate → Save → Improve Continuously (Option C)
 - `07-api/` - API integration, error handling, rate limits
 - `08-development/` - **Policies, guidelines, contribution rules**
 - `09-reference/` - Parameter reference, CLI commands, glossary
-- `archive/` - Historical documentation (completed implementations)
+- `decisions/` - Architecture decisions and implementation records
 
 ### **.github/** (AI Assistant Instructions)
-- `copilot-instructions.md` - Control surface: complexity gate, Core 5 Rules, Grade F violations, pre-change checklist, navigation (~126 lines). Full pre-refactor archive: `docs/archive/2026-02/copilot-instructions-pre-refactor-feb2026.md`
+- `copilot-instructions.md` - Control surface: complexity gate, Core 5 Rules, Grade F violations, pre-change checklist, navigation (~126 lines). Pre-refactor snapshots are preserved in git history rather than a workspace archive file.
 - `COPILOT_GENERATION_GUIDE.md` - Content generation step-by-step
 
 ---
@@ -252,11 +252,10 @@ Generate → Evaluate → Save → Improve Continuously (Option C)
 - `processing-pipeline.md` - Generation flow (Generate → Evaluate → Save)
 - `quality-gates.md` - What quality checks are enforced
 
-### **Recent Implementations** (`docs/archive/2025-11/`)
-- `OPTION_C_IMPLEMENTATION_NOV22_2025.md` - Save-all architecture
-- `CONFIG_DRIVEN_RANDOMIZATION_NOV22_2025.md` - All randomization in config
-- `PRIORITY1_COMPLETE_NOV22_2025.md` - Log ALL attempts for learning
-- `E2E_SYSTEM_ANALYSIS_NOV22_2025.md` - Complete system grade (A+)
+### **Recent Change Tracking**
+- `docs/08-development/CHANGELOG.md` - Active implementation log and maintenance notes
+- `docs/decisions/` - Architecture decisions and design records
+- `tasks/todo.md` - Current complex-task execution plans and review notes
 
 ---
 

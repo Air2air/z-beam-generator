@@ -17,12 +17,19 @@ Verifies:
 import sys
 from pathlib import Path
 
+import yaml
+
 # Add project root to path
 sys.path.insert(0, str(Path.cwd()))
 
-from export.core.orchestrator import FrontmatterOrchestrator
-from shared.api.client_factory import create_api_client
-import yaml
+from export.config.loader import load_domain_config
+from export.core.frontmatter_exporter import FrontmatterExporter
+
+
+def _load_exported_yaml(output_dir: Path, item_id: str) -> dict:
+    filepath = output_dir / f'{item_id}.yaml'
+    with open(filepath, 'r', encoding='utf-8') as handle:
+        return yaml.safe_load(handle)
 
 
 def run_contaminants_export():
@@ -31,10 +38,16 @@ def run_contaminants_export():
     print('TESTING CONTAMINANTS EXPORT')
     print('=' * 80)
     
-    test_contaminants = ['scale-buildup', 'aluminum-oxidation', 'adhesive-residue', 'copper-patina']
-    
-    api_client = create_api_client('grok')
-    orchestrator = FrontmatterOrchestrator(api_client=api_client)
+    test_contaminants = [
+        'scale-buildup-contamination',
+        'aluminum-oxidation-contamination',
+        'adhesive-residue-contamination',
+        'copper-patina-contamination',
+    ]
+
+    config = load_domain_config('contaminants')
+    exporter = FrontmatterExporter(config)
+    output_dir = Path(config['output_path'])
     
     results = []
     for contaminant in test_contaminants:
@@ -42,47 +55,37 @@ def run_contaminants_export():
         print('-' * 80)
         
         try:
-            result = orchestrator.generate(
-                content_type='contaminant',
-                identifier=contaminant
-            )
-            
-            if result.success:
-                # result.content is the file path - read the file
-                filepath = Path(result.content)
+            data = exporter._load_domain_data()[exporter.items_key][contaminant]
+            success = exporter.export_single(contaminant, data, force=True)
+
+            if success:
+                filepath = output_dir / f'{contaminant}.yaml'
                 print(f'✅ SUCCESS - Saved to: {filepath.name}')
-                
-                # Read and parse the generated file
-                with open(filepath, 'r') as f:
-                    data = yaml.safe_load(f)
-                
-                sections = list(data.keys())
+
+                exported = _load_exported_yaml(output_dir, contaminant)
+                sections = list(exported.keys())
                 print(f'   Sections ({len(sections)}): {", ".join(sections[:10])}{"..." if len(sections) > 10 else ""}')
-                
-                # Check for key fields
-                has_description = 'description' in data
-                has_micro = 'micro' in data
-                has_laser = 'laser_properties' in data
-                has_eeat = 'eeat' in data
-                has_category = 'category' in data
-                has_subcategory = 'subcategory' in data
-                
-                print(f'   ✓ description: {has_description}')
-                print(f'   ✓ micro: {has_micro}')
-                print(f'   ✓ laser_properties: {has_laser}')
-                print(f'   ✓ eeat: {has_eeat}')
+
+                has_page_description = 'pageDescription' in exported
+                has_relationships = 'relationships' in exported
+                has_author = 'author' in exported
+                has_category = 'category' in exported
+                has_subcategory = 'subcategory' in exported
+
+                print(f'   ✓ pageDescription: {has_page_description}')
+                print(f'   ✓ relationships: {has_relationships}')
+                print(f'   ✓ author: {has_author}')
                 print(f'   ✓ category: {has_category}')
                 print(f'   ✓ subcategory: {has_subcategory}')
-                
-                # Validate category/subcategory if present
+
                 if has_category and has_subcategory:
-                    category = data['category']
-                    subcategory = data['subcategory']
+                    category = exported['category']
+                    subcategory = exported['subcategory']
                     print(f'   📊 Categorization: {category}/{subcategory}')
-                
+
                 results.append((contaminant, True, len(sections)))
             else:
-                print(f'❌ FAILED: {result.error_message}')
+                print('❌ FAILED: exporter skipped or returned False')
                 results.append((contaminant, False, 0))
                 
         except Exception as e:
@@ -98,51 +101,50 @@ def run_settings_export():
     print('TESTING SETTINGS EXPORT')
     print('=' * 80)
     
-    test_materials = ['Aluminum', 'Steel', 'Copper', 'Titanium']
-    
-    api_client = create_api_client('grok')
-    orchestrator = FrontmatterOrchestrator(api_client=api_client)
+    test_settings = [
+        'aluminum-settings',
+        'steel-settings',
+        'copper-settings',
+        'titanium-settings',
+    ]
+
+    config = load_domain_config('settings')
+    exporter = FrontmatterExporter(config)
+    output_dir = Path(config['output_path'])
     
     results = []
-    for material in test_materials:
-        print(f'\n⚙️  Exporting: {material}')
+    for setting_id in test_settings:
+        print(f'\n⚙️  Exporting: {setting_id}')
         print('-' * 80)
         
         try:
-            result = orchestrator.generate(
-                content_type='settings',
-                identifier=material
-            )
-            
-            if result.success:
-                # result.content is the file path - read the file
-                filepath = Path(result.content)
+            data = exporter._load_domain_data()[exporter.items_key][setting_id]
+            success = exporter.export_single(setting_id, data, force=True)
+
+            if success:
+                filepath = output_dir / f'{setting_id}.yaml'
                 print(f'✅ SUCCESS - Saved to: {filepath.name}')
-                
-                # Read and parse the generated file
-                with open(filepath, 'r') as f:
-                    data = yaml.safe_load(f)
-                
-                sections = list(data.keys())
+
+                exported = _load_exported_yaml(output_dir, setting_id)
+                sections = list(exported.keys())
                 print(f'   Sections ({len(sections)}): {", ".join(sections[:10])}{"..." if len(sections) > 10 else ""}')
-                
-                # Check for key fields
-                has_settings = 'machine_settings' in data
-                has_challenges = 'challenges' in data
-                has_description = 'description' in data
-                
-                print(f'   ✓ machine_settings: {has_settings}')
-                print(f'   ✓ challenges: {has_challenges}')
-                print(f'   ✓ description: {has_description}')
-                
-                results.append((material, True, len(sections)))
+
+                has_machine_settings = 'machineSettings' in exported
+                has_common_challenges = 'relationships' in exported and 'operational' in exported['relationships']
+                has_page_description = 'pageDescription' in exported
+
+                print(f'   ✓ machineSettings: {has_machine_settings}')
+                print(f'   ✓ operational relationships: {has_common_challenges}')
+                print(f'   ✓ pageDescription: {has_page_description}')
+
+                results.append((setting_id, True, len(sections)))
             else:
-                print(f'❌ FAILED: {result.error_message}')
-                results.append((material, False, 0))
+                print('❌ FAILED: exporter skipped or returned False')
+                results.append((setting_id, False, 0))
                 
         except Exception as e:
             print(f'❌ EXCEPTION: {e}')
-            results.append((material, False, 0))
+            results.append((setting_id, False, 0))
     
     return results
 

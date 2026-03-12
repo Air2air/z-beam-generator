@@ -23,7 +23,7 @@ See [voice/README.md](../../voice/README.md) for complete voice system documenta
 
 ### Quality Analysis System
 - **[../02-architecture/TEXT_GENERATION_GUIDE.md](../02-architecture/TEXT_GENERATION_GUIDE.md)** - Unified quality analysis with QualityAnalyzer
-- **[../archive/README.md](../archive/README.md)** - Archived optimizer documentation (pre-consolidation)
+- **[../08-development/ENRICHMENT_ARCHITECTURE_SUMMARY.md](../08-development/ENRICHMENT_ARCHITECTURE_SUMMARY.md)** - Current enrichment and optimizer architecture notes
 
 ## Component Guides
 
@@ -31,7 +31,7 @@ See [voice/README.md](../../voice/README.md) for complete voice system documenta
 
 ## Creating New Components
 
-See: [development/new_component_guide.md](../development/new_component_guide.md)
+See: [../08-development/new_component_guide.md](../08-development/new_component_guide.md)
 
 ## Component Architecture
 
@@ -55,5 +55,5 @@ python3 run.py --list-components
 
 ## See Also
 
-- [Architecture Documentation](../architecture/COMPONENT_SYSTEM.md) - Component system architecture
-- [Operations Documentation](../operations/) - Running components
+- [Architecture Documentation](../02-architecture/) - Component system architecture
+- [Operations Documentation](../04-operations/) - Running components

@@ -4,6 +4,12 @@
 
 - 2026-03-11: Control-surface documentation refreshes can introduce dead quick-navigation targets when new governance references are added without checking the repo. -> Rule: whenever instruction text adds a new referenced path, verify the file exists and create the minimal canonical doc in the same batch.
 
+- 2026-03-12: Active docs and compatibility instructions can keep pointing at removed archive folders long after the code paths are cleaned up. -> Rule: when a cleanup batch removes or deprecates archive surfaces, run a follow-up grep over active docs and top-level instruction files, then replace dead archive links with current docs or git-history guidance in the same batch.
+
+- 2026-03-12: Export configs can already enforce source-owned content rules while top-level architecture docs and tests still describe the older Python-generation model. -> Rule: when exporter responsibilities change, align the active architecture docs and add one real-config temp-output parity test against live frontmatter in the same batch.
+
+- 2026-03-12: Bulk cleanup of aggregate YAML content can miss placeholder text when YAML folding splits one logical sentence across multiple physical lines, and stale backup artifacts can keep false positives alive after canonical output is fixed. -> Rule: when removing repeated source-text contamination, use whitespace-tolerant verification against canonical source files first, then delete any non-canonical backup artifacts that keep search noise in derived output trees.
+
 - 2026-03-11: Canonical-first path updates can still break runtime helpers if shared validators assume legacy root keys or obsolete voice-file naming conventions. -> Rule: after switching loaders to canonical-first resolution, run a runtime probe against canonical aggregates and mirrored voice profiles, then normalize helper root-key and filename assumptions in the same batch.
 
 - 2026-03-11: Canonical-path migrations can still fail validation if integrity tooling only knows legacy flat YAML shapes, even when the new files are present and wired correctly. -> Rule: whenever source data moves to canonical aggregate hubs, update validators for both canonical paths and canonical nested relationship schemas before declaring the migration complete.
@@ -257,6 +263,10 @@
 - 2026-02-28: Ads tracking can appear healthy while production CSP silently blocks conversion network calls and post-deploy checks only warn. Rule: require Ads domains (`googleadservices.com`, `doubleclick.net`) in connect-src and treat missing Ads endpoint coverage as a hard post-deploy failure.
 
 - 2026-02-28: Post-deploy SEO/CWV checks can miss analytics regressions when they only assert preconnect tags. Rule: add a dedicated analytics validation category that checks GA loader presence, consent default guards, and CSP endpoint coverage for both GA and Ads domains.
+
+- 2026-03-12: Direct script entrypoints under `scripts/tools/` can shadow the project root `run.py`, breaking config imports only when executed as files instead of through the canonical root CLI. Rule: any standalone script that imports project-root modules must prepend the repository root to `sys.path` before runtime imports.
+
+- 2026-03-12: Legacy tools-runner parser drift can stay hidden until a real CLI smoke test hits a removed argument name (`args.caption`) in a dispatcher path. Rule: after refactoring CLI flags, run at least one direct command-path smoke test for each surviving entrypoint instead of relying on static file validation alone.
 
 - 2026-02-28: Analytics implementation can look complete while hidden hardcoded measurement fallbacks and skipped script tests undermine consistency. Rule: read GA/AW IDs only from centralized env config with no hardcoded IDs, and validate integration through deterministic wrapper-wiring tests instead of brittle third-party script DOM assertions.
 
@@ -572,3 +582,4 @@
 - 2026-02-25: TypeScript `Author` interface had ~10 snake_case optional fields (`experience_years`, `verification_level`, etc.) violating the camelCase TS convention. Rule: TypeScript interfaces must use camelCase regardless of origin — Python/backend snake_case names must be converted at the type boundary.
 - 2026-02-25: TypeScript `dateModified` was marked `@deprecated Use lastModified instead` in `ArticleMetadata` and 4 other interfaces — the deprecation was backwards. `dateModified` is the canonical frontmatter field; `lastModified` is the legacy alias. Fixing the type in one interface may unmask pre-existing errors in other files that were suppressed by the earlier type error in the same file. Rule: always run `tsc --noEmit` after type-level changes and separate pre-existing from newly introduced errors using `git diff --name-only`.
 - 2026-03-07: Embedded third-party forms inside cross-origin iframes can keep confirmation flows trapped in-frame; parent app code cannot force top-window navigation. Rule: when iframe context is required, conditionally hide global chrome (navbar/breadcrumbs) from inside client components by detecting `window.self !== window.top`.
+- 2026-03-12: Migrating a legacy export test off deprecated orchestration required more than replacing the import path — the test also encoded stale source IDs (`scale-buildup` vs `scale-buildup-contamination`) and stale output fields (`description`, `machine_settings`, `laser_properties`). Rule: when retiring a compatibility path, verify the test against live source keys and current exported YAML before preserving any existing assertions.

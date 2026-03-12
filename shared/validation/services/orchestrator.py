@@ -345,7 +345,7 @@ class ValidationOrchestrator:
                 return None
             
             # Get author info
-            from export.utils.author_manager import get_author_info_for_material
+            from shared.utils.author_manager import get_author_info_for_material
             author_info = get_author_info_for_material(material_info)
             
             if not isinstance(author_info, dict):

@@ -1,6 +1,6 @@
 # Export System Architecture
 
-**Date**: December 20, 2025 (Consolidated)  
+**Date**: March 12, 2026  
 **Status**: Production Architecture  
 **Current Version**: FrontmatterExporter
 
@@ -8,13 +8,19 @@
 
 ## 🎯 System Overview
 
-The export system transforms source data (Materials.yaml, Contaminants.yaml, etc.) into frontmatter YAML files for the z-beam website. The architecture is built on:
+The export system transforms canonical source data in `data/*/*.yaml` into frontmatter YAML files for the z-beam website. In current Grok-first workflows, that source data is authored and quality-checked upstream before export. The architecture is built on:
 
 1. **Universal Exporter Pattern** - Single exporter handles all domains
 2. **Configuration-Driven** - Domain behavior defined in YAML configs
-3. **Enricher Pipeline** - Modular enhancement system
+3. **Generator Task Pipeline** - Deterministic normalization, hydration, cleanup, and ordering
 4. **Zero Fallbacks** - Fail-fast on missing data (100% completeness required)
 5. **Trivial Export** - No API calls, validation, or generation at export time
+
+Export boundary:
+
+- Source YAML owns content quality, author assignment, page copy, relationship copy, and section metadata.
+- Export config owns formatting, field compatibility, author hydration, cleanup, ordering, and output writing.
+- Frontmatter is a derived artifact. Fix source or export logic, never the generated website file directly.
 
 ---
 
@@ -86,42 +92,32 @@ field_mapping:
 
 ---
 
-### 3. Enricher Pipeline System
+### 3. Generator Task Pipeline System
 
-**Location**: `export/enrichers/`  
-**Registry**: `export/enrichers/linkage/registry.py`  
-**Purpose**: Modular data enhancement during export
+**Location**: `export/generation/universal_content_generator.py` and `export/config/*.yaml`  
+**Purpose**: Deterministic export-time transforms during export
 
-**Enricher Types**:
+**Primary Task Types**:
 
-**Universal Enrichers** (configuration-driven):
-- `universal_restructure` - Field cleanup and normalization
-- `universal_linkage` - Cross-domain relationship linking
+**Universal Tasks** (configuration-driven):
+- `export_metadata` - Add legitimate export-time metadata such as `dateModified`
+- `author_linkage` - Hydrate source author identifiers into website author objects
+- `text_field_normalization` - Normalize wrapper artifacts without regenerating copy
+- `camelcase_normalization` - Convert source compatibility fields to frontend casing
+- `field_cleanup` - Remove deprecated export-only leftovers
+- `field_ordering` - Enforce stable website field order
 
-**Metadata Enrichers**:
-- `timestamp` - Add ISO 8601 timestamps
-- `author` - Populate author metadata
-- `name` - Generate display names
-- `breadcrumb` - Build hierarchical navigation
+**Domain-Specific Tasks**:
+- relationship shaping and grouping where required by the frontend contract
+- section metadata preservation or normalization where already present in source
+- field-order generators that run last for stable output
 
-**Relationship Enrichers**:
-- `relationships` - Build cross-domain relationships
-- `relationship_grouping` - Group relationships by type
-- `relationships_slug` - Generate relationship slugs
-
-**Cleanup Enrichers**:
-- `field_cleanup` - Remove temporary fields
-- `relationship_renaming` - Normalize relationship names
-- `contaminant_materials_grouping` - Group by material type
-
-**Total**: 16 enrichers registered
-
-**Enricher Interface**:
+**Generator Interface**:
 ```python
-class Enricher:
-    def enrich(self, item: Dict[str, Any], context: Dict[str, Any]) -> Dict[str, Any]:
-        """Transform item data during export."""
-        return enhanced_item
+class ContentGenerator:
+  def generate(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
+    """Apply configured export-time transforms without generating new content."""
+    return transformed_frontmatter
 ```
 
 ---
@@ -131,7 +127,7 @@ class Enricher:
 ```
 SOURCE DATA (100% Complete)
 ├── data/materials/Materials.yaml
-├── data/contaminants/Contaminants.yaml
+├── data/contaminants/contaminants.yaml
 ├── data/compounds/Compounds.yaml
 └── data/settings/Settings.yaml
          │
@@ -139,10 +135,11 @@ SOURCE DATA (100% Complete)
 UNIVERSAL EXPORTER
 ├── Load domain config (export/config/*.yaml)
 ├── Load source data
-├── Apply enricher pipeline (16 enrichers)
-│   ├── Metadata enrichment
-│   ├── Relationship building
-│   └── Field cleanup
+├── Apply configured generator tasks
+│   ├── Export metadata
+│   ├── Author hydration
+│   ├── Text normalization / cleanup
+│   └── Field ordering
 └── Write frontmatter YAML
          │
          ▼
@@ -151,6 +148,7 @@ FRONTMATTER OUTPUT (Website)
 ```
 
 **Key Principle**: ALL generation/validation happens BEFORE export
+- ✅ Grok-first research and writing → Source YAML files
 - ✅ AI text generation → Source YAML files
 - ✅ Property research → Source YAML files  
 - ✅ Completeness validation → Source YAML files
@@ -387,9 +385,9 @@ python3 export/core/orchestrator.py --all
 - `docs/02-architecture/processing-pipeline.md` - Generation pipeline
 
 **Historical**:
-- `docs/archive/2025-12/EXPORTERS_UPDATED_DEC19_2025.md` - Dec 19 deprecations
-- `docs/archive/2025-12/EXPORT_IMPROVEMENT_PLAN_DEC16_2025.md` - Dec 16 improvements
-- `docs/archive/2025-12/export/` - Historical export documentation
+- `docs/08-development/CHANGELOG.md` - Active export-system maintenance log
+- `docs/decisions/` - Architecture decision records for major export changes
+- `git log -- docs/02-architecture/EXPORT_SYSTEM_ARCHITECTURE.md export/` - Source-of-truth history for prior export changes
 
 ---
 

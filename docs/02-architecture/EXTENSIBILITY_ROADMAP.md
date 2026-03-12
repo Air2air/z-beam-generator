@@ -125,7 +125,7 @@ generator = StreamlinedFrontmatterGenerator()
 result = generator.generate(material_name)
 
 # NEW: Orchestrator-based generation
-from components.frontmatter.core.orchestrator import FrontmatterOrchestrator
+from export.core.orchestrator import FrontmatterOrchestrator
 orchestrator = FrontmatterOrchestrator(api_client=api_client)
 result = orchestrator.generate(
     content_type='material',
