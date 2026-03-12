@@ -102,11 +102,6 @@ def main() -> int:
         action="store_true",
         help="Also validate settings source data for forbidden machineSettings leaf descriptions",
     )
-    parser.add_argument(
-        "--include-shared-data",
-        action="store_true",
-        help="With --check-settings-data, also validate shared/data/settings/Settings.yaml mirror",
-    )
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parents[2]
@@ -116,8 +111,6 @@ def main() -> int:
 
     if args.check_settings_data:
         checks = [repo_root / "data/settings/Settings.yaml"]
-        if args.include_shared_data:
-            checks.append(repo_root / "shared/data/settings/Settings.yaml")
 
         for path in checks:
             if path.exists():

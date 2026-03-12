@@ -16,6 +16,10 @@
 
 - 2026-03-11: Compatibility schemas linger unless tests and docs stop encoding them as required artifacts. -> Rule: once a legacy schema has no live runtime consumers, delete it in the same batch that removes its last test and doc references.
 
+- 2026-03-11: Shared data mirrors can outlive their runtime purpose and keep source ownership ambiguous. -> Rule: when only parity tests still reference a mirrored data file, collapse to the canonical source path and update the tests in the same batch.
+
+- 2026-03-11: Loader packages become misleading when mirrored domain datasets live beside the loader code that no longer consumes them. -> Rule: keep `shared/data/` loader-only and store canonical domain YAML exclusively under `data/` unless a documented compatibility need still exists.
+
 - 2026-03-12: Bulk cleanup of aggregate YAML content can miss placeholder text when YAML folding splits one logical sentence across multiple physical lines, and stale backup artifacts can keep false positives alive after canonical output is fixed. -> Rule: when removing repeated source-text contamination, use whitespace-tolerant verification against canonical source files first, then delete any non-canonical backup artifacts that keep search noise in derived output trees.
 
 - 2026-03-11: Canonical-first path updates can still break runtime helpers if shared validators assume legacy root keys or obsolete voice-file naming conventions. -> Rule: after switching loaders to canonical-first resolution, run a runtime probe against canonical aggregates and mirrored voice profiles, then normalize helper root-key and filename assumptions in the same batch.

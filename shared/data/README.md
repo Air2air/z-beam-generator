@@ -1,69 +1,53 @@
-# Data Loading System
+# Shared Data Loaders
 
-Consolidated data loading architecture organized by responsibility.
+`shared/data/` is a loader package. Canonical YAML lives under `data/`, not here.
 
 ## Structure
 
 ```
 shared/data/
-├── universal_loader.py         # ✅ Primary loader (use this)
-├── specialized/
-│   ├── author_loader.py        # Author/persona loading
-│   └── safety_loader.py        # Safety data loading
-└── legacy/
-    ├── base_loader.py          # Deprecated: Use universal_loader
-    └── loader.py               # Deprecated: Use universal_loader
-
-domains/*/loaders/
-├── data_loader_v2.py           # Domain-specific logic
-├── category_loader.py          # (materials only)
-└── pattern_loader.py           # (contaminants only)
+├── base_loader.py              # Abstract loader base class
+├── loader_factory.py           # Generic factory + backward-compatible aliases
+└── specialized/
+    ├── author_loader.py        # Author/persona loading
+    └── safety_loader.py        # Safety data loading
 ```
 
-## Consolidation (Jan 13, 2026)
+## Canonical Data Ownership
 
-**Before**: 18 loader files scattered across domains and shared
-**After**: Organized into universal + specialized + domain-specific
+- Canonical domain YAML: `data/<domain>/`
+- Canonical authors YAML: `data/authors/Authors.yaml`
+- Canonical schemas: `data/schemas/` and `schemas/`
 
-### Primary Loader
+`shared/data/` should not contain mirrored domain datasets. It exists to provide shared loader code for canonical data stored under `data/`.
 
-Use `universal_loader.py` for all general data loading:
+## Usage
+
+### Generic Loader Factory
+
 ```python
-from shared.data.universal_loader import UniversalLoader
+from shared.data.loader_factory import create_data_loader
 
-loader = UniversalLoader()
-data = loader.load('materials', 'Materials.yaml')
+loader = create_data_loader("materials")
+materials = loader.load_materials()
 ```
 
 ### Specialized Loaders
 
-Use when loading specific data types:
 ```python
 from shared.data.specialized.author_loader import AuthorLoader
 from shared.data.specialized.safety_loader import SafetyLoader
 ```
 
-### Domain Loaders
+### Domain-Specific Loaders
 
-Domain-specific loading logic:
 ```python
 from domains.materials.loaders.data_loader_v2 import MaterialsDataLoader
 from domains.contaminants.loaders.data_loader_v2 import ContaminantsDataLoader
 ```
 
-## Migration Notes
+## Notes
 
-**Deprecated** (moved to `legacy/`):
-- `base_loader.py` → Use `universal_loader.py`
-- `loader.py` → Use `universal_loader.py`
-
-**Active**:
-- `universal_loader.py` - Primary entry point
-- `specialized/*` - Specific data types
-- `domains/*/loaders/` - Domain-specific logic
-
-## Related
-
-- Universal loader: `shared/data/universal_loader.py`
-- Domain loaders: `domains/*/loaders/`
-- Legacy loaders: `shared/data/legacy/`
+- `base_loader.py` is active; it is not a legacy file.
+- `loader_factory.py` is the shared loader entry point.
+- If a domain needs a compatibility copy, document the reason explicitly; do not create silent mirrors under `shared/data/`.

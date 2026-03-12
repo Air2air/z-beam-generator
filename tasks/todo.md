@@ -5,15 +5,55 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 225: Shared Data Package Reorganization
+Date: 2026-03-11
+Status: COMPLETE
+
+### Goal
+Turn `shared/data/` into a true loader-only package by removing stale mirrored domain datasets, updating the remaining validator that still referenced a shared settings mirror, and rewriting the package documentation to match the real filesystem.
+
+### Steps
+- [x] Remove mirrored domain data folders under `shared/data/` that no longer have live runtime consumers
+- [x] Simplify `validate_machine_settings_contract.py` so it only validates the canonical settings source path
+- [x] Rewrite `shared/data/README.md` to describe the actual loader package layout and canonical data ownership
+
+### Review
+- Removed the mirrored domain data directories under `shared/data/`, leaving that package with loader code only.
+- Simplified `scripts/validation/validate_machine_settings_contract.py` so it validates only the canonical settings source file under `data/settings/Settings.yaml`.
+- Rewrote `shared/data/README.md` and corrected the moved author loader path in `docs/guides/VOICE_SYSTEM_GUIDE.md` so the docs now match the real filesystem.
+- Verification: `python3 scripts/validation/validate_machine_settings_contract.py --check-settings-data` passed.
+
+---
+
+## Batch 224: Contaminant Source Of Truth Consolidation
+Date: 2026-03-11
+Status: COMPLETE
+
+### Goal
+Keep contaminants in one correct canonical source file under `data/contaminants/contaminants.yaml`, remove the obsolete shared mirror, and update tests/task notes so the repo no longer implies dual-source ownership.
+
+### Steps
+- [x] Remove the obsolete shared contaminant source mirror
+- [x] Rewrite parity/regression checks to enforce the single canonical contaminant source path
+- [x] Update active task notes that still describe contaminant data as dual mirrors
+
+### Review
+- Removed the obsolete `shared/data/contaminants/contaminants.yaml` mirror so contaminants now have one canonical source file at `data/contaminants/contaminants.yaml`.
+- Updated `tests/unit/test_frontmatter_parity_contracts.py` so the contaminant regression checks validate the canonical source file instead of enforcing a second mirrored copy.
+- Corrected the active task notes that still described contaminant ownership as dual mirrors.
+- Verification: `python3 -m pytest tests/unit/test_frontmatter_parity_contracts.py -q` passed (`7 passed in 5.34s`).
+
+---
+
 ## Batch 223: Contaminant Signature Leakage Completion
 Date: 2026-03-11
 Status: IN PROGRESS
 
 ### Goal
-Finish removing embedded author-signature leakage from contaminant source content, add regression coverage that targets content fields rather than valid author metadata, and verify the exported frontmatter stays clean.
+Finish removing embedded author-signature leakage from canonical contaminant source content, add regression coverage that targets content fields rather than valid author metadata, and verify the exported frontmatter stays clean.
 
 ### Steps
-- [ ] Remove leftover embedded signature artifacts from canonical and mirrored contaminant source YAML without disturbing valid author objects
+- [ ] Remove leftover embedded signature artifacts from the canonical contaminant source YAML without disturbing valid author objects
 - [ ] Add a focused regression check for contaminant content-field leakage patterns and run it
 - [ ] Re-export contaminants and verify the cleaned strings are absent from website frontmatter
 
@@ -71,7 +111,7 @@ Consolidate back to one canonical frontmatter schema, remove the duplicate domai
 - [x] Add focused regression coverage for the single-schema model and run targeted verification
 
 ### Review
-- Removed the duplicate per-domain schema contract files from `schemas/`, leaving the repo with one canonical frontmatter schema path at the time: `data/schemas/frontmatter.json`.
+- Historical note: this batch removed the duplicate per-domain schema contract files from `schemas/`, leaving the repo with one canonical frontmatter schema path at that time: `data/schemas/frontmatter.json`.
 - Updated active quick-reference and contaminant policy docs so they now describe the single-schema model instead of pointing at separate domain schema files.
 - Added `tests/unit/test_single_frontmatter_schema_contract.py` to fail if duplicate `*.schema.yaml` files are reintroduced under `schemas/`.
 - Verification: `python3 -m pytest tests/test_frontmatter_schema_page_description.py tests/unit/test_single_frontmatter_schema_contract.py -q` passed (`5 passed in 2.65s`).
@@ -148,7 +188,7 @@ Remove the placeholder Aluminum relationship text from contaminant source data a
 
 ### Review
 - Updated the remaining active architecture/reference docs that still overstated Python generation so they now distinguish Grok-first source-owned content from the narrower Python text-generation path.
-- Replaced the repeated Aluminum placeholder description in both contaminant source mirrors (`data/contaminants/contaminants.yaml` and `shared/data/contaminants/contaminants.yaml`) with real exportable relationship text, then re-exported the full contaminants domain so website frontmatter stayed in sync.
+- Replaced the repeated Aluminum placeholder description in the canonical contaminant source file (`data/contaminants/contaminants.yaml`), then re-exported the full contaminants domain so website frontmatter stayed in sync.
 - Added a regression check in `tests/unit/test_frontmatter_parity_contracts.py` that forbids the placeholder string from re-entering contaminant source data.
 - Verification: `/usr/local/bin/python3 run.py --export --domain contaminants` exported 98/98 items successfully with link integrity passing; `/usr/local/bin/python3 -m pytest tests/unit/test_frontmatter_parity_contracts.py -q` passed (`6 passed in 7.85s`).
 - Removed the stale non-canonical backup artifact in `z-beam/frontmatter/contaminants/carbon-buildup-contamination.yaml.backup` so the website frontmatter tree no longer reports false-positive placeholder hits.

@@ -163,7 +163,7 @@ throughout—at least 1-2 distinctive markers per paragraph.
 
 **Location**: `data/authors/Authors.yaml`  
 **Purpose**: Identity, credentials, contact info  
-**Access**: via `shared/data/author_loader.py`
+**Access**: via `shared/data/specialized/author_loader.py`
 
 ```yaml
 authors:
