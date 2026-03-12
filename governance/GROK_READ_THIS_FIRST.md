@@ -27,6 +27,7 @@ When working directly from the repo, read in this order:
 - Source data hubs: `aggregates/`
 - Voice files: `voices/`
 - Frontmatter shape guides: `frontmatter-templates/`
+- Production website frontmatter target: `https://github.com/Air2air/z-beam/tree/main/frontmatter`
 - Preview-only draft area: `outputs/`
 
 ## Compatibility Paths You Must Not Break

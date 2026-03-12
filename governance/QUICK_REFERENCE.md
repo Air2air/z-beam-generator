@@ -15,6 +15,7 @@ The workflow orchestration guide is the first step for every AI task.
 - Aggregate Source YAML hubs: aggregates/
 - Voice profiles: voices/
 - Frontmatter templates: frontmatter-templates/
+- Production frontmatter target repo: https://github.com/Air2air/z-beam/tree/main/frontmatter
 - Legacy CLI compatibility: run.py → legacy/run.py
 
 ## Common Tasks

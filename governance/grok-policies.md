@@ -19,6 +19,7 @@
 ## Pipeline 2 Working Rules
 - Use aggregate source YAML hubs in `aggregates/` as the primary research context for direct generation.
 - Use templates in `frontmatter-templates/` as shape guides for Grok-authored output.
+- Treat the production website repo frontmatter folder at `https://github.com/Air2air/z-beam/tree/main/frontmatter` as the publication target and output-shape reference.
 - Use `voices/*.yaml` for author voice guidance; legacy runtime mirrors remain in `shared/voice/profiles/`.
 - Use `outputs/` only for preview artifacts and draft frontmatter that is not yet promoted into source or production frontmatter.
 

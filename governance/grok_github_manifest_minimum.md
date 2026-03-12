@@ -73,4 +73,4 @@ Note: Treat this in-repo manifest as the canonical second-pass contract for Pipe
 7. If a canonical file is unavailable, fall back to the listed compatibility path before requesting user intervention.
 
 ## 9) Related Frontmatter Repo (Minimum)
-Use these frontmatter folders for output shape/reference only after loading generator contracts above.
+Use the production website repo frontmatter folder at https://github.com/Air2air/z-beam/tree/main/frontmatter for output shape/reference only after loading generator contracts above.

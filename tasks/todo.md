@@ -5,6 +5,21 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 207: Grok Frontmatter Repo Reference Refresh
+Date: 2026-03-11
+Status: COMPLETE
+
+### Goal
+Update Grok-facing governance docs so they explicitly state that production frontmatter lives in the `z-beam` website repository at `https://github.com/Air2air/z-beam/tree/main/frontmatter`.
+
+### Steps
+- [x] Audit Grok-facing docs for stale local-only frontmatter references
+- [x] Update the canonical Grok docs and mirrored instruction surface to reference the production website repo frontmatter location
+- [x] Verify the updated Grok docs consistently point to the production repo path
+- [x] Record the correction pattern in `tasks/lessons.md`
+
+---
+
 ## Batch 206: AI Assistant Instructions Refresh
 Date: 2026-03-11
 Status: COMPLETE

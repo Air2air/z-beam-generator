@@ -142,7 +142,7 @@ Full list: `.github/PROTECTED_FILES.md`
 | Material name conventions | `docs/08-development/MATERIAL_NAME_CONSISTENCY_POLICY.md` |
 | Terminal logging | `docs/08-development/TERMINAL_LOGGING_POLICY.md` |
 | Voice centralization | `docs/08-development/AUTHOR_ASSIGNMENT_POLICY.md` |
-| Frontmatter export path | `frontmatter/materials/`, `frontmatter/contaminants/`, etc. → `/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/` |
+| Frontmatter export path | Production website repo: `https://github.com/Air2air/z-beam/tree/main/frontmatter` (`frontmatter/materials/`, `frontmatter/contaminants/`, etc.) |
 | Grok Tools & Thresholds | `governance/grok-tools.md` (browse_page, code_execution; >85% confidence) |
 
 ---

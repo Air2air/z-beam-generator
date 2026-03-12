@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-03-11: Grok-facing docs can drift toward local workspace paths even when the real publication target is another repository. -> Rule: when documenting frontmatter outputs for Grok workflows, name the production website repo path explicitly and keep manifest, quick-reference, and instruction mirrors aligned in the same batch.
+
 - 2026-03-11: Control-surface documentation refreshes can introduce dead quick-navigation targets when new governance references are added without checking the repo. -> Rule: whenever instruction text adds a new referenced path, verify the file exists and create the minimal canonical doc in the same batch.
 
 - 2026-03-11: Canonical-first path updates can still break runtime helpers if shared validators assume legacy root keys or obsolete voice-file naming conventions. -> Rule: after switching loaders to canonical-first resolution, run a runtime probe against canonical aggregates and mirrored voice profiles, then normalize helper root-key and filename assumptions in the same batch.
