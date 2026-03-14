@@ -5,6 +5,317 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 244: Predeploy Gate Cleanup For Static Page Refactor
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Clear the remaining predeploy blockers after the static-page registry and homepage normalization work so the website repo can pass the full prebuild gate before commit and push.
+
+### Steps
+- [x] Fix the registry-related TypeScript regressions and restore graceful static-page factory fallback behavior expected by the full test suite
+- [x] Remove stale `/rental` assumptions from sitemap and JSON-LD validation scripts so the validators follow the current services-hub route inventory
+- [x] Restore the missing material asset filenames required by content validation and rerun the full website prebuild gate
+
+### Review
+- Fixed the shared static-page registry type surface and the `createStaticPage(...)` fallback path so the factory still behaves gracefully for invalid page keys in the legacy error-handling tests while the registry remains authoritative for live routes.
+- Updated sitemap and JSON-LD validation scripts that still hardcoded `/rental` as a required route, which removed false predeploy failures after the services-hub consolidation.
+- Added the missing material image filenames that content validation expected, allowing `validate:content` to pass without relaxing the configured gate.
+- Verification: `npm run prebuild` passed in `z-beam`.
+
+---
+
+## Batch 243: Centralize Website Pricing Source
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Keep equipment-rental pricing only in the website site config, remove hardcoded rate copy from static-page YAML, and update homepage/static-page consumers to import centralized pricing helpers.
+
+### Steps
+- [x] Add reusable equipment-rental pricing helpers to the website site config and export them for downstream consumers
+- [x] Remove hardcoded pricing copy from the Services frontmatter and enrich the loaded frontmatter from the centralized pricing helpers
+- [x] Update homepage/banner/tests to consume the centralized pricing helpers and run focused verification
+
+### Review
+- Added reusable equipment-rental pricing helpers and aggregate-offer builders in `app/config/site.ts`, then re-exported them through the existing config/compatibility entry points so pricing data stays authoritative in one file.
+- Removed hardcoded pricing literals from `app/services/page.yaml` and now enrich the loaded Services frontmatter in `app/utils/staticPageLoader.ts`, which keeps metadata, social descriptions, and schema price fields synced from the site config.
+- Updated the homepage product schema and the rental banner to consume the centralized pricing helpers, removed the last app-level pricing example literal from `ClickableCard.tsx`, and verified the change with focused Jest coverage.
+- Verification: `npm test -- --runInBand tests/utils/staticPageLoader.test.ts tests/utils/pages/createStaticPage.integration.test.tsx tests/app/static-pages.test.tsx tests/seo/schema-generators.test.ts` passed.
+
+---
+
+## Batch 242: Static Page Registry And Homepage Normalization
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Make the shared static-page inventory authoritative across the website, move the homepage onto the same frontmatter-loading contract, and eliminate duplicated rental pricing/service-offer truth from homepage and sitemap/schema consumers.
+
+### Steps
+- [x] Create one shared static-page registry that owns page keys, route paths, architecture, and sitemap inclusion for the static-page family
+- [x] Normalize homepage content loading and metadata generation onto shared frontmatter utilities instead of direct route-local YAML parsing
+- [x] Consolidate equipment-rental pricing/service-offer consumers onto one website-side source, then update focused tests and run verification
+
+### Implementation Plan
+- [x] Create a registry module that defines the static-page inventory and route metadata in one importable surface instead of relying on PAGE_CONFIGS scraping and duplicated sitemap route literals
+- [x] Move homepage frontmatter to the shared app-root contract, extend the loader to support the home page, and switch app/page.tsx to consume the shared loader/metadata path
+- [x] Update validator, sitemap/static-page consumers, and focused tests to read the shared registry or shared loader contracts, then rerun targeted verification
+
+### Review
+- Added a shared static-page registry under `app/utils/pages/staticPageRegistry.*` so route paths, shared-factory participation, page architecture, and sitemap inclusion now come from one importable source instead of hardcoded page lists or source scraping.
+- Moved the homepage frontmatter from `static-pages/home.yaml` to `app/page.yaml`, extended `loadStaticPageFrontmatter(...)` to resolve registry-backed YAML paths including the app root, and updated `app/page.tsx` to use the shared loader for both metadata and content rendering.
+- Switched sitemap generation and the static-page completeness validator to consume the shared registry, updated homepage/static-page tests to follow the new contract, and removed all references to the retired `static-pages/home.yaml` path.
+- Verification: `npm test -- --runInBand tests/utils/staticPageLoader.test.ts tests/unit/homepage-featured-sections.test.ts tests/utils/pages/createStaticPage.integration.test.tsx tests/app/static-pages.test.tsx tests/sitemap/sitemap.test.ts` passed.
+- Verification: `node scripts/validation/pages/validate-static-page-completeness.js` passed with 0 critical issues; the remaining warnings are the existing pages without bespoke schema cases (`thank-you`, `partners`, `equipment`, `compliance`, `safety`).
+
+---
+
+## Batch 241: Consolidate Rental Into Services
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Move the live rental landing-page content onto `/services`, retire the dedicated `/rental` route, and clean up the shared static-page system so Services is the only canonical destination for that offer content.
+
+### Steps
+- [x] Replace the Services frontmatter with the current Rental content and realign route-specific metadata to `/services`
+- [x] Remove the Rental static-page route and delete shared policy, sitemap, redirect, and UI references that still treat `/rental` as a live page
+- [x] Update the affected static-page docs and route-inventory tests, then run focused verification
+
+### Review
+- Replaced the former Services hub frontmatter with the live Rental content model so `/services` now renders through the same content-card architecture and carries the rental pricing, training, comparison, and compliance resource content.
+- Deleted the dedicated `app/rental` route, removed `rental` from the shared static-page policy surface, dropped the live sitemap entry, and added a compatibility redirect from `/rental` to `/services` so the retired path no longer exists as a page.
+- Repointed homepage/schema, validation-route inventories, active static-page docs, and static-page test suites so the repo treats `/services` as the canonical equipment-rental destination.
+- Verification: `npm test -- --runInBand tests/utils/pages/createStaticPage.integration.test.tsx tests/utils/pages/createStaticPage.errors.test.tsx tests/utils/pages/createStaticPage.test.tsx tests/utils/staticPageLoader.test.ts tests/app/static-pages.test.tsx tests/integration/staticPages.test.tsx tests/sitemap/sitemap.test.ts tests/utils/breadcrumbs.test.ts tests/architecture/jsonld-enforcement.test.ts tests/lib/schema/enhanced-generators.test.ts` passed.
+
+---
+
+## Batch 236: Remove Static Page Author Component
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Remove the visible Author component from all static pages rendered through the shared static-page system, while preserving author rendering for article and dataset page families that still rely on it.
+
+### Steps
+- [x] Add a narrow layout-level control so static pages can suppress the visible Author component without changing article behavior
+- [x] Wire the shared static-page factory to opt into the new no-author behavior for every static page architecture
+- [x] Run focused frontend tests for the layout and static-page factory behavior
+
+### Review
+- Added a narrow `hideAuthor` flag to the shared `Layout` so author rendering can be suppressed for static pages without changing the default behavior for article and dataset page families.
+- Updated both shared static-page render paths in `createStaticPage(...)` to opt into the no-author layout, covering content-card and dynamic-content static pages with one change.
+- Fixed verification blockers uncovered by the focused Jest run: imported the live `ScheduleContent` widget into the factory and realigned stale integration-test coverage from the retired `operations` route to the current `compliance` route.
+- Verification: `npm test -- --runInBand tests/components/Layout.test.tsx tests/utils/pages/createStaticPage.integration.test.tsx tests/app/static-pages.test.tsx` passed.
+
+---
+
+## Batch 237: Static Page Cleanup Finalization
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Finish the highest-value static-page cleanup work left after the route/layout parity pass by normalizing services-vs-rental navigation and breadcrumb targets, removing stale operations wording, and reducing avoidable page-specific complexity in the shared static-page factory.
+
+### Steps
+- [x] Audit the live service-family nav, breadcrumb, and CTA targets to identify remaining `/rental` vs `/services` drift in static-page surfaces
+- [x] Fix the highest-signal frontmatter and route-surface inconsistencies without reintroducing bespoke route shells
+- [x] Simplify one layer of avoidable page-specific logic in the shared static-page factory, then rerun focused frontend verification
+
+### Review
+- Confirmed the main navigation surface is already normalized to `/services`, so the remaining service-family cleanup was narrower than the older batch notes implied.
+- Removed one stale frontmatter drift point by changing the rental resource section copy from retired `operations` wording to `compliance` in the live rental page frontmatter.
+- Simplified the shared static-page system by removing dead `StaticPageConfig` flags, deleting an unused `contact-info` section branch from the content-card renderer, and making the schedule widget render from the existing `dynamicFeatures` frontmatter contract instead of a hardcoded schedule flag.
+- Verification: `npm test -- --runInBand tests/components/Layout.test.tsx tests/utils/pages/createStaticPage.integration.test.tsx tests/app/static-pages.test.tsx tests/unit/workiz-integration.test.ts tests/app/conversion-tracking-scope.test.ts` passed.
+
+### Remaining Follow-Up
+- The broader route/content cleanup tracked in Batch 232 still remains open for items like shared service-family link normalization beyond this focused pass.
+
+---
+
+## Batch 238: Dynamic Static Page Branch Reduction
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Remove one more page-type special case from the shared dynamic static-page renderer so Netalux and the other dynamic pages use the same content-section path wherever the frontmatter shape already allows it.
+
+### Steps
+- [x] Confirm the remaining dynamic-page special cases and keep only the ones required by real frontmatter differences
+- [x] Remove the unnecessary dynamic-page branch from the shared factory without changing live route entry points
+- [x] Run focused static-page verification and record the result
+
+### Review
+- Confirmed the remaining Netalux-specific branch in the dynamic static-page renderer was not backed by a distinct frontmatter contract; the page can render through the same `content-section` path as the other dynamic pages.
+- Removed the Netalux-only rendering branch from `createStaticPage(...)` and kept dynamic-page behavior aligned around the shared `ContentSection` path.
+- Cleaned up the shared sidebar helper signature so it no longer suggests that page-type-specific branching is required there.
+- Verification: `npm test -- --runInBand tests/utils/pages/createStaticPage.integration.test.tsx tests/app/static-pages.test.tsx tests/components/Layout.test.tsx` passed.
+
+---
+
+## Batch 239: Static Page Config Surface Cleanup
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Remove dead static-page policy/config fields and stale migration wording so the shared page factory and policy files describe only live behavior.
+
+### Steps
+- [x] Remove no-op config fields and unused helper parameters from the shared static-page policy layer
+- [x] Clean stale migration comments or misleading wording in the shared static-page factory
+- [x] Re-run focused static-page verification and record the result
+
+### Review
+- Removed the dead `robotsIndex` field from the shared static-page policy config because indexing behavior is already sourced from each page's frontmatter SEO block.
+- Dropped the unused config parameter from the dynamic sidebar helper and cleaned stale migration wording in the shared static-page factory so the files describe the current architecture instead of transitional refactor phases.
+- Verification: `npm test -- --runInBand tests/utils/pages/createStaticPage.integration.test.tsx tests/app/static-pages.test.tsx tests/components/Layout.test.tsx` passed.
+
+---
+
+## Batch 240: Static Page Documentation Sync
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Align the active static-page normalization guide with the live route architecture so it documents the shared factory pattern that the codebase now actually uses.
+
+### Steps
+- [x] Update stale examples and route-pattern guidance in the active normalization guide
+- [x] Realign the listed current static pages and validation targets with the live codebase
+- [x] Sweep the docs tree for the same stale static-page pattern after the guide update
+
+### Review
+- Updated `docs/STATIC_PAGE_NORMALIZATION_GUIDE.md` so the canonical example shows the real `createStaticPage(...)` export pattern instead of an invalid direct default export.
+- Replaced outdated route guidance that still described Contact and Netalux as custom shared-layout routes; both now follow the shared factory path, and the guide now includes `thank-you` in the active static-page set.
+- Updated the validation section to point at the live focused tests: `createStaticPage.integration.test.tsx`, `static-pages.test.tsx`, and `Layout.test.tsx`.
+- Follow-up sweep found no additional stale docs using the retired static-page route pattern.
+
+---
+
+## Batch 235: Contact Page Google Ads Standards Audit
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Run a second, standards-focused pass on the Contact page Google Analytics and Google Ads event path, verify the current implementation against Google tracking expectations, and harden any weak spots without reintroducing bespoke route logic.
+
+### Steps
+- [x] Audit the live Contact-page tracking path from component event emission through the shared Google loader and conversion helpers
+- [x] Compare the current implementation against Google Ads and GA4 event expectations for page engagement and lead conversion handling
+- [x] Patch any implementation gaps, then rerun focused verification for Contact and thank-you tracking behavior
+
+### Review
+- Confirmed the intended architecture after user clarification: `/contact` is the only route that should emit the configured Google Ads conversion event, while `/thank-you` remains an ordinary confirmation page with no separate conversion event.
+- Verified the consent implementation aligns with consent mode v2 expectations: defaults are denied before measurement, and `ad_storage`, `ad_user_data`, `ad_personalization`, and `analytics_storage` are updated from the on-page consent UI.
+- Hardened the real standards gap in the deferred tag strategy by forcing immediate Google tag load on `/contact`, which avoids losing the configured contact-page conversion if the user leaves before the generic 3-second fallback fires.
+- Added same-session dedupe on the Contact page conversion fire so reloads do not repeatedly send the configured Google Ads conversion event.
+- Verification: reran the focused frontend suite after removing the thank-you event path and moving the configured conversion to the Contact page.
+
+---
+
+## Batch 233: Contact Page Shared Pattern Absorption
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Move the Contact route onto the shared static-page factory where it now fits, while preserving the custom lead form and contact-information content without reintroducing bespoke route shell logic.
+
+### Steps
+- [x] Add a minimal shared extension point for content-card static pages to render page-specific supplemental content and header CTA content
+- [x] Convert `/contact` to use `createStaticPage('contact')` and move any remaining route-specific layout shell concerns into the shared static-page path
+- [x] Re-run focused frontend verification and then reassess whether the static-page system is still meaningfully overcomplex
+
+### Review
+- Moved `/contact` onto `createStaticPage('contact')` so metadata, layout wiring, and JSON-LD handling now follow the same factory path as the other shared static pages instead of a bespoke route shell.
+- Added a narrow shared extension point for content-card pages: `headerCTA` is now honored in the shared content-card render path, and `renderSupplementalContent` allows one page-specific body block without pushing iframe logic into the base renderer.
+- Extracted the form-plus-contact-info grid into `app/components/Contact/ContactLeadSection.tsx`, keeping the Contact-specific embed isolated while the route itself stays on the shared static-page system.
+- Verification: editor checks returned no errors for the changed files, and `npm test -- --runInBand tests/app/static-pages.test.tsx tests/utils/staticPageLoader.test.ts tests/unit/homepage-featured-sections.test.ts tests/app/conversion-tracking-scope.test.ts` passed.
+
+---
+
+## Batch 234: Contact Analytics Preservation
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Preserve explicit Google event tracking behavior on the Contact page after the route was moved onto the shared static-page factory, and update stale Workiz tests so they verify the current shared-component architecture.
+
+### Steps
+- [x] Add Contact-page engagement tracking where the embedded Workiz form actually renders
+- [x] Update stale Workiz integration tests from the old route-file assumptions to the new shared contact component path
+- [x] Run focused frontend tests for Contact analytics and static-page tracking guards
+
+### Review
+- Preserved Contact analytics after the shared-route refactor by moving explicit engagement tracking into `app/components/Contact/ContactLeadSection.tsx`, the live owner of the Workiz iframe, instead of reintroducing route-specific shell logic.
+- Added guarded `contact_page_viewed` and `contact_form_embed_loaded` events so Contact engagement still flows through the existing Google event pipeline without duplicating the thank-you conversion tracker.
+- Updated the stale Workiz smoke test to follow the current architecture, and added focused component coverage for the Contact analytics behavior.
+- Verification: `npm test -- --runInBand tests/components/ContactLeadSection.test.tsx tests/unit/workiz-integration.test.ts tests/app/conversion-tracking-scope.test.ts` passed after correcting the outdated confirmation-page assertion.
+
+---
+
+## Batch 232: Rename Operations Page To Compliance
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Rename the website Operations page to Compliance across the frontend route and user-facing references, then rewrite the page content so each callout focuses on one oversight agency and its applicable requirements for Z-Beam.
+
+### Steps
+- [x] Rename the static page route and shared page-factory wiring from Operations to Compliance
+- [x] Update user-facing references to the page across navigation, sitemap, and linked service/rental content
+- [x] Rewrite the Compliance page frontmatter so each callout covers one agency and the concrete requirements it imposes
+- [x] Run focused frontend verification for type safety and route behavior, then push the website repo changes
+
+### Current Execution Plan
+- [x] Split page-specific schema/sidebar configuration out of the shared static-page factory so route orchestration is separated from page-specific policy
+- [x] Enforce the route rule that generic section navigation uses `/services` while rental-specific pricing and package flows use `/rental`
+- [x] Rewrite active static-page docs that still reference retired `static-pages/*.yaml` sources so they match the page frontmatter contract
+- [x] Remove the unused `loadStaticPageContent` markdown-loading path from the frontend loader and keep `loadStaticPageFrontmatter` as the only static-page source for services-style routes
+- [x] Delete or rewrite stale schema, component-example, and guide references that still document `loadStaticPageContent` as the canonical static-page pattern
+- [x] Condense the Equipment page detail bullets one more pass so the differentiators stay specific but read faster
+- [x] Reduce regulator logo display area in the shared content-card renderer by roughly 20-30% without changing non-logo image behavior
+- [x] Replace the Compliance Cal/OSHA placeholder logo with the dedicated Cal/OSHA asset
+- [x] Condense Equipment page summary and item body text by a similar amount while preserving product coverage and detail bullets
+- [x] Validate the edited frontend files for syntax/editor errors and note the result
+- [x] Change the Services navbar landing and dropdown label from the Rentals page to the canonical Services page
+- [x] Add or normalize the Services breadcrumb on service-linked static pages so child pages point back to /services instead of /rental
+- [x] Update visible frontend recovery and CTA links that still send users to /rental when they should send users to /services
+- [x] Run focused frontend validation on the edited navigation, static-page frontmatter, and page components
+- [x] Make shared static-page layout consumption match article pages by using frontmatter metadata for hero, breadcrumbs, author, and page description in all render paths
+- [x] Remove legacy static-page route implementations that still bypass `loadStaticPageFrontmatter` or pass partial metadata into `Layout`
+- [x] Preserve route-specific behavior, including schedule no-index behavior, by moving any remaining page settings into frontmatter-backed shared handling
+- [x] Re-run focused frontend validation on the updated static-page factory, custom routes, and affected frontmatter files
+
+### Review
+- Completed the operations-to-compliance migration across the shared factory, live route surface, static-page docs, and compliance content so the active frontend no longer depends on the retired operations page model.
+- Simplified the shared static-page system in follow-on cleanup passes: static pages now suppress author display through the shared layout, dynamic pages share one content-section renderer, dead policy fields and factory branches were removed, and the active normalization guide now matches the live route architecture.
+- Reduced regulator-logo presentation size in the shared content-card renderer, tightened the remaining equipment page summary/body copy, and repointed broken static-page frontmatter image references to real assets in `public/images` without changing the layout's conditional hero rendering behavior.
+- Verified the static-page frontmatter audit is clean for the active static-page set: no remaining missing `/images/...` references across services, rental, equipment, compliance, safety, comparison, contact, schedule, about, partners, netalux, and thank-you.
+- Verification: `npm test -- --runInBand tests/utils/pages/createStaticPage.integration.test.tsx tests/app/static-pages.test.tsx tests/components/Layout.test.tsx tests/unit/workiz-integration.test.ts tests/app/conversion-tracking-scope.test.ts` passed.
+
+---
+
+## Batch 231: Remove Website Pricing Page
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Remove the standalone website pricing page and its route wiring so the frontend no longer exposes `/pricing`, while keeping the shared pricing configuration available for the rest of the site.
+
+### Steps
+- [x] Remove the pricing route files and pricing-specific shared page-factory logic from the website app
+- [x] Remove navigation and sitemap references that still advertise `/pricing`
+- [x] Run focused frontend verification for type safety and route behavior, then push the website repo changes
+
+### Review
+- Removed the standalone pricing route by deleting `app/pricing/page.tsx` and `app/pricing/page.yaml`, then stripping the pricing-only branch from `app/utils/pages/createStaticPage.tsx`.
+- Removed the pricing entry from the Services navigation dropdown and from the static route list in `app/sitemap.xml/route.ts` so the frontend no longer advertises `/pricing`.
+- Deleted the now-unused `app/components/Pricing/Pricing.tsx` component while preserving the shared `SITE_CONFIG.pricing` data for the homepage and schema generators that still rely on it.
+- Verification: `npm run type-check` passed in `z-beam`, and `curl -s -o /tmp/pricing-remove-check.html -w "%{http_code}" http://localhost:3000/pricing` returned `404` from the running dev server.
+
+---
+
 ## Batch 230: Settings Frontmatter Schema Alignment
 Date: 2026-03-13
 Status: COMPLETE

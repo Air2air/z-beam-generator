@@ -1,5 +1,53 @@
 # Lessons Learned
 
+- 2026-03-13: Predeploy gates can fail after a route refactor even when the app code is correct if validator scripts and asset inventories still encode retired paths or missing filenames. -> Rule: after structural website refactors, rerun the real prebuild gate and fix stale validators and referenced assets at the source before commit.
+
+- 2026-03-13: Static-page route inventories drifted when sitemap, validators, and the homepage each owned their own page lists or YAML paths → keep route metadata in one shared registry and point homepage content at the same loader contract as the other static pages.
+
+- 2026-03-13: Static-page marketing copy can still violate single-source-of-truth pricing rules even when the numeric rates already live in site config, because YAML metadata and JSON-LD fields can keep hardcoded price strings. -> Rule: keep pricing text in `app/config/site.ts` helpers and enrich static-page frontmatter from code instead of embedding rates directly in YAML.
+
+- 2026-03-13: Retiring a marketing route cleanly requires moving the surviving page onto the deleted route's content contract and then sweeping the shared page policy, sitemap, validation route inventories, and tests in the same batch. -> Rule: when consolidating two frontend routes into one canonical URL, move the content first, then remove the deleted route from every route inventory and backstop the old path with an explicit redirect.
+
+- 2026-03-14: Static-page cleanup can still leave a broken frontend even after route and renderer parity are fixed if frontmatter image paths drift away from the real `public/images` inventory. -> Rule: after any static-page refactor, run a direct frontmatter-to-public-asset audit and repoint missing image references before declaring the page family clean.
+
+- 2026-03-14: Static-page refactors can look complete in code while the active normalization guide still teaches invalid factory usage and retired custom-route patterns. -> Rule: after shared page-factory changes, sweep the active docs for example code, page inventories, and test filenames in the same batch.
+
+- 2026-03-14: Shared policy/config layers can keep implying authority they no longer have when frontmatter already owns the live behavior, such as robots indexing state. -> Rule: when a page behavior is sourced from frontmatter at runtime, delete duplicate policy fields instead of keeping inert config for readability.
+
+- 2026-03-14: Dynamic static-page renderers can accumulate page-name branches even after the underlying YAML sections converge on one shared shape. -> Rule: when multiple dynamic pages already expose the same `content-section` contract, render them through the same shared component path and delete page-name conditionals instead of preserving branch-specific markup.
+
+- 2026-03-14: Static-page systems stay harder to reason about when config keeps boolean feature flags and dead renderer branches after frontmatter has already become the real source of behavior. -> Rule: when a page family is frontmatter-driven, remove retired config flags and dead section branches as soon as the live YAML contract can express the behavior directly.
+
+- 2026-03-14: Shared static-page refactors can verify the real feature change yet still fail the focused suite when factory tests keep retired route names or omit live dynamic-page imports. -> Rule: when shared page-factory behavior changes, rerun the nearest integration suite immediately and align stale route fixtures/imports in the same batch before closing the task.
+
+- 2026-03-13: Route removals can leave dead frontend code behind when page-factory branches, nav links, sitemap entries, and page-only components are not cleaned up together. -> Rule: when removing a website route, delete the route files and sweep the shared renderer, navigation, sitemap, and single-use components in the same batch, then verify the route returns 404.
+
+- 2026-03-13: Compliance callouts can drift to generic agency marks when page content is updated before the correct regulator logo assets are available. -> Rule: when a dedicated regulator logo is added, replace any placeholder mark in the matching frontmatter callout immediately and keep the alt text specific to that agency.
+
+- 2026-03-13: Compliance callout intros can stay denser than the bullet requirements even after one copy pass, which makes the page feel wordier than the actual controls it lists. -> Rule: when condensing structured compliance pages, shorten the summary paragraphs first and preserve the requirement bullets unless scope explicitly changes.
+
+- 2026-03-13: Equipment marketing pages can keep most of their excess length in the lead paragraphs while the supporting bullets already carry the concrete differentiators. -> Rule: when a user asks for another condensing pass on equipment or services pages, trim the intro and body paragraphs first and keep the bullet specs stable unless the requested scope includes content deletion.
+
+- 2026-03-13: Service-child pages can drift to whichever legacy route used to anchor the nav, leaving breadcrumbs and recovery links inconsistent after a new canonical hub page is introduced. -> Rule: when the frontend gains a canonical section landing page like `/services`, update nav parents, child-page breadcrumbs, and generic CTA/recovery links to that parent in one batch instead of leaving mixed legacy route targets.
+
+- 2026-03-13: Static-page breadcrumbs can look correct in YAML yet disappear in the UI when the renderer expects `label` while the frontmatter contract uses `name`. -> Rule: when shared breadcrumb utilities consume mixed content sources, normalize equivalent keys like `name` and `label` at the helper boundary instead of forcing page files to match one internal shape.
+
+- 2026-03-13: Static-page breadcrumb fixes can still fail visually when the page factory never passes frontmatter into the shared layout, forcing the UI back onto URL-derived crumbs. -> Rule: when a shared layout depends on page metadata for breadcrumbs or hero content, pass the full frontmatter object from every page-factory render path instead of only title and slug.
+
+- 2026-03-13: Static-page parity can still drift when a few legacy routes keep using helper loaders that flatten frontmatter into `title` and `description`, while the shared layout expects full metadata like article pages do. -> Rule: for static routes, prefer `loadStaticPageFrontmatter` or `createStaticPage` and pass the full frontmatter object into `Layout`; do not maintain parallel partial-metadata implementations for services-like pages.
+
+- 2026-03-13: Route simplification can stall when nav and frontmatter are updated but a hidden framework redirect still points the canonical hub path back to a legacy page. -> Rule: whenever a route is renamed or promoted to the canonical hub, audit `next.config.js` redirects for the old path and convert only true legacy aliases (for example `/rentals`) into compatibility redirects.
+
+- 2026-03-13: Retiring a shared loader can still break verification if a deleted fragment or old route name survives in nearby tests. -> Rule: after removing a shared API, run focused tests for that module immediately and sweep the nearest fixtures for dangling references before closing the batch.
+
+- 2026-03-13: Static-page migrations can look complete in live routes while tests and docs still point at retired `static-pages/*.yaml` paths. -> Rule: whenever a static-page source-of-truth changes, grep tests and active docs for the old path pattern and realign them in the same cleanup pass.
+
+- 2026-03-13: Focused Jest runs can appear green while the coverage pass still catches a syntax fragment in an unexercised branch. -> Rule: after structural TypeScript refactors, treat the full test command output as the verdict and fix any coverage-time parse errors before closing the task.
+
+- 2026-03-13: Static-page cleanup can still leave parity gaps when one marketing route keeps a bespoke page shell for metadata, layout, and JSON-LD even though only one embedded section is truly custom. -> Rule: keep the route on `createStaticPage` and isolate the truly custom content in a narrow shared extension point or dedicated child component instead of preserving a full custom route implementation.
+
+- 2026-03-13: Shared-route refactors can silently drop page-specific analytics when the old route file owned the embed or CTA markup and tests only check file existence. -> Rule: when moving a tracked page onto shared rendering, relocate analytics to the live child component that owns the interaction surface and update tests to assert behavior against that component, not the retired route shell.
+
 - 2026-03-13: A single canonical frontmatter schema can still drift into false failures when it encodes one idealized cross-domain shape instead of the contracts actually emitted per `contentType`. -> Rule: keep one canonical schema file, but make required fields and field shapes branch by real exported domain contract, and lock that behavior with focused schema regression tests.
 
 - 2026-03-13: A repo-provided frontmatter link validator can report success while skipping the actual relationship contracts under audit. -> Rule: when validating dataset relationship parity, confirm the validator is traversing the expected link fields; if it reports zero relevant links, add a focused audit against canonical IDs/fullPath contracts before declaring success.
@@ -51,6 +99,10 @@
 - 2026-03-07: Frontend predeploy/test failures can persist after generation batches when malformed duplicate frontmatter files remain in `z-beam/frontmatter/contaminants` (e.g., doubled slug suffix). → Rule: before validation runs, enforce one canonical file per slug and remove malformed duplicate artifacts first.
 
 - 2026-03-07: Ads conversion actions can be correctly configured in the UI but still undercount if thank-you events fire before deferred gtag is ready, or optimize poorly if page-view goals remain primary. → Rule: emit `generate_lead` from the confirmation page with gtag-readiness retry and keep contact page-load goals secondary/non-primary.
+
+- 2026-03-13: A sitewide deferred Google tag can satisfy generic analytics performance goals yet still miss contact and thank-you measurement if a conversion-critical page closes before the delayed loader runs. -> Rule: keep advanced-consent defaults in place, but bypass generic tag deferral on conversion-critical routes like `/contact` and `/thank-you`, and add refresh-safe dedupe on the final lead-conversion route.
+
+- 2026-03-13: Generic platform best practice can still be the wrong implementation if the live Google Ads conversion action for this account is configured against a different route than the default lead-confirmation pattern. -> Rule: when the user provides provider-specific guidance about which route should own the conversion event, align code, docs, and tests to that configured event surface instead of preserving a generic thank-you-page pattern.
 
 - 2026-03-05: Contract and compatibility tests can fail after prompt-registry and field-router refactors even when runtime behavior is healthy (missing mock config blocks, moved registry paths, stricter arg signatures, bundled text-field defaults). → Rule: when architecture contracts change, update test fixtures/mocks and canonical registry-path assumptions in the same batch, and keep one focused rerun for only prior failing tests before full-suite execution.
 
