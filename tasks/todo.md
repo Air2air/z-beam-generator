@@ -5,6 +5,69 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 252: Services Title And Pricing Label Cleanup
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Update the Services page title metadata and align the pricing-table labels so the table uses the requested wording without breaking the shared static-page or pricing helper contracts.
+
+### Steps
+- [x] Update the Services frontmatter title fields to `Laser Cleaning Equipment Rental & Services`
+- [x] Change the pricing-table labels so Savings shows `N/A` instead of `None` and `Weekend Package` becomes `Weekend`
+- [x] Run focused static-page and pricing-table verification
+
+### Review
+- Updated the Services frontmatter title fields so the page metadata now consistently uses `Laser Cleaning Equipment Rental & Services` across the page title, headline, Open Graph, Twitter, and JSON-LD title surfaces.
+- Updated the shared pricing helper so the zero-discount Savings label now renders `N/A`, the weekend row label renders `Weekend`, and the supporting weekend note matches the new wording.
+- Verification: `npm test -- --runInBand tests/utils/equipmentRentalPriceTable.test.ts tests/utils/pages/createStaticPage.integration.test.tsx tests/utils/staticPageLoader.test.ts` passed in `z-beam`.
+
+---
+
+## Batch 251: Static Page Hero Removal Follow-Through
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Update the shared metadata, SEO validation coverage, and static-page documentation so Contact, Services, and Equipment can omit visible hero images while retaining correct social metadata and passing the predeploy gate.
+
+### Steps
+- [x] Update shared metadata/static-page generation fallbacks so OG and Twitter image metadata remain explicit when `images.hero` is absent
+- [x] Refresh the affected tests and static-page docs to treat visible hero images as optional for these routes while preserving social-image expectations
+- [x] Run focused verification and then the website predeploy check
+
+### Review
+- Updated the shared static-page metadata path to fall back through `images.og`, `images.twitter`, and existing `openGraph`/`twitter` image blocks when `images.hero` is missing, and extended the shared image typing so `og` and `twitter` are first-class frontmatter image fields.
+- Added canonical social-image metadata to Equipment, added hidden `_section` metadata to the Services pricing-table section for validation parity, refreshed the affected static-page tests and documentation to treat visible heroes as optional, and preserved the current social preview assets for Contact, Services, and Equipment.
+- Fixed two unrelated predeploy blockers uncovered by the gate: removed a stale two-table cast from the equipment-rental pricing helper, and made the advanced SEO soft-mode scripts honor `STRICT_MODE=0` so advisory findings do not block `validate:seo:esoteric:soft`.
+- Updated stale SEO pricing expectations to the live canonical rates (`200` residential, `300` commercial) and reran focused schema/feed tests.
+- Verification: `npm test -- --runInBand tests/utils/staticPageLoader.test.ts tests/utils/pages/createStaticPage.integration.test.tsx tests/integration/staticPages.test.tsx` passed in `z-beam`.
+- Verification: `npm test -- --runInBand tests/utils/equipmentRentalPriceTable.test.ts` passed in `z-beam`.
+- Verification: `npm test -- --runInBand tests/seo/esoteric-seo-soft-mode.integration.test.js` passed in `z-beam`.
+- Verification: `npm test -- --runInBand tests/seo/schema-generators.test.ts tests/seo/feed-generation.test.ts` passed in `z-beam`.
+- Verification: `npm run prebuild` passed in `z-beam`.
+
+---
+
+## Batch 250: Remove Static Page Hero Images
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Remove the visible hero image from the Contact, Services, and Equipment static pages by deleting the shared `images.hero` source blocks while preserving the existing social image metadata.
+
+### Steps
+- [x] Remove the `images.hero` block from the Contact, Services, and Equipment page YAML files
+- [x] Confirm the shared static-page layout no longer has hero content for those routes and that OG/Twitter image metadata still exists
+- [x] Run focused verification for the affected static-page routes or shared loader/rendering behavior
+
+### Review
+- Removed the `images.hero` source block from the Contact, Services, and Equipment page YAML files, which disables the visible hero section through the shared Layout without changing each page's existing Open Graph or Twitter image metadata.
+- Confirmed the shared static-page render gate still keys off `metadata.images.hero`, so this was a source-level fix with no route-specific code changes.
+- Verification: `npm test -- --runInBand tests/app/static-pages.test.tsx tests/utils/staticPageLoader.test.ts` passed in `z-beam`.
+
+---
+
 ## Batch 244: Predeploy Gate Cleanup For Static Page Refactor
 Date: 2026-03-13
 Status: COMPLETE
@@ -196,6 +259,103 @@ Align the active static-page normalization guide with the live route architectur
 ## Batch 235: Contact Page Google Ads Standards Audit
 Date: 2026-03-13
 Status: COMPLETE
+
+---
+
+## Batch 245: Services Pricing Table Section
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Add a pricing table section to the shared services static page using the centralized website pricing source, without hardcoding duplicate rate values in route content.
+
+### Steps
+- [x] Inspect the shared static-page renderer and existing table component contracts to choose the narrowest reusable section shape
+- [x] Add one shared static-page section type for a pricing table and wire it to centralized pricing data from site config
+- [x] Define the services-page pricing section in frontmatter and run focused validation on the edited frontend files
+
+### Review
+- Added a narrow `pricing-table` section branch in the shared static-page factory so frontmatter can request a services pricing table without hardcoding rates into YAML or building a bespoke route component.
+- Wired the table rows to the centralized equipment-rental pricing config in `app/config/site.ts`, which keeps the new services pricing section aligned with the single source of truth for hourly rates and minimum booking.
+- Added the new pricing-table section to `app/services/page.yaml` with title and description only, leaving the actual rate values derived from config at render time.
+- Verification: `npm test -- --runInBand tests/utils/pages/createStaticPage.integration.test.tsx tests/app/static-pages.test.tsx` passed in `z-beam`.
+
+---
+
+## Batch 246: Services Dual Pricing Tables And Image Height Parity
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Reshape the services pricing area into two five-column tables and reduce shared ContentSection image height on desktop so the section family stays visually balanced.
+
+### Steps
+- [x] Inspect the current pricing-table renderer and ContentCard image sizing to identify the narrowest shared edits
+- [x] Update the shared services pricing section to render two five-column tables from centralized pricing config without duplicating rate values in YAML
+- [x] Reduce desktop ContentSection image height in the shared card component and run focused frontend verification
+
+### Review
+- Reshaped the shared `pricing-table` section renderer so the services page now outputs two package-specific tables, each with five columns, while still deriving all rate values and booking terms from the centralized equipment-rental pricing config.
+- Reduced shared ContentSection image height at desktop breakpoints by changing the image frame ratio in the shared `ContentCard` variants instead of editing individual page frontmatter.
+- Verification: `npm test -- --runInBand tests/utils/pages/createStaticPage.integration.test.tsx tests/app/static-pages.test.tsx` passed in `z-beam`.
+
+---
+
+## Batch 247: Services Pricing Calculator Tables
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Move the services pricing section to the top of the page and render the requested rental-period tables from JS calculations driven by the canonical hourly rates.
+
+### Steps
+- [x] Update the canonical equipment-rental rates and add shared JS helpers that calculate the services pricing table values from those rates
+- [x] Render the services pricing section from the calculated table data and move that section to the top of the services frontmatter order
+- [x] Run focused frontend verification for the shared static-page factory and services content loading
+
+### Review
+- Updated the canonical commercial equipment-rental rate in the website pricing config to `$300/hour` and left the residential rate at `$200/hour`, so all downstream pricing copy and structured data now flow from the requested base rates.
+- Added a dedicated pricing-table helper under `app/utils/pricing/getEquipmentRentalPriceTable.ts` that computes the services pricing rows from canonical rates instead of embedding table values in the renderer or YAML.
+- Moved the services `pricing-table` section to the top of `app/services/page.yaml` and updated the shared static-page renderer to display the requested intro copy, two five-column tables, notes, and closing text from the computed helper output.
+- Verification: `npm test -- --runInBand tests/utils/equipmentRentalPriceTable.test.ts tests/utils/staticPageLoader.test.ts tests/utils/pages/createStaticPage.integration.test.tsx tests/app/static-pages.test.tsx` passed in `z-beam`.
+
+---
+
+## Batch 248: Services Pricing Column Consolidation
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Simplify the services pricing table by removing `off` from savings labels and combining the period and description into one consolidated column without hardcoding pricing values.
+
+### Steps
+- [x] Update the computed pricing helper so savings labels and column definitions match the new content contract
+- [x] Adjust the shared services pricing renderer to display the combined period/description cell cleanly
+- [x] Run the focused pricing-table test and record the result
+
+### Review
+- Updated the computed pricing helper so savings values drop `off`, period labels no longer include `Block` or `Shift`, and every displayed price now renders as an hourly figure with `/hr` instead of block totals.
+- Consolidated the period and description display into a single first-column cell in the shared services pricing renderer, which reduced the table from five displayed columns to four while keeping the underlying pricing data computed from canonical rates.
+- Verification: `npm test -- --runInBand tests/utils/equipmentRentalPriceTable.test.ts` passed in `z-beam`.
+
+---
+
+## Batch 249: Services Pricing CTA And Discount Adjustment
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Change extended-rental cells to a contact CTA and reduce the multi-day and weekend discount formulas while keeping the services pricing table computed from canonical rates.
+
+### Steps
+- [x] Update the pricing helper to lower the multi-day and weekend discount formulas and return a dedicated call CTA for extended rental
+- [x] Update the shared services pricing renderer to link the extended-rental CTA to `/contact`
+- [x] Run the focused pricing-table test and record the result
+
+### Review
+- Finalized the canonical discount set beside the hourly rates in site config as `discount_base: 0`, `discount_full_day: 7`, `discount_multi_day: 15`, and `discount_weekend: 12`, and removed `discount_extended` from the shared pricing source.
+- Updated the computed pricing helper and shared services pricing renderer so the extended-rental savings, residential, and commercial cells all render `Call` as orange links to `/contact`, while the rest of the table continues to derive from canonical rates and discounts.
+- Verification: `npm test -- --runInBand tests/utils/equipmentRentalPriceTable.test.ts` passed in `z-beam`.
 
 ### Goal
 Run a second, standards-focused pass on the Contact page Google Analytics and Google Ads event path, verify the current implementation against Google tracking expectations, and harden any weak spots without reintroducing bespoke route logic.
