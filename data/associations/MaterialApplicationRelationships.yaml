@@ -1,362 +1,922 @@
 metadata:
-  generated_at: '2026-02-23T02:46:20.000Z'
+  generated_at: '2026-03-13T22:57:05.000Z'
   version: 1.0.0
   description: Canonical material-application relationships for two-way reconciliation
   eligibility_rules:
   - Link must exist in applications domain relationships (AI-researched provenance)
   - Referenced application and material entries must exist
 summary:
-  eligible_links: 50
-  links_from_applications: 50
-  links_from_materials: 50
+  eligible_links: 130
+  links_from_applications: 130
+  links_from_materials: 0
   materials_only_discrepancies: 0
-  applications_only_discrepancies: 0
+  applications_only_discrepancies: 130
 links:
 - material_id: aluminum-laser-cleaning
-  application_id: aerospace-laser-cleaning
+  application_id: aerospace-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: aluminum-laser-cleaning
-  application_id: automotive-laser-cleaning
+  application_id: automotive-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: aluminum-laser-cleaning
-  application_id: defense-laser-cleaning
+  application_id: defense-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: aluminum-laser-cleaning
-  application_id: energy-power-laser-cleaning
+  application_id: energy-power-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: aluminum-laser-cleaning
-  application_id: food-processing-laser-cleaning
+  application_id: food-processing-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: aluminum-laser-cleaning
-  application_id: rail-transport-laser-cleaning
+  application_id: marine-laser-cleaning-ship-hulls-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: aluminum-laser-cleaning
-  application_id: shipbuilding-marine-laser-cleaning
+  application_id: rail-transport-corrosion-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: rail-transport-grease-oil-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: rail-transport-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: rail-transport-locomotive-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: rail-transport-ndt-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: rail-transport-paint-stripping-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: rail-transport-railcar-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: rail-transport-rust-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: rail-transport-surface-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: rail-transport-track-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: aluminum-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: brass-laser-cleaning
-  application_id: automotive-laser-cleaning
+  application_id: automotive-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: brass-laser-cleaning
-  application_id: energy-power-laser-cleaning
+  application_id: energy-power-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: brass-laser-cleaning
-  application_id: food-processing-laser-cleaning
+  application_id: food-processing-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: brass-laser-cleaning
-  application_id: rail-transport-laser-cleaning
+  application_id: rail-transport-corrosion-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: brass-laser-cleaning
+  application_id: rail-transport-grease-oil-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: brass-laser-cleaning
+  application_id: rail-transport-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: brass-laser-cleaning
+  application_id: rail-transport-locomotive-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: brass-laser-cleaning
+  application_id: rail-transport-ndt-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: brass-laser-cleaning
+  application_id: rail-transport-paint-stripping-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: brass-laser-cleaning
+  application_id: rail-transport-railcar-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: brass-laser-cleaning
+  application_id: rail-transport-rust-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: brass-laser-cleaning
+  application_id: rail-transport-surface-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: brass-laser-cleaning
+  application_id: rail-transport-track-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: bronze-laser-cleaning
-  application_id: rail-transport-laser-cleaning
+  application_id: rail-transport-corrosion-removal-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: bronze-laser-cleaning
-  application_id: shipbuilding-marine-laser-cleaning
+  application_id: rail-transport-grease-oil-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: rail-transport-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: rail-transport-locomotive-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: rail-transport-ndt-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: rail-transport-paint-stripping-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: rail-transport-railcar-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: rail-transport-rust-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: rail-transport-surface-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: rail-transport-track-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: bronze-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: chromium-laser-cleaning
-  application_id: medical-devices-laser-cleaning
+  application_id: medical-devices-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: cobalt-laser-cleaning
-  application_id: aerospace-laser-cleaning
+  application_id: aerospace-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: cobalt-laser-cleaning
-  application_id: medical-devices-laser-cleaning
+  application_id: marine-laser-cleaning-ship-hulls-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: cobalt-laser-cleaning
+  application_id: medical-devices-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: concrete-laser-cleaning
-  application_id: construction-equipment-laser-cleaning
+  application_id: construction-equipment-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: copper-laser-cleaning
-  application_id: automotive-laser-cleaning
+  application_id: automotive-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: copper-laser-cleaning
-  application_id: electronics-laser-cleaning
+  application_id: electronics-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: copper-laser-cleaning
-  application_id: energy-power-laser-cleaning
+  application_id: energy-power-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: copper-laser-cleaning
-  application_id: food-processing-laser-cleaning
+  application_id: food-processing-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: copper-laser-cleaning
-  application_id: rail-transport-laser-cleaning
+  application_id: rail-transport-corrosion-removal-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: copper-laser-cleaning
-  application_id: shipbuilding-marine-laser-cleaning
+  application_id: rail-transport-grease-oil-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: rail-transport-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: rail-transport-locomotive-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: rail-transport-ndt-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: rail-transport-paint-stripping-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: rail-transport-railcar-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: rail-transport-rust-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: rail-transport-surface-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: rail-transport-track-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: copper-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: gold-laser-cleaning
-  application_id: electronics-laser-cleaning
+  application_id: electronics-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: granite-laser-cleaning
-  application_id: construction-equipment-laser-cleaning
+  application_id: construction-equipment-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: inconel-laser-cleaning
-  application_id: aerospace-laser-cleaning
+  application_id: aerospace-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: inconel-laser-cleaning
-  application_id: defense-laser-cleaning
+  application_id: defense-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: inconel-laser-cleaning
+  application_id: marine-laser-cleaning-ship-hulls-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: limestone-laser-cleaning
-  application_id: construction-equipment-laser-cleaning
+  application_id: construction-equipment-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: marble-laser-cleaning
-  application_id: construction-equipment-laser-cleaning
+  application_id: construction-equipment-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: nickel-laser-cleaning
-  application_id: electronics-laser-cleaning
+  application_id: electronics-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: nickel-laser-cleaning
-  application_id: medical-devices-laser-cleaning
+  application_id: medical-devices-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: nickel-laser-cleaning
-  application_id: shipbuilding-marine-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: nickel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: nickel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: nickel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: nickel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: nickel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: nickel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: silver-laser-cleaning
-  application_id: electronics-laser-cleaning
+  application_id: electronics-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: stainless-steel-laser-cleaning
-  application_id: aerospace-laser-cleaning
+  application_id: aerospace-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: stainless-steel-laser-cleaning
-  application_id: energy-power-laser-cleaning
+  application_id: energy-power-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: stainless-steel-laser-cleaning
-  application_id: food-processing-laser-cleaning
+  application_id: food-processing-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: stainless-steel-laser-cleaning
-  application_id: medical-devices-laser-cleaning
+  application_id: marine-laser-cleaning-ship-hulls-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: stainless-steel-laser-cleaning
-  application_id: shipbuilding-marine-laser-cleaning
+  application_id: medical-devices-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: stainless-steel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: stainless-steel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: stainless-steel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: stainless-steel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: stainless-steel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: stainless-steel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: stainless-steel-laser-cleaning
+  application_id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: steel-laser-cleaning
-  application_id: automotive-laser-cleaning
+  application_id: automotive-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: steel-laser-cleaning
-  application_id: construction-equipment-laser-cleaning
+  application_id: construction-equipment-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: steel-laser-cleaning
-  application_id: defense-laser-cleaning
+  application_id: defense-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: steel-laser-cleaning
-  application_id: energy-power-laser-cleaning
+  application_id: energy-power-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: steel-laser-cleaning
-  application_id: food-processing-laser-cleaning
+  application_id: food-processing-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: steel-laser-cleaning
-  application_id: rail-transport-laser-cleaning
+  application_id: rail-transport-corrosion-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: steel-laser-cleaning
+  application_id: rail-transport-grease-oil-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: steel-laser-cleaning
+  application_id: rail-transport-laser-cleaning-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: steel-laser-cleaning
+  application_id: rail-transport-locomotive-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: steel-laser-cleaning
+  application_id: rail-transport-ndt-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: steel-laser-cleaning
+  application_id: rail-transport-paint-stripping-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: steel-laser-cleaning
+  application_id: rail-transport-railcar-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: steel-laser-cleaning
+  application_id: rail-transport-rust-removal-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: steel-laser-cleaning
+  application_id: rail-transport-surface-prep-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: steel-laser-cleaning
+  application_id: rail-transport-track-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: tin-laser-cleaning
-  application_id: electronics-laser-cleaning
+  application_id: electronics-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: titanium-laser-cleaning
-  application_id: aerospace-laser-cleaning
+  application_id: aerospace-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: titanium-laser-cleaning
-  application_id: defense-laser-cleaning
+  application_id: defense-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: titanium-laser-cleaning
-  application_id: medical-devices-laser-cleaning
+  application_id: marine-laser-cleaning-ship-hulls-applications
+  eligibility:
+    ai_researched_specific_to_material: true
+    application_domain_entry_exists: true
+  provenance: applications.relationships.discovery.relatedMaterials
+  status: eligible
+- material_id: titanium-laser-cleaning
+  application_id: medical-devices-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: tungsten-laser-cleaning
-  application_id: defense-laser-cleaning
+  application_id: defense-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
   provenance: applications.relationships.discovery.relatedMaterials
   status: eligible
 - material_id: zinc-laser-cleaning
-  application_id: automotive-laser-cleaning
+  application_id: automotive-laser-cleaning-applications
   eligibility:
     ai_researched_specific_to_material: true
     application_domain_entry_exists: true
@@ -364,4 +924,264 @@ links:
   status: eligible
 discrepancies:
   materials_only: []
-  applications_only: []
+  applications_only:
+  - material_id: aluminum-laser-cleaning
+    application_id: aerospace-laser-cleaning-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: automotive-laser-cleaning-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: defense-laser-cleaning-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: energy-power-laser-cleaning-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: food-processing-laser-cleaning-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: marine-laser-cleaning-ship-hulls-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: rail-transport-corrosion-removal-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: rail-transport-grease-oil-removal-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: rail-transport-laser-cleaning-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: rail-transport-locomotive-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: rail-transport-ndt-prep-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: rail-transport-paint-stripping-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: rail-transport-railcar-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: rail-transport-rust-removal-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: rail-transport-surface-prep-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: rail-transport-track-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+  - material_id: aluminum-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
+  - material_id: brass-laser-cleaning
+    application_id: automotive-laser-cleaning-applications
+  - material_id: brass-laser-cleaning
+    application_id: energy-power-laser-cleaning-applications
+  - material_id: brass-laser-cleaning
+    application_id: food-processing-laser-cleaning-applications
+  - material_id: brass-laser-cleaning
+    application_id: rail-transport-corrosion-removal-applications
+  - material_id: brass-laser-cleaning
+    application_id: rail-transport-grease-oil-removal-applications
+  - material_id: brass-laser-cleaning
+    application_id: rail-transport-laser-cleaning-applications
+  - material_id: brass-laser-cleaning
+    application_id: rail-transport-locomotive-applications
+  - material_id: brass-laser-cleaning
+    application_id: rail-transport-ndt-prep-applications
+  - material_id: brass-laser-cleaning
+    application_id: rail-transport-paint-stripping-applications
+  - material_id: brass-laser-cleaning
+    application_id: rail-transport-railcar-applications
+  - material_id: brass-laser-cleaning
+    application_id: rail-transport-rust-removal-applications
+  - material_id: brass-laser-cleaning
+    application_id: rail-transport-surface-prep-applications
+  - material_id: brass-laser-cleaning
+    application_id: rail-transport-track-applications
+  - material_id: bronze-laser-cleaning
+    application_id: rail-transport-corrosion-removal-applications
+  - material_id: bronze-laser-cleaning
+    application_id: rail-transport-grease-oil-removal-applications
+  - material_id: bronze-laser-cleaning
+    application_id: rail-transport-laser-cleaning-applications
+  - material_id: bronze-laser-cleaning
+    application_id: rail-transport-locomotive-applications
+  - material_id: bronze-laser-cleaning
+    application_id: rail-transport-ndt-prep-applications
+  - material_id: bronze-laser-cleaning
+    application_id: rail-transport-paint-stripping-applications
+  - material_id: bronze-laser-cleaning
+    application_id: rail-transport-railcar-applications
+  - material_id: bronze-laser-cleaning
+    application_id: rail-transport-rust-removal-applications
+  - material_id: bronze-laser-cleaning
+    application_id: rail-transport-surface-prep-applications
+  - material_id: bronze-laser-cleaning
+    application_id: rail-transport-track-applications
+  - material_id: bronze-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-applications
+  - material_id: bronze-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+  - material_id: bronze-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+  - material_id: bronze-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+  - material_id: bronze-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+  - material_id: bronze-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+  - material_id: bronze-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
+  - material_id: chromium-laser-cleaning
+    application_id: medical-devices-laser-cleaning-applications
+  - material_id: cobalt-laser-cleaning
+    application_id: aerospace-laser-cleaning-applications
+  - material_id: cobalt-laser-cleaning
+    application_id: marine-laser-cleaning-ship-hulls-applications
+  - material_id: cobalt-laser-cleaning
+    application_id: medical-devices-laser-cleaning-applications
+  - material_id: concrete-laser-cleaning
+    application_id: construction-equipment-laser-cleaning-applications
+  - material_id: copper-laser-cleaning
+    application_id: automotive-laser-cleaning-applications
+  - material_id: copper-laser-cleaning
+    application_id: electronics-laser-cleaning-applications
+  - material_id: copper-laser-cleaning
+    application_id: energy-power-laser-cleaning-applications
+  - material_id: copper-laser-cleaning
+    application_id: food-processing-laser-cleaning-applications
+  - material_id: copper-laser-cleaning
+    application_id: rail-transport-corrosion-removal-applications
+  - material_id: copper-laser-cleaning
+    application_id: rail-transport-grease-oil-removal-applications
+  - material_id: copper-laser-cleaning
+    application_id: rail-transport-laser-cleaning-applications
+  - material_id: copper-laser-cleaning
+    application_id: rail-transport-locomotive-applications
+  - material_id: copper-laser-cleaning
+    application_id: rail-transport-ndt-prep-applications
+  - material_id: copper-laser-cleaning
+    application_id: rail-transport-paint-stripping-applications
+  - material_id: copper-laser-cleaning
+    application_id: rail-transport-railcar-applications
+  - material_id: copper-laser-cleaning
+    application_id: rail-transport-rust-removal-applications
+  - material_id: copper-laser-cleaning
+    application_id: rail-transport-surface-prep-applications
+  - material_id: copper-laser-cleaning
+    application_id: rail-transport-track-applications
+  - material_id: copper-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-applications
+  - material_id: copper-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+  - material_id: copper-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+  - material_id: copper-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+  - material_id: copper-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+  - material_id: copper-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+  - material_id: copper-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
+  - material_id: gold-laser-cleaning
+    application_id: electronics-laser-cleaning-applications
+  - material_id: granite-laser-cleaning
+    application_id: construction-equipment-laser-cleaning-applications
+  - material_id: inconel-laser-cleaning
+    application_id: aerospace-laser-cleaning-applications
+  - material_id: inconel-laser-cleaning
+    application_id: defense-laser-cleaning-applications
+  - material_id: inconel-laser-cleaning
+    application_id: marine-laser-cleaning-ship-hulls-applications
+  - material_id: limestone-laser-cleaning
+    application_id: construction-equipment-laser-cleaning-applications
+  - material_id: marble-laser-cleaning
+    application_id: construction-equipment-laser-cleaning-applications
+  - material_id: nickel-laser-cleaning
+    application_id: electronics-laser-cleaning-applications
+  - material_id: nickel-laser-cleaning
+    application_id: medical-devices-laser-cleaning-applications
+  - material_id: nickel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-applications
+  - material_id: nickel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+  - material_id: nickel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+  - material_id: nickel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+  - material_id: nickel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+  - material_id: nickel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+  - material_id: nickel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
+  - material_id: silver-laser-cleaning
+    application_id: electronics-laser-cleaning-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: aerospace-laser-cleaning-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: energy-power-laser-cleaning-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: food-processing-laser-cleaning-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: marine-laser-cleaning-ship-hulls-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: medical-devices-laser-cleaning-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+  - material_id: stainless-steel-laser-cleaning
+    application_id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
+  - material_id: steel-laser-cleaning
+    application_id: automotive-laser-cleaning-applications
+  - material_id: steel-laser-cleaning
+    application_id: construction-equipment-laser-cleaning-applications
+  - material_id: steel-laser-cleaning
+    application_id: defense-laser-cleaning-applications
+  - material_id: steel-laser-cleaning
+    application_id: energy-power-laser-cleaning-applications
+  - material_id: steel-laser-cleaning
+    application_id: food-processing-laser-cleaning-applications
+  - material_id: steel-laser-cleaning
+    application_id: rail-transport-corrosion-removal-applications
+  - material_id: steel-laser-cleaning
+    application_id: rail-transport-grease-oil-removal-applications
+  - material_id: steel-laser-cleaning
+    application_id: rail-transport-laser-cleaning-applications
+  - material_id: steel-laser-cleaning
+    application_id: rail-transport-locomotive-applications
+  - material_id: steel-laser-cleaning
+    application_id: rail-transport-ndt-prep-applications
+  - material_id: steel-laser-cleaning
+    application_id: rail-transport-paint-stripping-applications
+  - material_id: steel-laser-cleaning
+    application_id: rail-transport-railcar-applications
+  - material_id: steel-laser-cleaning
+    application_id: rail-transport-rust-removal-applications
+  - material_id: steel-laser-cleaning
+    application_id: rail-transport-surface-prep-applications
+  - material_id: steel-laser-cleaning
+    application_id: rail-transport-track-applications
+  - material_id: tin-laser-cleaning
+    application_id: electronics-laser-cleaning-applications
+  - material_id: titanium-laser-cleaning
+    application_id: aerospace-laser-cleaning-applications
+  - material_id: titanium-laser-cleaning
+    application_id: defense-laser-cleaning-applications
+  - material_id: titanium-laser-cleaning
+    application_id: marine-laser-cleaning-ship-hulls-applications
+  - material_id: titanium-laser-cleaning
+    application_id: medical-devices-laser-cleaning-applications
+  - material_id: tungsten-laser-cleaning
+    application_id: defense-laser-cleaning-applications
+  - material_id: zinc-laser-cleaning
+    application_id: automotive-laser-cleaning-applications
