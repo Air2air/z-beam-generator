@@ -1,5 +1,15 @@
 # Lessons Learned
 
+- 2026-03-13: A single canonical frontmatter schema can still drift into false failures when it encodes one idealized cross-domain shape instead of the contracts actually emitted per `contentType`. -> Rule: keep one canonical schema file, but make required fields and field shapes branch by real exported domain contract, and lock that behavior with focused schema regression tests.
+
+- 2026-03-13: A repo-provided frontmatter link validator can report success while skipping the actual relationship contracts under audit. -> Rule: when validating dataset relationship parity, confirm the validator is traversing the expected link fields; if it reports zero relevant links, add a focused audit against canonical IDs/fullPath contracts before declaring success.
+
+- 2026-03-13: Long generated YAML text blocks can break source datasets when multiline scalars lose either their closing quote or their field indentation, and parser failures can mask the real completeness state of entire domains. -> Rule: when dataset audits fail at file-load level, fix YAML scalar closure and indentation across the full repeated pattern set first, then rerun the source completeness gate before evaluating content gaps.
+
+- 2026-03-13: Dataset audits can drift into downstream frontmatter/export validation and overstate source-data problems. -> Rule: when auditing datasets, treat `data/*` and source-side validators as authoritative; report frontmatter/schema results only as downstream export health, never as dataset dependencies.
+
+- 2026-03-12: Services-adjacent static pages drift into one-off components when new routes are cloned from old page files instead of extending the shared page factory. -> Rule: when a new marketing/static route matches an existing page family, extend `createStaticPage` once and register the new page through frontmatter, nav, and sitemap in the same batch.
+
 - 2026-03-11: Grok-facing docs can drift toward local workspace paths even when the real publication target is another repository. -> Rule: when documenting frontmatter outputs for Grok workflows, name the production website repo path explicitly and keep manifest, quick-reference, and instruction mirrors aligned in the same batch.
 
 - 2026-03-11: Control-surface documentation refreshes can introduce dead quick-navigation targets when new governance references are added without checking the repo. -> Rule: whenever instruction text adds a new referenced path, verify the file exists and create the minimal canonical doc in the same batch.

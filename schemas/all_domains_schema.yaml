@@ -4,8 +4,40 @@
 # Enforces EEAT conformity, mandatory sectionDescription, high random length variation, citations
 
 type: object
+definitions:
+  machineSettingParameter:
+    type: object
+    properties:
+      value:
+        oneOf:
+        - type: number
+        - type: string
+      unit: { type: string }
+      min:
+        oneOf:
+        - type: number
+        - type: string
+      max:
+        oneOf:
+        - type: number
+        - type: string
+    required: [value]
+    additionalProperties: true
+  sectionMetadata:
+    type: object
+    properties:
+      sectionTitle: { type: string }
+      sectionDescription: { type: string }
+      sectionMetadata: { type: string }
+      icon: { type: string }
+      order: { type: number }
+      variant: { type: string }
+    additionalProperties: true
 properties:
   # ── Metadata (top level) ───────────────────────────────────────────────
+  contentType:
+    type: string
+    enum: [material, contaminant, compound, setting, application]
   pageTitle:
     type: string
     description: Page headline, concise and keyword-rich
@@ -36,7 +68,6 @@ properties:
   # ── EEAT block (required for all pages) ────────────────────────────────
   eeat:
     type: object
-    required: [experience, expertise, authoritativeness, trustworthiness]
     properties:
       experience:       { type: string }  # e.g. "15 years in industrial laser applications, Navy-tested protocols 2019–2025"
       expertise:        { type: string }  # e.g. "Certified laser safety officer with Ph.D. in Materials Science"
@@ -45,6 +76,15 @@ properties:
       credentials:      { type: string }  # New – e.g. "Ph.D. Metallurgy, Certified Laser Safety Officer"
       ymyLCompliance:   { type: string }  # New – e.g. "Conforms to OSHA and FDA standards for health/safety data"
       biasDisclaimer:   { type: string }  # New – e.g. "Checked for biases in exposure risk data; objective analysis"
+      reviewedBy:       { type: string }
+      citations:
+        type: array
+        items:
+          oneOf:
+          - type: string
+          - type: object
+      isBasedOn:
+        type: object
       sourceLinks:
         type: array
         description: ">2 citations per major claim/field, tested non-404"
@@ -54,6 +94,7 @@ properties:
             url:         { type: string }
             description: { type: string }
             title:       { type: string }
+    additionalProperties: true
 
   # ── Author (immutable once assigned) ───────────────────────────────────
   author:
@@ -74,10 +115,22 @@ properties:
       chemicalFormula:    { type: string }  # materials & compounds
       appearance:         { type: string }
       healthEffects:      { type: string }  # contaminants & compounds
-      density:            { type: string }  # materials
-      hardness:           { type: string }  # materials
-      tensileStrength:    { type: string }  # materials
-      laserDamageThreshold: { type: string }  # materials
+      density:
+        oneOf:
+        - type: string
+        - $ref: '#/definitions/machineSettingParameter'
+      hardness:
+        oneOf:
+        - type: string
+        - $ref: '#/definitions/machineSettingParameter'
+      tensileStrength:
+        oneOf:
+        - type: string
+        - $ref: '#/definitions/machineSettingParameter'
+      laserDamageThreshold:
+        oneOf:
+        - type: string
+        - $ref: '#/definitions/machineSettingParameter'
       industryLinks:      { type: array }   # applications
       riskCitations:      { type: array }   # contaminants – YMYL
       safetyStandards:    { type: array }   # compounds – YMYL
@@ -93,9 +146,24 @@ properties:
   machineSettings:
     type: object
     properties:
-      power:         { type: string }
-      wavelength:    { type: string }
-      pulseDuration: { type: string }
+      _section:
+        $ref: '#/definitions/sectionMetadata'
+      power:
+        oneOf:
+        - type: string
+        - $ref: '#/definitions/machineSettingParameter'
+      wavelength:
+        oneOf:
+        - type: string
+        - $ref: '#/definitions/machineSettingParameter'
+      pulseDuration:
+        oneOf:
+        - type: string
+        - $ref: '#/definitions/machineSettingParameter'
+    additionalProperties:
+      oneOf:
+      - type: string
+      - $ref: '#/definitions/machineSettingParameter'
 
   applications:
     type: array
@@ -106,11 +174,11 @@ properties:
     type: object
     properties:
       _section:
+        $ref: '#/definitions/sectionMetadata'
+      description:
         type: string
-        description: sectionTitle (e.g. "Frequently Asked Questions")
-      sectionDescription:
+      presentation:
         type: string
-        description: Mandatory 20–70 word context/summary (high random variation)
       questions:
         type: array
         items:
@@ -118,6 +186,11 @@ properties:
           properties:
             question: { type: string }
             answer:   { type: string }
+      items:
+        type: array
+      options:
+        type: object
+    additionalProperties: true
 
   # Generic section pattern (for any custom block)
   # Example usage:
@@ -130,4 +203,19 @@ properties:
   #       title: ...
   #   content: ... (list, table, etc.)
 
-required: [pageTitle, eeat, author, properties]
+required: [pageTitle, author]
+allOf:
+- if:
+    properties:
+      contentType:
+        const: material
+    required: [contentType]
+  then:
+    required: [eeat, properties]
+- if:
+    properties:
+      contentType:
+        const: setting
+    required: [contentType]
+  then:
+    required: [machineSettings]

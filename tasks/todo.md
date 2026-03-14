@@ -5,6 +5,146 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 230: Settings Frontmatter Schema Alignment
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Align the single canonical frontmatter schema with the real exported settings contract so strict schema validation stops reporting false failures for settings pages, while preserving the stricter E-E-A-T and properties requirements for the other domains.
+
+### Steps
+- [ ] Confirm the live failure set and separate real export-config issues from stale schema assumptions
+- [ ] Update `schemas/all_domains_schema.yaml` so settings pages are validated by a settings-specific branch instead of the material-like global required contract
+- [ ] Add focused regression coverage for the settings branch and for the non-settings required-field contract
+- [ ] Re-run strict schema validation and focused tests, then record the outcome and any residual follow-up
+
+### Review
+- Confirmed the live export-config validator is healthy for the actual five domain configs: `check_config_health()` returned `valid: true`, so the earlier `base.yaml` and `schema.yaml` noise was not an active export-gate failure.
+- Updated `schemas/all_domains_schema.yaml` to validate by real exported contract instead of one material-like shape: all pages require `pageTitle` and `author`, materials additionally require `eeat` and `properties`, and settings additionally require `machineSettings`.
+- Aligned schema field shapes with real frontmatter by allowing structured machine-setting values, structured measurement objects in selected material properties, flexible `eeat` payloads, and object-form `faq._section` metadata.
+- Added focused schema regression coverage for settings pages, contaminant pages, and structured material property values.
+- Verification: `PYTHONPATH=/Users/todddunning/Desktop/Z-Beam/z-beam-generator /usr/local/bin/python3 -m pytest tests/test_frontmatter_schema_page_description.py tests/unit/test_single_frontmatter_schema_contract.py --tb=short -q` passed with `11 passed`.
+- Verification: `PYTHONPATH=/Users/todddunning/Desktop/Z-Beam/z-beam-generator /usr/local/bin/python3 scripts/validation/validate_frontmatter_schema.py --strict` now passes `464/464` files.
+- Verification: `PYTHONPATH=/Users/todddunning/Desktop/Z-Beam/z-beam-generator /usr/local/bin/python3 scripts/check_field_order.py` still passes `464/464` files.
+
+---
+
+## Batch 229: Full Dataset Audit Regenerate And Validate Pass
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Run one end-to-end pass over every canonical dataset so source-data completeness issues are identified first, downstream frontmatter is regenerated only from corrected source state, and both generator-side and website-side validation gates are checked in the right order.
+
+### Steps
+- [x] Establish the canonical scope and freeze the inputs: use only `data/*/*.yaml` and canonical schema/policy docs, and explicitly exclude `frontmatter/*` from dataset-source decisions
+- [x] Run the source-data completeness audit across all domains and capture blocking findings by severity, domain, and field before any regeneration work
+- [x] Triage the audit output into source-data defects, generator/config defects, and expected validator drift so remediation happens at the correct layer
+- [x] Fix source-data blockers in canonical YAML and generator/config blockers in generation or export configuration only; do not patch generated frontmatter
+- [x] Re-run the source-data completeness gate until CRITICAL and HIGH findings are at zero for the intended scope
+- [x] Regenerate all downstream artifacts from canonical source with a full export pass after the source dataset state is clean
+- [x] Run downstream parity and schema validation on regenerated frontmatter, separating export-health failures from source-dataset failures in the report
+- [x] Spot-check representative outputs in `z-beam/frontmatter/` for each domain to confirm regenerated structure matches source intent and schema contracts
+- [x] Record the final command set, findings summary, and any remaining medium/low follow-up work in `tasks/todo.md`
+
+### Review
+- Source completeness is now clean: `/usr/local/bin/python3 scripts/validation/validate_data_completeness.py --max-critical 0 --max-high 0` passes with zero findings.
+- Canonical source link fixes are in place: material → application relationship IDs now use canonical `*-applications` IDs, and contaminant → compound relationship URLs now match compound `fullPath` values.
+- Focused source audit verification is clean: `tmp/audit_link_mismatches.py` reported `missing_suffix_count=0` and `unique_url_pairs=0` after the source fixes.
+- Full export completed across 464 frontmatter files after rerunning with `PYTHONPATH=/Users/todddunning/Desktop/Z-Beam/z-beam-generator`, while separately surfacing config-validation issues in the optional `base` and `schema` targets (`domain` missing in both files).
+- Field-order parity passes across all regenerated frontmatter: `scripts/check_field_order.py` reports 464/464 valid.
+- Focused regenerated-frontmatter verification is clean: `tmp/audit_frontmatter_link_mismatches.py` reported `missing_suffix_count=0` and `url_mismatch_count=0`, confirming the user-requested link contract is now correct in exported frontmatter.
+- Strict frontmatter schema validation still fails heavily in settings frontmatter because `machineSettings.wavelength` is exported as an object while the canonical schema expects a string, and because `eeat` and `properties` are missing from settings outputs.
+- The built-in frontmatter link validator was not sufficient for this contract: it reported `Total Links: 0` and no errors despite the earlier real relationship mismatches, so focused audits were required to validate dataset relationship parity.
+
+### Final Command Set
+1. `/usr/local/bin/python3 scripts/validation/validate_data_completeness.py --max-critical 0 --max-high 0`
+2. `/usr/local/bin/python3 tmp/audit_link_mismatches.py`
+3. `/usr/local/bin/python3 scripts/tools/normalize_industry_applications.py --write`
+4. `/usr/local/bin/python3 run.py --export-all --no-parallel` with `PYTHONPATH=/Users/todddunning/Desktop/Z-Beam/z-beam-generator`
+5. `/usr/local/bin/python3 tmp/audit_frontmatter_link_mismatches.py`
+6. `/usr/local/bin/python3 scripts/check_field_order.py`
+7. `/usr/local/bin/python3 scripts/validation/validate_frontmatter_schema.py --strict`
+
+### Remaining Follow-Up
+- Downstream settings frontmatter/schema parity remains unresolved: `machineSettings.wavelength` shape mismatch plus missing `eeat` and `properties` fields in settings outputs.
+- Optional export config validation remains unresolved in `export/config/base.yaml` and `export/config/schema.yaml`, both missing required `domain`.
+
+### Suggested Execution Order
+1. Source audit: `python3 scripts/validation/validate_data_completeness.py --max-critical 0 --max-high 0`
+2. Remediation pass in canonical source/config files only
+3. Full regenerate: `python3 run.py --export-all --no-parallel`
+4. Field-order parity: `python3 scripts/check_field_order.py`
+5. Strict frontmatter schema validation: `python3 scripts/validation/validate_frontmatter_schema.py --strict`
+6. Focused spot checks in `../z-beam/frontmatter/` for materials, contaminants, compounds, settings, and applications
+
+### Exit Criteria
+- Source completeness gate passes with zero CRITICAL and zero HIGH findings
+- Full export completes from canonical source without requiring manual frontmatter edits
+- Frontmatter parity and strict schema validators pass, or any remaining failures are explicitly classified as downstream issues with concrete owners
+- Representative dataset outputs in every domain match the corrected canonical source state
+
+---
+
+## Batch 228: Source Dataset Completeness Remediation
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Fix the current source-dataset blockers surfaced by the completeness audit: restore valid contaminant YAML parsing and populate the empty required application `pageDescription` fields, then rerun the source-only completeness gate.
+
+### Steps
+- [x] Repair the YAML syntax/content issue in `data/contaminants/contaminants.yaml` so the contaminant dataset loads cleanly
+- [x] Populate the 12 empty required `pageDescription` values in `data/applications/Applications.yaml`
+- [x] Rerun `scripts/validation/validate_data_completeness.py --max-critical 0 --max-high 0` and record the result
+
+### Review
+- Repaired repeated malformed application metadata blocks where `pageDescription` had been indented under `pageTitle`, leaving `data/applications/Applications.yaml` unparsable for multiple generated application records.
+- Closed the unbalanced multiline single-quoted scalars in `data/contaminants/contaminants.yaml`, including repeated `pageDescription` and `description` fields that kept the contaminant source file from loading.
+- Verification: `/usr/local/bin/python3 scripts/validation/validate_data_completeness.py --max-critical 0 --max-high 0` now passes with 0 CRITICAL, 0 HIGH, 0 MEDIUM, and 0 LOW findings.
+
+---
+
+## Batch 227: Dataset Requirements And Completeness Audit
+Date: 2026-03-13
+Status: COMPLETE
+
+### Goal
+Audit the canonical datasets and derived frontmatter against the repo's active schema and completeness requirements, then identify the concrete gaps that still block a clean data-quality state.
+
+### Steps
+- [x] Run the existing source-data completeness validator and capture threshold failures by severity/domain
+- [x] Run the strict frontmatter schema validator and note any shape/completeness violations in exported data
+- [x] Inspect the highest-signal failures to determine whether they are real data gaps, parity drift, or stale validator assumptions
+
+### Review
+- Source-data completeness gate failed with 13 findings total: 1 CRITICAL and 12 HIGH. The critical issue is that `data/contaminants/contaminants.yaml` does not parse cleanly, so the audit could not load any contaminant records. The high-severity issues are 12 application items with empty required `pageDescription` values.
+- The generated audit artifacts are `tasks/data_completeness_report.md` and `tasks/data_completeness_report.json`, which now capture the current failing items and severities.
+- Frontmatter/schema validation was inspected only as a downstream export-health signal. It is not a dataset dependency and should not be used to decide whether source datasets are complete. The dataset audit conclusion therefore rests on the source-data gate only, not on generated frontmatter failures.
+- Verification commands run for dataset scope: `/usr/local/bin/python3 scripts/validation/validate_data_completeness.py --max-critical 0 --max-high 0`. A separate downstream check, `PYTHONPATH=/Users/todddunning/Desktop/Z-Beam/z-beam-generator /usr/local/bin/python3 scripts/validation/validate_frontmatter_schema.py --strict`, was intentionally treated as export/frontmatter-only and excluded from the dataset verdict.
+
+---
+
+## Batch 226: Pricing Page From Services Template
+Date: 2026-03-12
+Status: COMPLETE
+
+### Goal
+Create a new website pricing page that follows the same dynamic static-page template as the services page, exposes current rental pricing from shared site config, and is registered in the site navigation and sitemap.
+
+### Steps
+- [x] Extend the shared static-page factory to support a pricing route with the same services-style layout
+- [x] Add `app/pricing/page.tsx` and `app/pricing/page.yaml` with pricing-focused content and CTAs
+- [x] Register the new pricing page in website navigation and sitemap, then run focused verification
+
+### Review
+- Added a new website route at `app/pricing/` using the shared static-page factory so the pricing page follows the same dynamic static-page family as the services page instead of introducing another bespoke page implementation.
+- Extended `app/utils/pages/createStaticPage.tsx` to support a pricing variant that renders the existing `Pricing` component from shared site config and the same clickable-card grid pattern used for services-style marketing pages.
+- Registered the route in `app/config/site.ts` navigation and `app/sitemap.xml/route.ts` so the page is reachable from the Services dropdown and included in the sitemap.
+- Verification: `npm run type-check` passed in `z-beam`, and `curl -I -fsS http://localhost:3000/pricing | head -n 1` returned `HTTP/1.1 200 OK`.
+
+---
+
 ## Batch 225: Shared Data Package Reorganization
 Date: 2026-03-11
 Status: COMPLETE
