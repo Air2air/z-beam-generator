@@ -5,6 +5,195 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 264: Clear Static PageDescriptions Across Shared Pages
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Clear the stored `pageDescription` values for the homepage and shared static pages, and stop the services loader from reintroducing a runtime `pageDescription`, while keeping the rest of the metadata enrichment intact.
+
+### Steps
+- [x] Clear `pageDescription` in the affected page YAML sources without disturbing the other metadata fields
+- [x] Remove the services-only loader override that repopulates `pageDescription` at runtime
+- [x] Run the focused static-page loader and shared-page integration tests in `z-beam`
+
+### Review
+- Cleared `pageDescription` to empty strings across every static page YAML that currently defines it, including the homepage contract and the shared/static routes under `app/about`, `app/comparison`, `app/compliance`, `app/contact`, `app/equipment`, `app/netalux`, `app/partners`, `app/safety`, `app/schedule`, `app/services`, and `app/thank-you`.
+- Removed the services-only loader override in `z-beam/app/utils/staticPageLoader.ts` that had been restoring a computed `pageDescription` at runtime, while keeping the longer description, social description, and pricing/schema enrichment logic intact.
+- Removed the now-redundant contact-specific `pageDescription` override from `z-beam/app/utils/pages/createStaticPage.tsx` so the cleared source data is the single control point for visible subtitle suppression.
+- Updated the static-page loader test to expect the services `pageDescription` to stay blank instead of being repopulated by config.
+- Verification: VS Code diagnostics reported no errors in the touched YAML and TypeScript files after cleanup.
+- Verification: `npx jest tests/utils/staticPageLoader.test.ts tests/utils/pages/createStaticPage.integration.test.tsx --runInBand --coverage=false` passed in `z-beam`.
+
+---
+
+## Batch 263: Homepage Title Block Services Table Padding And Contact Title
+Date: 2026-03-14
+Status: COMPLETE
+
+### Goal
+Remove the visible homepage title block that renders "Laser Cleaning Equipment Rentals and Services", tighten the horizontal padding in the services pricing table cells, and change the contact page title to "Contact us" without disturbing the shared static-page content contracts.
+
+### Steps
+- [x] Remove the visible homepage page-title block while preserving homepage metadata and hero content
+- [x] Reduce horizontal td padding in the shared services pricing-table renderer
+- [x] Update the contact page title surfaces to "Contact us" and verify the edited frontend files
+
+### Review
+- Removed the visible homepage title block by stopping `app/page.tsx` from passing the shared homepage metadata title into `Layout`, which leaves the homepage hero and sections intact while preserving the underlying homepage metadata and JSON-LD values.
+- Reduced the horizontal padding on every services pricing-table body cell in `app/utils/pages/createStaticPage.tsx` from `px-4` to `px-3` without changing the shared pricing data contract or the header layout.
+- Updated the contact page title-bearing frontmatter fields in `app/contact/page.yaml` to `Contact us`, including the page title, headline, Open Graph/Twitter titles, and JSON-LD title/name values, and aligned the breadcrumb label casing on that page.
+- Verification: VS Code diagnostics reported no errors in the touched files.
+- Verification: `npx jest tests/utils/staticPageLoader.test.ts tests/utils/pages/createStaticPage.integration.test.tsx --runInBand --coverage=false` passed in `z-beam`.
+
+---
+
+## Batch 262: Align Legacy Schema Factory Guidance And Verify Build
+Date: 2026-03-14
+Status: COMPLETE
+
+### Goal
+Finish the next frontend cleanup pass by marking `lib/schema/factory.ts` as compatibility-only, updating stale schema documentation that still treats it as the primary live path, and verifying the website still builds cleanly after the consolidation work.
+
+### Steps
+- [x] Mark `lib/schema/factory.ts` explicitly as a compatibility/testing surface rather than the live runtime schema authority
+- [x] Update stale schema docs so they point contributors at `app/utils/schemas/SchemaFactory.ts` and the live JsonLD component path
+- [x] Run focused validation plus a full production build in `z-beam`
+
+### Review
+- Marked `z-beam/lib/schema/factory.ts` as a deprecated compatibility/testing surface so active frontend work is steered toward `app/utils/schemas/SchemaFactory.ts` and `app/components/JsonLD/JsonLD.tsx` instead of the static compatibility factory.
+- Updated `z-beam/docs/02-features/seo/UNIFIED_SCHEMA_IMPLEMENTATION_GUIDE.md` and `z-beam/docs/01-core/JSON-LD_CLEANUP_STRATEGY.md` so the live JSON-LD authority and the remaining historical/compatibility surfaces are clearly separated.
+- Fixed the full-build regression exposed during verification by widening `z-beam/lib/metadata/jsonld.ts` to accept the runtime `SchemaOrgGraph` shape and by restoring legacy machine-setting aliases (`powerRange`, `repetitionRate`) to the shared dataset policy consumed by the live schema paths.
+- Reduced duplication further by repointing `z-beam/app/utils/schemas/generators/dataset.ts` at `app/datasets/core/policy.json` instead of maintaining its own machine-setting metadata map.
+- Verification: VS Code diagnostics reported no errors in the touched files after the fixes.
+- Verification: `npx jest tests/unit/MaterialJsonLD.test.tsx tests/unit/SettingsJsonLD.test.tsx --runInBand --coverage=false` passed in `z-beam`.
+- Verification: the `Build Production` task in `z-beam` completed past the prior TypeScript/Jest blockers and ended with the final SEO/Core Web Vitals reports, with no remaining build failure markers in the task output.
+
+---
+
+## Batch 261: Align JSON-LD Docs Tests And Compatibility Surface
+Date: 2026-03-14
+Status: COMPLETE
+
+### Goal
+Bring tests and active documentation back in sync with the current JSON-LD architecture, and reduce remaining frontend bloat by shrinking the deprecated helper file to the smallest compatibility surface the live app still needs.
+
+### Steps
+- [x] Update active tests so they assert the current architecture: live JSON-LD generation goes through `SchemaFactory` and the deprecated helper remains compatibility-only
+- [x] Update active docs that still describe `jsonld-helper.ts` as the live JSON-LD path or instruct edits against it
+- [x] Reduce frontend compatibility bloat further by removing unused legacy helper exports and leave only the compatibility surface still required by the repo
+- [x] Run focused validation for the updated tests and compatibility surface
+
+### Review
+- Rewrote `z-beam/app/utils/jsonld-helper.ts` as a minimal compatibility wrapper with only `createJsonLdForArticle(...)` and `createJsonLdScript(...)`, removing the unused legacy builder exports and the duplicate second implementation path from the frontend codebase.
+- Updated `z-beam/tests/standards/JSONLDComponent.test.tsx` so it now asserts the helper is compatibility-only and that the live JsonLD component does not import the deprecated helper.
+- Updated the nearest active architecture and implementation docs to point contributors at `app/components/JsonLD/JsonLD.tsx`, `app/utils/schemas/SchemaFactory.ts`, and `lib/metadata/jsonld.ts` instead of steering them toward the deprecated helper.
+- Verification: `npx jest tests/standards/JSONLDComponent.test.tsx tests/lib/schema/factory.test.ts tests/app/category-page.test.tsx --runInBand` passed in `z-beam`.
+
+---
+
+## Batch 260: Remove Live Legacy JSON-LD Fallback Path
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Reduce legacy runtime bloat in the recent schema consolidations by removing the live JsonLD component dependency on the deprecated helper implementation, while keeping the helper file as a compatibility surface that delegates back to the current schema authority.
+
+### Steps
+- [x] Remove the deprecated helper import and fallback path from the live JsonLD component so article-mode schema generation uses the current schema factory only
+- [x] Convert the deprecated helper entrypoint into a compatibility wrapper around the current schema authority instead of maintaining a second runtime implementation path
+- [x] Run focused diagnostics and targeted JSON-LD/component validation
+
+### Review
+- Updated `z-beam/app/components/JsonLD/JsonLD.tsx` so article-mode JSON-LD generation now fails closed on `SchemaFactory` errors instead of silently routing to the deprecated helper, and both render branches serialize through the shared `lib/metadata/jsonld.ts` helper.
+- Reduced `z-beam/app/utils/jsonld-helper.ts` to a compatibility entrypoint for `createJsonLdForArticle(...)` that delegates back to `SchemaFactory`, leaving the file in place for compatibility-only callers without preserving a second live generation path.
+- Verification: VS Code diagnostics reported no errors in the touched files after cleanup.
+- Verification: `npx jest tests/standards/JSONLDComponent.test.tsx tests/lib/schema/factory.test.ts tests/app/category-page.test.tsx --runInBand` passed in `z-beam`.
+
+---
+
+## Batch 259: Consolidate Website Metadata, JSON-LD, And Validator Policy Authority
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Reduce remaining website-side parity drift by centralizing category metadata lookups, shared JSON-LD graph serialization/merging, and shared SEO validator thresholds/sample routes into reusable authorities consumed by the live page factories and validators.
+
+### Steps
+- [x] Introduce one shared category metadata registry for content-page factories and frontmatter/runtime validation instead of duplicating category lists and per-domain lookup wiring
+- [x] Introduce one shared JSON-LD utility surface for graph normalization, merging, and metadata serialization, then repoint metadata generators and static-page JSON-LD assembly to it
+- [x] Move validator sample routes and thresholds into shared validation config consumed by the live production and SEO infrastructure validators, then run focused verification
+
+### Review
+- Added `z-beam/app/utils/contentPages/categoryMetadataRegistry.ts` so the content-page factory resolves material, contaminant, and compound category metadata through one shared lookup surface instead of embedding separate per-domain maps and normalization logic inside `createContentPage.tsx`.
+- Added `z-beam/lib/metadata/jsonld.ts` as the shared JSON-LD authority for graph normalization, schema merging, and Next metadata serialization, then repointed the static-page factory plus static and dynamic metadata generators to use it instead of hand-rolled JSON-LD merge/stringify logic in multiple files.
+- Extended `z-beam/scripts/validation/config.js` with shared production-site, sample-route, feed, and SEO-infrastructure policy settings, then repointed `scripts/validation/post-deployment/validate-production.js` and `scripts/validation/seo/validate-seo-infrastructure.js` to consume those shared values instead of keeping duplicated hardcoded thresholds and route lists.
+- Verification: VS Code Problems reported no errors in the touched TypeScript and validator files after the refactor.
+- Verification: `npx jest tests/seo/enhanced-seo-integration.test.ts tests/lib/schema/factory.test.ts --runInBand --coverage=false` passed in `z-beam`.
+- Verification: `npx jest tests/app/category-page.test.tsx --runInBand --coverage=false` passed in `z-beam`.
+- Verification: `node --check scripts/validation/config.js`, `node --check scripts/validation/post-deployment/validate-production.js`, and `node --check scripts/validation/seo/validate-seo-infrastructure.js` all completed successfully in `z-beam`.
+
+---
+
+## Batch 258: Unify Website Dataset Policy Across Runtime And Validation
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Remove dataset-policy drift inside `z-beam` by centralizing the canonical Tier 1 parameters, Tier 2 property groups, and machine-setting metadata into one shared policy source consumed by both runtime schema generation and SEO validation.
+
+### Steps
+- [x] Confirm the live frontmatter/settings contract and identify dataset-policy drift in website runtime and validation code
+- [x] Introduce one shared dataset policy source and repoint the affected runtime and validation consumers to it
+- [x] Run focused validation on the edited files and record the outcome
+
+### Review
+- Confirmed the website dataset stack had drifted from the actual settings/frontmatter contract: some runtime schema paths still referenced stale keys such as `powerRange` and `repetitionRate`, while live settings/frontmatter and the stronger validator paths use keys such as `laserPower` and `frequency`.
+- Added `z-beam/app/datasets/core/policy.json` as the shared website dataset-policy source and rewired the affected consumers to use it: `app/datasets/core/validation.ts`, `app/utils/variableMeasuredBuilder.ts`, `app/utils/schemas/generators/dataset.ts`, `app/utils/schemas/SchemaFactory.ts`, and `scripts/validation/seo/validate-seo-infrastructure.js`.
+- Normalized Tier 2 completeness checks so both camelCase and snake_case category keys are accepted during transition instead of forcing inconsistent policy copies to stay in sync manually.
+- Verification: focused diagnostics reported no errors in all edited files via VS Code Problems for the touched runtime and validator files.
+
+---
+
+## Batch 257: Assess SEO Parity, Postdeploy Coverage, And Dataset Readiness
+Date: 2026-03-14
+Status: COMPLETE
+
+### Goal
+Assess the current metadata, rich data, schema, SEO, and dataset infrastructure across the website and generator repos; identify the highest-value parity and consolidation opportunities; evaluate whether the postdeploy checks are accurate and comprehensive enough; and determine whether the source datasets are accessible and operating at full potential.
+
+### Steps
+- [x] Review the current metadata, structured-data, SEO validation, and deployment validation entrypoints in `z-beam`
+- [x] Review dataset authority, accessibility paths, and validation coverage in `z-beam-generator` and the website consumption layer
+- [x] Summarize the highest-impact gaps, duplication, and practical next actions for the user
+
+### Review
+- Metadata and JSON-LD are improved but still split across multiple generation systems: shared static-page metadata flows through `lib/metadata/generators.ts` and `app/utils/pages/createStaticPage.tsx`, while category metadata remains separate in `app/metadata.ts`, and structured data still spans `app/utils/schemas/SchemaFactory.ts`, `lib/schema/factory.ts`, and legacy helpers such as `app/utils/jsonld-helper.ts` and `app/utils/jsonld-schema.ts`.
+- Postdeploy coverage is serviceable as a smoke gate but not fully satisfactory as a release-quality gate. The fast default `scripts/validation/post-deployment/validate-production.js` is useful for live reachability and basic SEO/security checks, but the repo also maintains `validate-production-simple.js`, `validate-production-enhanced.js`, the comprehensive production validator, and the standalone SEO infrastructure validator, with overlapping checks and inconsistent failure semantics.
+- Dataset authority is strong at the generator layer (`z-beam-generator/data/*` plus `scripts/validation/validate_data_completeness.py`), but website accessibility is only partial. The site exposes a material dataset endpoint in `app/api/dataset/materials/[slug]/route.ts`, yet other dataset surfaces remain fragmented or incomplete, including a `501` placeholder in `app/api/properties/route.ts`, backward-compatibility wrappers around the new `app/datasets` module, and runtime dataset assembly that still relies heavily on frontmatter rather than direct authoritative source datasets.
+
+---
+
+## Batch 256: Fix Material Image Copy Failure In Deploy Path
+Date: 2026-03-14
+Status: COMPLETE
+
+### Goal
+Remove the recurring material-image copy failure showing up in the deployment logs by fixing the underlying asset or script expectation, then rerun the focused verification that exercises that path.
+
+### Steps
+- [x] Identify which build or deploy script issues `cp public/images/material/dolomite-laser-cleaning-hero.jpg public/images/material/dolomite-laser-cleaning-micro.jpg` and why it intermittently exits `1`
+- [x] Fix the source-of-truth problem without adding fallback behavior or patching generated output
+- [x] Run focused verification for the affected asset/build path and record the outcome
+
+### Review
+- Confirmed the repeated `cp ... dolomite-laser-cleaning-hero.jpg ... dolomite-laser-cleaning-micro.jpg` line was not emitted by a tracked repo script; it was a manual recovery attempt against a real asset mismatch where frontmatter referenced canonical material image filenames that were absent from `z-beam/public/images/material`.
+- Audited all material frontmatter image references against the public material image directory and found 9 missing filenames. Restored the missing canonical filenames in `z-beam/public/images/material` so the content contract and public asset tree are aligned again, including Dolomite plus the other missing alias/micro variants.
+- Verification: focused material frontmatter-to-public image audit now reports `TOTAL 0` missing material hero/micro images in `z-beam`.
+- Verification: `npm run build` exited with status `0` in `z-beam` after the asset restoration.
+
+---
+
 ## Batch 255: Fix Vercel SEO Test Transform Blocker
 Date: 2026-03-14
 Status: COMPLETE
