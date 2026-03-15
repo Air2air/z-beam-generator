@@ -139,6 +139,10 @@
 - 2026-03-13: CTA-only pricing rows can require both label and color changes while nearby rows still use numeric discount math. → Rule: keep discount constants canonical in site config, let the pricing helper emit `Call` for quote-only rows, and apply CTA color treatment only in the shared renderer.
 - 2026-03-13: Pricing presentation rules can change from totals to hourly values without changing the canonical base rates. → Rule: keep the raw rate authority in site config and express display-mode changes, like totals versus per-hour output, inside the dedicated pricing-table helper.
 
+- 2026-03-14: Post-deploy workflow drift can silently turn a familiar fast health check into a long orchestrated suite, and that broader suite may fail on local-build assumptions that do not belong in the default live-site check. -> Rule: keep `postdeploy` mapped to the fast/basic production validator, expose longer suites behind explicit commands, and sync the adjacent docs whenever the default path changes.
+
+- 2026-03-14: Live SEO validators can keep showing old warnings immediately after a local fix because they target the deployed site rather than the fresh local build output. -> Rule: when changing metadata or JSON-LD for SEO warnings, pair the live-site validator with one local built-output check before deciding whether the fix failed or is simply not deployed yet.
+
 - 2026-03-04: Consolidated short-content prompts can exist but remain ineffective unless they are injected at runtime chain entry for text fields only. → Rule: prepend `component_short_content_prompts.yaml` entries as the first prompt block in `PromptRegistryService.get_schema_prompt(...)` for non-title text refs, and validate with unit tests plus prompt/parity gates.
 
 - 2026-03-03: Domain-split short prompt files make consolidation requests harder and duplicate near-identical prompt intent across domains. → Rule: maintain one domain-agnostic short prompt registry keyed by component field with explicit required variables (`subject`, `category`, `context`), and treat domain-specific wording as optional overrides only when truly required.

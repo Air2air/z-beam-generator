@@ -5,6 +5,52 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 254: Complete SEO And JSON-LD Validation Pass
+Date: 2026-03-14
+Status: COMPLETE
+
+### Goal
+Fix the shared sources behind the remaining SEO validation warnings, run a production build, and complete JSON-LD, sitemap, and SEO validation including the build-dependent URL validator.
+
+### Steps
+- [x] Shorten the canonical Services meta description in the centralized pricing/site config so the live route falls within SEO limits
+- [x] Update the shared static-page JSON-LD path to emit breadcrumb-aware schema for static pages without dropping frontmatter-provided page schema
+- [x] Run build plus `validate:urls`, `verify:sitemap`, and `validate:seo-infrastructure`, then record the outcome
+
+### Review
+- Shortened the centralized Services meta-description helper in `app/config/site.ts`, which updates the shared static-page enrichment path without reintroducing page-local SEO copy.
+- Updated the shared static-page factory to merge frontmatter JSON-LD with generated page schema, including legacy lowercase `jsonld`, so static pages can emit breadcrumb-aware schema without dropping their frontmatter-defined `WebPage` object.
+- Updated the stale SEO integration test that still expected the old long `postdeploy` mapping so the production build could complete against the restored fast/basic default.
+- Verification: `npm test -- --runInBand tests/integration/seo-comprehensive.test.js` passed in `z-beam`.
+- Verification: production build completed and `.next` exists in `z-beam`.
+- Verification: `npm run validate:urls` passed with `Pages checked: 189`, `Errors: 0`, `Warnings: 0`.
+- Verification: `npm run verify:sitemap` passed and reported sitemap readiness for production deployment.
+- Verification: `npm run validate:seo-infrastructure` still reports the same 3 warnings on `https://www.z-beam.com` because it validates the deployed site, not the new local build.
+- Verification: local production output from the fresh build showed the updated Services meta description and emitted `BreadcrumbList` schema on both `/services` and `/about`, confirming the code-side fixes are present and waiting on deployment.
+
+---
+
+## Batch 253: Restore Fast Postdeploy Path
+Date: 2026-03-14
+Status: COMPLETE
+
+### Goal
+Restore `npm run postdeploy` to the fast/basic production validator, keep the long comprehensive suite available behind its explicit command, and verify the fast path completes successfully.
+
+### Steps
+- [x] Change the website `postdeploy` script back to the basic production validator and keep the long suite on an explicit command
+- [x] Update the adjacent post-deployment docs so they describe the fast default and the explicit comprehensive path consistently
+- [x] Stop the currently running long postdeploy process and rerun the fast/basic postdeploy verification
+
+### Review
+- Restored `npm run postdeploy` in `z-beam/package.json` so it now invokes the fast/basic `validate:production` script instead of the long all-validations orchestrator, while leaving the broader suite available explicitly via `npm run validate:production:complete`.
+- Updated the nearby post-deployment quick-reference and README text so they now describe `postdeploy` as the fast/basic default and point users at the explicit comprehensive command when they intentionally want the longer suite.
+- Stopped the previously running comprehensive postdeploy job after confirming it had reached the production-environment phase; its captured output already showed one hidden default-path problem: URL validation in the long suite depended on a local build directory.
+- Verification: `npm run postdeploy` now executes the fast/basic validator in `z-beam`.
+- Verification result: the fast/basic run completed but exited non-zero with two live-site failures: `HTML Size: 110.11 KB` and `Sample Products Valid: 5/5 sample products valid (Issues: 5)`.
+
+---
+
 ## Batch 252: Services Title And Pricing Label Cleanup
 Date: 2026-03-13
 Status: COMPLETE
