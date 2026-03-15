@@ -5,6 +5,197 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 276: Push Website Commits And Save Generator Notes
+Date: 2026-03-15
+Status: IN PROGRESS
+
+### Goal
+Push the completed website sitemap/schema/deploy fixes to `origin/main` and save the generator task-log updates in their own commit without disturbing unrelated local website edits.
+
+### Steps
+- [ ] Commit the generator task-log and lesson updates as a separate change
+- [ ] Push the website repository commits on `main` to `origin`
+- [ ] Push the generator repository note commit on `main` to `origin`
+
+### Review
+- Pending
+
+---
+
+## Batch 275: Commit And Deploy Sitemap Schema Hardening
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Create a source-only website commit for the sitemap normalization and Dataset schema hardening work, then deploy that clean website state to production without including unrelated local ContactCards edits or generated report artifacts.
+
+### Steps
+- [x] Stage and commit only the intended website source files for the sitemap/schema batch
+- [x] Isolate unrelated local website changes so deployment uses the committed sitemap/schema state only
+- [x] Run the production deploy path for the clean website tree
+- [x] Restore any stashed unrelated local changes and record the deployment outcome
+
+### Review
+- Website commits: `d64d2d6f2`, `b0d89b0ec`, `8054f8ef1`
+- Production deploy: `https://z-beam-nop0pvlr0-air2airs-projects.vercel.app`
+- Live validation: `node scripts/validation/post-deployment/validate-production.js --category=jsonld`
+
+---
+
+## Batch 274: Normalize Sitemap XML And Harden Dataset Schema Emission
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Fix the website sitemap source so `/sitemap.xml` emits a normal-sized canonical XML urlset without fake locale alternates, and harden Dataset schema generation so detail pages keep emitting `Dataset` JSON-LD even if frontmatter field naming varies between normalized and legacy keys.
+
+### Steps
+- [x] Remove non-canonical hreflang alternate emission from the sitemap route and verify the XML response shape
+- [x] Relax Dataset schema gating to accept both normalized and legacy contaminant field names
+- [x] Add focused regression coverage for the sitemap XML output and Dataset schema generation path
+- [x] Run focused verification for the touched sitemap/schema paths
+
+### Review
+- `npx jest tests/app/sitemap-route.test.ts tests/utils/schemaFactory.dataset.test.ts --runInBand --coverage=false`
+- `node scripts/validation/validate-schemas-live.js`
+- `node scripts/validation/post-deployment/validate-production.js --category=jsonld`
+
+---
+
+## Batch 273: Relax Static Page Metadata Contract And Production-Only Postdeploy
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Make shared static-page titles and descriptions optional in the website runtime/tests, render markdown links accurately in ContactCards/BaseSection copy, and ensure postdeploy audits only run against the production site rather than local content/build checks.
+
+### Steps
+- [x] Add markdown link rendering support for shared section descriptions and keep link text clean in ContactCards
+- [x] Make shared static-page `pageTitle` and `pageDescription` optional in runtime types/rendering with safe fallbacks
+- [x] Update tests that still enforce mandatory `pageTitle`, `pageDescription`, `sectionTitle`, or `sectionDescription`
+- [x] Remove local-only checks from the postdeploy validation path and verify the production-only audit commands still cover the live site
+- [x] Diagnose the remaining live production validation failures against the deployed homepage and feed
+- [x] Patch homepage source so production metadata/H1 and client-payload size align with the production validator
+- [x] Align feed sample validation with the current live feed identifier contract and rerun focused verification
+- [x] Review any remaining optional-metadata enforcement outside the touched static-page paths and prepare a source-only commit
+
+### Review
+- Added shared markdown-link rendering so section descriptions can emit accurate internal anchors without per-component copy hacks.
+- Relaxed the static-page and section metadata contract so `pageTitle`, `pageDescription`, `sectionTitle`, and `sectionDescription` are optional in the website runtime and focused test suites, while preserving string validation when those fields are present.
+- Reduced the homepage client payload by passing only hero-relevant metadata through the `Layout` -> `Hero` client boundary, restored a real homepage `h1` by passing the page title into `Layout`, and set a concise homepage `pageDescription` for route metadata.
+- Updated the live postdeploy path to run production-only audits and aligned the feed sample validator with the currently deployed feed contract, where canonical slugs live in `g:id` and prefixed merchant identifiers live in `g:mpn`.
+- Verification: focused Jest suites passed (`162/162`), the stale SEO integration test passed after script-alignment, and the full `npm run build` pipeline completed successfully in `z-beam`.
+- Residual risk: the production-only `postdeploy` command still validates the deployed site, so the live homepage/feed fixes cannot be fully re-verified until a deployment is made from these source changes.
+
+---
+
+## Batch 272: Clean Up ContactCards Folder And Dev Server State
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Normalize the website dev-server state to one live instance and clean `z-beam/app/components/ContactCards` so the folder no longer contains stale `Schedule*` compatibility artifacts or mismatched filenames.
+
+### Steps
+- [x] Stop extra local dev-server processes and start one clean website dev server
+- [x] Remove dead `ScheduleCards` compatibility shims and any unused `Schedule*` files from `app/components/ContactCards`
+- [x] Rename remaining files/types inside `app/components/ContactCards` so names match their exported API and rerun focused verification
+
+### Review
+- Stopped the stray local `next dev` processes and restarted the website dev server directly, leaving the app available again without relying on the earlier wrapper script's false-positive status output.
+- Removed the dead `ScheduleCards.tsx` and `ScheduleCards.module.css` compatibility shims from `z-beam/app/components/ContactCards`, and deleted the unused `ScheduleCardImage.tsx` file because nothing in the live app referenced it anymore.
+- Replaced `z-beam/app/components/ContactCards/ScheduleCTA.tsx` with `z-beam/app/components/ContactCards/BookingCTA.tsx` so the file name now matches the `BookingCTA` export and its local prop type.
+- Verification: a focused search for stale `Schedule*` file references under `z-beam/app/**` returned no remaining matches, and VS Code diagnostics reported no errors in the kept `ContactCards` files.
+
+---
+
+## Batch 271: Rename Schedule Component Folder To ContactCards
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Rename the frontend component folder from `Schedule` to `ContactCards` so the filesystem matches the new `ContactCards` component naming, then repoint imports and verify the website files resolve cleanly.
+
+### Steps
+- [x] Move `z-beam/app/components/Schedule` to `z-beam/app/components/ContactCards`
+- [x] Update imports and file comments that still reference the old folder path
+- [x] Run focused diagnostics/searches so no live `components/Schedule` references remain in the website app path
+
+### Review
+- Renamed the website component folder from `z-beam/app/components/Schedule` to `z-beam/app/components/ContactCards`, so the filesystem now matches the active `ContactCards` component naming.
+- Updated the homepage, settings, materials, contaminants, and compounds layout imports to point at `app/components/ContactCards/ContactCards` instead of the retired `Schedule` path, and refreshed the moved `ScheduleCTA.tsx` path comment inside the renamed folder.
+- Verification: a focused search for `components/Schedule` under `z-beam/app/**` returned no remaining live references.
+- Verification: VS Code diagnostics reported no errors in the touched website files after the folder rename.
+
+---
+
+## Batch 270: Audit Static Page Metadata And Tighten Bulleted Images
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Audit the static page metadata/image/JSON-LD surface, fix the stale static-page loader expectations, add focused regression coverage for the shared static pages, and tighten the bulleted content-card image max-height by one Tailwind increment.
+
+### Steps
+- [x] Fix stale static-page loader expectations so tests reflect current services page metadata behavior
+- [x] Add focused regression coverage for shared static-page image/social/JSON-LD metadata presence and shape
+- [x] Reduce the bulleted content-card image cap from `max-h-64` to the next lower increment and rerun focused verification
+
+### Review
+- Audited the static-page YAML inventory and confirmed the main runtime metadata weakness was blank `pageDescription` values on several shared pages plus one true source gap on `comparison`, rather than a failure in the bulleted layout itself.
+- Updated `z-beam/app/utils/pages/createStaticPage.tsx` so shared static-page metadata now falls back from `pageDescription` to `description`, which restores non-empty runtime metadata descriptions across the shared static-page set.
+- Filled the missing source metadata surface on `z-beam/app/thank-you/page.yaml`, added the missing `description` field to `z-beam/app/comparison/page.yaml`, and normalized `z-beam/app/equipment/page.yaml` from `jsonld` to `jsonLd`.
+- Updated `z-beam/tests/utils/staticPageLoader.test.ts` to reflect the current linked services subtitle and to assert canonical URLs, social image sources, and structured-data presence across the shared static pages.
+- Added `z-beam/tests/utils/staticPageMetadata.regression.test.ts` to verify homepage runtime metadata plus non-empty descriptions, canonical URLs, and social images for every page using the shared static-page factory.
+- Reduced the shared bulleted content-card image cap from `max-h-64` to `max-h-56` in `z-beam/app/components/ContentCard/ContentCard.tsx` and updated the focused regression assertion in `z-beam/tests/components/ContentCard/ContentSection.test.tsx`.
+- Verification: `npx jest tests/utils/staticPageLoader.test.ts tests/utils/staticPageMetadata.regression.test.ts tests/components/ContentCard/ContentSection.test.tsx tests/utils/pages/createStaticPage.integration.test.tsx --runInBand --coverage=false` passed in `z-beam`.
+- Verification: VS Code diagnostics reported no errors in the touched runtime files and the new metadata regression test file.
+
+---
+
+## Batch 269: Add Bulleted ContentCard Variant For Equipment Page
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Add a reusable `bulleted` content-card layout for callouts with images so desktop renders the image and paragraph on one row with the bullet list below at full width, then apply that layout to the equipment page.
+
+### Steps
+- [x] Extend the shared content-card type contract and renderer with a reusable `bulleted` variant
+- [x] Apply the new variant to the equipment page content-section items in YAML
+- [x] Run focused verification on the touched files and nearest content-card tests
+
+### Review
+- Added a reusable `bulleted` variant to the shared content-card unions in `z-beam/types/centralized.ts` so frontmatter-driven content items can opt into the new layout without page-specific renderer branches.
+- Updated `z-beam/app/components/ContentCard/ContentCard.tsx` so `bulleted` items with both an image and details render the text and image on the first desktop row and move the details list into a full-width row below, while preserving the existing inline-detail behavior for other variants.
+- Applied `variant: bulleted` to each equipment content item in `z-beam/app/equipment/page.yaml`, which moves the equipment page onto the new shared layout without changing its section shape.
+- Added focused coverage in `z-beam/tests/components/ContentCard/ContentSection.test.tsx` for the new full-width bullet-row behavior and aligned the explicit `WorkflowItem` fixtures with the current shared type contract.
+- Verification: `npx jest tests/components/ContentCard/ContentSection.test.tsx --runInBand --coverage=false` passed in `z-beam`.
+- Verification: VS Code diagnostics reported no errors in the touched runtime files; the long-standing JSX/jest-dom diagnostics on `tests/components/ContentCard/ContentSection.test.tsx` remain workspace-config issues rather than runtime test failures.
+
+---
+
+## Batch 268: Remove Weekend Rental Pricing Option
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Remove the Weekend rental pricing option from the live website pricing source so it no longer appears in the services pricing table or related supporting copy, and delete any orphaned weekend-only pricing config.
+
+### Steps
+- [x] Remove the Weekend pricing row and supporting note from the website pricing-table helper
+- [x] Delete the now-unused weekend discount constant from the shared website pricing config
+- [x] Run focused verification so the edited website files remain error-free and no Weekend pricing references survive in the live codepath
+
+### Review
+- Removed the Weekend pricing period from `z-beam/app/utils/pricing/getEquipmentRentalPriceTable.ts`, which also removes the Weekend row from the shared services pricing table because that table is generated directly from the helper's `PRICING_PERIODS` array.
+- Removed the Weekend-only supporting note from the same helper so no stale explanatory copy remains after the row deletion.
+- Deleted `discount_weekend` from `z-beam/app/config/site.ts` because the shared website pricing helper no longer consumes it.
+- Verification: VS Code diagnostics reported no errors in the edited TypeScript files.
+- Verification: a focused repository search for `discount_weekend|Weekend|weekend` under `z-beam/app/**` returned no remaining live website matches.
+
+---
+
 ## Batch 267: Restore Contact Iframe CSP Allowlist
 Date: 2026-03-14
 Status: COMPLETE
