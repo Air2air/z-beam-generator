@@ -5,6 +5,68 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 267: Restore Contact Iframe CSP Allowlist
+Date: 2026-03-14
+Status: COMPLETE
+
+### Goal
+Restore the live compact Workiz/sendajob contact iframe by re-allowing its origin in the website CSP, keep the permission surface minimal, and verify the regression is covered before release.
+
+### Steps
+- [x] Confirm the exact blocked origin and current policy regression in the live website codepath
+- [x] Restore the required iframe allowlist in the website CSP source files and update the nearest focused regression coverage/docs
+- [x] Run focused verification, then commit and push the website fix
+
+### Review
+- Confirmed the regression source in `z-beam`: `app/components/Contact/ContactLeadSection.tsx` still rendered the live `https://st.sendajob.com/...` iframe, while production `frame-src` in `middleware.ts` and `app/utils/csp.ts` had been narrowed back to YouTube-only origins.
+- Restored only the active contact embed origin (`https://st.sendajob.com`) to production `frame-src` in both CSP sources, keeping the permission surface minimal instead of re-adding the broader historical Workiz/sendajob allowlists.
+- Updated the focused CSP unit test and the active CSP documentation so the allowed contact-form frame origin is covered by verification and matches the live website behavior.
+- Verification: `npx jest tests/utils/csp.test.ts --runInBand --coverage=false` passed in `z-beam`.
+
+---
+
+## Batch 266: Remove Workiz Portal And Repoint Schedule Traffic To Contact
+Date: 2026-03-14
+Status: COMPLETE
+
+### Goal
+Remove the Workiz booking portal from the live website codepath, change the Contact page CTA button to `Back Home`, and send retired `/schedule` traffic to `/contact`.
+
+### Steps
+- [x] Remove the Workiz/sendajob contact embed and booking URL usage from the live contact and CTA components
+- [x] Repoint the Contact page header CTA plus the retired `/schedule` and `/booking` aliases to internal contact/home routes
+- [x] Remove the dead Workiz/schedule-widget code, tests, and implementation docs that no longer reflect the website behavior
+
+### Review
+- Replaced the external Workiz/sendajob iframe in `z-beam/app/components/Contact/ContactLeadSection.tsx` with first-party contact guidance and direct email/phone actions, while preserving the existing contact page view and conversion tracking.
+- Updated the contact page header CTA in `z-beam/app/contact/page.yaml` to `Back Home` -> `/`, repointed booking-related CTA components to `/contact`, and changed `z-beam/vercel.json` so legacy `/schedule`, `/schedule.html`, `/booking`, and `/booking.html` all redirect to `/contact`.
+- Removed the centralized Workiz booking URL from `z-beam/app/config/site.ts`, stripped Workiz/sendajob domains from `z-beam/middleware.ts` and `z-beam/app/utils/csp.ts`, and deleted the unused `WorkizWidget` and `ScheduleContent` components plus the remaining schedule-widget branches in the shared page factory/policy.
+- Removed the dedicated Workiz integration test/doc artifacts and updated the contact component plus shared-page tests so they match the new internal-only contact flow.
+- Verification: focused contact/static-page/component Jest validation passed in `z-beam`.
+
+---
+
+## Batch 265: Retire Schedule Route And Preserve Booking Access
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Remove the internal `/schedule` page cleanly, repoint surviving booking CTAs to the live external Workiz booking portal, and preserve compatibility redirects so legacy schedule and booking URLs still reach the booking flow.
+
+### Steps
+- [x] Centralize the live booking URL and repoint schedule CTAs plus contact-page header CTA away from the retired internal route
+- [x] Remove the shared static-page registry entry and route files for `/schedule`, and update redirect/validator inventories that still treated it as a live page
+- [x] Update the focused shared-page tests to stop asserting `createStaticPage('schedule')` while preserving dynamic-content coverage
+
+### Review
+- Added a centralized booking URL under `z-beam/app/config/site.ts` and repointed the homepage schedule card, reusable booking CTA, and contact page header CTA to the live external Workiz portal instead of the deleted internal route.
+- Removed the `schedule` entry from `z-beam/app/utils/pages/staticPageRegistry.json`, deleted `z-beam/app/schedule/page.tsx` and `z-beam/app/schedule/page.yaml`, and removed the schedule-only page config/schema branch from `z-beam/app/utils/pages/staticPagePolicy.tsx`.
+- Updated `z-beam/vercel.json` so `/schedule`, `/schedule.html`, `/booking`, and `/booking.html` now redirect permanently to the external booking portal, and removed `schedule` from the top-level flat-route allowlist in `z-beam/scripts/validation/jsonld/validate-jsonld-urls.js`.
+- Updated the shared static-page integration/error/unit tests to drop retired `createStaticPage('schedule')` expectations while keeping dynamic-content and generic `schedule-widget` support coverage where it still matters.
+- Verification: focused Jest validation for static-page integration and shared-page factory coverage passed in `z-beam`.
+
+---
+
 ## Batch 264: Clear Static PageDescriptions Across Shared Pages
 Date: 2026-03-15
 Status: COMPLETE
