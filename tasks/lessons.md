@@ -62,6 +62,8 @@
 
 - 2026-03-14: Remote Jest runners can still fail after type syntax is removed if a build-critical `.ts` test keeps ESM `import` statements and the deploy path treats the file as untransformed CommonJS. -> Rule: for deployment-gating tests that do not need module syntax features, prefer CommonJS `require(...)` imports so the file remains parseable under the broadest set of CI/Jest execution modes.
 
+- 2026-03-14: Even CommonJS-safe deployment tests can still fail remotely if they `require` deep application TypeScript modules that the deploy runner parses without full TS support. -> Rule: keep deployment-gating tests focused on stable source contracts or runtime outputs, and avoid direct imports of non-transpiled app TypeScript unless the CI transform path is explicitly proven.
+
 - 2026-03-14: SEO inventory tests that pin a narrow upper bound on sitemap counts become release blockers as content grows, even though the generation pipeline is healthy. -> Rule: for growth-driven counts like sitemap entries, use a realistic guard band that catches regression without encoding a stale content ceiling.
 
 - 2026-03-13: Dataset audits can drift into downstream frontmatter/export validation and overstate source-data problems. -> Rule: when auditing datasets, treat `data/*` and source-side validators as authoritative; report frontmatter/schema results only as downstream export health, never as dataset dependencies.
