@@ -7,18 +7,20 @@ See `tasks/lessons.md` for lessons learned.
 
 ## Batch 276: Push Website Commits And Save Generator Notes
 Date: 2026-03-15
-Status: IN PROGRESS
+Status: COMPLETE
 
 ### Goal
 Push the completed website sitemap/schema/deploy fixes to `origin/main` and save the generator task-log updates in their own commit without disturbing unrelated local website edits.
 
 ### Steps
-- [ ] Commit the generator task-log and lesson updates as a separate change
-- [ ] Push the website repository commits on `main` to `origin`
-- [ ] Push the generator repository note commit on `main` to `origin`
+- [x] Commit the generator task-log and lesson updates as a separate change
+- [x] Push the website repository commits on `main` to `origin`
+- [x] Push the generator repository note commit on `main` to `origin`
 
 ### Review
-- Pending
+- Website branch: `main` pushed to `origin/main`
+- Generator note commits: `ded07f5b` plus Batch 276 closeout
+- Generator branch: `main` pushed to `origin/main`
 
 ---
 
