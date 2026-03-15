@@ -58,6 +58,10 @@
 
 - 2026-03-13: Long generated YAML text blocks can break source datasets when multiline scalars lose either their closing quote or their field indentation, and parser failures can mask the real completeness state of entire domains. -> Rule: when dataset audits fail at file-load level, fix YAML scalar closure and indentation across the full repeated pattern set first, then rerun the source completeness gate before evaluating content gaps.
 
+- 2026-03-14: Deployment-only Jest failures can come from a single `.ts` test file using TypeScript syntax that a remote transform path fails to parse even when local editor diagnostics look fine. -> Rule: when a build-critical test does not need TypeScript features, keep its syntax plain-JS-compatible so CI and deploy runners are not coupled to optional TS transform behavior.
+
+- 2026-03-14: SEO inventory tests that pin a narrow upper bound on sitemap counts become release blockers as content grows, even though the generation pipeline is healthy. -> Rule: for growth-driven counts like sitemap entries, use a realistic guard band that catches regression without encoding a stale content ceiling.
+
 - 2026-03-13: Dataset audits can drift into downstream frontmatter/export validation and overstate source-data problems. -> Rule: when auditing datasets, treat `data/*` and source-side validators as authoritative; report frontmatter/schema results only as downstream export health, never as dataset dependencies.
 
 - 2026-03-12: Services-adjacent static pages drift into one-off components when new routes are cloned from old page files instead of extending the shared page factory. -> Rule: when a new marketing/static route matches an existing page family, extend `createStaticPage` once and register the new page through frontmatter, nav, and sitemap in the same batch.
