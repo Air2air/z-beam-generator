@@ -5,6 +5,110 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 281: Restart Dev Server And Push SEO Follow-Up
+Date: 2026-03-15
+Status: IN PROGRESS
+
+### Goal
+Stabilize the website dev server after the deployment/test cycle, commit and push the website and generator follow-up changes from the JSON-LD and homepage cleanup work, and verify the final repo state.
+
+### Steps
+- [ ] Bring the website dev server back to a healthy running state
+- [ ] Commit the intended website source/test changes without sweeping in unrelated generated artifacts beyond the restored local files already present in the worktree
+- [ ] Commit the generator task-log and lesson updates for the new deployment/push batches
+- [ ] Push both repositories and verify branch status
+
+### Review
+- Pending
+
+---
+
+## Batch 280: Normalize Homepage ContactCards And Slim Deploy Gate
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Remove the unrequested homepage wrapper section around ContactCards, make ContactCards use its normal standalone section container contract, slim the Vercel deployment gate so advisory SEO checks no longer dominate production builds, safely restore the user stash, and deploy the intended JSON-LD batch.
+
+### Steps
+- [x] Remove the extra homepage wrapper around ContactCards and normalize ContactCards container usage
+- [x] Separate Vercel deployment gates from heavier advisory SEO/test commands
+- [x] Isolate unrelated generated/user files, deploy the intended website source changes, and run live validation
+- [x] Restore the previously stashed unrelated user files without reintroducing the wrong ContactCards copy
+
+### Review
+- `ContactCards` continues to render its own titled `BaseSection`, but the extra homepage-only wrapper section added around it was removed from `app/page.tsx` so the homepage no longer inserts an extra container between the hero/video flow and the cards.
+- The Vercel build path now uses a slimmer deploy gate in `package.json` (`prebuild:deploy` + `build:app` + `postbuild:deploy`) while the heavier SEO/test commands remain available separately as advisory checks.
+- Production deployment completed successfully via `./scripts/deployment/smart-deploy.sh deploy` with deployment URL `https://z-beam-2i125wlx1-air2airs-projects.vercel.app`.
+- Live verification passed: `npm run validate:production:simple` and `npm run validate:schemas:live`.
+- Restored the temporarily stashed generated files back into the local worktree and removed the obsolete older deployment-isolation stash that still contained the wrong ContactCards copy.
+
+---
+
+## Batch 278: Deploy And Audit JSON-LD Expansion
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Deploy the shared JSON-LD expansion without unrelated local website edits, run the live structured-data validation path against production, and audit representative page families for structured-data coverage and remaining SEO infrastructure gaps.
+
+### Steps
+- [x] Isolate unrelated local website changes so deployment uses only the intended JSON-LD expansion files
+- [x] Run the production deploy path for the isolated website tree
+- [x] Execute the live production structured-data validation commands against the deployed site
+- [x] Audit representative live URLs page-family by page-family and record remaining SEO infrastructure gaps or residual risks
+- [x] Restore unrelated local website changes after deployment and validation
+
+### Review
+- Deployed the JSON-LD expansion and follow-up homepage/deploy-gate cleanup to production.
+- Broadened live schema auditing now covers homepage, search, static marketing pages, collection indexes, settings detail pages, applications, and representative material/contaminant detail pages.
+- Remaining live schema warnings are advisory only for routes that still omit some recommended page-level types, such as `/search` missing `WebPage`, `/equipment` missing `WebPage`, and the sampled application detail page missing `Article`.
+
+---
+
+## Batch 279: Restore ContactCards Copy And Harden Live SEO Audit
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Restore the previously unrequested ContactCards copy rewrite, fix the tracked deployment task so it actually invokes production deploy mode, and harden live SEO/schema auditing so static pages, search, collections, and sitemap coverage are checked explicitly after deployment.
+
+### Steps
+- [x] Restore ContactCards text to the prior wording preserved in the website stash
+- [x] Fix the tracked VS Code production deploy task to call the real deploy subcommand
+- [x] Expand live schema validation to cover static, search, collection, settings, and application page families from live routes
+- [x] Run focused verification for the touched ContactCards/task/validator paths
+
+### Review
+- Restored `app/components/ContactCards/ContactCards.tsx` to the prior homepage copy and layout spacing preserved in the deployment stash, removing the unrequested text rewrite from the active worktree.
+- Fixed the tracked VS Code `Deploy to Production` task to invoke `./scripts/deployment/smart-deploy.sh deploy` from the workspace root instead of calling the wrapper with no subcommand.
+- Hardened the live schema audit so it now seeds and validates homepage, search, static marketing pages, collection indexes, settings detail pages, and application detail pages in addition to the existing material/contaminant detail coverage, while keeping newly added page-family recommendations advisory unless they are already part of the strict blocking contract.
+- Verification: `npm run validate:schemas:live`
+
+---
+
+## Batch 277: Expand JSON-LD Coverage Across Site Pages
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Audit current structured-data coverage across the website, identify page families that should emit richer JSON-LD per best practices, implement source-of-truth-safe schema expansion, and verify the upgraded coverage with focused tests and production-oriented validation.
+
+### Steps
+- [x] Audit current JSON-LD generation paths and page-family coverage across homepage, static pages, collection pages, and detail pages
+- [x] Identify the highest-value missing schema opportunities that can be implemented from existing source-of-truth data without placeholders or hardcoded drift
+- [x] Implement the schema expansion in shared generators or page-family entry points
+- [x] Add or update focused regression coverage for the new JSON-LD behavior
+- [x] Run focused validation for structured data and site page coverage
+
+### Review
+- Static pages now merge both frontmatter `schema` and `jsonLd` sources through the shared page factory, so page YAML schema blocks are no longer silently dropped.
+- Shared static-page policy now emits richer page-level graphs for services, equipment, contact, about, partners, safety, compliance, and comparison routes using existing frontmatter and centralized site-config data only.
+- Search now emits page-level `SearchResultsPage` plus breadcrumb JSON-LD, and stale `/#website` / `/#organization` references were normalized to the layout-level site entity IDs.
+- Verification: `npm test -- --runTestsByPath tests/seo/collection-schemas.test.ts tests/app/search-page.schema.test.ts tests/app/static-page-policy.schemas.test.ts --runInBand`
+
+---
+
 ## Batch 276: Push Website Commits And Save Generator Notes
 Date: 2026-03-15
 Status: COMPLETE
