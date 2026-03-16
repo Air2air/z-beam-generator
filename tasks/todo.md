@@ -5,21 +5,47 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 282: Close Advisory SEO Gaps And Remove Added Homepage Title Block
+Date: 2026-03-15
+Status: COMPLETE
+
+### Goal
+Finish the previously recommended SEO follow-up work by removing the unrequested homepage title section, tightening homepage and services metadata copy, and closing the remaining advisory structured-data gaps on search, equipment, and application detail pages.
+
+### Steps
+- [x] Remove the added homepage title block without regressing homepage metadata or hero behavior
+- [x] Tighten homepage and services metadata descriptions to better fit SEO length guidance
+- [x] Add explicit page-level structured-data coverage for search and equipment where the live audit still reports advisory `WebPage` gaps
+- [x] Add a page-level `Article` schema for application detail pages when source article/frontmatter data exists
+- [x] Run focused tests and validation for the touched homepage/static/search/application schema paths
+
+### Review
+- Removed the added homepage title block by stopping the home route from passing `title` and `pageDescription` into `Layout`, while preserving the underlying homepage frontmatter title for metadata and hero context.
+- Tightened homepage and services metadata descriptions at the frontmatter source so the homepage no longer sits below the prior description floor and the services page no longer carries an overly long metadata description.
+- Search now emits both explicit `WebPage` and `SearchResultsPage` nodes with distinct IDs, shared static-page policy now still emits `WebPage` when frontmatter only declares content types like `Article` or `Service`, and application detail pages now emit an explicit `Article` node in addition to the existing schema-factory graph.
+- Verification: `npx jest tests/app/home-page.layout.test.tsx tests/app/search-page.schema.test.ts tests/app/static-page-policy.schemas.test.ts tests/pages/applications-detail-author.test.tsx tests/utils/staticPageMetadata.regression.test.ts --runInBand --coverage=false`
+- Verification: `npm run build:app`
+
+---
+
 ## Batch 281: Restart Dev Server And Push SEO Follow-Up
 Date: 2026-03-15
-Status: IN PROGRESS
+Status: COMPLETE
 
 ### Goal
 Stabilize the website dev server after the deployment/test cycle, commit and push the website and generator follow-up changes from the JSON-LD and homepage cleanup work, and verify the final repo state.
 
 ### Steps
-- [ ] Bring the website dev server back to a healthy running state
-- [ ] Commit the intended website source/test changes without sweeping in unrelated generated artifacts beyond the restored local files already present in the worktree
-- [ ] Commit the generator task-log and lesson updates for the new deployment/push batches
-- [ ] Push both repositories and verify branch status
+- [x] Bring the website dev server back to a healthy running state
+- [x] Commit the intended website source/test changes without sweeping in unrelated generated artifacts beyond the restored local files already present in the worktree
+- [x] Commit the generator task-log and lesson updates for the new deployment/push batches
+- [x] Push both repositories and verify branch status
 
 ### Review
-- Pending
+- Restarted the website dev server through the persistent start script and verified local health before the follow-up SEO work continued.
+- Deployed the current homepage and SEO follow-up batch to production via `./scripts/deployment/smart-deploy.sh deploy`, producing deployment URL `https://z-beam-4fe0z6dgz-air2airs-projects.vercel.app` while publishing to `https://www.z-beam.com`.
+- Live verification passed after deployment: `npm run validate:production:simple` and `npm run validate:schemas:live`, with the previously advisory schema gaps on `/search`, `/equipment`, and the sampled application detail page now closed.
+- Final commit/push verification completed after including the intended website changes, generated sitemap/report artifacts, and generator task-log updates.
 
 ---
 
