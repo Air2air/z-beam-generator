@@ -5,6 +5,52 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 287: Rotate IndexNow Key And Commit Clean Automation Changes
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Rotate the exposed IndexNow key end to end, make the submitter/deploy flow read ignored local env files without manual shell exports, and commit only the intended website plus generator changes while excluding unrelated generated artifacts and scratch scripts.
+
+### Steps
+- [ ] Make the IndexNow submitter load `.env.local` / `.env` automatically so local and deploy-triggered runs do not depend on manual inline exports
+- [ ] Rotate the IndexNow key in the ignored local env file and the tracked root verification file, then redeploy and verify the new live key URL plus live submission path
+- [ ] Stage and commit only the intended website and generator changes, leaving unrelated sitemap/report churn and scratch validation scripts out of the commits
+
+### Review
+- Updated `scripts/seo/advanced/submit-indexnow.js` to load `.env.local` and `.env` automatically so the IndexNow CLI no longer depends on inline shell exports when run from the website repo.
+- Rotated the local IndexNow key from `e4dc23f91aa913f11a97ac45a768ba07` to `8f3b3b37cf7fd0d415a6bb4cc392e481`, replaced the tracked root verification file under `public/`, and redeployed production.
+- Updated `scripts/deployment/smart-deploy.sh` again so the post-deploy IndexNow hook loads local env files before checking `INDEXNOW_KEY`, keeping the automation path aligned with the CLI submitter.
+- Live verification: the new production key URL `/8f3b3b37cf7fd0d415a6bb4cc392e481.txt` returns `200 text/plain`, the retired key URL returns `404`, and a direct `npm run seo:indexnow -- https://www.z-beam.com/partners` returned `HTTP 200` after propagation.
+- Remaining external secret rotations still require provider-side access and were not faked from inside the repo.
+
+---
+
+## Batch 286: Automate IndexNow And Harden Secret Handling
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Wire IndexNow submission into the website deployment flow, add a safe batch submission path based on the delta sitemap, and harden repository-side secret handling without pretending to rotate third-party credentials that require provider access.
+
+### Steps
+- [ ] Inspect the existing deployment flow, IndexNow submitter, and environment-file patterns to identify the minimal source-level integration points
+- [ ] Add deploy-safe automatic IndexNow submission that only runs when the required key is configured and does not break production deploys on advisory submission failures
+- [ ] Add an explicit batch submission path for delta sitemap driven IndexNow pushes and verify it with focused dry-run and live checks
+- [ ] Reduce local secret exposure in repo-managed config/docs where possible, document the remaining manual rotations that require external provider access, and record the lesson
+
+### Review
+- Added `seo:indexnow:delta` and `seo:indexnow:delta:dry-run` in the website `package.json` so the existing delta sitemap generator and IndexNow submitter can be run as one explicit batch path.
+- Updated `scripts/deployment/smart-deploy.sh` to auto-run delta-based IndexNow submission after a successful production deploy when `INDEXNOW_KEY` is configured, while keeping submission failures non-blocking so deploy success is not misreported.
+- Sanitized tracked environment template files (`.env.production`, `.env.example`, `.env.local.example`) so repo-managed config no longer carries live secret values and now documents the IndexNow variables needed for manual/local and Vercel setup.
+- Added `docs/deployment/SECRET_ROTATION_CHECKLIST.md` to capture the manual provider-side rotation steps for exposed credentials that cannot be rotated safely from inside the repo.
+- Verification: `bash -n scripts/deployment/smart-deploy.sh`
+- Verification: `INDEXNOW_KEY=<live-key> INDEXNOW_HOST=www.z-beam.com npm run seo:indexnow:delta:dry-run`
+- Verification: `INDEXNOW_KEY=<live-key> INDEXNOW_HOST=www.z-beam.com npm run seo:indexnow:delta` → `HTTP 200` for 464 URLs
+- Remaining manual work is operational, not code-side: rotate the live third-party credentials that were exposed in the ignored local `.env`, update Vercel/local secret stores, and redeploy if those credentials are used at runtime.
+
+---
+
 ## Batch 285: Activate IndexNow Verification And Push SEO Cleanup
 Date: 2026-03-17
 Status: COMPLETE
