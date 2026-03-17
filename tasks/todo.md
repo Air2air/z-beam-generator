@@ -5,6 +5,72 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 285: Activate IndexNow Verification And Push SEO Cleanup
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Add code-side support for the IndexNow verification key file expected by the existing submission script, verify the route behavior with a focused regression test, and push the latest website plus generator SEO follow-up commits without sweeping in unrelated audit artifacts.
+
+### Steps
+- [x] Add a root-level App Router handler for `/<INDEXNOW_KEY>.txt` that serves only the configured key and fails closed otherwise
+- [x] Add focused verification for the new IndexNow route behavior
+- [x] Commit and push the intended website source changes separately from the generator task-log updates
+
+### Review
+- Added `app/[indexNowKey].txt/route.ts` so the website can serve the root verification file expected by `scripts/seo/advanced/submit-indexnow.js`, returning the configured key as plain text only when the requested filename matches `INDEXNOW_KEY` and returning `404` otherwise.
+- Added `tests/app/indexnow-route.test.ts` to verify matching, missing-key, and mismatched-key behavior under the Node route-handler runtime.
+- Verification: `npx jest tests/app/indexnow-route.test.ts --runInBand --coverage=false`
+- Verification: `npx tsc --noEmit`
+- Verification: `INDEXNOW_KEY=sample-indexnow-key INDEXNOW_HOST=www.z-beam.com npm run seo:indexnow -- --dry-run https://www.z-beam.com/about` confirmed the submitter points to `https://www.z-beam.com/sample-indexnow-key.txt`.
+- Website commit: `94fd0c6c4` (`Complete SEO schema cleanup and add IndexNow verification route`) pushed on `main`; push-time validation passed, including the existing `100/100 (A+)` SEO infrastructure check.
+- Operational blocker: the current environment still reports `INDEXNOW_KEY` unset, so live IndexNow activation still requires setting that secret in the deployment environment; until then, the new route stays fail-closed by design.
+
+---
+
+## Batch 284: Close Remaining SEO Advisory Schema Gaps
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Fix the remaining production SEO advisory issues from the latest audit by eliminating the shared `#organization` type-signature conflict and removing duplicate page-level JSON-LD nodes on static marketing pages, then redeploy and verify the live result.
+
+### Steps
+- [x] Trace the `#organization` conflict to the shared business schema and normalize Organization vs LocalBusiness IDs at the source
+- [x] Stop static shared pages from emitting duplicate page-level nodes when frontmatter already defines a page schema
+- [x] Run focused type/schema checks, deploy to production, and re-run live entity/static-page validation
+
+### Review
+- Updated `app/config/site.ts` so the global business schema now emits separate `Organization` and `LocalBusiness` nodes with distinct IDs (`#organization` and `#localbusiness`) instead of overloading one ID with two types.
+- Updated `app/utils/schemas/registry.ts` to flatten the shared business `@graph` correctly wherever page bundles are assembled.
+- Updated `app/utils/pages/staticPagePolicy.tsx` so shared static pages stop adding a second page-level node when frontmatter already supplies `WebPage`, `AboutPage`, or `ContactPage` JSON-LD.
+- Verification: `npx tsc --noEmit`
+- Verification: `npx jest tests/app/static-page-policy.schemas.test.ts tests/seo/e2e-pipeline.test.ts tests/seo/comprehensive-seo-infrastructure.test.ts --runInBand --coverage=false`
+- Deployment: `./scripts/deployment/smart-deploy.sh deploy` → `https://z-beam-f8ql9gzkg-air2airs-projects.vercel.app`
+- Live result: entity graph conflict count dropped from `1` to `0`; `/about`, `/comparison`, `/contact`, `/compliance`, and `/safety` no longer emit duplicate page-level nodes; `validate:seo-infrastructure` remained `100/100 (A+)`.
+
+---
+
+## Batch 283: Production SEO Evaluation And Grading
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Run a fresh production SEO audit against the live website, verify representative structured-data and crawl/indexing signals on production pages, and assign an updated overall grade with any remaining gaps called out clearly.
+
+### Steps
+- [x] Run live SEO and schema validation commands against production
+- [x] Spot-check representative production URLs for canonical, schema, robots, and entity consistency
+- [x] Summarize current strengths, remaining gaps, and assign an overall grade
+
+### Review
+- Live validation remains strong on production: `validate:seo-infrastructure` reported `100/100 (A+)`, `validate:schemas:live` passed its full 25-URL sample, `validate:production:simple` passed `10/10`, canonical graph checked 120 URLs with zero mismatches/cycles, and soft-404/orphan audit found zero issues.
+- Direct production HTML checks confirmed homepage `sameAs` links are absolute and consistent, homepage hreflang is limited to `en-US` plus `x-default`, and search results pages emit explicit `noindex, follow` meta in addition to `robots.txt` disallow coverage.
+- Remaining advisory gaps are limited but real: the entity graph still reports one `#organization` type-signature conflict (`LocalBusiness` vs `Organization`), several static pages emit duplicate page-level nodes (`/comparison`, `/about`, `/contact`, `/compliance`, `/safety`), IndexNow is not operational because `INDEXNOW_KEY` is unset, and richer trust/result enhancers like real `Review`/`AggregateRating` data are still absent.
+- Overall manual grade: `A+ / 96` — excellent technical SEO implementation with only advisory structured-data cleanup and optional indexing enhancements still open.
+
+---
+
 ## Batch 282: Close Advisory SEO Gaps And Remove Added Homepage Title Block
 Date: 2026-03-15
 Status: COMPLETE
