@@ -5,6 +5,27 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 288: Switch Deploy IndexNow To Exact Changed URLs
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Replace the rolling 7-day deploy-time IndexNow batch with an exact URL list derived from frontmatter files changed in the current deploy context, while preserving the older date-window command for manual or advisory use.
+
+### Steps
+- [ ] Add a deploy-focused changed-URL sitemap generator that derives exact frontmatter URLs from git changes since the last successful exact submission plus current dirty worktree changes
+- [ ] Wire deploy-time IndexNow automation to the new exact-change command, recording the successful submission baseline only after a successful submission
+- [ ] Verify the new exact-change path with dry-run and live checks without disturbing the existing manual delta-window command
+
+### Review
+- Added `scripts/seo/advanced/generate-changed-sitemap.js` to derive exact deploy-time URLs from changed content sources rather than a rolling date window. It compares the current deploy context against the last successful exact-submission baseline, includes current dirty-worktree content changes, and writes the resulting URLs to the existing sitemap file consumed by the submitter.
+- Added `scripts/seo/advanced/record-indexnow-success.js` plus new package scripts (`seo:changed-sitemap`, `seo:indexnow:changed`, `seo:indexnow:changed:dry-run`) so successful exact submissions can advance the git baseline only after a successful submission.
+- Updated the deploy hook in `scripts/deployment/smart-deploy.sh` to use the new exact-change submission path while leaving the older rolling delta commands available for manual or advisory use.
+- Broadened exact-change detection beyond `frontmatter/**` to also include static content contracts under `app/**/page.yaml`, so static page content edits are eligible for exact deploy-time submission too.
+- Verification: `npm run seo:indexnow:changed:dry-run` returned zero URLs on the current worktree, which is correct because no tracked content-source files have changed since the current baseline.
+
+---
+
 ## Batch 287: Rotate IndexNow Key And Commit Clean Automation Changes
 Date: 2026-03-17
 Status: COMPLETE
