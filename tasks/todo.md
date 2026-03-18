@@ -5,6 +5,87 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 293: Replace Applications Catalog With User-Specified Taxonomy
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Replace the current applications catalog exactly with the user-specified taxonomy and push the resulting changes.
+
+### Steps
+- [x] Replace [domains/applications/catalog.yaml](domains/applications/catalog.yaml) with the provided slug list and labels
+- [x] Validate the edited catalog and related task-log files
+- [x] Commit only the intended generator changes and push them
+
+### Review
+- Replaced [domains/applications/catalog.yaml](domains/applications/catalog.yaml) with the exact category and slug structure provided by the user, including the new combined buckets for automotive and EV, energy and nuclear, and heritage or residential restoration.
+- Validation passed with no diagnostics on [domains/applications/catalog.yaml](domains/applications/catalog.yaml), [tasks/todo.md](tasks/todo.md), and [tasks/lessons.md](tasks/lessons.md).
+- The push will include only the intended generator-side catalog and task-log updates related to this taxonomy work.
+
+---
+
+## Batch 292: Restore Residential To Applications Taxonomy
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Add Residential back into the applications taxonomy explicitly while keeping the catalog succinct and avoiding a return to the weaker purely restoration-oriented label.
+
+### Steps
+- [x] Re-evaluate the weakest current category against the user requirement that Residential be represented explicitly
+- [x] Rename the category and subcategory slugs so Residential is first-class in the catalog
+- [x] Keep the change minimal and generation-free
+
+### Review
+- Updated the former `Historic & Architectural` bucket in [domains/applications/catalog.yaml](domains/applications/catalog.yaml) to `Residential & Architectural` so Residential remains an explicit top-level market in the catalog.
+- Replaced the least residential subcategory, `graffiti-removal`, with `residential-exteriors`, while keeping `historic-facades` and `architectural-metalwork` as the two adjacent property-restoration clusters.
+- This preserves the current catalog size and avoids introducing a separate thin Residential category before generation work begins.
+
+---
+
+## Batch 291: Evaluate Applications Taxonomy Succinctness And Accuracy
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Re-evaluate the current applications category and subcategory set without treating 13 categories as a fixed constraint, and determine which buckets are succinct, redundant, too broad, or too narrow before any generation work begins.
+
+### Steps
+- [x] Compare the current catalog against the existing applications inventory and prior market-validation findings
+- [x] Judge each top-level category for market accuracy, overlap, and naming succinctness
+- [x] Judge each subcategory set for clarity, consistency, and whether the split reflects a real operational cluster
+- [x] Recommend the leanest accurate taxonomy, including any merges, renames, or removals
+
+### Review
+- The current 13-category catalog is much better than the earlier uneven application sprawl, but it still mixes vertical end markets with process buckets. The cleanest evidence comes from the existing application inventory itself, which already centers on market names such as aerospace, defense, automotive, electronics, energy and power, food processing, medical devices, rail transport, and shipbuilding or marine.
+- The most succinct and accurate vertical buckets are automotive, food processing, mold and die, metal fabrication, medical devices, electronics, rail, marine, aerospace, and defense. These map cleanly to buyers, operating environments, and repeated commercial use cases.
+- The least accurate top-level buckets are `Weld Prep & Inspection`, `Casting & Forging`, and `Historic & Architectural`. They behave more like cross-cutting process clusters or narrow service niches than stable headline markets. `Energy, Oil & Gas` is valid in spirit but too bundled, while `Medical Devices & Precision` and `Electronics & Precision` both use `Precision` as overlapping capability language rather than a distinct market.
+- Recommended direction: treat the category count as flexible and favor a lean 10-11 category taxonomy. Split `Aerospace & Defense` into separate top-level markets, shorten `Marine & Shipbuilding` to `Marine`, shorten `Rail & Transit` to `Rail`, rename `Medical Devices & Precision` to `Medical Devices`, rename `Electronics & Precision` to `Electronics` or `Electronics & Semiconductors`, merge `Weld Prep & Inspection` into manufacturing-oriented categories, merge `Casting & Forging` into `Metal Fabrication` or keep only if foundry demand must stay explicit, and either retire `Historic & Architectural` or narrow it to a clearly restoration-oriented niche.
+
+---
+
+## Batch 290: Validate Applications Taxonomy With Web Research
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Validate the proposed 13 top-level application categories and their three subcategories each using current market and industry web sources before any generation work begins.
+
+### Steps
+- [x] Collect external market segmentation sources that reflect real laser-cleaning demand clusters
+- [x] Validate whether each proposed top-level category maps cleanly to reported end-user segments or repeated commercial use cases
+- [x] Validate whether each proposed subcategory reflects a real operational cluster rather than an arbitrary content split
+- [x] Summarize confirmed categories, weak categories, and any naming adjustments suggested by the evidence
+
+### Review
+- Core market validation came primarily from Mordor Intelligence's 2026 laser cleaning market report, which explicitly segments demand across automotive and transport, aerospace and defense, shipbuilding and marine, infrastructure and construction, energy and power, electronics and semiconductor, cultural heritage institutions, and manufacturing and industrial machinery. It also calls out mold cleaning, welding preparation, nuclear decontamination, battery cleaning, and heritage restoration as real application clusters.
+- Vendor application pages from P-Laser, Laser Photonics, cleanLASER, and Laserax confirmed that mould cleaning, weld preparation and cleaning, refinery pipe cleaning, battery-module cleaning, aerospace bonding prep, medical-device precision processing, and foundry or metals workflows are all commercially active patterns rather than invented taxonomy splits.
+- The strongest categories are automotive, aerospace and defense, marine and shipbuilding, energy and oil and gas, electronics and precision, mold and die, metal fabrication, and casting or foundry work. These are supported both by market segmentation and by vendor application libraries.
+- Food processing is valid but smaller and more niche; evidence supports it through sanitation-sensitive mould and equipment cleaning rather than as one of the largest headline market segments.
+- Medical is valid, but the evidence is stronger for medical devices than for pharmaceutical equipment specifically. NDT is better supported when paired with weld preparation and inspection prep rather than as a standalone demand market. Residential is the weakest label; the evidence is stronger for historic restoration, public-surface graffiti removal, and exterior architectural metalwork than for residential-home use.
+
+---
+
 ## Batch 289: Deep SEO Audit, H1 Fix, Post-Deploy Validation
 Date: 2026-03-17
 Status: COMPLETE
