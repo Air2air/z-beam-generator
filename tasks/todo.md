@@ -5,6 +5,47 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 300: Restore Shared Page Description Typography
+Date: 2026-03-18
+Status: COMPLETE
+
+### Goal
+Restore the shared page-title subtitle sizing so `pageDescription` content no longer renders with regressed smaller typography on application and other layout-driven pages.
+
+### Steps
+- [x] Trace the visible pageDescription render path from application frontmatter through the shared layout and page title components
+- [x] Restore explicit shared subtitle typography at the page-title layer instead of changing individual content files
+- [x] Run focused diagnostics on the touched shared title component
+
+### Review
+- The application frontmatter content itself was intact; the regression came from the shared `Title` component rendering `pageDescription` through `MarkdownRenderer` without an explicit subtitle typography wrapper.
+- Restored a shared subtitle class stack on the page-description container in `app/components/Title/Title.tsx`, giving page-level descriptions a stable `text-base md:text-lg` size, relaxed leading, and zero extra paragraph margins.
+- This fixes the visible pageDescription sizing at the shared source rather than patching a single application file.
+- Verification passed with file diagnostics on `app/components/Title/Title.tsx`.
+
+---
+
+## Batch 299: Normalize Application Association Sections
+Date: 2026-03-18
+Status: COMPLETE
+
+### Goal
+Normalize `associations.related_materials` and `associations.related_contaminants` to the shared `{ _section, items }` relationship-section contract so application layouts can carry section metadata like the other domain layouts.
+
+### Steps
+- [x] Audit the application association type and renderer against the shared relationship-section contract used by the other layouts
+- [x] Update the application association component and types to accept section-object metadata while staying compatible with legacy bare arrays
+- [x] Convert the live application frontmatter association blocks to the canonical `_section + items` shape
+- [x] Update focused tests and diagnostics for the new association section contract
+
+### Review
+- Applications were the remaining outlier: other domain layouts already accepted relationship groups as `{ _section, items }`, while `ApplicationAssociations` still treated `related_materials` and `related_contaminants` as bare arrays and hardcoded the section copy.
+- Updated the central application association type and renderer so applications now accept either legacy arrays or the canonical section-object shape, then read section title, description, and icon from `_section` when present.
+- Converted the live heritage application frontmatter associations block to `_section + items`, which brings its relationship metadata into parity with the other layout-driven domains.
+- Verification passed with `npm test -- --runInBand tests/components/ApplicationAssociations.test.tsx tests/pages/applications-detail-author.test.tsx`.
+
+---
+
 ## Batch 298: Restore Shared Card Description Typography
 Date: 2026-03-18
 Status: COMPLETE
