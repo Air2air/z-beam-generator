@@ -5,6 +5,47 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 298: Restore Shared Card Description Typography
+Date: 2026-03-18
+Status: COMPLETE
+
+### Goal
+Restore card description/body text sizing where the reusable contaminant-style card paths still render description copy too small after the broader card-density reduction.
+
+### Steps
+- [x] Identify the visible card-description render paths that still hardcode extra-small body text
+- [x] Restore description/body copy to the intended shared size without undoing the card-height reduction
+- [x] Run focused diagnostics on the touched frontend files and record the result
+
+### Review
+- The visible regression was not coming from page or section descriptions; those still render through the shared markdown typography path. The small text was on contaminant-style card body/context copy, which remained hardcoded to `text-xs` even after the broader shared card-density pass.
+- Updated the shared card description token in `app/config/card-variants.ts` to `text-sm` with relaxed leading, then wired `ContaminantCard.tsx` to use that shared description class for its visible context copy.
+- Updated the contaminant card design variants so their description/body copy also uses `text-sm`, while keeping the uppercase label rows intentionally smaller.
+- Focused diagnostics reported no errors in `app/config/card-variants.ts`, `app/components/ContaminantCard/ContaminantCard.tsx`, and `app/components/ContaminantCard/ContaminantCard.variants.tsx`.
+
+---
+
+## Batch 297: Reduce Shared Card Height And Header Density
+Date: 2026-03-18
+Status: COMPLETE
+
+### Goal
+Reduce reusable card heights and card-header density by roughly 10% across the shared website card system instead of only in the local ContactCards component.
+
+### Steps
+- [x] Identify the shared card sizing and header-style authority used by reusable card components
+- [x] Update the shared card variant sizing and shared header typography with a minimal global reduction
+- [x] Align ContactCards with the shared card-header sizing so it stays consistent with the broader card system
+- [x] Run focused diagnostics on the touched frontend files and record the outcome
+
+### Review
+- The fixed-height reusable card path is centralized under `app/config/card-variants.ts`, with shared title typography from `CARD_HEADER_CLASSES.title` in `app/config/site.ts`; `Card`, `ContaminantCard`, and the contaminant card variants all consume that shared config.
+- Reduced shared card min-heights from `5.25/6.75/7.5rem` to `4.75/6.1/6.75rem` and tightened the shared title-bar vertical padding from `py-1/md:py-2.5` to `py-0.5/md:py-2`, which applies across the reusable card family.
+- Reduced shared card header text sizing from `text-lg` to `text-base md:text-[1.05rem]` through the central card header class, then removed the ContactCards-only title-size override so those cards stay aligned with the shared system rather than shrinking twice.
+- Focused diagnostics reported no errors in `app/config/card-variants.ts`, `app/config/site.ts`, or `app/components/ContactCards/ContactCards.tsx`, and a follow-up search confirmed there are no remaining hardcoded fixed-height reusable card classes outside ContactCards.
+
+---
+
 ## Batch 296: Validate Application Rendering Changes And Prepare Safe Commit
 Date: 2026-03-18
 Status: COMPLETE
