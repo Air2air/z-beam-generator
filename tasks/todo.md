@@ -5,6 +5,69 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 296: Validate Application Rendering Changes And Prepare Safe Commit
+Date: 2026-03-18
+Status: COMPLETE
+
+### Goal
+Finish the website predeploy validation path for the application rendering and frontmatter-parity changes, then commit and push only the changes that belong to that validated batch.
+
+### Steps
+- [x] Re-run the required deploy gate and fix any source-level blocker it surfaces
+- [x] Run the advisory deploy validation pass after the required gate is clean
+- [x] Review the dirty website worktree and separate validated application-rendering work from unrelated generated churn or exploratory files
+- [x] Commit the intended website changes with a batch-accurate message and push `main`
+
+### Review
+- Required deploy validation now passes after removing the unsupported `variant="relationship"` prop from the new application associations renderer.
+- The separate advisory deploy command still reported failures outside this batch, including unchanged build-script expectation tests, organization-schema tests, and application-frontmatter tests affected by unrelated deleted files already present in the dirty worktree.
+- The website worktree also contained unrelated application-frontmatter deletions, generated sitemap/report updates, scratch SEO inspection scripts, and an unstaged contact-card edit, so the final commit intentionally included only the validated application-rendering batch.
+- Website commit `ded07d88d` was pushed from `main` after the repo's pre-push validation suite passed.
+
+---
+
+## Batch 295: Normalize Applications Frontmatter Rendering And Simplify Citations
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Reduce the application citations UI to a lightweight reusable renderer and map the current applications frontmatter contract (`sections`, `associations`, `citations`) onto reusable frontend components so the authored content actually renders.
+
+### Steps
+- [x] Audit the live applications frontmatter keys against the current `/applications/[slug]` route renderer and identify which fields are currently ignored
+- [x] Replace the oversized citations UI with a simpler reusable application citations component that matches the lightweight frontmatter array shape
+- [x] Add reusable renderers for section-based application content and association slug lists while preserving frontmatter parity instead of inventing a new data contract
+- [x] Run focused diagnostics/tests and document the rendering contract decision
+
+### Review
+- The applications detail route was only rendering layout metadata, ad hoc card sections, and a top-level `faq`, while the active application frontmatter stores most authored body content under `sections` and related links under `associations`.
+- Added reusable frontend components to normalize that current contract: `ApplicationSections` renders text and FAQ entries from the `sections` object, `ApplicationAssociations` renders related material cards from `related_materials` and label chips from `related_contaminants`, and `ApplicationCitations` now uses a compact list layout that matches the lightweight citation array.
+- `pageTitle`, `pageDescription`, author metadata, keywords, dates, breadcrumb, and other top-level SEO fields were already being consumed by the shared layout and metadata pipeline; the real missing render path was the section/association body content.
+- Remaining parity gap: `associations.related_contaminants` currently carries generator-style source IDs such as `black_crust` and `pollution_encrustation`, not canonical website slugs or enriched relationship entries. Those now render as readable labels, but full cross-domain card parity will require exporting canonical contaminant slugs or relationship objects into application frontmatter.
+- Verification passed with focused Jest coverage on the new citations component, the section renderer, and the application detail page wiring.
+
+---
+
+## Batch 294: Audit Route Parity And Repair Application Frontmatter URL Contract
+Date: 2026-03-17
+Status: COMPLETE
+
+### Goal
+Determine whether applications has route parity with the other content domains and repair the active heritage application frontmatter file if its URL metadata is out of contract.
+
+### Steps
+- [x] Compare materials, contaminants, compounds, and applications route structures and loaders
+- [x] Determine whether the current issue is a route-architecture gap or a bad frontmatter URL contract
+- [x] Update [frontmatter/applications/heritage-architectural-laser-cleaning-applications.yaml](frontmatter/applications/heritage-architectural-laser-cleaning-applications.yaml) if it is missing canonical route metadata
+- [x] Validate the touched files and summarize the parity result clearly
+
+### Review
+- Applications does not have full route parity with materials, contaminants, and compounds. Those domains use the full `/root/category/subcategory/item` route family, while applications currently uses a flat item route under `/applications/[slug]` plus index/category behavior synthesized from frontmatter.
+- Rewrote [frontmatter/applications/heritage-architectural-laser-cleaning-applications.yaml](frontmatter/applications/heritage-architectural-laser-cleaning-applications.yaml) to the standard cross-domain frontmatter contract: `id`, `name`, `displayName`, `datePublished`, `dateModified`, `contentType`, `schemaVersion`, `fullPath`, `breadcrumb`, `pageTitle`, `pageDescription`, `metaDescription`, `card`, `keywords`, `slug`, and `authorId` are now present in the same canonical shape used by the other domains.
+- This fixes frontmatter parity for the active application file, but it does not by itself make the applications domain fully route-parity with the other domains; that would require changing the application route architecture itself.
+
+---
+
 ## Batch 293: Replace Applications Catalog With User-Specified Taxonomy
 Date: 2026-03-17
 Status: COMPLETE
