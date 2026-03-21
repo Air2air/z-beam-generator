@@ -5,6 +5,82 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 304: Backfill Material Generation Dates
+Date: 2026-03-20
+Status: COMPLETE
+
+### Goal
+Populate missing `preservedData.generationMetadata.generated_date` values in material frontmatter using each file's filesystem creation timestamp so the metadata-sync validator stops flagging missing generation dates.
+
+### Steps
+- [x] Confirm the validator's required generation-date path and the existing frontmatter shape for material pages
+- [x] Backfill `preservedData.generationMetadata.generated_date` in material frontmatter files from each file's creation timestamp without changing unrelated content
+- [x] Run focused metadata validation and summarize the remaining warnings, if any
+
+### Review
+- Confirmed the metadata-sync validator flags missing generation dates only when `preservedData.generationMetadata.generated_date` is absent; top-level dates and section `_metadata.generatedAt` values do not satisfy that check.
+- Backfilled the missing top-level generation metadata across all material frontmatter files using each file's filesystem birth timestamp, appending a minimal `preservedData.generationMetadata.generated_date` block without changing the rest of each YAML contract.
+- Focused validation via `node scripts/validation/content/validate-metadata-sync.js` passed cleanly with 157 files checked, 0 errors, and 0 warnings.
+
+---
+
+## Batch 303: Remove Legal Page Item Headings
+Date: 2026-03-20
+Status: COMPLETE
+
+### Goal
+Remove the per-item `heading` field from the three legal static page YAML files so the document bodies render without an extra item title above the continuous text block.
+
+### Steps
+- [x] Remove `items.heading` from the Terms of Use, Privacy Policy, and Data Disclaimer page YAML files
+- [x] Run focused diagnostics on the three touched YAML files and confirm the shared static-page contract still parses cleanly
+
+### Review
+- Removed the `heading` field from the lone `items` entry in the three legal page YAML files and left the continuous text block, inline variant, alignment, and all metadata unchanged.
+- Focused diagnostics reported no errors in the touched YAML files, so the shared static-page frontmatter remains valid after the heading removal.
+
+---
+
+## Batch 302: Collapse Legal Pages Into Single Content Blocks
+Date: 2026-03-20
+Status: COMPLETE
+
+### Goal
+Keep the three legal static pages on the existing shared static-page path, but author each page body as one continuous content block instead of multiple separate content cards.
+
+### Steps
+- [x] Confirm the shared content-section renderer can support a single-item legal-page layout without frontend code changes
+- [x] Rewrite the three legal page YAML files so each page uses one content item containing the full legal copy in a single block
+- [x] Run focused diagnostics on the touched legal page YAML files and summarize the rendering impact
+
+### Review
+- The shared `ContentSection` renderer already supports a single `ContentCard`, so the requested layout change was handled entirely in the three legal page YAML files without touching React code.
+- Rewrote `/terms-of-use`, `/privacy-policy`, and `/data-disclaimer` so each page now uses one `items` entry with the full legal copy composed into a single HTML-formatted text block.
+- Focused diagnostics reported no errors in the three touched YAML files, so the pages remain valid frontmatter sources while rendering as one continuous block instead of multiple stacked cards.
+
+---
+
+## Batch 301: Add Static Legal Pages
+Date: 2026-03-20
+Status: COMPLETE
+
+### Goal
+Add three frontend static pages for Terms of Use, Privacy Policy, and Data Disclaimer through the shared static-page factory so each page has a stable route, metadata, and frontmatter-driven body content.
+
+### Steps
+- [x] Confirm the final legal copy and route names for the three pages
+- [x] Register the new static pages and add route files plus page YAML source files in the website app
+- [x] Run focused diagnostics on the touched website files and verify the new routes are wired cleanly
+
+### Review
+- Added the new shared static route and frontmatter source for `/terms-of-use`, using the existing shared static-page factory so metadata, sitemap registration, and body rendering stay frontmatter-driven.
+- Added the new shared static route and frontmatter source for `/privacy-policy`, using the same shared factory and metadata contract as the terms page.
+- Added the new shared static route and frontmatter source for `/data-disclaimer`, keeping the short legal warning page on the same shared frontmatter-driven path and linking readers back to the full terms route.
+- Focused static-page loader and metadata regression tests passed after aligning the legal pages with the repo's existing social-image metadata contract.
+- The three requested legal pages are now implemented as shared static routes with sitemap registration and frontmatter-owned metadata.
+
+---
+
 ## Batch 300: Restore Shared Page Description Typography
 Date: 2026-03-18
 Status: COMPLETE
