@@ -5,6 +5,28 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 305: Normalize Application Associations Contract
+Date: 2026-03-24
+Status: COMPLETE
+
+### Goal
+Fix the frontend-wide mismatch between application frontmatter `associations.*` data and stale code/tests/types that still expect those fields under `relationships.*`, then sweep for similar stale references in the website repo.
+
+### Steps
+- [x] Audit the live application frontmatter shape against the current frontend render, loader, and type paths
+- [x] Normalize the website code to treat `associations.related_materials` and `associations.related_contaminants` as the source of truth for applications while keeping existing relationship helpers for other domains intact
+- [x] Sweep nearby tests and type definitions for stale `relationships.*` assumptions tied to applications and update only the affected contracts
+- [x] Run focused frontend verification and summarize any remaining similar-but-distinct issues that should not be changed in this batch
+
+### Review
+- Added a shared frontend helper that normalizes application frontmatter into one `associations` contract, preferring `associations.*` and only falling back to legacy `relationships.discovery.relatedMaterials` and `relationships.interactions.contaminatedBy` when the new keys are absent.
+- Updated the application detail route to consume that normalized associations contract and removed the stale duplicate legacy render path that previously bypassed the shared `ApplicationAssociations` renderer.
+- Tightened the shared frontend type contract for application associations, added regression coverage for precedence and fallback behavior, and updated the application frontmatter unit suite wording to match the live `associations` paths.
+- A runtime sweep found no additional application-specific code still reading the old relationship paths; the remaining `relationships.*` references are either intentional compatibility fallback, non-application domain code, or documentation text outside this frontend batch.
+- Verification passed with focused Jest coverage on the application helper/component/page/frontmatter suites and a full frontend `jsdom` run (`121 passed`, `4 skipped`).
+
+---
+
 ## Batch 304: Backfill Material Generation Dates
 Date: 2026-03-20
 Status: COMPLETE
