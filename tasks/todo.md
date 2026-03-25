@@ -5,6 +5,159 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 354: Tighten Residual Derived Related Videos And Audit Assertions
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Reduce the remaining advisory `Related Videos` failures by removing weak supporting-overlap derived matches and by preserving authored video associations inside the audit path so direct authored video relationships are scored correctly.
+
+### Steps
+- [x] Tighten the derived related-videos eligibility gate so supporting relationship overlap alone no longer short-circuits weak semantic matches
+- [x] Pass authored video association maps through the domain related-videos audit adapter and add focused regression coverage for that audit path
+- [x] Re-run focused suites, the related-items audit, strict audit mode, and the frontend prebuild gate
+
+### Review
+- Tightened `app/utils/relatedVideosContent.ts` so supporting relationship overlap no longer bypasses the derived related-video quality gate by itself; weak candidates now still need stronger semantic evidence unless they have a direct authored association match.
+- Updated `scripts/validation/content/validate-related-items.ts` so the domain related-videos audit preserves authored video association maps when it converts lightweight related-video items into audit candidates, and added focused regressions for both the matcher gate and the authored-audit adapter.
+- Re-passed the focused related-video and related-items verification suites, dropped the advisory related-items audit from 81 fail items to 18 fail items at 271 hosts / 430 sections while keeping strict failures at `0`, and re-passed `npm run prebuild` with `191` passing suites and `3395` passing tests.
+
+## Batch 353: Finish Relationship Parity For Video And Matcher Paths
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Eliminate the remaining frontend-only relationship normalization split by moving authored video association resolution and relationship-slug extraction for video/application matcher paths onto the shared canonical relationship layer.
+
+### Steps
+- [x] Add shared canonical relationship-slug extraction helpers to the normalization layer
+- [x] Refactor video frontmatter and video-related-content authored association paths to resolve canonical refs through the shared relationship normalization utility
+- [x] Refactor application and video matcher paths to use canonical relationship slugs, then rerun focused validation and the frontend prebuild gate
+
+### Review
+- Added canonical relationship-slug extraction to `app/utils/relationshipNormalization.ts`, then pointed `videoFrontmatter.ts` and `relatedVideosContent.ts` at that shared extraction path so authored associations and matcher inputs now resolve through the same alias-safe contract.
+- Refactored `videoRelatedContent.ts` to build authored watch-page related sections from shared canonical relationship refs instead of local slug-to-index mapping, and updated the application, material, and contaminant related-videos callers to pass canonical relationship slugs into the matcher.
+- Re-passed focused video/application/relationship suites, re-passed `npm run validate:related-items` at 271 hosts / 456 sections / 81 fail items / 0 strict fail items, and re-passed the full `npm run prebuild` gate with shell exit code `0`.
+
+## Batch 352: Implement Shared Relationship Normalization
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Introduce the shared relationship normalization layer proposed in the frontend docs, then move application associations, relationship-card-grid rendering, and the related-items audit adapters onto that canonical entity-ref contract.
+
+### Steps
+- [x] Add `app/utils/relationshipNormalization.ts` with shared alias authority, canonical relationship refs, and grid/audit adapters
+- [x] Refactor application associations and relationship-card-grid consumers to use the shared normalized relationship refs instead of local slug normalization or denormalized item mapping
+- [x] Refactor the related-items audit to consume the same canonical relationship refs, then rerun focused validation and the frontend prebuild gate
+
+### Review
+- Added `app/utils/relationshipNormalization.ts` as the new shared alias and canonical entity-ref authority, including normalized relationship sections plus adapters for grid items and related-items audit candidates.
+- Moved application associations and `relationshipCardGridFactory.ts` onto the canonical relationship refs, removing the component-local contaminant alias logic and replacing the grid factory's direct denormalized item mapping with shared normalization plus existing metadata extraction.
+- Refactored `scripts/validation/content/validate-related-items.ts` to consume canonical relationship refs for application associations and graph-backed relationship sections, then re-passed focused utility suites, the related-items audit in both normal and strict mode, and the full `npm run prebuild` gate with shell exit code `0`.
+
+## Batch 351: Propose Relationship Normalization Centralization
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Write a concrete proposal for simplifying and centralizing relationship normalization so the frontend can resolve relationship items through one shared canonical layer instead of feature-local normalizers.
+
+### Steps
+- [x] Audit the current relationship source, render, audit, and alias-resolution layers that would be affected by centralization
+- [x] Write a concrete proposal defining the canonical normalized relationship model, migration targets, and rollout phases
+- [x] Record the proposal as a standalone doc under `docs/proposals/`
+
+### Review
+- Added `docs/proposals/RELATIONSHIP_NORMALIZATION_CENTRALIZATION.md` with a concrete centralization plan that preserves `relationshipHelpers.ts` as the path authority while introducing one new shared normalization layer for canonical entity refs, alias resolution, and downstream render/audit adapters.
+- Scoped the proposal around the actual duplication points already visible in the frontend: application association normalization, entity lookup aliases, relationship-card-grid denormalized item handling, and audit adapters.
+- Recommended a phased rollout that centralizes normalization first and leaves render-time scoring systems like related videos and video watch-page matching as consumers rather than forcing a large rewrite.
+
+## Batch 350: Tighten Video Matching And Promote Strict Audit Gating
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Reduce the weak derived `Related Videos` false positives surfaced by the expanded audit, fix the shared entity alias gaps behind the two lookup warnings, and make strict mode fail only on high-confidence authored or graph-backed related-item sections.
+
+### Steps
+- [x] Tighten the derived related-videos matcher and add focused regression coverage using the current false-positive patterns from the audit report
+- [x] Fix shared entity alias resolution for `lime-mortar-laser-cleaning` and `black-crust-contamination` so lookup-backed related-item paths resolve consistently outside component-local normalization
+- [x] Promote the audit command's strict mode to fail only on authored or graph-backed related-item failures, then rerun the related-items audit and frontend prebuild gate
+
+### Review
+- Tightened `app/utils/relatedVideosContent.ts` so broad restoration/process-token overlap no longer qualifies weak derived matches, and added focused regression coverage for that false-positive pattern.
+- Centralized the previously split alias handling through the new relationship normalization layer and `entityLookup.ts`, which now resolves canonical IDs consistently for related-item rendering, audit, and lookup-backed consumers.
+- Re-ran focused related-item suites, then re-ran `npm run validate:related-items`, `STRICT_MODE=1 npm run validate:related-items`, and `npm run prebuild`; the report dropped from 513 fail items to 81 fail items while strict failures reached `0`, leaving only low-confidence derived `Related Videos` misses as advisory findings.
+
+## Batch 349: Extend Audit To Relationship Card Grids
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Extend the related-items audit so it covers the remaining real entity-to-entity relationship card grid surfaces, not just related videos, material peers, application associations, and video watch-page related entities.
+
+### Steps
+- [x] Identify the remaining live relationship-card-grid render paths and map each one to the underlying frontmatter relationship source
+- [x] Extend the audit script with reusable relationship-section adapters so materials, contaminants, compounds, and applications can verify those grid-backed related items through the shared verifier
+- [x] Re-run the related-items audit and the frontend prebuild gate, then summarize the expanded coverage and results
+
+### Review
+- Extended `scripts/validation/content/validate-related-items.ts` with a reusable relationship-card-grid audit adapter and wired the four remaining live grid-backed entity sections into the report: materials `industryApplications`, materials `contaminatedBy`, contaminants `producesCompounds`, and contaminants `affectsMaterials`.
+- Kept the audit aligned with the live frontend source contracts by reading the same relationship paths that feed `SectionConfigBuilder` and `relationshipCardGridFactory`, then normalizing those denormalized relationship items into the shared verifier input instead of inventing a separate audit-only model.
+- Re-ran `npm run validate:related-items`, expanding the report from 206 hosts / 242 sections to 271 hosts / 606 sections with 5183 passes, 39 warns, and the same 513 fails concentrated in weak `Related Videos` matches rather than the newly added graph-backed relationship grids; the subsequent frontend prebuild gate stayed green.
+
+## Batch 348: Add Non-Blocking Related-Items Audit Script
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Wire the centralized related-items verifier into a reusable, non-blocking audit command that scans real related-item sections across frontend content domains and reports pass, warn, and fail counts by host section.
+
+### Steps
+- [x] Add a related-items validation script that audits current rendered sections using existing loaders and matchers
+- [x] Add an npm command for the audit and keep it warn-only by default
+- [x] Run the new audit command and rerun the frontend prebuild gate if package or shared utility contracts change
+
+### Review
+- Added `scripts/validation/content/validate-related-items.ts` plus the `npm run validate:related-items` entrypoint so the frontend can audit real related-item surfaces across domain pages and video watch pages and emit a structured warn-only report to `reports/validation/related-items-audit.json`.
+- Kept the production `server-only` contract intact by adding a script-only Node preload shim in `scripts/tools/register-server-only-shim.cjs`, which allows the audit command to reuse existing server utilities and React cache-based helpers from a standalone validation runtime without weakening app-side imports.
+- Re-ran the new audit command successfully, producing a 206-host / 242-section audit report, then re-passed the full `npm run prebuild` gate after tightening the script-side candidate typing back to the shared `RelatedItemCandidate` union.
+
+## Batch 346: Propose Central Related-Items Accuracy Verification
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Design one centralized, reusable method to verify that every related item shown on a host page is structurally valid, semantically relevant, and consistent with authored associations or relationship data.
+
+### Steps
+- [x] Audit the current related-item pipelines and existing validation touchpoints in the frontend
+- [x] Write a reusable verification proposal that defines one shared audit contract, scoring model, and rollout path across domains
+- [x] Update tracking notes with the final recommendation and implementation shape
+
+### Review
+- Audited the current related-item accuracy touchpoints across `videoRelatedContent.ts`, `relatedVideosContent.ts`, `videoFrontmatter.ts`, `applicationAssociations.ts`, `relationshipCardGridFactory.ts`, and the generic `contentValidator.ts`, confirming that structural and semantic checks are currently fragmented by feature.
+- Added `docs/proposals/RELATED_ITEMS_ACCURACY_VERIFICATION.md` proposing one shared `relatedItemsVerification.ts` audit layer with a common host/candidate contract, evidence-based scoring, and reusable adapters for authored, graph-backed, and derived related-item sections.
+- Recommended an audit-first rollout that can verify all related-item surfaces centrally before any render-time gating is introduced, so the site gains one reusable truth-reporting path without rewriting the existing matchers first.
+
+## Batch 347: Implement Phase 1 Related-Items Verifier
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Implement the first audit-only version of the centralized related-items verifier and add focused tests that prove it can evaluate both domain-page related videos and video watch-page related entities through one shared contract.
+
+### Steps
+- [x] Add the shared `relatedItemsVerification.ts` utility with host/candidate audit types, scoring, and reusable adapters
+- [x] Add focused tests covering domain-page related videos and video watch-page related entities
+- [x] Run focused suites and rerun the full frontend prebuild gate
+
+### Review
+- Added `app/utils/relatedItemsVerification.ts` as the first audit-only related-items verification layer, including one shared host/candidate contract, structural and semantic checks, authored and graph evidence scoring, and adapters for both related-video items and relationship grid items.
+- Added `tests/utils/relatedItemsVerification.test.ts` proving the shared verifier can pass graph-backed or authored related items while failing weak derived mismatches across both domain-page related videos and video watch-page related entities.
+- Re-passed focused related-item suites and the full `npm run prebuild` gate at `Test Suites: 188 passed, 5 skipped` and `Tests: 3384 passed, 117 skipped` after fixing the adapter boundary between lightweight related-video items and full enriched video objects.
+
 ## Batch 345: Tighten Shorts Discovery Validation
 Date: 2026-03-25
 Status: COMPLETE
