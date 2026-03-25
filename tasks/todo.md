@@ -5,6 +5,752 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 345: Tighten Shorts Discovery Validation
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Add focused regression coverage for the Shorts-page/XML merge path and make the frontend video catalog emit a shared build-time warning when discovery degrades to an error or empty feed.
+
+### Steps
+- [x] Add focused feed-source coverage for Shorts ordering, XML fallback, and supplemented Shorts metadata
+- [x] Add a shared warning policy in the frontend video catalog for `hasError` or unexpectedly empty video discovery results
+- [x] Run focused feed and video-catalog suites, then rerun the frontend prebuild gate
+
+### Review
+- Expanded the YouTube discovery regression coverage to prove the merged feed prefers Shorts-page ordering when available, appends XML-only trailing videos, and still falls back cleanly to XML ordering when the Shorts page request fails.
+- Added a shared catalog-layer warning in `app/utils/videoCatalog.ts` so every route that consumes enriched videos now emits a consistent build-time signal when discovery returns `hasError: true` or an unexpectedly empty result set.
+- Re-passed the focused `tests/seo/youtube-feed.test.ts` and `tests/utils/videoCatalog.test.ts` suites, then re-passed the full `npm run prebuild` gate at `Test Suites: 187 passed, 5 skipped` and `Tests: 3382 passed, 117 skipped`.
+
+## Batch 344: Audit Related Videos Docs And Ingestion Path
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Verify that the graph-aware related-videos update is reflected in the frontend code and tests, and align the written docs with the shipped ranking and Shorts discovery behavior.
+
+### Steps
+- [x] Audit the frontend code and test coverage for the graph-aware related-videos update
+- [x] Inspect the build-time YouTube discovery source and confirm whether it queries the Shorts page directly
+- [x] Update the existing related-videos proposal doc so it describes the current shipped behavior rather than only the original rollout plan
+
+### Review
+- Confirmed the graph-aware related-videos implementation is live in the frontend code path through `app/utils/videoFrontmatter.ts`, `app/utils/videoCatalog.ts`, `app/utils/relatedVideosContent.ts`, and the material, contaminant, compound, and application integrations.
+- Confirmed focused regression coverage already exists for the relationship-aware ranking path in `tests/utils/relatedVideosContent.test.ts`, `tests/utils/videoCatalog.test.ts`, `tests/components/RelatedVideosSection.test.tsx`, and the application-detail integration coverage.
+- Updated `docs/proposals/RELATED_VIDEOS_SECTION_REUSE.md` so it now documents the shipped graph-aware ranking order, the shared `VideoCardGrid` presentation path, and the current build-time YouTube Shorts discovery source, which queries both the public Shorts page and the channel XML feed before merging results.
+
+## Batch 343: Add Graph-Aware Related Video Ranking
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Improve related-video relevance by ranking against explicit exported frontmatter associations and relationship overlap before falling back to text-based matching.
+
+### Steps
+- [x] Expose exact authored video association slugs in the frontend video enrichment model
+- [x] Pass domain-page relationship slugs into the related-videos helper and add graph-aware scoring before text fallback
+- [x] Add focused regression coverage for direct association matches and rerun validation
+
+### Review
+- Extended the frontend video enrichment path to expose exact authored association slug sets from video frontmatter, so related-video ranking can use explicit `related_materials`, `related_contaminants`, `related_compounds`, and `related_applications` edges rather than treating all candidates as plain text.
+- Updated the domain-page related-videos helper and its call sites to pass exported page relationship slugs from materials, contaminants, compounds, and applications, then rank videos by direct association overlap first, supporting relationship overlap second, and text matching only after that graph-aware signal.
+- Added regression coverage for explicit association preference, fixed the affected module mocks, and re-passed both the focused suites and the full `npm run prebuild` gate with terminal exit code `0`.
+
+## Batch 342: Align Related Videos UI And Tighten Matching
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Make related-videos sections reuse the exact videos-page grid/card surface and tighten the fallback matcher so weak token-only overlaps do not leak into domain-page recommendations.
+
+### Steps
+- [x] Extract or reuse the same shared video grid surface the videos hub uses and point related-videos rendering at it
+- [x] Tighten the related-videos matcher with stronger specificity gates for derived matches
+- [x] Add focused regression coverage and rerun validation for the videos hub, related-videos section, and matcher
+
+### Review
+- Added `app/components/VideoCardGrid/VideoCardGrid.tsx` and switched both the `/videos` hub and `RelatedVideosSection` to that shared surface, so the grid and cards are now rendered through the exact same component path instead of one page recreating the grid locally.
+- Tightened `app/utils/relatedVideosContent.ts` by adding phrase-aware diagnostics and an eligibility gate that now requires either a strong exact phrase signal or a stronger multi-token overlap before a derived video can appear on a domain page.
+- Re-passed focused Jest coverage for `tests/app/videos-page.test.tsx`, `tests/components/RelatedVideosSection.test.tsx`, `tests/utils/relatedVideosContent.test.ts`, and `tests/pages/applications-detail-author.test.tsx`, then re-passed the full `npm run prebuild` gate with shell exit code `0`.
+
+## Batch 341: Implement Reusable Related Videos Across Domain Pages
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Implement the reusable subject-related videos helper and section component, roll it out across materials, contaminants, compounds, and applications, and validate the new frontend-only recommendation path with focused tests.
+
+### Steps
+- [x] Add the frontend-only subject matcher helper and reusable Related Videos section component
+- [x] Wire the section into materials, contaminants, compounds, and application detail pages with optional authored overrides
+- [x] Add focused regression coverage for the helper, presenter, and at least one page-level integration path, then rerun validation
+
+### Review
+- Added `app/utils/relatedVideosContent.ts` as the frontend-only matcher for domain pages, using the existing enriched video catalog plus generic-term filtering so derived matches stay subject-specific instead of keying off broad phrases like `laser cleaning`.
+- Added the reusable `RelatedVideosSection` presenter and rolled it into `MaterialsLayout`, `ContaminantsLayout`, `CompoundsLayout`, and the application detail route, with authored override slugs honored first and derived recommendations used as the fallback path.
+- Added focused regression coverage for the new helper, the shared section component, and the application detail route integration, then re-passed the full `npm run prebuild` gate in `z-beam` at `Test Suites: 186 passed, 5 skipped` and `Tests: 5552 passed, 117 skipped`.
+
+## Batch 340: Validate Next Parity Pass And Scope Reusable Related Videos
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Run the broader frontend gate after the wrapper cleanup, simplify the next shared safety/application section patterns, and define a reusable subject-related videos section proposal that fits the current frontend video enrichment model.
+
+### Steps
+- [x] Refactor the next parity targets in `SafetyWarningsGrid` / `CompoundSafetyGrid` and `ApplicationSections` without changing current rendered content contracts
+- [x] Add or update focused regression coverage around the refactored safety/application section behavior
+- [x] Run `npm run prebuild` in `z-beam` and fix any regressions caused by the current frontend cleanup stream
+- [x] Summarize a reusable Related Videos section proposal based on the current subject-driven video model and where it should plug into domain pages
+
+### Review
+- Extracted the next `ApplicationSections` iteration helper into `app/components/ApplicationSections/applicationSectionUtils.ts`, so the component now consumes one normalized section list instead of owning all title/description/icon/FAQ fallback logic inline; also added a regression covering fallback display labels and empty-section filtering.
+- Simplified `SafetyWarningsGrid` by collapsing the three repeated warning-card render paths into one typed warning-group configuration while preserving the same rendered warning content, fumes table, and `SafetyWarning` footer contract; added a new focused `SafetyWarningsGrid` suite.
+- Added a written `Related Videos` reuse proposal in `docs/proposals/RELATED_VIDEOS_SECTION_REUSE.md` that keeps recommendations subject-related, frontend-only, and compatible with the existing video enrichment model by proposing a sibling `relatedVideosContent.ts` helper rather than overloading the watch-page matcher.
+- Re-passed the focused `ApplicationSections`, `SafetyWarningsGrid`, `BaseSection`, and `Relationship` compatibility suites, then re-passed the full `npm run prebuild` gate at `Test Suites: 185 passed, 5 skipped` and `Tests: 3371 passed, 117 skipped` after fixing the stale deleted-alias test and the now-correct `BaseSection` accessibility expectation.
+
+## Batch 339: Remove Alias Wrappers And Unify Collapsible Panels
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Remove the dead `LinkageSection` alias, collapse `IndustryApplicationsPanel` onto the shared card-list pattern, and extract one shared collapsible-section wrapper for `FAQ`, `Prevention`, and `ExpertAnswers` without changing authored frontend content behavior.
+
+### Steps
+- [x] Remove `LinkageSection` and update any remaining docs/comments that still present it as a live component
+- [x] Refactor `IndustryApplicationsPanel` to reuse the shared card-list wrapper and keep its current normalized/legacy input support
+- [x] Introduce one shared collapsible-section wrapper for `FAQPanel`, `PreventionPanel`, and `ExpertAnswersPanel`, then rerun focused component tests
+
+### Review
+- Removed the dead `LinkageSection` component entirely because there were no live app imports left, then updated the nearby `BaseSection` and `Relationship` docs/comments so `Relationship` is now the single documented relationship-section wrapper.
+- Simplified `IndustryApplicationsPanel` onto the shared primitives: card presentation now uses `CardListPanel`, non-card presentation now uses the new `CollapsibleSectionPanel`, and the panel keeps its existing legacy-array and normalized-item support through one normalization helper instead of duplicating wrapper markup inline.
+- Added `CollapsibleSectionPanel` as the shared wrapper for `FAQPanel`, `PreventionPanel`, and `ExpertAnswersPanel`, added a new focused `FAQPanel` Jest suite, and re-passed the focused `FAQPanel`, `IndustryApplicationsPanel`, `PreventionPanel`, `ExpertAnswersPanel`, and `ApplicationSections` suites.
+
+## Batch 335: Audit Watch-Page Icons And Frontend Redundancies
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Recommend the right icon assignments for the video watch-page sections and identify the most actionable frontend component redundancies without widening into unrelated rewrites.
+
+### Steps
+- [x] Inspect the current watch-page section structure and the shared icon registry to recommend a consistent icon map
+- [x] Review shared frontend section/grid/layout components for duplicated wrapper, spacing, or presentation logic
+- [x] Summarize the recommended watch-page icons and the highest-value redundancy findings with exact file targets
+
+### Review
+- Audited the video watch page against the shared icon registry and confirmed the cleanest current icon map uses the existing Lucide-backed keys already supported by `getSectionIcon`: `camera` for the player section, `related-materials` for materials, `alert-circle` or `droplet` for contaminants, `briefcase` for applications, and `flask-conical` or `atom` for compounds.
+- Confirmed the current video related-content path does not yet carry icon metadata from authored YAML into the watch page, so adding icons cleanly would mean either extending the video related-content shape with `_section.icon` support or applying a small source-key-to-icon mapping in the watch-page/runtime layer rather than hardcoding icons inline per section.
+- Identified the highest-value frontend redundancies as thin wrapper layers and duplicated presentation plumbing around `BaseSection`, including `ContentSection`, `Relationship`, `PropertyGrid`, repeated `getSectionIcon(...)` calls in many section components, and duplicated card/status color logic in the heatmap components.
+
+## Batch 336: Add Watch-Page Icons And Trim Wrapper Redundancy
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Add the approved icons to the video watch-page related sections and simplify the `Relationship` and `PropertyGrid` wrappers so they rely on the shared `BaseSection` contract with less redundant compatibility code.
+
+### Steps
+- [x] Extend the shared video related-content model so each watch-page related section carries a consistent icon key
+- [x] Update the watch page to render those related-section icons without adding new section titles or extra UI
+- [x] Simplify `Relationship` and `PropertyGrid`, remove dead compatibility props where safe, and rerun focused validation
+
+### Review
+- Added a shared icon contract to `app/utils/videoRelatedContent.ts`, so the video watch-page related sections now carry stable icon keys from the same model that already owns their titles, descriptions, and items; the watch page consumes those keys directly in `app/videos/[slug]/page.tsx` without hardcoding section-specific icons inline.
+- Kept the player section unchanged and titleless, which preserves the user-requested minimalist watch-page UI while still giving `Related Materials`, `Related Contaminants`, `Related Applications`, and `Related Compounds` visible icons through the existing `BaseSection` icon path.
+- Simplified two wrapper components instead of widening the refactor: `Relationship` now relies on the default `BaseSection` spacing instead of overriding it to `loose`, and `PropertyGrid` drops the dead `actionText`/`actionUrl` compatibility props while switching from duplicated `mb-8` plus `spacing="loose"` defaults to one `spacing` prop with a `normal` default.
+
+## Batch 337: Normalize Content Wrappers And Add PropertyGrid Tests
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Bring `ContentSection` and `ApplicationSections` back onto the shared `BaseSection` contract with less wrapper-specific behavior, and add the missing focused `PropertyGrid` tests so future cleanup in that area stays safe.
+
+### Steps
+- [x] Align `ContentSection` props with its real test/caller contract and trim redundant BaseSection defaults
+- [x] Simplify `ApplicationSections` spacing and section metadata plumbing without changing rendered content
+- [x] Add focused `PropertyGrid` tests and rerun the relevant suites
+
+### Review
+- Normalized `ContentSection` so it now explicitly accepts the `description`, `className`, and `spacing` props that its tests and callers already assumed, removed the redundant forced empty-title/empty-description behavior, and extracted the item sorting/card-prop shaping into small helpers instead of keeping one large inline mapping block.
+- Simplified `ApplicationSections` by normalizing section metadata up front, moving repeated inter-section spacing to a single wrapper `space-y-10` contract, and forwarding `_section.icon` into `BaseSection` so section metadata stays data-driven instead of relying on per-render branching.
+- Added a new focused `tests/components/PropertyGrid.test.tsx` suite covering the current `PropertyGrid` contract, including default spacing/className behavior, explicit spacing overrides, and null rendering when the selected data source is empty; the focused `ApplicationSections`, both `ContentSection` suites, and the new `PropertyGrid` suite all passed.
+
+## Batch 338: Clean Wrapper Docs And Grid Panel Parity
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Bring the remaining wrapper docs and thin grid/list panels into parity with the current `BaseSection` contract, and add focused tests where those panels currently have none.
+
+### Steps
+- [x] Update stale `Relationship` documentation so it reflects the current `BaseSection` implementation instead of older `GridSection` assumptions
+- [x] Simplify `CardListPanel` and `HomePageGrid` around one shared wrapper pattern without changing rendered output
+- [x] Add focused tests for the grid/list panels and summarize the next parity opportunities still remaining
+
+### Review
+- Updated the active `Relationship` wrapper documentation so it now reflects the real `BaseSection` implementation, the current section-wrapper flow, and the fact that `LinkageSection` is only a compatibility alias rather than a distinct rendering path.
+- Simplified the two remaining thin panel wrappers without changing output: `CardListPanel` now routes both its default component and factory helper through one shared render path and no longer carries the dead `iconType` prop, while `HomePageGrid` now treats its section shell as truly optional and normalizes card mapping through a small helper.
+- Added focused `CardListPanel` and `HomePageGrid` Jest coverage and re-passed those new suites together with the existing `Relationship` suite, confirming the wrapper/docs cleanup did not regress the current `BaseSection` contract.
+
+## Batch 334: Generate Video Section Descriptions
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Replace the generic hardcoded video relationship section descriptions with per-video generated copy derived from the canonical subject and keyword set, then refresh the live video overlays.
+
+### Steps
+- [x] Add a shared helper that derives per-section descriptions for video relationship blocks from the canonical subject and keyword data
+- [x] Update the video frontmatter sync script to use the generated section descriptions while preserving authored relationship items
+- [x] Refresh the live video overlays, rerun focused frontmatter/watch-page validation, and record the section-description generation lesson
+
+### Review
+- Added a shared frontend helper that generates per-video relationship section descriptions from the canonical subject and keyword set, so `Related Materials`, `Related Contaminants`, `Related Compounds`, and `Related Applications` now carry subject-specific copy instead of the previous one-size-fits-all boilerplate.
+- Updated the video frontmatter sync script so it regenerates `_section.sectionDescription` at refresh time while preserving authored relationship `items` arrays, fixing the earlier merge behavior that kept stale generic association blocks intact forever once a YAML file already existed.
+- Refreshed all 18 live video overlays and re-passed the focused `tests/frontmatter/videoFrontmatter.contract.test.ts` and `tests/pages/video-watch-page.test.tsx` suites, including a new contract assertion that the live section descriptions are non-generic and include the specific video subject.
+
+## Batch 333: Run Full Prebuild After Video SEO Pass
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Verify that the completed frontend-only video SEO work also passes the full `prebuild` gate, not just the deploy-safe subset, before widening into another implementation slice.
+
+### Steps
+- [x] Run `npm run prebuild` in `z-beam`
+- [x] Confirm the result is clean or fix any regressions directly caused by the recent video changes
+- [x] Record the verification outcome in the tracker and capture any new lesson if the broader gate reveals a hidden contract issue
+
+### Review
+- Ran the full frontend `prebuild` gate after the completed video SEO batches rather than stopping at the deploy-safe subset, to verify the broader Jest, type, lint, and validation surfaces stayed green with the new video relationships and watch-page content changes in place.
+- The full gate passed cleanly at `Test Suites: 180 passed, 5 skipped` and `Tests: 3353 passed, 117 skipped`, with no failures attributable to the recent video work.
+- No new hidden contract issue surfaced in the broader gate, so this batch closes as a verification-only checkpoint rather than another corrective implementation pass.
+
+## Batch 332: Deepen Video Relationships And Watch-Page Content
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Extend the Phase 1 video SEO pass by covering the remaining strong relationship opportunities, enriching watch-page on-page context with the existing frontend-owned video fields, and re-running the broader deploy gate.
+
+### Steps
+- [x] Audit the remaining video overlays for obvious high-confidence entity relationships and add the next safe batch
+- [x] Improve watch-page on-page content depth using the current video summary, description, keywords, and authored relationships without widening into transcript or provider work
+- [x] Rerun focused validation plus `npm run prebuild:deploy`, then record the next relationship/content-depth lesson
+
+### Review
+- Added the remaining safe authored relationships for the current frontend-owned video set: the brass ventilation bell now links to brass and the general heritage application page, the epoxy-coated tube links to epoxy residue, San Francisco cable cars link to the general heritage application page, and the Porsche exhaust links to exhaust residue, while the Netalux brand-only clip remains intentionally unlinked because no confident entity fit exists.
+- Enriched the watch page with a new `What This Video Covers` section that uses the existing shared video summary, page description, and filtered keyword cues to add more same-page context before the related-content grids, without widening into transcript extraction or source-provider changes.
+- Repassed the focused video/frontmatter/watch-page/sitemap Jest suites and then re-passed `npm run prebuild:deploy`; the broader gate remains clean with only the pre-existing warning-only lint noise already present elsewhere in the repo.
+
+## Batch 331: Improve Video Summaries And Relationships
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Finish the next Phase 1 slice by removing the remaining promotional summary leakage from live video overlays and populating a first batch of high-confidence authored relationships for the current website-side video set.
+
+### Steps
+- [x] Tighten the shared summary helper so partner/product promo sentences fall back to editorial case-study copy
+- [x] Refresh the live video overlays and hand-author the strongest material/application/contaminant relationships for the current video set
+- [x] Rerun the focused enhancement/frontmatter/watch-page/video suites and record the relationship-quality lesson
+
+### Review
+- Tightened the shared video summary helper so partner and product promo sentences now fall back to neutral case-study copy, added a focused regression for the epoxy-coated-tube case, and refreshed all 18 website-side video overlays so the live YAML summaries match the stricter editorial contract.
+- Added a first batch of high-confidence authored relationships directly to the current website-side video overlays, linking obvious structural-steel videos to steel and rust pages, masonry/foundation videos to mortar or concrete plus the masonry-specific heritage application page, and the clear automotive and furniture cases to stainless steel and mahogany respectively.
+- Repassed the focused Phase 1 validation set with `tests/utils/videoEnhancements.test.ts`, `tests/frontmatter/videoFrontmatter.contract.test.ts`, `tests/pages/video-watch-page.test.tsx`, and `tests/seo/video-sitemap.test.ts`, confirming the summary cleanup and authored relationship additions did not break the watch-page or frontmatter contract.
+
+---
+
+## Batch 330: Enrich Video Watch Schema And Metadata
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Implement the first Phase 1 video SEO upgrade by enriching the shared watch-page `VideoObject` schema and making video-page metadata internally consistent without widening into source-provider or transcript work.
+
+### Steps
+- [x] Enrich the shared video schema with low-risk fields already available in the current watch-page model
+- [x] Make watch-page metadata consistently video-native and simplify hub metadata so `/videos` no longer masquerades as a watch page
+- [x] Add focused regression coverage and rerun the targeted video/metadata suites
+
+### Review
+- Enriched the shared `VideoObject` generator so watch-page schema now prefers the editorial summary when available and includes low-risk fields already present in the current video model, including `contentUrl` and `dateModified`, while preserving the watch page as the canonical URL and YouTube as `sameAs`.
+- Updated the shared metadata helper and watch-page metadata call so embedded video pages now emit a consistent video-native social contract: `openGraph.type` switches to `video.other`, Twitter uses a player card when an embed is present, and the metadata output includes coherent `twitter:player` and `og:video*` tags for the watch page without widening the `/videos` hub into a faux watch page.
+- Added and passed focused regression coverage for the richer video schema and video-native metadata contract, then re-passed the release-blocking frontend gate with `npm run prebuild:deploy` at `exit=0`.
+
+---
+
+## Batch 329: Specify Video SEO Phase 1
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Turn the ranked video SEO audit into a concrete Phase 1 implementation spec with exact file targets, scope boundaries, acceptance criteria, and validation steps for frontend-only execution.
+
+### Steps
+- [x] Define the exact scope for Phase 1 so it improves video metadata/schema depth without widening into API migration or transcript systems
+- [x] Map each Phase 1 deliverable to the current frontend files and test surfaces that need to change
+- [x] Produce a concrete implementation spec with recommended execution order, out-of-scope guardrails, and validation commands
+
+### Review
+- Scoped Phase 1 to the highest-leverage frontend-only improvements: richer watch-page video schema, tighter video-native metadata/social tags, better enhancement copy quality, and stronger overlay relationship population guidance without widening into source-provider changes.
+- Mapped the work to the current implementation surfaces in `app/utils/metadata.ts`, `app/utils/schemas/generators/video.ts`, `app/utils/schemas/videoSchemas.ts`, `app/videos/[slug]/page.tsx`, `app/videos/page.tsx`, `app/video-sitemap.xml/route.ts`, `app/utils/videoEnhancements.ts`, and representative `frontmatter/videos/*.yaml` overlays.
+- Added a concrete spec document with per-workstream deliverables, acceptance criteria, validation commands, sequencing, and explicit out-of-scope boundaries so the next implementation pass can execute directly from the plan.
+
+---
+
+## Batch 328: Rank Video SEO Next Steps
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Turn the current video SEO review into a concrete implementation backlog ranked by impact and effort so the next work lands on the highest-leverage gaps first.
+
+### Steps
+- [x] Review the live video SEO surface across metadata, JSON-LD, sitemap, overlays, and watch-page content depth
+- [x] Identify the highest-value missing opportunities and group them by impact and implementation effort
+- [x] Produce a recommended execution order that distinguishes foundational fixes from later enrichment work
+
+### Review
+- Audited the live video SEO implementation across `app/videos`, `app/video-sitemap.xml`, `app/utils/metadata.ts`, `app/utils/schemas/videoSchemas.ts`, `app/utils/schemas/generators/video.ts`, `app/utils/videoCatalog.ts`, and representative `frontmatter/videos/*.yaml` overlays.
+- Confirmed the current system has solid baseline coverage with dedicated watch pages, canonical metadata, `VideoObject` JSON-LD, and a video sitemap, but still lacks richer video-native metadata, transcript/key-moment support, and populated entity relationships on most overlays.
+- Ranked the missing opportunities into a concrete backlog with impact/effort guidance, prioritizing richer `VideoObject` fields, stronger internal entity associations, and more substantive on-page video content ahead of lower-leverage polish.
+
+---
+
+## Batch 327: Align Full Prebuild Tests With Build Scripts
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Restore the full frontend `prebuild` gate by aligning stale build-requirements tests with the current canonical `build`, `build:app`, and `vercel-build` script contracts.
+
+### Steps
+- [x] Update the build-requirements test to accept the current deploy-safe `vercel-build` pipeline instead of the retired `npm run build` assumption
+- [x] Update the build and execution-order assertions to follow the current `build -> build:app -> next build` contract
+- [x] Rerun `npm run prebuild` and confirm an explicit zero exit code
+
+### Review
+- Updated `tests/build/build-time-requirements.test.ts` so the Vercel build assertions now expect the live deploy-safe pipeline `npm run prebuild:deploy && npm run build:app && npm run postbuild:deploy` rather than the retired direct `npm run build` path.
+- Updated the same test file's production-build and execution-order expectations to reflect the current canonical indirection where `build` delegates to `build:app`, and `build:app` owns the `next build` step plus video sync and sitemap generation.
+- Re-ran the full `npm run prebuild` gate and verified the final result at `Test Suites: 179 passed, 5 skipped` with `exit=0`.
+
+---
+
+## Batch 326: Repair Release Gate Video Contracts
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Restore the frontend release gate after the video discovery refactor by realigning wrapper exports, sync-script assumptions, and shared metadata video types with the current canonical video model.
+
+### Steps
+- [x] Re-export the shared YouTube feed types from the wrapper module and remove sync-script assumptions about enrichment-only fields
+- [x] Widen the shared `ArticleMetadata.video` contract so homepage/static-page and hero consumers accept both page-metadata and YouTube-ID style video fields
+- [x] Rerun `npm run prebuild:deploy`, confirm an explicit zero exit code, and record the contract-alignment lesson
+
+### Review
+- Re-exported `YouTubeFeedResult` and `YouTubeVideoSummary` from the `youtubeFeed` wrapper, then updated the video frontmatter sync script to derive its own canonical slug and embed URL instead of assuming enrichment-only fields like `video.slug` and `video.embedUrl` exist on raw discovery summaries.
+- Unified the shared metadata video shape in `types/centralized.ts` so the Hero/homepage/static-page path can carry both lightweight YouTube fields (`id`, `title`, `description`, `duration`, `url`) and page-metadata fields (`embedUrl`, `watchUrl`, `thumbnailUrl`, dimensions) without conflicting interface declarations, and removed the duplicate `title` key in `SECTION_HEADER_CLASSES`.
+- Repassed the full release-blocking frontend gate with `npm run prebuild:deploy`, and verified the final rerun exited cleanly with `exit=0`; the remaining lint output is warning-only and did not block the gate.
+
+---
+
+## Batch 325: Tighten Sparse Video Metadata Fallbacks
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Improve the shared sparse-video fallback path so scrape-only shorts with thin public metadata still generate usable summaries and canonical fields before broader test runs.
+
+### Steps
+- [x] Tighten the shared summary fallback to reject low-information scrape-only sentences and fall back to case-study copy instead
+- [x] Add focused regression coverage for sparse scrape-only title/description inputs and refresh the current video overlays
+- [x] Rerun the focused video normalization/frontmatter/page/feed suites and record the fallback-quality lesson
+
+### Review
+- Tightened the shared `buildVideoSummary()` fallback so scrape-only descriptions that merely repeat the page title or subject, such as `Z-Beam netalux` or `San Francisco cable cars!`, are rejected as low-information and replaced with the canonical case-study summary instead of leaking title-only copy into live YAML.
+- Added focused regression coverage for both the summary helper and canonical normalization path, then refreshed all 18 website-side video overlays so sparse scrape-only shorts now serialize stable fallback summaries like `Netalux laser cleaning case study focused on restoration, inspection, and coating preparation.`
+- Repassed the focused video enhancement, normalization, feed, frontmatter-contract, videos-page, watch-page, and video-sitemap Jest suites after the refresh, so the current discovery and overlay pipeline is in a clean state for broader test gates.
+
+---
+
+## Batch 324: Add Laser Cleaning To Video Titles And Slugs
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Make the canonical video page title and slug convention include `Laser Cleaning` by default at the shared title helper, while keeping build-time video discovery and frontmatter sync automatic for newly discovered YouTube shorts.
+
+### Steps
+- [x] Update the shared video title/slug helper to emit `Subject Laser Cleaning` titles and `subject-laser-cleaning-id8` slugs by default
+- [x] Refresh the current video overlay set onto the new naming convention and verify the existing build hook still auto-syncs new discoveries
+- [x] Rerun focused video title/feed/catalog/frontmatter validation and record the naming-contract lesson
+
+### Review
+- Updated the shared video title authority so derived watch-page titles now default to `Subject Laser Cleaning` and derived slugs now default to `subject-laser-cleaning-id8`, while still avoiding duplicate suffixes when `Laser Cleaning` is already present in the cleaned title.
+- Rewrote the current 18 website-side video overlays onto the new naming contract, which renamed every existing file into the `*-laser-cleaning-*` pattern and cleaned the scrape-only Netalux short down to `netalux-laser-cleaning-rOo50iih.yaml`; the local `/videos` page now serves `18` distinct `laser-cleaning` watch-page links.
+- Verified the automation path remains in place for future discoveries: `build:app` in `package.json` already runs `npm run videos:sync-frontmatter && next build`, so newly discovered YouTube shorts will keep receiving the new naming convention automatically at build time; focused title, normalization, catalog, feed, videos-page, watch-page, sitemap, and frontmatter-contract Jest suites passed after the refresh.
+
+---
+
+## Batch 323: Switch Video Discovery To Shorts Page
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Make the frontend video pipeline discover channel items from the public shorts page so `/videos` mirrors the visible channel inventory, while keeping the discovery logic isolated so a later YouTube Data API provider can replace it with minimal churn.
+
+### Steps
+- [x] Add a small discovery boundary that uses the public shorts page for canonical IDs/order and falls back to per-short page scraping only for items missing from the XML feed
+- [x] Move the shared frontend feed loader and sync script onto that discovery boundary without changing downstream video enrichment contracts
+- [x] Add focused regression coverage for the merged discovery path, verify local count parity against the shorts page, and record the provider-boundary lesson
+
+### Review
+- Added a shared `app/utils/youtubeVideoSource.ts` provider boundary so `getYouTubeFeed()` and the frontmatter sync script both consume one canonical discovery path that can later be swapped to a YouTube Data API implementation with minimal downstream churn.
+- Made the public shorts page the authoritative discovery surface for video IDs and ordering, merged it with XML feed metadata when available, and scraped individual shorts pages only for the few IDs missing from the XML feed; the source also degrades back to XML results if the shorts page fails.
+- Refreshed the website-side video overlay set onto the new 18-item inventory, creating two new YAML files and renaming the initial scrape-only cable-car slug to `san-francisco-cable-cars-Fv8Monhu.yaml`; local `/videos` now renders `18` cards, and focused feed, videos-page, watch-page, catalog, sitemap, and frontmatter-contract Jest suites passed.
+
+---
+
+## Batch 322: Remove Default Video Feed Cap
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Remove the implicit default cap from the frontend video feed and sync paths so the site loads the full public channel feed unless a caller explicitly asks for a limit.
+
+### Steps
+- [x] Remove the default feed truncation from the live YouTube feed loader and the frontmatter sync script while preserving optional explicit limits
+- [x] Add focused regression coverage for the uncapped default path and rerun the relevant video/feed tests
+- [x] Verify the upstream/public counts again and record the lesson behind the unexpected truncation
+
+### Review
+- Removed the implicit `24`-item truncation from both `app/utils/youtubeFeed.ts` and `scripts/videos/sync-video-frontmatter.ts`; both paths now load the full public channel feed by default while still allowing an explicit caller-supplied limit when needed.
+- Added focused regression coverage proving the default `getYouTubeFeed()` path no longer slices the parsed entries, then passed focused feed, videos-page, video-catalog, and video-frontmatter contract Jest suites.
+- Verified the remaining count mismatch is upstream-surface drift rather than an app cap: the public XML feed currently exposes `15` `<entry>` items, while the public `@Z-Beam/shorts` page HTML currently exposes `18` distinct `videoId` values, so the current videos page is limited by YouTube's feed surface, not by a local default slice.
+
+---
+
+## Batch 321: Collapse Video EnhancedDescription Into PageDescription
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Remove `enhancedDescription` as a separate persisted video-overlay field so `pageDescription` becomes the sole descriptive authority for video lead copy and related-content signals.
+
+### Steps
+- [x] Refactor the shared video normalization/runtime types to stop exposing `enhancedDescription` as a first-class field
+- [x] Update the sync/frontmatter contract so video YAML stores `pageDescription` and `summary` without `enhancedDescription`
+- [x] Rerun focused video validation and record the consolidation lesson
+
+### Review
+- Removed `enhancedDescription` from the canonical video normalization output, frontmatter types, runtime video model, and related-content signal path so `pageDescription` is now the only descriptive authority for video overlays and watch-page metadata.
+- Updated the sync script to stop writing `enhancedDescription`, delete any legacy `enhancements.enhancedDescription` during rewrites, and reduced the current 16 live `frontmatter/videos/*.yaml` overlays to `pageDescription` plus `summary` without the duplicated descriptive block.
+- Passed focused video contract, normalization, catalog, related-content, watch-page, enhancement-helper, and sitemap Jest suites, then verified the live overlay counts at `video_files=16`, `enhancedDescription=0`, `pageDescription=16`, and `summary=16`.
+
+---
+
+## Batch 320: Remove Remaining Dead Subtitle Cleanup Surface
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Finish the three follow-up cleanups after the subtitle migration by removing unused secondary-text APIs, trimming dead section-header helper exports, and updating the remaining active website docs/comments that still describe the old subtitle contract.
+
+### Steps
+- [x] Remove the unused `ComparisonTable` supporting-text prop and any dead references
+- [x] Trim dead section-header helper exports/constants that no longer serve the live website
+- [x] Sweep the remaining active website docs/comments from obsolete subtitle wording to `pageDescription` or `supportingText` as appropriate and rerun focused validation
+
+### Review
+- Removed the unused `ComparisonTable.supportingText` surface so the component now exposes only the title and comparison data that the live site actually renders.
+- Deleted the dead `createSectionHeader`, `createCategoryHeader`, and `CATEGORY_HEADER_CLASSES` export path from shared config utilities, plus the now-stale mock surface in the CardGrid test, while keeping the live `SECTION_HEADER_CLASSES.title` styling constant used by SectionTitle and BaseSection.
+- Updated the remaining active website docs/comments that were still teaching `subtitle` as the page lead-copy contract, then passed focused Jest coverage for CardGrid, SectionTitle, and createStaticPage; the only remaining subtitle references are intentional ARIA/media cases and reference docs that explicitly document removal of the field.
+
+---
+
+## Batch 319: Consolidate Remaining Website Subtitle APIs
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Finish the active website-only cleanup of remaining `subtitle` APIs by separating true page descriptions from generic supporting text, renaming the surviving UI/card fields to clearer semantics, and identifying any redundant fields that can be removed instead of preserved.
+
+### Steps
+- [x] Audit the remaining website `subtitle` usages and classify each one as `pageDescription`, supporting text, or removable duplication
+- [x] Rename the surviving website-only `subtitle` props and card-schema keys to a neutral supporting-text field without changing behavior
+- [x] Rerun focused validation and record the consolidation guidance for future field migrations
+
+### Review
+- Confirmed the remaining website `subtitle` usages were not true page descriptions: comparison/download component props and card-schema values were generic secondary labels, while one leftover `components.subtitle` material field still represented page lead copy.
+- Renamed the website-only component props and card-schema contract from `subtitle` to `supportingText`, updated the shared validators/renderers/types to match, and bulk-renamed the website frontmatter card payloads without widening scope into generator internals.
+- Moved the lone remaining material `components.subtitle` page-copy field to `components.pageDescription`, then passed focused Jest coverage for section/static-page rendering and verified the frontmatter counts at `card_subtitle=0`, `card_supportingText=374`, `component_subtitle=0`, and `component_pageDescription=29`.
+
+---
+
+## Batch 318: Replace Legacy Subtitle Field With PageDescription
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Finish the active front-end and back-end data-contract migration from legacy `subtitle` lead-copy fields to canonical `pageDescription` fields without renaming unrelated internal generator component labels or card secondary-label fields.
+
+### Steps
+- [x] Replace active website metadata/category/search consumers that still read `subtitle` as page-level lead copy
+- [x] Rename material component lead-copy source fields from `components.subtitle` to `components.pageDescription` in website frontmatter and generator aggregates
+- [x] Update backend validation/evaluation readers that still inspect material `subtitle` content so they read `pageDescription`
+- [x] Rerun focused validation and record the migration lesson
+
+### Review
+- Replaced the live website lead-copy contract from `subtitle` to `pageDescription` in category metadata, search page-description helpers, metadata shaping, settings hydration, and the affected tests, while deliberately leaving unrelated UI subtitle props and card secondary-label fields alone.
+- Renamed material component source data from `components.subtitle` to `components.pageDescription` across website frontmatter, generator aggregates, and the generator material data mirror so the front-end and back-end sources now match one page-description field name.
+- Updated the backend validation, workflow, global evaluation, auditing, and material template paths to read `pageDescription` content from the live material shape, then passed the focused category-page, material JSON-LD, and renamed search page-description Jest suites plus a backend source parse check.
+
+---
+
+## Batch 317: Remove Deprecated Video Lead Terminology
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Remove deprecated lead-copy terminology from the active video/pageDescription path, eliminate the remaining pageDescription truncation rule, and rewrite the current video overlays from that source.
+
+### Steps
+- [x] Remove deprecated lead-copy wording from active video/pageDescription docs, tests, and type comments
+- [x] Remove truncation from shared video `pageDescription` generation and update the affected assertions
+- [x] Regenerate current video overlays and rerun focused validation
+
+### Review
+- Removed the deprecated subtitle wording from the active video/pageDescription path and adjacent type/docs/test references so `pageDescription` is now treated consistently as lead copy.
+- Removed the `truncateText` rule from shared video `pageDescription` generation, updated the helper call signature, and aligned focused assertions with the full untruncated output.
+- Rewrote all live video overlays with `npm run videos:sync-frontmatter -- --normalize` and passed the focused watch-page, catalog, normalization, title-helper, hub-page, frontmatter-contract, and video-sitemap Jest suites.
+
+---
+
+## Batch 316: Simplify Video Watch Page Copy
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Remove low-value derived sections from the video watch page and improve the shared page-description helper so the visible lead copy reads naturally while staying canonical across runtime and sync-time normalization.
+
+### Steps
+- [x] Remove the watch-page keyword chips and retire the inaccurate `laserCleaningCharacteristics` field from the active video model
+- [x] Refine shared `pageDescription` generation so video lead copy reads like concise prose rather than metadata labels
+- [x] Regenerate the current video overlays and rerun focused video validation
+
+### Review
+- Removed the redundant `Subject Focus` section from the watch page so the shared `pageDescription` now acts as the single visible lead instead of being echoed by a second generated block.
+- Retired `laserCleaningCharacteristics` from the active runtime video model, removed the keyword-chip section from the watch page, and kept the simplified detail page focused on the video player, lead copy, and related content.
+- Rewrote the current live video overlays with `npm run videos:sync-frontmatter -- --normalize` and passed the focused video watch-page, catalog, normalization, title-helper, hub-page, frontmatter-contract, and video-sitemap Jest suites.
+
+---
+
+## Batch 315: Unify Video Derivation Authority
+Date: 2026-03-25
+Status: COMPLETE
+
+### Goal
+Collapse the duplicated sync-time and runtime-time video derivation logic into one shared normalization module so feed parsing, overlay regeneration, and watch-page enrichment all use the same canonical authority.
+
+### Steps
+- [x] Audit which derived video fields are still computed independently in `app/utils/videoCatalog.ts` and `scripts/videos/sync-video-frontmatter.ts`
+- [x] Extract one shared normalization/derivation module for canonical video fields and move both runtime enrichment and sync-time regeneration onto it
+- [x] Update focused tests and rerun video validation so the unified authority is exercised by both runtime and live frontmatter normalization
+
+### Review
+- Extracted a shared `app/utils/videoNormalization.ts` module that now owns canonical subject, slug, page title, page description, keyword, enhancement, summary, and item-specific laser-characteristic derivation.
+- Moved both `app/utils/videoCatalog.ts` and `scripts/videos/sync-video-frontmatter.ts` onto that shared authority so runtime watch pages and sync-time YAML regeneration stop drifting apart when the derivation logic changes.
+- Verified the unified path by rerunning `npm run videos:sync-frontmatter -- --normalize`, which also created one newly discovered overlay file (`historic-building-foundation-aMykc5S8.yaml`), and by passing the focused video runtime, sitemap, enhancement, normalization, and live-frontmatter contract suites.
+
+---
+
+## Batch 314: Normalize Video Frontmatter Contract
+Date: 2026-03-24
+Status: COMPLETE
+
+### Goal
+Remove redundant video frontmatter fields, simplify the runtime video model where practical, and regenerate the current video YAML set so it matches one canonical frontend-owned contract.
+
+### Steps
+- [x] Audit runtime and sync-script consumers of video frontmatter fields to identify the minimal canonical contract
+- [x] Refactor the frontend loader, runtime model, and sync script so redundant metadata and keyword aliases are removed or isolated to compatibility boundaries
+- [x] Regenerate the current `frontmatter/videos/*.yaml` set and rerun focused validation against the normalized contract
+
+### Review
+- Normalized the frontend-owned video contract around `pageDescription` and `keywords`, removed redundant runtime aliases from the active path, and repaired the sync script so `--normalize` rewrites overlays instead of preserving stale duplicate fields.
+- Tightened the shared video enhancement and metadata helpers so regenerated overlays stop leaking cross-subject enhancement copy, promotional filler summaries, and noisy keyword history back into `frontmatter/videos/*.yaml`.
+- Rewrote all 15 current video overlay files with `npm run videos:sync-frontmatter -- --normalize` and reran the focused watch-page, catalog, enhancement, related-content, videos-page, and video-sitemap Jest suites successfully.
+
+---
+
+## Batch 313: Remove Added Video Card Chrome And Shorten Video Titles/URLs
+Date: 2026-03-24
+Status: COMPLETE
+
+### Goal
+Remove the unrequested destination chrome added to video cards, and shorten video page titles and URL slugs at the frontend source so watch pages and video frontmatter stop inheriting feed-length labels.
+
+### Steps
+- [x] Remove the added destination pill, extra uppercase labels, and CTA text from `VideoCard` while preserving the intended visual layout
+- [x] Audit the current video title and slug generation path used by watch pages and `frontmatter/videos/*.yaml`
+- [x] Implement a shorter derived page-title/slug strategy and update focused tests plus the generated video frontmatter set if required
+
+### Review
+- Removed the unrequested video-card chrome by stripping the destination pill, uppercase secondary label, and CTA footer text while keeping the card shell and link behavior intact.
+- Added a shared frontend `videoTitles` helper so both runtime enrichment and the video-frontmatter sync script derive concise page titles and shorter watch-page slugs from noisy YouTube feed titles.
+- Added a controlled `--refresh-derived-metadata` sync path, reran it against the current video set, and migrated all 15 `frontmatter/videos/*.yaml` files onto shorter filenames and page titles without touching their association sections.
+
+---
+
+## Batch 312: Stabilize Video Card Destination Design
+Date: 2026-03-24
+Status: COMPLETE
+
+### Goal
+Fix the video-card design regression introduced by switching hub cards from YouTube links to internal watch-page links, and make the card destination styling self-maintaining so future link-target changes do not require bespoke visual patches.
+
+### Steps
+- [x] Audit the current `VideoCard` component contract, all call sites, and the visual/design changes introduced alongside the link-target change
+- [x] Refactor the card so destination-specific labeling and affordances derive from a stable prop contract rather than implicit link assumptions
+- [x] Update focused tests and implementation notes so future destination changes keep the intended card design automatically
+
+### Review
+- Confirmed the regression source was not the dark-card shell itself but the fact that destination semantics were embedded directly into hardcoded CTA copy, so changing the link target forced an ad hoc design change.
+- Refactored `VideoCard` to derive badge text, CTA copy, and external-link behavior from a small destination model, while keeping the card layout stable for both internal watch pages and external YouTube destinations.
+- Updated the `/videos` call site to declare the watch-page destination explicitly, documented the pattern, and reran focused `VideoCard` and `/videos` Jest suites successfully.
+
+---
+
+## Batch 311: Restrict Video Contaminant Matching
+Date: 2026-03-24
+Status: COMPLETE
+
+### Goal
+Stop inaccurate auto-derived contaminant cards from appearing on video watch pages while preserving the accurate derived materials and applications sections.
+
+### Steps
+- [x] Confirm the contaminant section is still being derived from the shared video matcher rather than authored YAML
+- [x] Restrict video contaminant related-content to authored-only associations while leaving materials, applications, and compounds on their current derived path
+- [x] Add focused regression coverage and update the implementation notes for the new contaminant behavior
+
+### Review
+- Confirmed the video watch page was still rendering contaminants from the shared derived matcher even when `frontmatter/videos/*.yaml` had no curated contaminant IDs.
+- Restricted derived matching so contaminants no longer auto-populate for videos; `Related Contaminants` now appears only when a video YAML overlay explicitly authors `associations.related_contaminants.items`.
+- Left the accurate derived paths for materials, applications, and compounds unchanged, then added a focused regression test and reran the relevant video suites successfully.
+
+---
+
+## Batch 310: Refine Video Enhancement Overlay Shape
+Date: 2026-03-24
+Status: COMPLETE
+
+### Goal
+Make the website-side video overlay enhancement content more topic-specific, keep it to a few complete sentences, and reduce the persisted enhancement contract to the minimal authored fields the frontend actually uses.
+
+### Steps
+- [x] Audit the live enhancement-field usage in the website repo and choose the minimal reduced overlay shape that still supports the watch page
+- [x] Update the frontend loader and enrichment merge path to accept the reduced enhancement contract
+- [x] Rewrite the current `frontmatter/videos/*.yaml` enhancement blocks for stronger subject specificity using the reduced child-field shape
+- [x] Update the sync script, build path, and focused regression coverage so future generated overlays follow the new contract
+
+### Review
+- Reduced video overlay `enhancements` to the two authored fields the site actually consumes: `enhancedDescription` and `summary`; runtime utilities still derive the secondary subject-expansion and laser-characteristics fields for the watch page.
+- Added a shared enhancement generator that writes concise topic-specific copy for discovered subjects such as Porsche suspension parts, exhaust hardware, masonry, structural steel, truck frames, furniture, brass restoration items, and epoxy-coated tube work.
+- Wired `npm run videos:sync-frontmatter` into the website build path so newly discovered feed items receive overlays during builds, and added `--refresh-enhancements` so the current overlay set can be rewritten when the enhancement logic improves.
+- Adjusted the sentence cap so enhancement text stays within a few sentences without cutting a sentence mid-stream, then refreshed the current 15 video overlays and reran focused validation.
+
+---
+
+## Batch 309: Add Video Watch Page YAML Overlays
+Date: 2026-03-24
+Status: COMPLETE
+
+### Goal
+Introduce website-side YAML overlays for discovered video watch pages so editors can author keywords, enhancements, and cross-domain relationships for legacy non-video pages while preserving automatic feed discovery and build-time enrichment.
+
+### Steps
+- [x] Add a frontend-only video frontmatter loader and merge strategy so watch pages can combine authored YAML with derived feed enrichment
+- [x] Add a sync script that creates missing `frontmatter/videos/*.yaml` stubs for newly discovered videos at build or maintenance time
+- [x] Seed the current discovered videos with watch-page YAML files and wire authored relationships/keywords into watch-page related components
+- [x] Add focused regression tests for YAML override behavior and the new hybrid video content model
+
+### Review
+- Added a website-side video frontmatter loader and merge path so each watch page can combine live YouTube discovery with authored YAML overrides for keywords, enhanced descriptions, and cross-domain relationships.
+- Added `npm run videos:sync-frontmatter`, which creates missing `frontmatter/videos/*.yaml` stubs for newly discovered videos without touching the generator repo; the current feed produced 15 new watch-page YAML files.
+- Updated the shared video model so authored video YAML relationships override derived related-content matches when present, which lets videos participate in the same frontmatter relationship graph as legacy materials, contaminants, compounds, and applications pages.
+- Focused validation passed for the hybrid video model, watch page, related-content matcher, video sitemap, and the generated YAML set.
+
+---
+
+## Batch 308: Add Build-Time Video Related Content Layer
+Date: 2026-03-24
+Status: COMPLETE
+
+### Goal
+Extend the website-owned video enrichment model so each watch page generates an enhanced description, proposed keywords, and related-content recommendations from existing frontmatter data at build time, without adding generator-side video frontmatter.
+
+### Steps
+- [x] Extend the shared video enrichment model with a distinct enhanced description and proposed keyword set derived from the live YouTube title/description
+- [x] Build a frontend-only related-content matcher that scores video subjects/keywords against existing materials, contaminants, compounds, and applications frontmatter
+- [x] Render related-content sections on the video watch page from that shared model and reuse the enriched fields in metadata/schema/sitemap output where appropriate
+- [x] Add focused regression tests for the new enhanced-description, keyword, and related-content behavior
+
+### Review
+- Added a cached frontend-only related-content index in the website repo that scans existing materials, contaminants, compounds, and applications frontmatter at build time, then scores each entity against the video's subject, enhanced description, and proposed keywords.
+- Extended the shared video catalog model so each enriched video now carries a distinct `enhancedDescription`, `proposedKeywords`, and a `relatedContent` object that can drive multiple watch-page modules from one source of truth.
+- Updated the video watch page to render related materials, contaminants, applications, and compounds sections when matches are strong enough, while keeping the route utility-driven rather than introducing per-video frontmatter files.
+- Focused validation passed for the hub page, watch page, enriched video model, related-content matcher, and video sitemap suites.
+
+---
+
+## Batch 307: Implement Video Watch Pages And SEO Expansion
+Date: 2026-03-24
+Status: COMPLETE
+
+### Goal
+Implement the researched multi-phase video SEO expansion in the website repo by introducing a shared enriched video model, same-domain watch pages, schema utility generation, sitemap coverage, and subject-driven enhancement text plus keywords derived from each video's description.
+
+### Steps
+- [x] Build a shared enriched video model from the YouTube feed that derives stable slugs, subject-focused enhancement text, and keywords from each video's description
+- [x] Move video JSON-LD generation into shared schema utilities and update the `/videos` hub to use them instead of inline graph construction
+- [x] Add same-domain `/videos/[slug]` watch pages with unique metadata, embedded player markup, internal navigation, and primary `VideoObject` schema
+- [x] Add crawl coverage for videos through sitemap updates and a dedicated video sitemap route sourced from the same enriched model
+- [x] Add focused tests for the enriched model, watch pages, schema output, and sitemap/video-sitemap coverage
+
+### Review
+- Added a shared video catalog enrichment layer in the website repo that takes the public YouTube feed and derives stable same-domain slugs, per-video watch-page URLs, subject-focused supplemental text, item-specific laser-cleaning characteristics, and keywords from the live title/description content.
+- Replaced inline route-built video JSON-LD on the `/videos` hub with shared schema utilities, then introduced same-domain `/videos/[slug]` watch pages that render the video player, subject expansion text, laser-cleaning characteristics, inferred keyword chips, and a primary `VideoObject` graph.
+- Extended crawl coverage by adding `/videos` to the standard sitemap, adding a dedicated `video-sitemap.xml` route for watch pages, and advertising that video sitemap alongside the existing sitemap index in `robots.ts`.
+- Focused validation passed for the hub page, watch page, enriched video model, robots, and video sitemap suites.
+
+---
+
+## Batch 306: Research Video SEO And Rich Results Expansion
+Date: 2026-03-24
+Status: COMPLETE
+
+### Goal
+Audit the current website video implementation and propose a source-level plan to maximize video-related structured data, rich result eligibility, discovery signals, and crawl coverage without introducing unsupported or misleading markup.
+
+### Steps
+- [x] Audit the current `/videos` page, YouTube feed parsing, metadata flow, sitemap coverage, and JSON-LD architecture constraints in the website repo
+- [x] Compare the current implementation against Google video structured data guidance and schema.org `VideoObject` capabilities
+- [x] Identify which enhancements are safe on the existing same-page collection model versus which require same-domain video detail pages or additional data sources
+- [x] Produce a phased implementation plan with validation checkpoints, risks, and clear recommendations on priority order
+
+### Review
+- Current `/videos` is a collection page that links directly to YouTube watch URLs and emits minimal `VideoObject` nodes inline from the page component, while the codebase's own architecture tests require JSON-LD to be generated through schema utilities rather than hand-built inside route files.
+- The existing collection page can be improved with low-risk gains such as same-domain sitemap inclusion, extraction of video schema generation into shared utilities, fuller `VideoObject` fields from available feed data, and stronger metadata/social-video coverage, but this alone will not maximize Google video features.
+- Google’s current video guidance makes dedicated same-domain watch pages the main unlock for video indexing and richer video features; list pages with multiple equal-prominence videos are explicitly not watch pages, so the present `/videos` route should be treated as a discovery hub rather than the final SEO target.
+- Several high-value video enhancements depend on data the public YouTube RSS feed does not provide, including duration, stable player/watch-page mapping on the site, per-video metadata depth, and optional metrics such as chapters or views; reaching those features cleanly requires either YouTube Data API enrichment or a curated local video manifest.
+
+---
+
 ## Batch 305: Normalize Application Associations Contract
 Date: 2026-03-24
 Status: COMPLETE
