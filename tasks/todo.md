@@ -5,6 +5,157 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 364: Fix Videos Hub Link Authority Regression
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Find the true UI authority that is still rendering internal `/videos/[slug]` links on the live videos hub, restore the intended destination behavior, and add regression coverage that validates the rendered anchor targets rather than only page data mapping.
+
+### Steps
+- [x] Trace the live `/videos` anchor rendering path from page data through the card/grid components and identify why internal watch-page URLs still win
+- [x] Fix the source authority so the videos hub renders the intended live destinations consistently
+- [x] Add or tighten regression coverage around rendered `/videos` anchors, then redeploy and verify live output
+
+### Review
+- Confirmed the live clickable hub cards were already back on direct YouTube URLs, and the apparent lingering `/videos/[slug]` matches were coming from intentional JSON-LD `VideoObject` / `WatchAction` schema references rather than from user-facing anchors.
+- Verified the source path from `app/videos/page.tsx` through `app/components/VideoCardGrid/VideoCardGrid.tsx` into `app/components/VideoCard/VideoCard.tsx`, which established that the real regression gap was the page test mocking away the card-rendering path.
+- Tightened `tests/app/videos-page.test.tsx` so it now renders the real card component path and asserts the actual YouTube anchor href, `target="_blank"`, and `rel="noopener noreferrer"` behavior for `/videos` hub cards.
+- Re-passed the focused guard with `npx jest --runInBand --coverage=false tests/app/videos-page.test.tsx` (`4/4` tests passing).
+
+---
+
+## Batch 363: Diagnose And Reduce Production LCP Regression
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Identify the actual source of the remaining production mobile LCP failure and land the narrowest frontend change that improves the live performance threshold without regressing the now-green SEO release path.
+
+### Steps
+- [x] Inspect the production performance validator and identify which route and element are driving the current LCP failure
+- [x] Trace that LCP candidate through the frontend render path and implement the smallest source-level optimization that addresses it
+- [x] Re-run the relevant validation path and summarize whether the live LCP threshold is cleared or what residual gap remains
+
+### Review
+- Traced the remaining mobile LCP issue to the homepage above-the-fold path: the hero was initially rendering through the video loader state, and the navbar/logo assets were still competing for high-priority image fetch budget.
+- Updated `app/components/Hero/Hero.tsx` to default the homepage hero to the facade/poster path on first paint, removed the non-facade `Loading video...` overlay from `app/components/LazyYouTube/LazyYouTube.tsx`, removed the global logo preload from `app/layout.tsx`, and removed `priority` from the nav van/logo images in `app/components/Navigation/nav.tsx`.
+- Re-passed the focused `tests/components/LazyYouTube.test.tsx` suite, re-passed `npm run prebuild:deploy`, deployed the optimized frontend twice as the LCP work progressed, and revalidated production.
+- Final live results: the repo's canonical production validator now reports `1388/1390` passed, `0` failed, `99%`, grade `A`, with `performance 100% (3/3)`; three direct mobile PageSpeed samples against `https://www.z-beam.com` all returned `LCP 1951 ms` and `performance score 99`.
+
+---
+
+## Batch 362: Deploy SEO Fixes And Revalidate Production
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Ship the frontend SEO fixes to production only after the real deploy gate is green, then rerun live production validation and summarize the actual completeness of the current SEO infrastructure.
+
+### Steps
+- [x] Re-run the aggregate frontend deploy gate and resolve any remaining blocker if it still fails
+- [x] Deploy the current frontend state to production through the existing deployment path
+- [x] Re-run live production SEO validation on the canonical host and summarize strengths, gaps, and residual risk
+
+### Review
+- Re-ran `npm run prebuild:deploy` successfully from the frontend repo and confirmed the aggregate deploy gate is green with the new sitemap/title contract checks in place.
+- Deployed the current frontend state to Vercel production via `./scripts/deployment/smart-deploy.sh deploy`; deployment `https://z-beam-nj7xhs1nm-air2airs-projects.vercel.app` reached `Ready` and became the latest production release.
+- Re-ran `node scripts/validation/post-deployment/validate-production-comprehensive.js --strict-seo --require-rich-results --max-urls=40` against `https://www.z-beam.com`; result improved to `1387/1390` checks passing, `97%`, grade `A`, with all SEO-specific categories at `95-100%` and the only remaining hard failure being mobile `LCP: 2701ms` against the `2500ms` threshold.
+
+---
+
+## Batch 361: Fix SEO Crawl Parity Titles And Gates
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Resolve the production SEO issues found in the audit by aligning sitemap and robots behavior, removing duplicate brand suffixes from route metadata, and adding release checks that fail on both regressions before deploy.
+
+### Steps
+- [x] Align crawl policy with sitemap behavior by making contact indexable by intent and removing search from the sitemap inventory
+- [x] Normalize route metadata titles so the root layout template remains the single brand-suffix authority across indexed and utility routes
+- [x] Add focused release checks for noindex-in-sitemap contradictions and duplicate route-title suffixes, then rerun the affected validation commands
+
+### Review
+- Made the contact page indexable by intent in `app/contact/page.yaml`, removed `/search` from the sitemap route, and aligned the older shell sitemap verifier plus sitemap Jest suite so all sitemap authorities now agree on the noindex search policy.
+- Removed route-level brand suffixes from the active metadata sources that were causing duplicate rendered `<title>` tags, including search, videos hub/watch pages, settings, contaminant and compound category metadata, applications not-found metadata, and the utility confirmation/dashboard routes.
+- Added `tests/seo/seo-release-contracts.test.ts` and wired it into both `prebuild:deploy` and `prebuild:ci` so the release path now fails if a sitemap URL is source-defined `noindex` or if route metadata reintroduces a hardcoded site suffix under the shared layout title template.
+- Revalidated the affected path with `npm run test:seo:contracts`, `npm run verify:sitemap:links`, `npm run verify:sitemap`, and `npm run prebuild:deploy`; the SEO changes passed, and the remaining prebuild output is the repo's pre-existing warning-only lint noise outside this batch.
+
+## Batch 360: Full Production SEO Evaluation
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Audit the live frontend SEO implementation for production readiness by checking route metadata, canonicalization, crawl directives, sitemap coverage, structured data, and build-time behavior without changing generator-side content sources.
+
+### Steps
+- [x] Inspect the frontend SEO architecture and identify the authoritative metadata, sitemap, robots, and schema generation paths
+- [x] Run focused production-oriented validation on the frontend repo, including build-time checks and code-path review for representative route types
+- [x] Summarize findings by severity with concrete file references, residual risks, and recommended follow-up actions
+
+### Review
+- Confirmed the current production validator still grades the canonical host at `A` with `1384/1387` checks passing, but its lone SEO failure remains the live `https://www.z-beam.com/contact` `robots=noindex` issue.
+- Verified a source-level crawl contradiction: the shared static-page path honors `app/contact/page.yaml` `seo.robots.index: false`, the metadata generator downgrades that to `noindex, nofollow`, and the static-page registry plus sitemap route still publish `/contact` in the main sitemap.
+- Verified a second production issue class on indexed pages: the root layout appends `| Z-Beam` globally while several route-level metadata builders already hardcode a brand suffix, producing duplicate production titles on `/videos`, `/videos/[slug]`, `/contaminants`, `/compounds`, `/settings`, and `/search`.
+- Re-ran the local release-adjacent checks: `npm run verify:sitemap:links` passed even with the noindex sitemap contradiction, and `npm run test:seo:comprehensive -- --runInBand` passed while still logging `OVERALL QUALITY SCORE: 51.2%`, which confirms the current SEO test gate is not catching the live issues found in review.
+
+## Batch 359: Collapse Duplicate Related-Video WebPage Nodes
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Remove the duplicate `WebPage` JSON-LD node introduced by the related-video schema graph, merge those related-video references into each page's primary `WebPage` schema, and revalidate production structured data plus sitemap health.
+
+### Steps
+- [x] Refactor the related-video schema builder so it emits only the `ItemList` and preview `VideoObject` nodes, plus a reusable page-node enhancement payload
+- [x] Wire those page-node enhancements into the primary material and application page `WebPage` schema paths and update focused regression tests
+- [x] Re-run focused validation, redeploy from a clean worktree if the change passes, and confirm production structured data and sitemap behavior on the canonical host
+
+### Review
+- Landed frontend commits `e291f1994` (`fix(seo): merge related video graph into webpage`) and `91807bba7` (`chore(seo): remove dead related video args`) while keeping the unrelated sitemap/report artifacts out of the commit set.
+- Re-passed focused validation with `npx jest tests/seo/related-video-schema-generation.test.ts tests/integration/ItemPage-dataset.test.tsx tests/pages/applications-detail-author.test.tsx --runInBand --coverage=false` and re-passed `npm run type-check`.
+- Deployed commit `91807bba7` from detached clean worktree `/private/tmp/z-beam-deploy-clean-91807bba7-run1`; the initial CLI call timed out during Vercel status polling, but deployment `dpl_ESrbg8pbyDf7CY7uBRhEys2ArWw2` completed successfully and reached `Ready` with production aliases on `https://z-beam.com` and `https://www.z-beam.com`.
+- Verified the live JSON-LD on `https://www.z-beam.com/materials/metal/ferrous/steel-laser-cleaning` and `https://www.z-beam.com/applications/heritage-architectural-laser-cleaning-applications`: each now exposes exactly one `WebPage` node, that node carries `mainEntity` -> `#related-videos` plus `mentions` for the preview `VideoObject` nodes, and the separate related-video graph retains the expected `ItemList` plus three preview videos.
+- Re-ran the broader canonical-host production validator. Result remained `A` with `305/307` passing tests; the only residual failure is still the pre-existing `https://www.z-beam.com/contact` `robots=noindex` issue, and sitemap validation stayed `100%` with the live `sitemap.xml` containing the representative material and application URLs.
+
+---
+
+## Batch 358: Ship Related-Video Schema Fixes
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Remove the legacy fake VideoObject fallback, add real related-video structured data to non-video entity pages, and validate the frontend release path through commit, clean deployment, and post-change SEO checks.
+
+### Steps
+- [x] Record the shared related-video resolver and schema graph changes in the frontend repo and validate them with focused tests plus type-check
+- [x] Commit only the frontend SEO/schema changes, preserving unrelated dirty analysis artifacts in the worktree
+- [x] Deploy the committed frontend state from a clean worktree to the real Vercel project and run the broader SEO validation command against the resulting build
+
+### Review
+- Landed frontend commit `e6ef777bd` (`fix(seo): add related video schema graphs`) and pushed it to `origin/main` without including the unrelated sitemap/report artifacts left dirty in the primary frontend checkout.
+- Deployed that exact commit from detached clean worktree `/private/tmp/z-beam-deploy-clean-e6ef777bd-run2`, re-linked it to the real Vercel project via `.vercel/project.json`, and confirmed deployment `dpl_35GZaDgA2RvYWWioAEdMa9roWqVP` reached `Ready` with production aliases on `https://z-beam.com` and `https://www.z-beam.com`.
+- Verified the live related-video schema graph on `https://www.z-beam.com/materials/metal/ferrous/steel-laser-cleaning` and `https://www.z-beam.com/applications/heritage-architectural-laser-cleaning-applications`: each page now exposes a `#related-videos` `ItemList` plus three `VideoObject` preview nodes, and the page-level `WebPage` graph includes `mentions` references to those preview nodes.
+- Ran the broader production SEO validator against the canonical host with strict rich-result gating. Result: overall `A`, `305/307` tests passed, one residual live failure remained on `https://www.z-beam.com/contact` (`robots=noindex present`), and one non-blocking dataset deployment warning remained.
+
+## Batch 357: Route Videos Hub Cards To Direct YouTube URLs
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Fix the `/videos` hub so each video card opens the actual YouTube URL instead of the internal watch-page route when users browse the channel feed.
+
+### Steps
+- [x] Confirm the live `/videos` hub is routing cards to internal watch pages instead of external YouTube URLs
+- [x] Update the frontend videos hub card mapping to use each video's canonical YouTube URL and explicit external destination behavior
+- [x] Add focused regression coverage for the hub link targets and rerun the page-level suite
+
+### Review
+- Confirmed the live `/videos` hub was rendering each card with `href: video.watchPagePath` and `destination: 'watch-page'`, which sent users to internal watch pages even though the enriched video model already carried the canonical YouTube URL.
+- Updated the hub card mapping to use `video.url` with `destination: 'youtube'`, so card clicks now open the real YouTube watch URLs while leaving the internal watch pages available elsewhere in the site.
+- Re-passed the focused `tests/app/videos-page.test.tsx` suite, including new assertions that the rendered cards carry the external YouTube href values and explicit YouTube destination type.
+
 ## Batch 356: Exclude Non-Runtime Artifacts From Vercel Function Traces
 Date: 2026-03-26
 Status: IN PROGRESS
