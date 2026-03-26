@@ -70,6 +70,35 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Aerospace laser
               cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items:
+          - id: aviation-sealant-contamination
+            name: Aerospace Sealant Residue
+            category: organic-residue
+            subcategory: adhesive
+            url: /contaminants/organic-residue/adhesive/aviation-sealant-contamination
+            image: /images/contaminant/aviation-sealant-contamination-hero.jpg
+            description: "Aviation sealants build up as tough, organic residues on
+              aircraft surfaces. They form irregular patterns, oozing into joints
+              and crevices during assembly. This creates sticky layers that harden
+              unevenly, often cracking along edges. In practice, these contaminants
+              cling tightly to metals like aluminum, resisting wipes and solvents.
+              \n\nLaser cleaning tackles this head-on. Pulses target the sealant without
+              harming the base material. On composites, though, removal demands careful
+              control to avoid delamination. Turns out, the key point lies in dialing
+              in pulse energy for clean finishes. Overall, this method clears contamination
+              effectively while maintaining structural integrity."
       interactions:
         contaminatedBy:
           presentation: card
@@ -196,6 +225,39 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Automotive laser
               cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items:
+          - id: undercoating-contamination
+            name: Automotive Undercoating
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/undercoating-contamination
+            image: /images/contaminant/undercoating-contamination-hero.jpg
+            description: Undercoating-contamination, this organic residue forms unique
+              patterns on surfaces. It accumulates in layered films and irregular
+              deposits, especially under protective coatings. Formation occurs gradually,
+              as residues bond tightly with substrates, thus creating adhesion challenges.
+              In laser cleaning applications, removal proves difficult; contamination
+              resists ablation due to its dense structure and thermal stability. Material-specific
+              behaviors emerge clearly—on metals, it spreads unevenly and absorbs
+              energy poorly, so cleaning demands precise pulse control. After treatment,
+              residue fragments scatter, yet stubborn patches persist in crevices.
+              This contamination, it alters surface texture and demands multi-pass
+              strategies for complete elimination. Process applies laser energy, thus
+              breaks bonds and ejects particles. Challenges arise from re-deposition
+              risks, following initial exposure. Efficiency improves with adjusted
+              parameters, surface already shows reduced residue buildup.
       interactions:
         contaminatedBy:
           presentation: card
@@ -312,6 +374,19 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Construction
               Equipment laser cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -472,6 +547,19 @@ applications:
               unintended harm in field deployments. From observations, incomplete
               removal still leaves residues, affecting reliability. During use, intervals
               are needed to avoid overheating.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -656,6 +744,62 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Electronics laser
               cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items:
+          - id: pcb-contamination
+            name: PCB Oil Contamination
+            category: chemical-residue
+            subcategory: industrial
+            url: /contaminants/chemical-residue/industrial/pcb-contamination
+            image: /images/contaminant/pcb-contamination-hero.jpg
+            description: 'Contamination on PCBs forms during soldering process and
+              handling. Residues like flux and oils stick to copper traces and boards.
+              After exposure, layer builds unevenly because board topography traps
+              particles. So, patterns show clusters around joints.
+
+
+              Removal challenges arise from sensitivity of electronics. Laser cleaning
+              targets residues selectively, but heat affects underlying materials.
+              On FR4 substrate, process removes buildup without damaging insulation.
+              Metal parts exhibit stronger adhesion, so higher energy risks etching.
+
+
+              In applications, treatment achieves clean surfaces effectively. Buildup
+              is observed in crevices, and cleaning applies short pulses to avoid
+              warping. Results are obtained from scans showing uniform finish after
+              process. Surface exhibits reduced residue during inspections.'
+          - id: adhesive-residue-contamination
+            name: Adhesive Residue / Tape Marks
+            category: organic-residue
+            subcategory: adhesive
+            url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
+            image: /images/contaminant/adhesive-residue-contamination-hero.jpg
+            description: Adhesive residue differs from inorganic contaminants, as
+              it originates from organic polymers that degrade over time and leave
+              sticky films on surfaces. Formation occurs when adhesives, such as those
+              in tapes or labels, break down under heat or moisture, thus creating
+              tacky layers that attract dust and other particles. In organic-residue
+              category, this residue behaves differently on materials; on plastics,
+              it softens and spreads, while on metals, it hardens and resists solvents,
+              complicating removal processes. Practical relevance lies in manufacturing
+              settings where adhesive residue contaminates production lines, leading
+              to defects in products like electronics or packaging, and requires specialized
+              cleaners to avoid surface damage. Non-obvious relationships emerge in
+              humid environments, where residue interacts with microbial growth, accelerating
+              organic buildup and forming hybrid contaminants that demand multi-step
+              cleaning protocols. Thus, understanding these patterns aids in preventive
+              measures, such as selecting compatible adhesives for specific substrates.
       interactions:
         contaminatedBy:
           presentation: card
@@ -808,6 +952,19 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Energy and Power
               laser cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -963,6 +1120,19 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Food Processing
               laser cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -1143,6 +1313,19 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Medical Devices
               laser cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -1295,6 +1478,19 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Rail Transport
               laser cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -1437,6 +1633,19 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Shipbuilding
               and Marine laser cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -1589,6 +1798,19 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Marine Laser
               Cleaning Ship Hulls laser cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -1735,6 +1957,19 @@ applications:
               These warnings consolidate at end: improper handling results in safety
               hazards from laser reflections in wet conditions, and environmental
               compliance fails if waste management overlooks marine pollution standards.'
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -1875,6 +2110,19 @@ applications:
             variant: default
             sectionDescription: Materials most frequently cleaned in Shipbuilding
               Marine Laser Cleaning Corrosion Removal laser cleaning workflows.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -2000,6 +2248,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -2144,6 +2405,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -2289,6 +2563,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -2433,6 +2720,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -2578,6 +2878,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -2724,6 +3037,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -2860,6 +3186,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -3006,6 +3345,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -3151,6 +3503,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -3296,6 +3661,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -3432,6 +3810,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -3567,6 +3958,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card
@@ -3703,6 +4107,19 @@ applications:
             order: 30
             variant: default
             sectionDescription: Source-populated section description required by policy.
+        relatedVideos:
+          _section:
+            sectionTitle: Related Videos
+            sectionDescription: Subject-related laser cleaning video demonstrations
+              from the Z-Beam channel.
+            icon: video
+          items: []
+        relatedContaminants:
+          _section:
+            sectionTitle: Related Contaminants
+            sectionDescription: Contaminants most relevant to this page topic.
+            icon: droplet
+          items: []
       interactions:
         contaminatedBy:
           presentation: card

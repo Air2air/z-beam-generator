@@ -5,6 +5,26 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 365: Restore Vercel Deploy Access To SEO Contract Tests
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Fix the production Vercel build failure by making the deploy-time SEO contract test runnable in the Vercel build context without depending on the full Jest browser/test harness.
+
+### Steps
+- [x] Confirm which Jest assets are missing from the Vercel build context and identify the narrowest deploy-safe fix
+- [x] Update the deploy-time SEO contract path so `test:seo:contracts` can run during `prebuild:deploy` without loading the full Jest setup harness
+- [x] Re-run a deployment-representative validation path and capture the resulting fix in the task log and lessons
+
+### Review
+- Confirmed the Vercel failure was triggered by `test:seo:contracts` loading the main `jest.config.js`, which requires `tests/setup.js`; that browser-oriented setup file is not reliable to depend on inside the slim Vercel build context.
+- Updated `package.json` so `test:seo:contracts` runs through `jest.deployment.config.js`, and extended that deployment config just enough to execute `tests/seo/seo-release-contracts.test.ts` in a Node environment without the shared DOM/test harness.
+- Re-passed `npm run test:seo:contracts`, re-passed `npm run prebuild:deploy`, and re-passed a local `vercel build` reproduction (`EXIT=0`), which reached the final `.vercel/output` build completion path that the failing remote build never reached.
+- Reduced deploy log noise in `seo/scripts/generate-image-sitemap.js` and `seo/scripts/generate-sitemap-index.js` so sitemap generation now emits compact summaries by default and only prints the detailed image inventory when `SITEMAP_VERBOSE=1` is set.
+
+---
+
 ## Batch 364: Fix Videos Hub Link Authority Regression
 Date: 2026-03-26
 Status: COMPLETE
@@ -167,6 +187,26 @@ Fix the Vercel deployment failure caused by oversized serverless functions by pr
 - [ ] Confirm which traced artifacts are inflating the deploy bundle and identify the narrowest safe packaging control in frontend config
 - [ ] Update the frontend deploy/runtime config to exclude build cache and generated analysis/report files that are not required at request time
 - [ ] Add focused regression coverage for the packaging guard and rerun a deploy-oriented build to verify the function-size failure is cleared
+
+---
+
+## Batch 366: Summarize Remaining Deploy Bottlenecks And Bloat
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Summarize the concrete deployment bottlenecks and remaining repository/runtime bloat after the recent frontend deploy fixes, using current source config and the latest task history rather than assumptions.
+
+### Steps
+- [x] Inspect current frontend deploy config, scripts, and generated report directories for remaining size/time bottlenecks
+- [x] Separate already-fixed deploy regressions from still-open issues or structural bloat
+- [x] Deliver a concise severity-ordered summary with file references and residual risks
+
+### Review
+- The last explicit deploy blocker is still the open Vercel function-trace item in Batch 356: oversized serverless functions caused by non-runtime artifacts being traced into Next.js bundles remain tracked as unresolved in `z-beam-generator/tasks/todo.md`.
+- Deploy installs are still heavier than necessary because Vercel is configured to install dev dependencies (`vercel.json`), and the deploy pipeline still runs type-check, lint, content/type validation, sitemap verification, and deployment Jest contracts before build (`z-beam/package.json`). That keeps the gate meaningful, but it also guarantees deployment-time installation of heavyweight dev tooling.
+- The website still depends on broad filesystem/YAML reads across the frontmatter tree in multiple server-side paths, including redirect generation (`z-beam/next.config.js`), sitemap route generation (`z-beam/app/sitemap.xml/route.ts`), content loading (`z-beam/app/utils/contentAPI.ts`), relationship normalization (`z-beam/app/utils/relationshipNormalization.ts`), video related-content resolution (`z-beam/app/utils/videoRelatedContent.ts`), and the settings index page (`z-beam/app/settings/page.tsx`). Those paths keep the deploy/build sensitive to the full frontmatter corpus.
+- Local and trace-adjacent bloat is still substantial even after recent cleanup: `public/images/material` is about 55 MB across 325 files, `public/datasets` is about 8.1 MB across 1,047 files, `frontmatter` contains 459 YAML files totaling about 10 MB, `reports/validation` is about 4.6 MB, `seo/analysis` is about 2.9 MB, and local Jest coverage output alone is about 24 MB. `next.config.js` now excludes `coverage`, `reports`, and `seo/analysis` from output tracing, but the open Batch 356 note confirms packaging cleanup is not considered complete yet.
 
 ---
 

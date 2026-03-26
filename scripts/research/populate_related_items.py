@@ -531,7 +531,7 @@ def run(
 
     # Write back if not dry-run
     if not dry_run:
-        save_yaml(str(source_path), source_data)
+        save_yaml(source_data, str(source_path))
         print(f"\n💾 Saved → {source_path}")
 
     print(
