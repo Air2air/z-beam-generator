@@ -134,15 +134,15 @@ def generate_content_validation_report(output_file: str) -> bool:
                 except Exception as e:
                     material_results['micro'] = {'error': str(e)}
         
-        # Validate Subtitle if exists
-        subtitle = material_info['subtitle'] if 'subtitle' in material_info else None
-        if subtitle:
-            if not isinstance(subtitle, str):
-                raise RuntimeError(f"CONFIGURATION ERROR: subtitle must be a string for material '{material_name}'")
+        # Validate pageDescription if exists
+        page_description = material_info.get('pageDescription') or material_info.get('components', {}).get('pageDescription')
+        if page_description:
+            if not isinstance(page_description, str):
+                raise RuntimeError(f"CONFIGURATION ERROR: pageDescription must be a string for material '{material_name}'")
             has_content = True
             try:
                 result = validate_generated_content(
-                    content=subtitle,
+                    content=page_description,
                     component_type='subtitle',
                     material_name=material_name,
                     author_info=author_info,

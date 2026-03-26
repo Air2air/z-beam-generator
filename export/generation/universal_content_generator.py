@@ -638,7 +638,7 @@ class ContentGenerator(BaseGenerator):
 
                     _populate_section_metadata_fields(section_meta, metadata, metadata_key, prop_data)
         
-        # COMPONENT SECTIONS: Handle components.micro, components.subtitle, etc.
+        # COMPONENT SECTIONS: Handle components.micro, components.pageDescription, etc.
         if 'components' in frontmatter and isinstance(frontmatter['components'], dict):
             for component_key, component_data in frontmatter['components'].items():
                 if isinstance(component_data, dict) and '_section' in component_data:

@@ -193,7 +193,7 @@ component_summary:                   # Component metadata
   faq: 5                            # Number of FAQ items
   description: "Settings overview"
 
-pageDescription: "..."               # AI-generated subtitle text (150-200 chars)
+pageDescription: "..."               # AI-generated lead copy
 ```
 
 #### ✅ REQUIRED Machine Settings

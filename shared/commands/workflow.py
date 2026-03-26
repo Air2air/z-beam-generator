@@ -406,10 +406,10 @@ def _validate_content_quality_inline(material_name: str, material_data: Dict) ->
         quality['issues'].append("Caption missing")
         quality['passed'] = False
     
-    # Check subtitle
-    subtitle = material_data.get('subtitle', '')
-    if not subtitle or len(subtitle.split()) < 5:
-        quality['issues'].append("Subtitle missing or too short")
+    # Check pageDescription
+    page_description = material_data.get('pageDescription', '') or material_data.get('components', {}).get('pageDescription', '')
+    if not page_description or len(page_description.split()) < 5:
+        quality['issues'].append("PageDescription missing or too short")
         quality['passed'] = False
     
     # Check FAQ
@@ -419,7 +419,7 @@ def _validate_content_quality_inline(material_name: str, material_data: Dict) ->
         quality['passed'] = False
     
     # Check for voice markers (Taiwan markers)
-    text_content = str(micro) + str(subtitle) + str(faq)
+    text_content = str(micro) + str(page_description) + str(faq)
     voice_markers = ['particularly', 'specifically', 'notably', 'thereby', 'thus', 'hence']
     found_markers = [m for m in voice_markers if m.lower() in text_content.lower()]
     

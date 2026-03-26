@@ -161,7 +161,7 @@ def _load_generated_content(topic: str, component_type: str, domain: str) -> Opt
                     return micro_data.get('after', micro_data.get('before'))
                 return micro_data
             elif component_type == 'subtitle':
-                return material.get('subtitle')
+                return material.get('pageDescription') or material.get('components', {}).get('pageDescription')
             elif component_type == 'faq':
                 faq = material.get('faq', {})
                 if isinstance(faq, dict):

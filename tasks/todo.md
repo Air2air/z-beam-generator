@@ -5,6 +5,23 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 355: Restore Favicon Trace Compatibility For Vercel Deploy
+Date: 2026-03-26
+Status: COMPLETE
+
+### Goal
+Fix the remote Vercel deployment failure caused by Next/Vercel tracing a legacy underscored favicon filename that no longer existed in `public/images/favicon/`.
+
+### Steps
+- [x] Reproduce the missing favicon path from the build/deploy evidence and confirm the live source tree only shipped the hyphenated canonical favicon asset
+- [x] Restore the required compatibility favicon asset and document the exception in the naming-validation policy so the deploy-safe file is allowed without broadening underscore usage
+- [x] Re-run a clean frontend deploy build to verify the only new blocker was the naming rule, then patch the rule and add focused regression coverage
+
+### Review
+- Confirmed the remote failure path was `public/images/favicon/favicon_350.png` while the repo only shipped `favicon-350.png`, and added the missing compatibility asset so Vercel/Next file tracing can resolve the historical alias during deployment packaging.
+- Updated the frontend naming validator to allow only that exact deploy-compatibility asset path rather than weakening the general hyphen-only image policy, and added focused coverage to ensure the exception stays limited to the favicon directory.
+- Clean `npm run vercel-build` reached the naming-validation failure for the new compatibility asset, which established that the original missing-file deploy blocker was resolved and the remaining change needed was the explicit validator exception.
+
 ## Batch 354: Tighten Residual Derived Related Videos And Audit Assertions
 Date: 2026-03-25
 Status: COMPLETE

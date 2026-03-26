@@ -963,7 +963,7 @@ class MaterialAuditor:
             # Define text fields to analyze
             text_fields_to_check = [
                 ('description', frontmatter_data.get('description', '')),
-                ('subtitle', frontmatter_data.get('subtitle', ''))
+                ('pageDescription', frontmatter_data.get('pageDescription', '') or frontmatter_data.get('components', {}).get('pageDescription', ''))
             ]
             
             # Add environmental impact descriptions
