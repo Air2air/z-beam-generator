@@ -5,6 +5,20 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 356: Exclude Non-Runtime Artifacts From Vercel Function Traces
+Date: 2026-03-26
+Status: IN PROGRESS
+
+### Goal
+Fix the Vercel deployment failure caused by oversized serverless functions by preventing non-runtime build/cache/report artifacts from being traced into Next.js function bundles.
+
+### Steps
+- [ ] Confirm which traced artifacts are inflating the deploy bundle and identify the narrowest safe packaging control in frontend config
+- [ ] Update the frontend deploy/runtime config to exclude build cache and generated analysis/report files that are not required at request time
+- [ ] Add focused regression coverage for the packaging guard and rerun a deploy-oriented build to verify the function-size failure is cleared
+
+---
+
 ## Batch 355: Restore Favicon Trace Compatibility For Vercel Deploy
 Date: 2026-03-26
 Status: COMPLETE
