@@ -198,21 +198,287 @@ Status: COMPLETE
 Summarize the concrete deployment bottlenecks and remaining repository/runtime bloat after the recent frontend deploy fixes, using current source config and the latest task history rather than assumptions.
 
 ### Steps
-- [x] Inspect current frontend deploy config, scripts, and generated report directories for remaining size/time bottlenecks
-- [x] Separate already-fixed deploy regressions from still-open issues or structural bloat
-- [x] Deliver a concise severity-ordered summary with file references and residual risks
+
+---
+
+## Batch 367: Make Frontend Shorts Catalog Pagination Reliable
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Replace the frontend's one-page public Shorts scrape with a paginated public discovery path so the `/videos` catalog can enumerate the full channel Shorts list without depending on YouTube Studio.
+
+### Steps
+- [x] Confirm why the current frontend source stops short of the full Shorts inventory shown in Studio
+- [x] Replace single-page Shorts discovery with continuation-aware public pagination while keeping the downstream catalog contract unchanged
+- [x] Add focused regression coverage for the continuation path and rerun a narrow verification command
 
 ### Review
-- The last explicit deploy blocker is still the open Vercel function-trace item in Batch 356: oversized serverless functions caused by non-runtime artifacts being traced into Next.js bundles remain tracked as unresolved in `z-beam-generator/tasks/todo.md`.
-- Deploy installs are still heavier than necessary because Vercel is configured to install dev dependencies (`vercel.json`), and the deploy pipeline still runs type-check, lint, content/type validation, sitemap verification, and deployment Jest contracts before build (`z-beam/package.json`). That keeps the gate meaningful, but it also guarantees deployment-time installation of heavyweight dev tooling.
-- The website still depends on broad filesystem/YAML reads across the frontmatter tree in multiple server-side paths, including redirect generation (`z-beam/next.config.js`), sitemap route generation (`z-beam/app/sitemap.xml/route.ts`), content loading (`z-beam/app/utils/contentAPI.ts`), relationship normalization (`z-beam/app/utils/relationshipNormalization.ts`), video related-content resolution (`z-beam/app/utils/videoRelatedContent.ts`), and the settings index page (`z-beam/app/settings/page.tsx`). Those paths keep the deploy/build sensitive to the full frontmatter corpus.
-- Local and trace-adjacent bloat is still substantial even after recent cleanup: `public/images/material` is about 55 MB across 325 files, `public/datasets` is about 8.1 MB across 1,047 files, `frontmatter` contains 459 YAML files totaling about 10 MB, `reports/validation` is about 4.6 MB, `seo/analysis` is about 2.9 MB, and local Jest coverage output alone is about 24 MB. `next.config.js` now excludes `coverage`, `reports`, and `seo/analysis` from output tracing, but the open Batch 356 note confirms packaging cleanup is not considered complete yet.
+- Replaced the frontend's single-response public Shorts scrape in `app/utils/youtubeVideoSource.ts` with a continuation-aware discovery path that extracts `ytInitialData` plus `ytcfg`, replays YouTube's public browse continuation endpoint, and keeps the existing XML-feed merge and enrichment contract unchanged for downstream pages.
+- Kept the production source frontend-only: the catalog still uses public YouTube surfaces rather than the authenticated Studio URL, but it now continues past the initial rendered batch so the `/videos` inventory can match the full public Shorts list more reliably.
+- Added focused regression coverage in `tests/seo/youtube-feed.test.ts` for the browse-continuation path while preserving the existing fallback tests for XML-only discovery, public-page supplementation, ordering, and error-state behavior.
+- Verified the change with `npm test -- tests/seo/youtube-feed.test.ts --runInBand --coverage=false` in the frontend repo; the suite passed `8/8` tests.
+
+---
+
+## Batch 368: Add YouTube Data API Primary Video Source
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Make the frontend video catalog prefer the YouTube Data API uploads playlist for complete Shorts enumeration, while preserving the public-page discovery path as a fallback when the API key is unavailable or the API request fails.
+
+### Steps
+- [x] Inspect the frontend environment/config pattern for adding a new server-side YouTube API key without introducing raw one-off env access
+- [x] Implement a YouTube Data API provider that paginates the channel uploads playlist, filters Shorts by duration, and preserves catalog ordering
+- [x] Keep the current public Shorts discovery path as fallback and add focused tests for API success and fallback behavior
+- [x] Run a focused verification command and capture the result in the task log and lessons
+
+### Review
+- Added a frontend-only YouTube Data API provider in `app/utils/youtubeVideoSource.ts` that reads `YOUTUBE_DATA_API_KEY` through the centralized env layer, resolves the channel uploads playlist, paginates playlist items, batches `videos` detail lookups, and preserves upload ordering while filtering for short-form videos.
+- Kept the continuation-aware public Shorts discovery path as the fallback authority when the API key is absent or the API request fails, so the videos catalog still repopulates without hard dependency on Studio or a single external surface.
+- Updated the frontend env templates (`.env.example`, `.env.local.example`, `.env.production`) and `app/config/env.ts` so the new server-side API key is documented and accessible through the shared env configuration.
+- Extended `tests/seo/youtube-feed.test.ts` with focused coverage for the API-primary path and API-fallback path, then re-ran `npm test -- tests/seo/youtube-feed.test.ts --runInBand --coverage=false`; the suite passed `10/10` tests.
+
+---
+
+## Batch 369: Restore Env Contract Parity
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Align the tracked frontend env templates and the nearest env-validation utility with the current centralized `NEXT_PUBLIC_BASE_URL` runtime contract, and clearly separate active app-runtime variables from optional script-only or legacy variables.
+
+### Steps
+- [x] Identify mismatches between the tracked env templates, the centralized env layer, and the nearest runtime validation utility
+- [x] Update the tracked env templates to document the active runtime contract and group optional script-only variables separately
+- [x] Align the nearest env-validation utility and tests with `NEXT_PUBLIC_BASE_URL`
+- [x] Run a focused verification command and capture the result
+
+### Review
+- Updated the tracked frontend env templates (`.env.example`, `.env.local.example`, `.env.production`) so the active runtime section now documents `NEXT_PUBLIC_BASE_URL`, includes the production-required `GMAIL_USER` and `GMAIL_APP_PASSWORD` variables, and separates optional script-only or integration variables from the centralized app runtime contract.
+- Aligned `app/utils/errorSystem.ts` and `tests/utils/errorSystem.test.js` with the same `NEXT_PUBLIC_BASE_URL` authority so the nearest runtime validation utility no longer enforces the retired `NEXT_PUBLIC_SITE_URL` name.
+- Re-ran the focused verification path with `npm test -- tests/utils/errorSystem.test.js --runInBand --coverage=false`; the suite passed `45/45` tests.
+- Residual note: documentation files outside the tracked env templates still contain legacy `NEXT_PUBLIC_SITE_URL` references. Those docs were not swept in this batch.
+
+---
+
+## Batch 370: Sweep Env Contract Docs
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Update the remaining active frontend docs that still instruct users to set `NEXT_PUBLIC_SITE_URL` so they instead document the live `NEXT_PUBLIC_BASE_URL` env contract.
+
+### Steps
+- [x] Locate the remaining active doc references to the retired env name
+- [x] Update those docs to the live `NEXT_PUBLIC_BASE_URL` contract
+- [x] Re-run a focused search to confirm the doc sweep is complete
+
+### Review
+- Updated the remaining active frontend docs that still referenced `NEXT_PUBLIC_SITE_URL`, specifically `docs/03-guides/JSONLD_URL_VALIDATION.md`, `docs/02-features/deployment/VERCEL_ENV_SETUP.md`, and `docs/03-guides/DEVELOPER_GUIDE.md`, so they now document the live `NEXT_PUBLIC_BASE_URL` contract.
+- Re-ran a focused frontend-doc search for `NEXT_PUBLIC_SITE_URL` across `docs` and `README.md`; no remaining matches were found.
+- This closes the env-contract cleanup loop across runtime config, tracked env templates, validation utilities, tests, and active setup/troubleshooting docs.
+
+---
+
+## Batch 371: Lock Video Discovery Integration Contract
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Make the frontend video discovery contract explicit and enforceable so newly discovered API videos are synced into overlays during deploy builds, included in related-video matching across domain pages, and described accurately in the active docs and build tests.
+
+### Steps
+- [x] Align the deploy build scripts with the normal build path so video frontmatter sync runs before production builds
+- [x] Add the related-items validation path to the enforced build gate so newly discovered videos cannot silently degrade domain related-video sections
+- [x] Update the active video/related-video docs and the nearest build-contract tests to reflect the API-primary, public-fallback source contract and required automation
+- [x] Run focused verification and capture the result
+
+### Review
+- Updated `z-beam/package.json` so the explicit deploy path now matches the normal build contract: `prebuild:deploy` includes `validate:related-items`, `build:app:deploy` routes through `build:app`, `postbuild:deploy` is defined, and `vercel-build` now runs `prebuild:deploy -> build:app -> postbuild:deploy` while preserving `videos:sync-frontmatter` before `next build`.
+- Tightened the nearest build-contract enforcement in `z-beam/tests/build/build-time-requirements.test.ts` so the test now asserts the repo's real CI/deploy gates instead of a nonexistent generic npm `prebuild` lifecycle, and it now checks both `videos:sync-frontmatter` and `validate:related-items` as required automation.
+- Updated the active frontend video docs in `z-beam/docs/02-features/VIDEOS_PAGE_IMPLEMENTATION.md` and `z-beam/docs/proposals/RELATED_VIDEOS_SECTION_REUSE.md` so they describe the live YouTube Data API uploads-playlist primary source, the public fallback path, and the requirement that newly discovered videos flow into the shared enriched catalog and domain related-video pool.
+- Re-ran focused verification with `npm test -- tests/build/build-time-requirements.test.ts tests/seo/youtube-feed.test.ts tests/utils/relatedItemsVerification.test.ts tests/pages/applications-detail-author.test.tsx --runInBand --coverage=false`; the suite passed `48/48` tests.
+- Re-ran `npm run validate:related-items`; the audit reported `281` hosts, `443` sections, `1887` pass items, `72` warns, `25` advisory fail items, and `0` strict fail items. This means the newly enforced gate is executable and non-blocking for current strict policy, but some watch-page related-item quality cleanup remains advisory work rather than a release blocker.
+
+---
+
+## Batch 372: Trim Weak Watch-Page Related Entities
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Reduce the remaining advisory related-item failures by tightening the frontend watch-page video-to-entity matcher so broad process-language overlap does not generate weak related materials, compounds, or applications when no specific subject evidence exists.
+
+### Steps
+- [x] Confirm the dominant failure pattern in the related-items audit and identify the narrowest matcher change that removes weak video-watch-related candidates without regressing strong derived matches
+- [x] Tighten the watch-page matcher and add focused regression coverage for the failure shapes
+- [x] Re-run focused tests plus the related-items audit and capture the remaining fail count
+
+### Review
+- Confirmed the remaining advisory failures were concentrated in `video-watch-related` derived sections where broad process-language overlap and candidate-shape drift let weak materials, compounds, and applications survive into the watch-page related-content output even though the related-items audit judged them semantically weak.
+- Tightened `z-beam/app/utils/videoRelatedContent.ts` in two ways: filtered broad process tokens out of the local scorer, and aligned the runtime derived-match gate with the shared `hasStrongSemanticMatch` verifier from `z-beam/app/utils/relatedItemsVerification.ts` using the same effective host title and candidate keyword shape the audit sees.
+- Updated `z-beam/app/utils/videoCatalog.ts` to pass the resolved video page title into the watch-page related-content matcher, and added focused regressions in `z-beam/tests/utils/videoRelatedContent.test.ts` for broad-language false positives and for keeping specific epoxy/tube matches while dropping generic noise.
+- Re-ran focused verification with `npm test -- tests/utils/videoRelatedContent.test.ts tests/utils/relatedItemsVerification.test.ts tests/pages/video-watch-page.test.tsx tests/app/videos-page.test.tsx --runInBand --coverage=false`; the suite passed `13/13` tests.
+- Re-ran `npm run validate:related-items`; the audit now reports `281` hosts, `436` sections, `1887` pass items, `78` warns, `0` fail items, and `0` strict fail items, with `✅ No failing related-item sections found`.
+
+---
+
+## Batch 373: Restore Application Related-Videos Parity
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Fix the mismatch where an application page fails to surface a related video even though the corresponding video watch page already surfaces that application as related content, so both entity-to-video and video-to-entity paths agree for the same subject pair.
+
+### Steps
+- [x] Trace the specific application page and video watch page through the live frontend helper paths and identify which source authority is drifting
+- [x] Apply the narrowest source-level fix so the application related-videos section can surface the matching video without regressing the stricter related-item quality rules
+- [x] Re-run focused tests and the related-items audit, then capture the result
+
+### Review
+- Confirmed the drift was source-authority asymmetry rather than page rendering: the application page depended on `getApplicationPageRelatedVideos(...)` while the watch page could already hydrate authored related applications from video frontmatter, and the exact pair lacked explicit reciprocal relationship entries.
+- Reverted the over-broad reciprocal scoring experiment in `z-beam/app/utils/relatedVideosContent.ts` and restored the narrower matcher behavior that had kept the broader audit clean.
+- Added explicit authored reciprocity for the exact pair in `z-beam/frontmatter/videos/encrusted-bitumen-on-steel-laser-cleaning-B1opfUqA.yaml` and `z-beam/frontmatter/applications/weld-prep-laser-cleaning-applications.yaml`, so both the watch page and the application page now agree through source-owned relationship data rather than a weaker global heuristic.
+- Re-passed `npm test -- tests/utils/relatedVideosContent.test.ts tests/pages/applications-detail-author.test.tsx tests/utils/relatedItemsVerification.test.ts --runInBand --coverage=false` with `14/14` tests passing.
+- Re-ran `npm run validate:related-items`; the audit reports `281` hosts, `437` sections, `1889` pass items, `75` warns, `0` fail items, and `0` strict fail items.
+
+---
+
+## Batch 374: Enforce Two-Way Related Video Parity And Schema Coverage
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Make related-video relationships a mandatory two-way contract across supported domains, enforce that contract at build time, and ensure every page that renders related videos also emits the corresponding video schema coverage with matching docs and regression tests.
+
+### Steps
+- [x] Trace the current entity-to-video, video-to-entity, schema-generation, and build-gate paths to identify where reciprocal enforcement and page-level video schema guarantees belong
+- [x] Implement a shared reciprocal-validation rule plus build-time enforcement, then add or align page-level video schema generation for every route that renders related videos
+- [x] Update the closest docs and focused tests, then rerun the relevant validation commands and capture the resulting contract
+
+### Review
+- Added a shared reciprocal check in `z-beam/app/utils/relatedVideosContent.ts` so entity-page related videos only survive when the candidate video also relates back to the host entity, and prevented authored override lists from silently falling back to derived matches when the authored list is non-reciprocal.
+- Extended `z-beam/scripts/validation/content/validate-related-items.ts` so `validate:related-items` now treats authored related-video parity as a hard build-time requirement across materials, contaminants, compounds, applications, and video overlays; non-reciprocal authored links now fail the command even when the semantic audit remains green.
+- Aligned `z-beam/app/utils/relatedItemsVerification.ts` so domain related-video candidates carry the reverse video relationship map that the runtime uses, keeping the audit and runtime contracts in sync.
+- Confirmed the shared item-page route remains the schema authority for materials, contaminants, and compounds that render related videos, and `z-beam/app/applications/[slug]/page.tsx` remains the separate authority for application pages; locked both paths with build-time assertions plus focused route coverage.
+- Updated `z-beam/docs/02-features/VIDEOS_PAGE_IMPLEMENTATION.md` and `z-beam/docs/proposals/RELATED_VIDEOS_SECTION_REUSE.md` to document the mandatory two-way related-video rule, the build gate that enforces it, and the route-level related-video schema coverage.
+- Fixed the frontmatter backlog exposed by the new gate by adding the missing reciprocal `relatedVideos` entries to the affected material, contaminant, and application pages, and by correcting the three invalid authored application slugs plus the missing brick-material reverse authoring in video overlays.
+- Re-passed `npm test -- tests/utils/relatedVideosContent.test.ts tests/utils/relatedItemsVerification.test.ts tests/pages/applications-detail-author.test.tsx tests/integration/ItemPage-dataset.test.tsx tests/build/build-time-requirements.test.ts --runInBand --coverage=false` with `55` passing tests and `1` existing skipped dataset test.
+- Re-ran `npm run validate:related-items`; the final audit reports `281` hosts, `437` sections, `1894` pass items, `65` warns, `0` fail items, `0` strict fail items, and `0` parity fail items.
+
+---
+
+## Batch 375: Close Reverse Derived Video-Entity Drift
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Eliminate the remaining symmetry hole where a video watch page can still render a derived related entity that would not surface the same video back on the entity page, and enforce that reverse-derived parity at build time.
+
+### Steps
+- [x] Trace the specific zinc/material example through the watch-page derived matcher and confirm which reverse-parity guard is still missing
+- [x] Add one shared reverse-derived parity check so video watch-page related entities only render when the corresponding entity page would also surface that video
+- [x] Extend tests and the build-time audit to cover reverse-derived parity, then rerun focused validation and the full related-items gate
+
+### Review
+- Confirmed the zinc example exposed a remaining symmetry hole on the watch-page side: `videoRelatedContent.ts` could still derive materials, compounds, or applications from semantic overlap alone even when the target entity page had no reverse video relationship and the video itself did not author that entity.
+- Added a shared reverse-derived parity helper in `z-beam/app/utils/videoRelatedContent.ts` and passed the current video slug plus authored reverse associations from `z-beam/app/utils/videoCatalog.ts`, so watch-page related entities now render only when either the video authors the entity or the entity page explicitly lists that video in `relationships.discovery.relatedVideos.items`.
+- Extended `z-beam/scripts/validation/content/validate-related-items.ts` so the build-time audit now also checks rendered watch-page related entities for reverse parity, not just authored page-to-video and video-to-page links.
+- Updated focused tests in `z-beam/tests/utils/videoRelatedContent.test.ts` and the build-contract guard in `z-beam/tests/build/build-time-requirements.test.ts` to lock the new reverse-derived parity rule.
+- Re-passed `npm test -- tests/utils/videoRelatedContent.test.ts tests/build/build-time-requirements.test.ts tests/pages/video-watch-page.test.tsx --runInBand --coverage=false` with `40/40` tests passing.
+- Re-ran `npm run validate:related-items`; the final audit reports `278` hosts, `420` sections, `1894` pass items, `22` warns, `0` fail items, `0` strict fail items, and `0` parity fail items.
+
+---
+
+## Batch 376: Restore Derived Two-Way Coverage Without One-Way Drift
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Keep two-way related-video parity mandatory while restoring legitimate related-item coverage that can be proven through the same entity-to-video derived matcher, instead of requiring explicit authored reverse links for every watch-page related entity.
+
+### Steps
+- [x] Refactor the entity-to-video pairwise matcher into a shared helper that both entity pages and video watch pages can reuse without circular dependency
+- [x] Replace the watch-page explicit-only reverse guard with a sync-first rule that auto-creates missing reciprocal links before validation, then validate against the synchronized state
+- [x] Update the affected docs and focused tests, then rerun focused suites and the full related-items validator to verify coverage is restored without reintroducing one-way mismatches
+
+### Review
+- Added `z-beam/app/utils/videoRelationshipSync.ts` as the shared reciprocal-link helper layer for reading authored video/entity associations, resolving effective video-to-entity targets, and adding missing reverse links without duplicating slugs.
+- Extended `z-beam/scripts/videos/sync-video-frontmatter.ts` with a second sync phase that computes effective video relationships using `getRelatedVideoContent(..., { requireReverseParity: false })`, writes missing entity `relationships.discovery.relatedVideos.items`, and backfills the matching video overlay `relatedMaterials` / `relatedContaminants` / `relatedCompounds` / `relatedApplications` entries before build-time validation runs.
+- Updated `z-beam/package.json` so both `prebuild:ci` and `prebuild:deploy` run `videos:sync-frontmatter` before `validate:related-items`, and kept the server-only shim on the sync command so the script can execute under the same import conditions as the validator.
+- Documented the sync-first reciprocity rule in `z-beam/docs/02-features/VIDEOS_PAGE_IMPLEMENTATION.md` and locked the build contract with `z-beam/tests/build/build-time-requirements.test.ts` plus the new `z-beam/tests/utils/videoRelationshipSync.test.ts` helper coverage.
+- Re-ran focused verification with `npm test -- tests/utils/videoRelationshipSync.test.ts tests/utils/videoRelatedContent.test.ts tests/build/build-time-requirements.test.ts tests/utils/relatedVideosContent.test.ts tests/utils/relatedItemsVerification.test.ts --runInBand --coverage=false`; the suite passed `54/54` tests.
+- Ran `npm run videos:sync-frontmatter`; the sync reported `reciprocal_entity_video_links_added=43`, `reciprocal_video_entity_links_added=43`, `created=2`, `refreshed=0`, `renamed=0`, and `skipped=19`.
+- Re-ran `npm run validate:related-items`; the final audit reports `281` hosts, `451` sections, `1964` pass items, `22` warns, `0` fail items, `0` strict fail items, and `0` parity fail items.
+
+---
+
+## Batch 377: Extend Related Videos To Settings And Add Route Guard
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Add Related Videos support to settings pages, emit the related-video schema for those pages through the shared item-page authority, and add a guard test that fails if a new route starts rendering a Related Videos section without the matching schema wiring.
+
+### Steps
+- [x] Extend the shared related-videos page-data path and settings layout so `/settings/...` pages can render related videos from existing settings frontmatter signals
+- [x] Wire settings pages into the shared item-page related-video schema generation path and update the active docs to reflect the expanded support boundary
+- [x] Add regression coverage for settings-page related-video schema output and a search-based build guard for unschematized Related Videos routes, then run focused verification
+
+### Review
+- Extended the shared related-videos path for settings pages by wiring `app/utils/relatedVideosPageData.ts`, `app/utils/relatedVideosContent.ts`, `app/components/ContentPages/ItemPage.tsx`, `app/components/SettingsLayout/SettingsLayout.tsx`, and `types/centralized.ts` so `/settings/...` pages can derive and render related videos from existing `worksOnMaterials`, `removesContaminants`, and supporting settings relationship signals.
+- Added settings-page related-video schema coverage through the shared item-page authority, including the separate related-videos graph plus `WebPage` enhancements, and updated the active docs in `z-beam/docs/02-features/VIDEOS_PAGE_IMPLEMENTATION.md` and `z-beam/docs/proposals/RELATED_VIDEOS_SECTION_REUSE.md` to reflect that materials, contaminants, compounds, settings, and applications now have explicit related-video schema support.
+- Added focused regression coverage in `z-beam/tests/utils/relatedVideosContent.test.ts`, `z-beam/tests/integration/ItemPage-dataset.test.tsx`, and `z-beam/tests/build/build-time-requirements.test.ts`, including a search-based allowlist guard that fails if a new route starts rendering `RelatedVideosSection` outside the approved schema authorities.
+- Re-ran `npm test -- tests/utils/relatedVideosContent.test.ts tests/integration/ItemPage-dataset.test.tsx tests/build/build-time-requirements.test.ts --runInBand --coverage=false`; the suite passed `49/49` tests with `1` existing skipped dataset test.
 
 ---
 
 ## Batch 355: Restore Favicon Trace Compatibility For Vercel Deploy
 Date: 2026-03-26
 Status: COMPLETE
+
+---
+
+## Batch 378: Revalidate Related Items And Normalize Application Titles
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Run the full frontend related-items validator again for broader confidence, then rewrite application page titles so the phrase "Laser Cleaning Applications" consistently appears at the end of each application detail title.
+
+### Steps
+- [x] Re-run the full frontend related-items validator and capture the current audit state
+- [x] Rewrite the frontend application page title source so each application detail title ends with "Laser Cleaning Applications"
+- [x] Run focused verification for the updated application-title contract and record the result
+
+### Review
+- Re-ran `npm run validate:related-items` in the frontend repo for a broader confidence pass after the settings related-video work; the audit remained clean at `281` hosts, `451` sections, `1964` pass items, `22` warns, `0` fail items, `0` strict fail items, and `0` parity fail items.
+- Normalized application title wording at the actual frontend authorities: updated all nine application detail frontmatter files under `z-beam/frontmatter/applications/` so `pageTitle` now ends with `Laser Cleaning Applications`, and updated `z-beam/app/applications/[slug]/page.tsx` so dynamic application subcategory pages use the same trailing-phrase format instead of the older `${label} Applications` wording.
+- Updated the two related-video audit fixtures that still encoded the retired application title wording, and added focused metadata regression coverage in `z-beam/tests/pages/applications-detail-author.test.tsx` for both detail-page and subcategory-page title generation.
+- Re-ran `npm test -- tests/pages/applications-detail-author.test.tsx tests/utils/videoRelatedContent.test.ts tests/utils/relatedItemsVerification.test.ts --runInBand --coverage=false`; the suite passed `18/18` tests.
+
+---
+
+## Batch 379: Reconcile Full Frontend Gate Drift
+Date: 2026-03-28
+Status: COMPLETE
+
+### Goal
+Bring the current frontend worktree back to a real commit-ready state by reconciling the remaining full-gate test failures exposed by `npm run prebuild:ci`, then re-run the full gate and confirm working-tree status.
+
+### Steps
+- [x] Inspect each current `prebuild:ci` failure against the live implementation and decide whether the source or the test is stale
+- [x] Apply the narrowest fixes so the hero, schema-factory, env-validation, and SEO integration tests match the current frontend contract
+- [x] Re-run the relevant focused suites and the full `prebuild:ci` gate, then report whether the working tree is clean and commit-ready
+
+### Review
+- Reconciled the remaining red full-gate suites against the live frontend contracts instead of forcing the code back to older assumptions: `tests/components/Hero.comprehensive.test.tsx` now respects the current click-to-play `LazyYouTube` facade flow, `tests/utils/errorSystem.test.ts` now asserts `NEXT_PUBLIC_BASE_URL`, and `tests/integration/seo-comprehensive.test.js` now checks the current above-the-fold preload target in `app/layout.tsx`.
+- Applied one narrow source fix in `z-beam/app/utils/schemas/SchemaFactory.ts` so explicit `VideoObject` schema generation accepts the standard `datePublished` field in addition to the older `publishedDate` shape; kept the helper tests honest by updating `tests/seo/schema-factory.test.ts` to the current explicit-video-only `hasVideoData(...)` contract.
+- Re-ran `npm test -- tests/components/Hero.comprehensive.test.tsx tests/seo/schema-factory.test.ts tests/utils/errorSystem.test.ts tests/integration/seo-comprehensive.test.js --runInBand --coverage=false`; the focused set passed after the alignment.
+- Re-ran the full frontend gate with `npm run prebuild:ci`; it completed successfully with exit code `0`.
+- The repo is not worktree-clean after the successful gate: the frontend repo still contains many unstaged changes from the broader related-video/frontmatter sync work and this cleanup batch, and the generator repo still contains task-log changes.
 
 ### Goal
 Fix the remote Vercel deployment failure caused by Next/Vercel tracing a legacy underscored favicon filename that no longer existed in `public/images/favicon/`.
