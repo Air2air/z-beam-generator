@@ -221,6 +221,367 @@ Replace the frontend's one-page public Shorts scrape with a paginated public dis
 
 ---
 
+## Batch 371: Remove Homepage H1 Gate And Deconflict Application Titles
+Date: 2026-03-29
+Status: COMPLETE
+
+### Goal
+Remove the homepage-only H1 requirement from the live production validator and make application subcategory landing-page titles distinct from canonical application detail-page titles so the post-deploy metadata check stops flagging duplicate groups.
+
+### Steps
+- [x] Change the frontend application subcategory title authority so collection pages do not emit the same title as matching detail pages
+- [x] Downgrade the homepage H1 validator from a blocking requirement to an advisory signal
+- [x] Run focused frontend verification and capture the result plus the prevention rule in the task log and lessons
+
+### Review
+- Updated the shared application collection-title helper in `app/applications/[slug]/page.tsx` so subcategory landing pages now render `... Applications Overview`, which keeps them distinct from canonical application detail pages that retain the existing `... Applications` title.
+- Added focused regression coverage in `tests/pages/applications-detail-author.test.tsx` to assert both the new collection-page title wording and the non-collision between a short subcategory slug and its matching canonical detail page.
+- Downgraded the homepage H1 check in `scripts/validation/post-deployment/validate-production.js` from a blocking requirement to an advisory result, preserving visibility without failing the production suite on the homepage's current layout contract.
+- Verified the batch with `npm test -- tests/pages/applications-detail-author.test.tsx --runInBand --coverage=false` (`8/8` passing) and `npm test -- tests/seo/seo-release-contracts.test.ts --runInBand --coverage=false` (`2/2` passing).
+
+---
+
+## Batch 372: Extract Services Pricing Table Component
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Move the services-page pricing table markup out of the shared static-page factory into a discrete component while preserving the existing `pricing-table` frontmatter contract and services-page behavior.
+
+### Steps
+- [x] Add a dedicated services pricing-table component that owns the rental table markup
+- [x] Rewire the static-page factory to dispatch `pricing-table` sections to that component instead of rendering the markup inline
+- [x] Add focused verification for the extracted component/render path and record the outcome plus lesson
+
+### Review
+- Extracted the services rental pricing markup from `app/utils/pages/createStaticPage.tsx` into a dedicated `ServicesPricingTable` component at `app/components/ServicesPricingTable.tsx`, keeping the existing `pricing-table` section contract intact.
+- Reduced the static-page factory back to section-type dispatch for `pricing-table` entries, so the page factory no longer owns services-specific table markup.
+- Added focused regression coverage in `tests/components/ServicesPricingTable.test.tsx` and re-ran `tests/utils/pages/createStaticPage.integration.test.tsx` to verify the services page still renders through the shared static-page path after the extraction.
+- Verified the batch with `npm test -- tests/components/ServicesPricingTable.test.tsx --runInBand --coverage=false` (`2/2` passing) and `npm test -- tests/utils/pages/createStaticPage.integration.test.tsx --runInBand --coverage=false` (`31/31` passing).
+
+---
+
+## Batch 373: Make Static Page Factory Reusable
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Remove remaining page-specific behavior from the shared static-page factory path by moving frontmatter enrichment and section rendering behind reusable adapters, while keeping the existing static-page contracts and page output stable.
+
+### Steps
+- [x] Move static-page frontmatter contracts into a shared types module so loader, policy, and renderer adapters can depend on one common shape
+- [x] Extract page-specific frontmatter enrichment and section rendering out of the factory/loader into reusable adapter modules
+- [x] Re-run focused static-page verification and record the outcome plus lesson
+
+### Review
+- Completed the static-page adapter split: the shared frontmatter/types live in `app/utils/pages/staticPageTypes.ts`, frontmatter enrichment is handled by `app/utils/pages/staticPageFrontmatterEnrichers.ts`, section rendering is handled by `app/utils/pages/staticPageSectionRenderers.tsx`, and page-specific schema builders now live in the new `app/utils/pages/staticPageSchemaBuilders.ts` module.
+- Reduced `app/utils/pages/staticPagePolicy.tsx` to configuration wiring rather than inline per-page schema lambdas, which removes another page-specific logic cluster from the shared static-page factory path.
+- Left `app/utils/pages/createStaticPage.tsx` as orchestration-only: it now consumes registry/config, schema composition helpers, and section renderers without embedding services/contact/comparison-specific rendering or schema assembly.
+- Verified the refactor with `npm test -- tests/app/static-page-policy.schemas.test.ts --runInBand --coverage=false` (`3/3` passing) and `npm test -- tests/utils/pages/createStaticPage.integration.test.tsx --runInBand --coverage=false` (`31/31` passing).
+
+---
+
+## Batch 374: Share Related-Video Page Schema Assembly
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Remove the duplicated related-videos schema assembly from application and shared item pages by extracting one frontend-only helper that decorates the primary page schema and emits the secondary related-video graph consistently.
+
+### Steps
+- [x] Add a shared helper that takes a page path, a related-videos section, and the primary article/frontmatter shape, then returns the schema-ready page object plus optional related-videos graph
+- [x] Rewire `app/components/ContentPages/ItemPage.tsx` and `app/applications/[slug]/page.tsx` to use the shared helper without changing their rendered related-videos section behavior
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Review
+- Added `app/utils/pages/relatedVideoPageSchema.ts` as the single frontend authority for related-video schema assembly, so routes now ask one helper to merge `webPageSchema` enhancements into the primary page graph and emit the secondary related-videos `ItemList` graph only when videos actually exist.
+- Rewired both `app/components/ContentPages/ItemPage.tsx` and `app/applications/[slug]/page.tsx` to use that helper, which removes the duplicated `buildRelatedVideosSchema` and `buildRelatedVideoWebPageEnhancements` wiring while preserving the existing related-videos section rendering behavior.
+- Updated the build-time contract test in `tests/build/build-time-requirements.test.ts` to follow the new helper boundary instead of pinning the old route-local duplication, so the guard still enforces the real schema authority.
+- Verified the batch with `npm test -- tests/integration/ItemPage-dataset.test.tsx tests/pages/applications-detail-author.test.tsx tests/build/build-time-requirements.test.ts --runInBand --coverage=false` (`49` passing, `1` skipped).
+
+---
+
+## Batch 375: Extract Item Page Layout Handoff
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Remove the remaining layout-selection branching from `ItemPage.tsx` by extracting one frontend-only helper that dispatches the current content types to their existing layout components without changing dataset, redirect, or related-video behavior.
+
+### Steps
+- [x] Add a shared item-page layout handoff helper that maps the current content types to the existing layout components and prop contracts
+- [x] Rewire `app/components/ContentPages/ItemPage.tsx` to use the helper instead of local ternary branching
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Review
+- Added `app/utils/pages/itemPageLayoutRenderer.tsx` as the shared handoff point for item-page domain layouts, so `settings`, `materials`, `contaminants`, and `compounds` now dispatch through one explicit mapping instead of route-local JSX branching.
+- Simplified `app/components/ContentPages/ItemPage.tsx` to call the shared layout renderer in both the settings and non-settings paths while leaving redirect checks, machine-settings merge behavior, JsonLD emission, and related-video handling unchanged.
+- Added a focused mapper contract test at `tests/utils/pages/itemPageLayoutRenderer.test.tsx` so layout selection and the settings-only `materialProperties` prop stay pinned to the extracted helper rather than to implicit route branching.
+- Verified the batch with `npm test -- tests/utils/pages/itemPageLayoutRenderer.test.tsx tests/integration/ItemPage-dataset.test.tsx tests/utils/pages/createContentPage.test.tsx --runInBand --coverage=false` (`78` passing, `1` skipped).
+
+---
+
+## Batch 376: Extract Item Page Preparation Flow
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Move the remaining item-page preparation logic out of `ItemPage.tsx` into one shared helper so metadata extraction, machine-settings merge, related-video loading, and schema-ready article preparation are no longer duplicated across the settings and non-settings paths.
+
+### Steps
+- [x] Add a shared item-page preparation helper that returns the schema-ready article, related-video graph, layout inputs, and canonical category/subcategory values for the current content-type variants
+- [x] Rewire `app/components/ContentPages/ItemPage.tsx` to use the preparation helper while preserving current redirect and dataset behavior
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Review
+- Added `app/utils/pages/itemPagePreparation.ts` as the shared preparation layer for item pages, so the settings path and the materials/contaminants/compounds path now share one helper for canonical category extraction, related-video loading, schema-ready article assembly, and the materials-only machine-settings merge.
+- Simplified `app/components/ContentPages/ItemPage.tsx` to consume the prepared result and render through the existing layout handoff helper, which removes the remaining prep duplication from the route while preserving dataset-schema generation and related-video output.
+- Added focused helper coverage in `tests/utils/pages/itemPagePreparation.test.ts`, plus a new route-level redirect regression in `tests/integration/ItemPage-dataset.test.tsx` that exposed and now locks the canonical redirect behavior.
+- Fixed the route-level root cause uncovered by that regression: `ItemPage.tsx` now rethrows Next navigation signals (`redirect` / `notFound`) instead of swallowing them inside the generic catch block.
+
+---
+
+## Batch 377: Make Static Page Section Rendering Registry-Driven
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Replace the switch-based static-page section renderer with a registry-driven dispatcher so new shared static-page section types can plug into one explicit mapping instead of expanding route-adjacent control flow.
+
+### Steps
+- [x] Introduce a registry of static-page section renderers that covers the current `comparison`, `clickable-cards`, `content-section`, and `pricing-table` types
+- [x] Rewire `renderStaticPageSection` to delegate through the registry without changing current section output behavior
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Review
+- Reworked `app/utils/pages/staticPageSectionRenderers.tsx` so `renderStaticPageSection` now dispatches through a `STATIC_PAGE_SECTION_RENDERERS` registry instead of a switch, while preserving the current section output for `comparison`, `clickable-cards`, `content-section`, and `pricing-table`.
+- Pulled the repeated clickable-card grid markup behind a shared helper inside the module, which keeps both dynamic clickable-card sections and registry-rendered clickable-card sections on the same rendering path.
+- Added focused coverage in `tests/utils/pages/staticPageSectionRenderers.test.tsx` for the registry-driven dispatcher and kept the shared page integration contract green with `tests/utils/pages/createStaticPage.integration.test.tsx`.
+- Verified Batches 376 and 377 together with `npm test -- tests/utils/pages/itemPagePreparation.test.ts tests/utils/pages/itemPageLayoutRenderer.test.tsx tests/integration/ItemPage-dataset.test.tsx tests/utils/pages/createContentPage.test.tsx tests/utils/pages/staticPageSectionRenderers.test.tsx tests/utils/pages/createStaticPage.integration.test.tsx --runInBand --coverage=false` (`116` passing, `1` skipped).
+
+---
+
+## Batch 378: Share Static-Page Presentation Assembly
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Extract shared static-page metadata and JsonLD assembly into one presentation helper so the remaining static-page route family does not keep title, description, image, and merged-schema wiring spread across `createStaticPage.tsx` and `staticPagePolicy.tsx`.
+
+### Steps
+- [x] Add a shared static-page presentation helper that owns resolved title/description/image selection plus merged JsonLD assembly for the static-page family
+- [x] Rewire `createStaticPage.tsx` and any generic static-page schema helpers to use the shared presentation helper instead of local duplicate helpers
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Review
+- Added `app/utils/pages/staticPagePresentation.tsx` as the shared static-page presentation layer, so resolved title/description/image selection, merged frontmatter JsonLD assembly, and header CTA rendering now live in one place for the static-page route family.
+- Rewired `app/utils/pages/createStaticPage.tsx` and `app/utils/pages/staticPagePolicy.tsx` to consume that helper instead of keeping duplicate title/description/image and merged-schema logic split across both modules.
+- Added focused coverage in `tests/utils/pages/staticPagePresentation.test.tsx` for metadata input assembly, merged JsonLD output, and header CTA rendering.
+
+---
+
+## Batch 379: Extract Static-Page Config Registry
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Move the remaining page-type-specific static-page wiring out of `staticPagePolicy.tsx` into a dedicated config registry so the policy module holds generic schema logic instead of route-family configuration.
+
+### Steps
+- [x] Move `PAGE_CONFIGS` and related static-page route constants into a dedicated config-registry module
+- [x] Rewire `staticPagePolicy.tsx`, `createStaticPage.tsx`, and any dependent imports to consume the new registry without changing runtime behavior
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Review
+- Moved the page-type-specific static-page wiring into `app/utils/pages/staticPageConfigRegistry.tsx`, including `PAGE_CONFIGS`, route-policy constants, and the shared `SERVICES_HUB_PATH` export used by the homepage.
+- Reduced `app/utils/pages/staticPagePolicy.tsx` to generic schema composition logic, which removes route-family configuration from the policy module and also eliminated the duplicate `about`/`partners` config keys that had been shadowing earlier entries.
+- Verified Batches 378 and 379 with `npm test -- tests/utils/pages/staticPagePresentation.test.tsx tests/app/static-page-policy.schemas.test.ts tests/utils/pages/staticPageSectionRenderers.test.tsx tests/utils/pages/createStaticPage.integration.test.tsx --runInBand --coverage=false` (`41` passing).
+
+---
+
+## Batch 380: Standardize Videos Route Presentation
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Move the remaining videos hub/watch metadata, layout metadata, and related-section presentation wiring behind one shared helper so the videos route family follows the same prepare/present split now used in other frontend areas.
+
+### Steps
+- [x] Add a shared videos presentation helper for metadata input, layout metadata, and related-content section rendering
+- [x] Rewire `app/videos/page.tsx` and `app/videos/[slug]/page.tsx` to use the helper without changing the rendered route behavior
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Result
+- Added `app/utils/pages/videoRoutePresentation.tsx` as the shared authority for videos hub/watch metadata, layout metadata, and related-content section rendering.
+- Rewired `app/videos/page.tsx` and `app/videos/[slug]/page.tsx` to consume that helper and removed the remaining route-local related-content duplication.
+- Verified Batch 380 with `npm test -- tests/app/videos-page.test.tsx tests/pages/video-watch-page.test.tsx tests/utils/pages/videoRoutePresentation.test.tsx --runInBand --coverage=false` and the broader refactor contract suite (`43` passing across the focused videos/build set).
+
+---
+
+## Batch 381: Extract Shared Domain Support Sections
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Move the repeated related-videos and contact-cards support-section wiring out of the heavy domain layouts into one shared helper while preserving each layout's existing domain-specific section order.
+
+### Steps
+- [x] Add a shared helper for domain support sections that covers related-videos and contact-cards in both section-config and direct-render forms
+- [x] Rewire the relevant layout components to use the helper without flattening their domain-specific sections
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Result
+- Added `app/utils/layout/domainSupportSections.tsx` so the repeated related-videos/contact-cards support-section wiring lives in one shared helper instead of across the heavy domain layouts.
+- Rewired `MaterialsLayout`, `ContaminantsLayout`, `CompoundsLayout`, and `SettingsLayout` to consume the helper while preserving each layout's existing domain-specific section order.
+- Verified Batch 381 with `npm test -- tests/utils/layout/domainSupportSections.test.tsx tests/build/build-time-requirements.test.ts --runInBand --coverage=false` and the same broader focused videos/build suite (`43` passing across the focused videos/build set).
+
+---
+
+## Batch 382: Standardize Settings Route Assembly
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Move the settings index route's file-loading, card assembly, metadata, and schema presentation wiring behind shared helpers so `app/settings/page.tsx` follows the same prepare/present split as the newer route families.
+
+### Steps
+- [x] Add a settings route data helper that loads and normalizes the settings cards from frontmatter
+- [x] Add a settings route presentation helper for metadata, layout metadata, and JSON-LD assembly
+- [x] Rewire `app/settings/page.tsx` to use the helpers without changing rendered behavior
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Result
+- Added `app/utils/pages/settingsRouteData.ts` to load and normalize settings cards once, including a single material-hero preload pass instead of re-scanning the materials directory for every card.
+- Added `app/utils/pages/settingsRoutePresentation.ts` as the shared authority for settings route metadata, layout metadata, and JSON-LD assembly.
+- Rewired `app/settings/page.tsx` into a thin route shell and verified Batch 382 with `npm test -- tests/utils/pages/settingsRouteData.test.ts tests/utils/pages/settingsRoutePresentation.test.ts tests/unit/SettingsJsonLD.test.tsx --runInBand --coverage=false` (`10` passing).
+
+---
+
+## Batch 383: Standardize Search Route Assembly
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Move the search route's badge-enrichment data loading plus page schema/metadata wiring behind shared helpers so `app/search/page.tsx` becomes a thin route shell without changing search behavior.
+
+### Steps
+- [x] Add a search route data helper for article loading and badge-symbol enrichment
+- [x] Add a search route presentation helper for metadata and search-page JSON-LD assembly
+- [x] Rewire `app/search/page.tsx` to use the helpers without changing rendered behavior
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Result
+- Added `app/utils/pages/searchRouteData.ts` as the shared authority for article loading and badge-symbol enrichment, including the material-type normalization that had been route-local.
+- Added `app/utils/pages/searchRoutePresentation.ts` for stable search metadata and search-page JSON-LD assembly.
+- Rewired `app/search/page.tsx` into a thin orchestration route and verified Batch 383 with `npm test -- tests/utils/pages/searchRouteData.test.ts tests/utils/pages/searchRoutePresentation.test.ts tests/integration/search-page-description.test.tsx --runInBand --coverage=false` (`20` passing; the existing `act(...)` console warnings remain in the legacy wrapper test).
+
+---
+
+## Batch 384: Standardize Homepage Route And Pricing Table Semantics
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Move the homepage route's metadata/layout/schema assembly behind shared helpers, remove the remaining legacy `act(...)` warning from the search wrapper regression suite, and correct the services pricing table so service labels and duration values occupy separate columns.
+
+### Steps
+- [x] Add homepage route helpers for resolved data, metadata, layout metadata, and JSON-LD assembly
+- [x] Rewire `app/page.tsx` to use the helpers without changing rendered behavior
+- [x] Fix the legacy `act(...)` warning in `tests/integration/search-page-description.test.tsx`
+- [x] Update the equipment-rental pricing table columns and row fields so service names and duration values are separated correctly
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Result
+- Added `app/utils/pages/homeRouteData.ts` and `app/utils/pages/homeRoutePresentation.ts`, then rewired `app/page.tsx` into a thinner route shell while preserving the homepage content contract and JSON-LD graph.
+- Wrapped the remaining raw `window.dispatchEvent(...)` path in `tests/integration/search-page-description.test.tsx` with `act(...)`, which removed the legacy warning from the focused search regression suite.
+- Corrected the equipment-rental pricing table semantics so the first column is now `Service`, the second column is `Duration`, and the hour/day strings now live in the dedicated duration field consumed by `ServicesPricingTable`.
+- Verified Batch 384 with `npm test -- tests/app/home-page.layout.test.tsx tests/utils/pages/homeRoutePresentation.test.ts tests/integration/search-page-description.test.tsx tests/utils/equipmentRentalPriceTable.test.ts tests/components/ServicesPricingTable.test.tsx --runInBand --coverage=false` (`23` passing).
+
+---
+
+## Batch 385: Normalize Services Pricing Table Row Rendering
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Move the services pricing table's demo-row and paid-row shaping behind one shared display helper so `ServicesPricingTable` renders a single row model instead of mixing inline special-case markup with data-driven rows.
+
+### Steps
+- [x] Add a shared display-row helper for the equipment-rental pricing table, including the featured on-site demo row
+- [x] Rewire `ServicesPricingTable` to render one shared row contract with minimal inline logic
+- [x] Add focused verification for the new display helper and rerun the table component tests
+- [x] Record the result plus the prevention rule in the task log and lessons
+
+### Result
+- Added `app/utils/pricing/servicesPricingTablePresentation.ts` so the featured on-site demo row and the paid pricing rows are shaped into one shared display model before rendering.
+- Rewired `app/components/ServicesPricingTable.tsx` to map a single row contract and collapse the repeated value-or-link cell logic into one shared render path.
+- Verified Batch 385 with `npm test -- tests/utils/equipmentRentalPriceTable.test.ts tests/utils/servicesPricingTablePresentation.test.ts tests/components/ServicesPricingTable.test.tsx --runInBand --coverage=false` (`5` passing).
+
+---
+
+## Batch 386: Unify Page Helpers And Presentation Primitives
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Unify the remaining route-helper families behind a clearer shared architecture, standardize table and section presentation primitives, and make `app/utils/pages` easier to navigate without a risky broad file migration.
+
+### Steps
+- [x] Add a clearer shared route-helper surface for existing page data/presentation modules
+- [x] Standardize the remaining table and section presentation primitives behind reusable helpers
+- [x] Add a lightweight organization layer for `app/utils/pages` so the helper surface is easier to scan and import from
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Result
+- Added `app/utils/pages/index.ts` as a shared barrel for the route-helper families and rewired the standalone routes (`home`, `search`, `settings`, `videos`) to import through that clearer common surface.
+- Added `app/utils/pages/presentationPrimitives.tsx` so section-heading resolution, clickable-card grid rendering, and linked text/value rendering now live in shared presentation primitives instead of being redefined locally.
+- Rewired `staticPageSectionRenderers` and `ServicesPricingTable` to consume those shared primitives, which reduces local presentation duplication without a risky broad file move under `app/utils/pages`.
+- Verified Batch 386 with `npm test -- tests/utils/pages/presentationPrimitives.test.tsx tests/utils/pages/staticPageSectionRenderers.test.tsx tests/utils/pages/homeRoutePresentation.test.ts tests/integration/search-page-description.test.tsx tests/utils/pages/searchRouteData.test.ts tests/utils/pages/searchRoutePresentation.test.ts tests/utils/pages/settingsRouteData.test.ts tests/utils/pages/settingsRoutePresentation.test.ts tests/app/home-page.layout.test.tsx tests/app/videos-page.test.tsx tests/pages/video-watch-page.test.tsx tests/utils/pages/videoRoutePresentation.test.tsx tests/components/ServicesPricingTable.test.tsx --runInBand --coverage=false` (`43` passing).
+
+---
+
+## Batch 387: Introduce Pages Sub-Barrels
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Add an explicit `routes` / `static` / `primitives` organization layer under `app/utils/pages` and migrate high-value imports onto those public entry points without relocating the underlying implementation files yet.
+
+### Steps
+- [x] Add `app/utils/pages/routes`, `app/utils/pages/static`, and `app/utils/pages/primitives` sub-barrels
+- [x] Rewire the key standalone routes and shared static/presentation consumers to import from those explicit public entry points
+- [x] Keep the top-level `app/utils/pages/index.ts` as a compatibility barrel that now delegates through the sub-barrels
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Result
+- Added `app/utils/pages/routes/index.ts`, `app/utils/pages/static/index.ts`, and `app/utils/pages/primitives/index.ts` so the page-helper surface is organized by architectural role rather than one flat barrel.
+- Rewired the standalone routes (`home`, `search`, `settings`, `videos`) plus the static-page and presentation-primitives consumers to import through those explicit public entry points.
+- Kept `app/utils/pages/index.ts` as a compatibility barrel that now delegates through the sub-barrels instead of directly re-exporting every leaf module.
+- Verified Batch 387 with `npm test -- tests/utils/pages/presentationPrimitives.test.tsx tests/utils/pages/staticPageSectionRenderers.test.tsx tests/utils/pages/createStaticPage.test.tsx tests/utils/pages/createStaticPage.integration.test.tsx tests/utils/pages/homeRoutePresentation.test.ts tests/integration/search-page-description.test.tsx tests/utils/pages/searchRouteData.test.ts tests/utils/pages/searchRoutePresentation.test.ts tests/utils/pages/settingsRouteData.test.ts tests/utils/pages/settingsRoutePresentation.test.ts tests/app/home-page.layout.test.tsx tests/app/videos-page.test.tsx tests/pages/video-watch-page.test.tsx tests/utils/pages/videoRoutePresentation.test.tsx tests/components/ServicesPricingTable.test.tsx --runInBand --coverage=false` (`106` passing).
+
+---
+
+## Batch 388: Move Route And Primitive Leaf Implementations
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Move the actual route-family and primitives leaf implementations under `app/utils/pages/routes` and `app/utils/pages/primitives`, while retaining the old flat files as compatibility shims so the public import surface stays stable during the migration.
+
+### Steps
+- [x] Move the home/search/settings/video route helper implementations into `app/utils/pages/routes`
+- [x] Move the shared presentation primitives implementation into `app/utils/pages/primitives`
+- [x] Leave the old flat files as re-export shims and rewire focused tests to use the new public route/primitives entry points
+- [x] Run focused frontend verification and record the result plus the prevention rule in the task log and lessons
+
+### Review
+- Moved the actual home, search, settings, and video route helper implementations under `app/utils/pages/routes/` and moved the shared presentation primitives implementation under `app/utils/pages/primitives/`, so the on-disk layout now matches the public helper surface introduced in the previous batch.
+- Kept the old flat files in `app/utils/pages/` as compatibility shims that simply re-export from the new locations, which preserves the existing import contract while future cleanup continues in smaller batches.
+- Rewired the focused route-helper tests to import from `@/app/utils/pages/routes`, so the regression suite now validates the new public surface instead of leaning on the temporary compatibility layer.
+- Verified the migration with `npm test -- tests/utils/pages/presentationPrimitives.test.tsx tests/utils/pages/homeRoutePresentation.test.ts tests/utils/pages/searchRouteData.test.ts tests/utils/pages/searchRoutePresentation.test.ts tests/utils/pages/settingsRouteData.test.ts tests/utils/pages/settingsRoutePresentation.test.ts tests/utils/pages/videoRoutePresentation.test.tsx tests/app/home-page.layout.test.tsx tests/app/videos-page.test.tsx tests/pages/video-watch-page.test.tsx tests/integration/search-page-description.test.tsx tests/components/ServicesPricingTable.test.tsx --runInBand --coverage=false` (`12` suites, `39` tests passing).
+
+---
+
 ## Batch 368: Add YouTube Data API Primary Video Source
 Date: 2026-03-28
 Status: COMPLETE
@@ -317,6 +678,25 @@ Reduce the remaining advisory related-item failures by tightening the frontend w
 - [x] Re-run focused tests plus the related-items audit and capture the remaining fail count
 
 ### Review
+
+---
+
+## Batch 389: Verify Route Helper Refactor And Prepare Release Staging
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Confirm the latest frontend route-helper and static-page refactor passes the real production build plus focused regression coverage, then prepare both repositories for a clean staged handoff.
+
+### Steps
+- [x] Re-run the frontend production build after the final route-helper fixes and confirm the current exit status instead of relying on earlier failure output
+- [x] Run a focused frontend regression slice covering the new route helpers, pricing-table extraction, static-page presentation path, and item-page preparation/layout flow
+- [x] Record the verification outcome and the prevention rule before staging the repositories for release prep
+
+### Review
+- Re-ran the real frontend production build with `npm run build` and then captured an explicit exit status with `npm run build >/tmp/zbeam-build.log 2>&1; printf 'EXIT=%s\n' "$?"`; the current build completed successfully with `EXIT=0`.
+- Re-ran focused regression coverage across the touched route/helper areas with `npx jest --runInBand --coverage=false tests/components/ServicesPricingTable.test.tsx tests/utils/layout/domainSupportSections.test.tsx tests/utils/pages/homeRoutePresentation.test.ts tests/utils/pages/itemPageLayoutRenderer.test.tsx tests/utils/pages/itemPagePreparation.test.ts tests/utils/pages/presentationPrimitives.test.tsx tests/utils/pages/searchRouteData.test.ts tests/utils/pages/searchRoutePresentation.test.ts tests/utils/pages/settingsRouteData.test.ts tests/utils/pages/settingsRoutePresentation.test.ts tests/utils/pages/staticPagePresentation.test.tsx tests/utils/pages/staticPageSectionRenderers.test.tsx tests/utils/pages/videoRoutePresentation.test.tsx tests/utils/servicesPricingTablePresentation.test.ts tests/utils/equipmentRentalPriceTable.test.ts tests/integration/ItemPage-dataset.test.tsx tests/integration/search-page-description.test.tsx tests/pages/applications-detail-author.test.tsx tests/build/build-time-requirements.test.ts`; result: `19` suites passed, `100` tests passed, `1` existing test skipped.
+- The earlier prerender crash investigation was stale by the time the current build was rerun; the release-prep verdict is based on the fresh green build and focused suite, not on the outdated failing export output.
 - Confirmed the remaining advisory failures were concentrated in `video-watch-related` derived sections where broad process-language overlap and candidate-shape drift let weak materials, compounds, and applications survive into the watch-page related-content output even though the related-items audit judged them semantically weak.
 - Tightened `z-beam/app/utils/videoRelatedContent.ts` in two ways: filtered broad process tokens out of the local scorer, and aligned the runtime derived-match gate with the shared `hasStrongSemanticMatch` verifier from `z-beam/app/utils/relatedItemsVerification.ts` using the same effective host title and candidate keyword shape the audit sees.
 - Updated `z-beam/app/utils/videoCatalog.ts` to pass the resolved video page title into the watch-page related-content matcher, and added focused regressions in `z-beam/tests/utils/videoRelatedContent.test.ts` for broad-language false positives and for keeping specific epoxy/tube matches while dropping generic noise.
