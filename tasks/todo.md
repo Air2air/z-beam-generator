@@ -2,18 +2,21 @@
 
 ## Batch 372: Release Frontend SEO Hardening
 Date: 2026-03-30
-Status: IN PROGRESS
+Status: COMPLETE
 
 ### Goal
 Commit and push the completed frontend SEO-hardening work across both repos, then deploy the frontend to production and revalidate the live site.
 
 ### Steps
-- [ ] Commit and push the frontend repo changes for merchant-feed discovery, validator coverage, and freshness timestamp backfill
-- [ ] Commit and push the generator repo task-log updates for the completed frontend SEO batches
-- [ ] Run the production deployment path and revalidate the live site after deploy
+- [x] Commit and push the frontend repo changes for merchant-feed discovery, validator coverage, and freshness timestamp backfill
+- [x] Commit and push the generator repo task-log updates for the completed frontend SEO batches
+- [x] Run the production deployment path and revalidate the live site after deploy
 
 ### Review
-- In progress.
+- Committed and pushed the frontend repo on `main` as `eaa056705` (`Harden frontend SEO release coverage`) after the repo's pre-push validation passed, including metadata sync, sitemap checks, typecheck, and SEO infrastructure validation.
+- Committed and pushed the generator repo task-log updates on `main` as `216c01ec` (`Log frontend SEO release batch`), then added this final completion review after deployment and validation.
+- Deployed production through `./scripts/deployment/smart-deploy.sh deploy`; Vercel marked deployment `dpl_DCwXZryAyALQwNjhqfJPpzhwmKWP` ready at `https://z-beam-o351na0qf-air2airs-projects.vercel.app` and aliased it to both `https://z-beam.com` and `https://www.z-beam.com`.
+- Revalidated the live canonical site with `node scripts/validation/post-deployment/validate-production-comprehensive.js --strict-seo --require-rich-results --max-urls=40`, which finished with 1229/1231 checks passed, 0 failures, 2 warnings, 99% score, and grade `A`.
 
 ## Batch 371: Close Remaining Frontend SEO Risks
 Date: 2026-03-31
