@@ -1,5 +1,23 @@
 # tasks/todo.md
 
+## Batch 370: Consolidate Frontend Type Surface
+Date: 2026-03-31
+Status: COMPLETE
+
+### Goal
+Finish the frontend type-centralization pass by removing duplicate public type exports, normalizing consumers onto the `@/types` barrel, and verifying which remaining direct `@/types/centralized` references are intentionally internal.
+
+### Steps
+- [x] Remove duplicate public shared-type exports that bypass the centralized barrel contract
+- [x] Normalize app and test imports from `@/types/centralized` to `@/types` where the barrel already exposes the same types
+- [x] Re-run type and targeted regression checks, then summarize any remaining intentional internal references
+
+### Review
+- Removed the duplicate public `ComponentData` export from `types/index.ts` and made the schema-generator copy internal to `app/utils/schemas/generators/types.ts`, leaving `types/centralized.ts` as the single exported authority for that shared app type.
+- Normalized all remaining app and test imports from `@/types/centralized` to the public `@/types` barrel, and updated the centralized-type enforcement test plus type-surface documentation examples to reflect the barrel-first contract.
+- Re-passed `npm run type-check`, re-passed `npx jest --runInBand --coverage=false tests/types/centralized.test.ts tests/components/Layout.test.tsx tests/components/BaseContentLayout.test.tsx`, and re-passed `npx jest --runInBand --coverage=false tests/utils/applicationAssociations.test.ts tests/components/ApplicationAssociations.test.tsx` after fixing one barrel name-collision consumer in `app/utils/applicationAssociations.ts`.
+- Remaining intentional non-barrel type imports are internal schema-module references from `app/utils/schemas/SchemaFactory.ts` and `app/utils/schemas/registry.ts` into their sibling `./generators/types` module; those stay local because they are schema-internal rather than part of the shared app type surface.
+
 ## Batch 369: Unblock Frontend Push Typecheck
 Date: 2026-03-31
 Status: COMPLETE
