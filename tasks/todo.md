@@ -1,5 +1,54 @@
 # tasks/todo.md
 
+## Batch 368: Unify Frontend Commerce Offer Authority
+Date: 2026-03-30
+Status: COMPLETE
+
+### Goal
+Create one frontend authority for commerce offer facts including price, availability, return policy, shipping, condition, seller, and offer validity, then make both JSON-LD schema generation and the Google Merchant feed consume that same source.
+
+### Steps
+- [x] Identify the narrowest existing frontend pricing/config authority to extend into a complete commerce-offer authority
+- [x] Refactor schema generation paths to consume the unified commerce-offer authority instead of rebuilding offer facts inline
+- [x] Refactor the Google Merchant feed generator to consume the same authority and remove stale duplicated pricing/config
+- [x] Run focused validation on the affected commerce/schema/feed paths and summarize residual video-watch SEO status
+
+### Review
+- Added a shared frontend commerce authority at `app/config/commerce-policy.json`, then rewired `app/config/equipmentRental.ts` to derive pricing packages, offer validity, seller, return policy, shipping details, condition, and availability from that single policy source.
+- Updated frontend JSON-LD consumers including `app/utils/schemas/generators/product.ts`, `app/utils/schemas/registry.ts`, `app/utils/pages/routes/homeRoutePresentation.ts`, and `app/utils/schemas/SchemaFactory.ts` so they now consume the shared commerce-offer helpers instead of rebuilding the same offer-policy fields inline.
+- Updated `seo/scripts/generate-google-merchant-feed.js` to read the same shared commerce policy for price, availability, condition, shipping, and offer-validity data, then switched the feed inventory source from dead material `serviceOffering` scans to explicit frontend commerce landing pages (`app/services/page.yaml`, `app/equipment/page.yaml`).
+- Verified the feed generator now emits four concrete merchant-feed products from the live commerce landing pages, and re-passed focused schema/video SEO suites with `npx jest --runInBand --coverage=false tests/seo/schema-generators.test.ts tests/seo/schema-factory.test.ts tests/seo/schema-validator.test.ts tests/seo/video-schema-generation.test.ts tests/seo/related-video-schema-generation.test.ts` plus `npx jest --runInBand --coverage=false tests/utils/pages/videoRoutePresentation.test.tsx tests/unit/metadata.test.ts tests/seo/video-schema-generation.test.ts tests/seo/related-video-schema-generation.test.ts`.
+
+---
+
+## Batch 367: Continue Frontend Architecture Separation Cleanup
+Date: 2026-03-31
+Status: IN PROGRESS
+
+### Goal
+Continue the frontend-only architecture cleanup by extracting mixed-responsibility modules into smaller reusable authorities, then verify the refactors with focused regressions before proceeding to larger hotspots.
+
+### Steps
+- [x] Extract the settings-specific article loader out of `app/utils/contentAPI.ts`
+- [x] Extract equipment-rental pricing/business helpers out of `app/config/site.ts`
+- [x] Run focused diagnostics and regression tests for the extracted settings and pricing authorities
+- [x] Continue with the next high-value frontend-only separation target if validation is green
+- [x] Extract grid-system config out of `app/config/site.ts` while preserving public exports
+- [x] Run focused diagnostics and regression tests for the extracted grid authority
+- [x] Extract navigation and UI defaults out of `app/config/site.ts` while preserving public exports
+- [x] Run focused diagnostics and regression tests for the extracted navigation and UI config
+- [x] Extract business and animation config out of `app/config/site.ts` while preserving public exports
+- [x] Run focused diagnostics and regression tests for the extracted business and animation config
+- [x] Extract page/article assembly and content-type wrapper loaders out of `app/utils/contentAPI.ts`
+- [x] Run focused diagnostics and regression tests for the extracted contentAPI loader modules
+- [x] Extract raw component parsing out of `app/utils/contentAPI.ts`
+- [x] Run focused diagnostics and regression tests for the extracted component parser
+- [x] Extract relationship-derivation and role-analysis logic out of `app/components/ParameterRelationships/ParameterRelationships.tsx`
+- [x] Keep `ParameterRelationships.tsx` focused on interaction state and rendering while preserving behavior
+- [x] Add focused regression coverage for the extracted parameter relationship model and rerun diagnostics
+- [x] Split the extracted parameter relationship helper into graph-derivation and presentation-analysis modules while preserving the public helper entry point
+- [x] Re-run focused diagnostics and the new model regression after the internal helper split
+
 All prior phase plans (Sessions 1–9) completed and removed 2026-02-24.
 See `tasks/lessons.md` for lessons learned.
 
