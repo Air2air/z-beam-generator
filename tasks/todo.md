@@ -1,5 +1,38 @@
 # tasks/todo.md
 
+## Batch 372: Release Frontend SEO Hardening
+Date: 2026-03-30
+Status: IN PROGRESS
+
+### Goal
+Commit and push the completed frontend SEO-hardening work across both repos, then deploy the frontend to production and revalidate the live site.
+
+### Steps
+- [ ] Commit and push the frontend repo changes for merchant-feed discovery, validator coverage, and freshness timestamp backfill
+- [ ] Commit and push the generator repo task-log updates for the completed frontend SEO batches
+- [ ] Run the production deployment path and revalidate the live site after deploy
+
+### Review
+- In progress.
+
+## Batch 371: Close Remaining Frontend SEO Risks
+Date: 2026-03-31
+Status: COMPLETE
+
+### Goal
+Reduce the highest-value remaining frontend SEO risks by making merchant-feed inventory page-driven, expanding SEO validator coverage across additional route families, and fixing freshness tracking warnings at the frontend frontmatter source.
+
+### Steps
+- [x] Replace hardcoded merchant-feed landing-page selection with source-driven discovery from frontend page YAMLs
+- [x] Expand SEO infrastructure validation to cover representative applications, compounds, video watch pages, and equipment routes
+- [x] Add a frontend-owned freshness backfill path for missing generation timestamps and verify the metadata validator no longer emits the current warning flood
+
+### Review
+- Added explicit `merchantFeed` source config to the live `/services` and `/equipment` page YAML authorities, then updated `seo/scripts/generate-google-merchant-feed.js` to discover all merchant-feed-enabled `app/**/page.yaml` files rather than hardcoding a two-page inventory list.
+- Expanded `scripts/validation/config.js` SEO infrastructure coverage to include representative equipment, application detail, compound detail, and video watch routes so route-family regressions are sampled beyond the original materials/settings/static set.
+- Added `scripts/tools/backfill-material-generation-dates.js`, used it to backfill missing `preservedData.generationMetadata.generated_date` fields across frontend-owned material frontmatter, and tightened `scripts/validation/content/validate-metadata-sync.js` so it only warns when no freshness signal exists at all.
+- Verified with `node seo/scripts/generate-google-merchant-feed.js`, `node scripts/tools/backfill-material-generation-dates.js`, `node scripts/validation/content/validate-metadata-sync.js`, and `npm run type-check`.
+
 ## Batch 370: Consolidate Frontend Type Surface
 Date: 2026-03-31
 Status: COMPLETE
