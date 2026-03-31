@@ -1,5 +1,22 @@
 # tasks/todo.md
 
+## Batch 369: Unblock Frontend Push Typecheck
+Date: 2026-03-31
+Status: COMPLETE
+
+### Goal
+Fix only the frontend TypeScript regressions introduced in the current architecture and commerce batch so the existing frontend release commit can pass the repo's push-time validation and be pushed cleanly.
+
+### Steps
+- [x] Reproduce the failing frontend push-time typecheck locally and isolate the exact narrow regressions
+- [x] Fix the refactor regressions without widening the public contracts or undoing the architectural separation work
+- [x] Re-run the exact frontend typecheck gate, then push the existing frontend commit if validation passes
+
+### Review
+- Reproduced the frontend push blocker with `npm run type-check` and confirmed the failure was a narrow set of TypeScript regressions from the refactor batch rather than any Git or remote-state problem.
+- Fixed the regressions by passing the extracted `relationships` dependency into `getNodeColor`, standardizing the loader/parser path on the centralized `ComponentData` contract, explicitly typing normalized frontmatter objects in the extracted content-type loader, and guarding article speakable selectors as real `string[]` values before spreading them into schema options.
+- Re-ran `npm run type-check` successfully, clearing the exact frontend gate that had blocked the push.
+
 ## Batch 368: Unify Frontend Commerce Offer Authority
 Date: 2026-03-30
 Status: COMPLETE
